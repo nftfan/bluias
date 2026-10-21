@@ -1,0 +1,53 @@
+name: One-time sync from bluia
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-bluia.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          repository: nftfan/bluia
+          ref: main
+          path: source
+
+      - name: Sync source while preserving CNAME
+        shell: bash
+        run: |
+          set -euo pipefail
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='CNAME' \
+            source/ ./
+          rm -rf source
+          rm -f .github/workflows/sync-bluia.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+
+      - name: Commit synced files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Sync bluia into bluias preserving CNAME'
+          git push origin HEAD:main
