@@ -1,9 +1,8 @@
 name: One-time sync from bluia
 
 on:
-  push:
-    paths:
-      - '.github/workflows/sync-bluia.yml'
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
