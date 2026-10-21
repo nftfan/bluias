@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#000000">
-  <title>Bluia Sisters</title>
+  <title>Bluias</title>
   <style>
     html,body{margin:0;min-height:100%;background:#000;color:#fff;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
     body{min-height:100svh;display:grid;place-items:center}
@@ -12,13 +12,14 @@
   </style>
 </head>
 <body>
-  <div class="boot">Loading Bluia Sisters…</div>
+  <div class="boot">Loading Bluias…</div>
   <script>
   (async()=>{
     try{
-      const response=await fetch('/index-original.html?v=20261021-telegram',{cache:'no-store'});
+      const response=await fetch('/index-original.html?v=20261021-bluias',{cache:'no-store'});
       if(!response.ok)throw new Error('Could not load site');
       let html=await response.text();
+      html=html.replaceAll('Bluia Sisters','Bluias');
 
       const navigationUpgrade=`
 <style id="bluias-scroll-tabs-and-telegram">
@@ -125,7 +126,7 @@
       document.write(html);
       document.close();
     }catch(error){
-      document.body.innerHTML='<div style="padding:30px;text-align:center;color:#fff;font:12px Inter,Arial,sans-serif">Bluia Sisters could not load. Please refresh the page.</div>';
+      document.body.innerHTML='<div style="padding:30px;text-align:center;color:#fff;font:12px Inter,Arial,sans-serif">Bluias could not load. Please refresh the page.</div>';
     }
   })();
   </script>
