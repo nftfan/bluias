@@ -20,6 +20,7 @@
       if(!response.ok)throw new Error('Could not load site');
       let html=await response.text();
       html=html.replaceAll('Bluia Sisters','Bluias');
+      html=html.replace("topBrand.textContent=item.brand||'Bluias';","topBrand.textContent=item.brand||'Bluia Sisters';");
 
       const navigationUpgrade=`
 <style id="bluias-scroll-tabs-and-telegram">
@@ -48,10 +49,10 @@
     min-width:80px;
     height:38px;
     padding:0 16px;
-    border:1px solid #29292f!important;
+    border:1px solid var(--tab-border)!important;
     border-radius:10px;
-    background:#141417!important;
-    color:#a9a9b2!important;
+    background:var(--tab-bg)!important;
+    color:var(--tab-text)!important;
     box-shadow:none!important;
     animation:none!important;
     text-shadow:none;
@@ -61,15 +62,24 @@
     scroll-snap-align:start;
     transition:background .16s ease,border-color .16s ease,color .16s ease;
   }
+  .topnav .nav-btn[data-panel="updates"]{--tab-bg:#24151e;--tab-border:#61354c;--tab-text:#f3b9d1;--tab-active:#573047;--tab-accent:#f3a6c9}
+  .topnav .nav-btn[data-panel="moms"]{--tab-bg:#1e172c;--tab-border:#51416b;--tab-text:#d3bdf0;--tab-active:#45335e;--tab-accent:#c9a6f0}
+  .topnav .nav-btn[data-panel="play"]{--tab-bg:#251b15;--tab-border:#66503d;--tab-text:#f0cfb2;--tab-active:#59432f;--tab-accent:#e9bf91}
+  .topnav .nav-btn[data-panel="members"]{--tab-bg:#14241e;--tab-border:#315b48;--tab-text:#ade2c7;--tab-active:#294f3e;--tab-accent:#9cdbba}
+  .topnav .nav-btn[data-panel="telegram"]{--tab-bg:#122330;--tab-border:#31596f;--tab-text:#afdafa;--tab-active:#284d66;--tab-accent:#93d2fc}
   .topnav .nav-btn.active{
-    background:#29292f!important;
-    border-color:#50505a!important;
+    background:var(--tab-active)!important;
+    border-color:var(--tab-accent)!important;
     color:#fff!important;
   }
   @media(hover:hover){
-    .topnav .nav-btn:hover{background:#222227!important;border-color:#414149!important;color:#f2f2f5!important}
+    .topnav .nav-btn:hover{background:var(--tab-active)!important;border-color:var(--tab-accent)!important;color:#fff!important}
   }
-  .topnav .nav-btn:focus-visible{outline:2px solid #d4d4dc;outline-offset:2px}
+  .topnav .nav-btn:focus-visible{outline:2px solid var(--tab-accent);outline-offset:2px}
+  .panel.active>.feed,.panel.active>.feed-startup{animation:bluiasPanelFade .5s ease-out}
+  .panel.active>.inner,.panel.active>.magazine,.panel.active>.telegram-page{animation:bluiasPanelRise .45s cubic-bezier(.22,.61,.36,1)}
+  @keyframes bluiasPanelFade{from{opacity:0}to{opacity:1}}
+  @keyframes bluiasPanelRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   #panel-telegram{background:radial-gradient(ellipse at 50% 0%,#102331 0%,#080a10 40%,#000 75%)}
   .telegram-page{width:min(100%,520px);margin:0 auto;padding:40px 20px 48px;text-align:left}
   .telegram-page *{box-sizing:border-box}
@@ -115,6 +125,7 @@
   }
   @media(prefers-reduced-motion:reduce){
     .telegram-page-link,.topnav .nav-btn{transition:none!important}
+    .panel.active>.feed,.panel.active>.feed-startup,.panel.active>.inner,.panel.active>.magazine,.panel.active>.telegram-page{animation:none!important}
   }
 </style>`;
 
