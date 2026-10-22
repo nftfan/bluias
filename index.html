@@ -22,6 +22,19 @@
       html=html.replaceAll('Bluia Sisters','Bluias');
       html=html.replace("topBrand.textContent=item.brand||'Bluias';","topBrand.textContent=item.brand||'Bluia Sisters';");
 
+      const magazinePhotos={"https://huggingface.co/buckets/Bluia/bimg/resolve/CB41C504-F995-4471-AC6F-2D8DA7909017.png?download=true":{"width":940,"height":1672,"variants":[{"src":"/assets/magazine/fashion-story-480.webp","width":480,"bytes":44530},{"src":"/assets/magazine/fashion-story-940.webp","width":940,"bytes":125832}],"preview":"data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADwBACdASoSACAAPxFyrlAsJqQisAgBgCIJQBadBApoSAKpYfOUVvQ0ag1v4l0NoAAAzUry41yvwN+WGJhbRI+on40hORrAXT4Rr2vTPCldkIY/QuoR7Zxh0+UVpg5KILuqQkjKbs+etjJad0eowv2nVRz1AecHp6Hwk5WJrW2aPdcwcGFsz7qQj23c7m37GMamAbPylOPXrU6qv9ZvSa1anA83Jy4A","originalBytes":2582102},"https://huggingface.co/buckets/Bluia/bimg/resolve/6376DFDC-5696-4994-B1E5-6273DD959B73.png?download=true":{"width":941,"height":1672,"variants":[{"src":"/assets/magazine/fashion-detail-480.webp","width":480,"bytes":55414},{"src":"/assets/magazine/fashion-detail-941.webp","width":941,"bytes":136522}],"preview":"data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAADwBQCdASoSACAAPxF0sVAsJySisAgBgCIJQBOmbOWhA+BfuONEwsrL+6Zcqh0Ccr4icv+ApZSAkAD+k6/pZYLIxG6voz4H12lQ8/oU6WAAbF5JAhGAMzx2z2r8LcCauamvqn8QuLHPpM5GL3D8TCwC0CY2LZsmp4KvwbEz6ZUhpE0UftHoez6+rsLQkfwKqS4y+rZD8TLyQKn89quvGk4xq+SwtOZ/NGPDmQXjdwIsGnnLjmm6+OLZ0b/2TR/0pzP9a78dhRl6jh7kUsOK3TgqFwJEc1wA","originalBytes":2380043},"https://huggingface.co/buckets/Bluia/bimg/resolve/0FB83428-CF4A-4A26-8B51-DB1F9234D2E3.png?download=true":{"width":941,"height":1672,"variants":[{"src":"/assets/magazine/fashion-look-480.webp","width":480,"bytes":28242},{"src":"/assets/magazine/fashion-look-941.webp","width":941,"bytes":71162}],"preview":"data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAADwBQCdASoSACAAPxF2slAsJ6SisAgBgCIJZACdM0920EIoj5q6izVxNEoImisa0x+ivq6iJyIHaADusFRzWIGGsK2uTgqllX2eVjhoPs+YaU7vN+vvacQGkEf3xezzzn9ucy+96FbkecN1dY0tlyVL3MmX1fwpMdgVWjCZ0kgOy7vjsKtp4v0FCfnOswtzoXJhpGWG+ph63wuL1eC0+0x1+oOYhFA7dAZkC8zgpULCEeIjAAA=","originalBytes":2022908},"https://huggingface.co/buckets/Bluia/bimg/resolve/B2041FE1-808D-4F35-9107-473F5A357623.png?download=true":{"width":941,"height":1672,"variants":[{"src":"/assets/magazine/style-story-480.webp","width":480,"bytes":16514},{"src":"/assets/magazine/style-story-941.webp","width":941,"bytes":40540}],"preview":"data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAACwBACdASoSACAAPxF4s1IsJySisBgIAYAiCUAXYAETZRfk27bmlvTiCOBSMGoAAP4yhJHH0cZqSP4lRLBEk2tSzHhQ/IfmGibpuffqOyfx41j9VOvYmOxLzuqH3YWyKiTXa8p9gy456yc1hd1TH9mb/ZO2XRKTWN8yovA0SldOgYc6mSflLbtJeM9497l6Dl3x2joxHey3+vJ4AAA=","originalBytes":1785378},"https://huggingface.co/buckets/Bluia/bimg/resolve/960EE242-6C07-4D1A-B682-67997AACD51E.png?download=true":{"width":1086,"height":1448,"variants":[{"src":"/assets/magazine/signature-style-480.webp","width":480,"bytes":49314},{"src":"/assets/magazine/signature-style-1086.webp","width":1086,"bytes":179086}],"preview":"data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAABQBgCdASoYACAAPwluq1ArpqOisAwBcCEJbACdIQCJqgK4fIuxs0oZN6iEcw99uuvqOaBqPk2j/Z8tAAD+2WLNGSX/psqmFzl6BZKhm57oz62fwTzPzhHQnwzCMTXuT9Lrse4RJ0PhLB0MOdIdxvQcTaPuTlmHh8tctIgej5vIgmDpPmxuGes6eemdCRLPxzoimzGe0aht1uMRgs9+FZDmi5XlFxYiukNel6W+ymLVzHnGsEgoTg2xFC7I6jdKhEwoTYlY/O6r4+9awxoe8od2eWdIQK09PifPTcBg+Cuj2Sr7PgkO0wSLesAAAA==","originalBytes":2732209},"https://huggingface.co/buckets/Bluia/bimg/resolve/949F7146-EFE1-4F84-904E-5A352A2B6E00.png?download=true":{"width":1122,"height":1402,"variants":[{"src":"/assets/magazine/personal-style-480.webp","width":480,"bytes":49756},{"src":"/assets/magazine/personal-style-1122.webp","width":1122,"bytes":172394}],"preview":"data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAACwBQCdASoYAB4APxFyr1AsJqQisAgBgCIJZACuIAn9pS39kOIbwwKCTEnOOWm501mKwu6haSAAyzDmwucVmzYCZ3oUtAnSL2gQlt4KLJD414Dlpzpaj2NniTjdTaZEItydhPOwLQGywqH0jWTKCYnR6zo+u0cudJWnzZyGyMsN0nY/jY/YIxad3Wl6NAxud5nQZmmAbJGRzbdUhqanLhOI8f5sG5mhLDVUDyQadbi4moQIMdKZ32mEXnNWFfau62ebPQSqCXr3ezjOTvGHx9d/p9GhoVVIn07sgeH4FfFtpsE9oAA=","originalBytes":2655174}};
+      let magazinePhotoIndex=0;
+      html=html.replace(/<img class="mag-photo"[^>]*>/g,tag=>{
+        const source=tag.match(/src="([^"]+)"/)?.[1];
+        const photo=magazinePhotos[source];
+        if(!photo)return tag;
+        const first=magazinePhotoIndex++===0;
+        const variants=photo.variants;
+        let image=tag.replace('src="'+source+'"','src="'+variants[variants.length-1].src+'" srcset="'+variants.map(v=>v.src+' '+v.width+'w').join(', ')+'" sizes="100vw" width="'+photo.width+'" height="'+photo.height+'" data-original-src="'+source+'"');
+        if(first)image=image.replace('loading="lazy"','loading="eager" fetchpriority="low"');
+        return '<div class="mag-photo-frame" aria-busy="true" style="aspect-ratio:'+photo.width+'/'+photo.height+';background-image:url('+photo.preview+')">'+image+'<span class="mag-photo-status" role="status"></span></div>';
+      });
+
       const navigationUpgrade=`
 <style id="bluias-scroll-tabs-and-telegram">
   .topnav{
@@ -80,6 +93,15 @@
   .panel.active>.inner,.panel.active>.magazine,.panel.active>.telegram-page{animation:bluiasPanelRise .45s cubic-bezier(.22,.61,.36,1)}
   @keyframes bluiasPanelFade{from{opacity:0}to{opacity:1}}
   @keyframes bluiasPanelRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .mag-photo-frame{position:relative;overflow:hidden;isolation:isolate;background-color:#241d18;background-size:100% 100%;background-position:center}
+  .mag-photo-frame::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,#fff1df20 45%,transparent 70%);background-size:220% 100%;animation:magazinePhotoShimmer 1.8s ease-in-out infinite;transition:opacity .6s ease;pointer-events:none}
+  .mag-photo-frame .mag-photo{position:relative;width:100%;height:auto;opacity:0;background:transparent;transition:opacity .65s ease}
+  .mag-photo-frame.is-ready .mag-photo{opacity:1}
+  .mag-photo-frame.is-ready::before,.mag-photo-frame.is-error::before{opacity:0;animation:none}
+  .mag-photo-status{display:none;position:absolute;inset:0;align-items:center;justify-content:center;padding:24px;background:#17100cbb;color:#f4e7d6;text-align:center;font:12px/1.6 Inter,Arial,sans-serif}
+  .mag-photo-frame.is-error .mag-photo-status{display:flex}
+  .mag-locked-visual>.mag-lock-overlay{z-index:2}
+  @keyframes magazinePhotoShimmer{from{background-position:220% 0}to{background-position:-220% 0}}
   #panel-telegram{background:radial-gradient(ellipse at 50% 0%,#102331 0%,#080a10 40%,#000 75%)}
   .telegram-page{width:min(100%,520px);margin:0 auto;padding:40px 20px 48px;text-align:left}
   .telegram-page *{box-sizing:border-box}
@@ -125,6 +147,8 @@
   }
   @media(prefers-reduced-motion:reduce){
     .telegram-page-link,.topnav .nav-btn{transition:none!important}
+    .mag-photo-frame .mag-photo,.mag-photo-frame::before{transition:none!important}
+    .mag-photo-frame::before{animation:none!important}
     .panel.active>.feed,.panel.active>.feed-startup,.panel.active>.inner,.panel.active>.magazine,.panel.active>.telegram-page{animation:none!important}
   }
 </style>`;
@@ -195,6 +219,32 @@
       document.open();
       document.write(html);
       document.close();
+      document.querySelectorAll('.mag-photo-frame').forEach(frame=>{
+        const image=frame.querySelector('img');
+        const reveal=()=>{
+          const finish=()=>requestAnimationFrame(()=>{
+            frame.classList.add('is-ready');
+            frame.setAttribute('aria-busy','false');
+          });
+          if(image.decode)image.decode().catch(()=>{}).then(finish);
+          else finish();
+        };
+        const failed=()=>{
+          if(!image.dataset.originalTried){
+            image.dataset.originalTried='1';
+            image.removeAttribute('srcset');
+            image.removeAttribute('sizes');
+            image.src=image.dataset.originalSrc;
+            return;
+          }
+          frame.classList.add('is-error');
+          frame.setAttribute('aria-busy','false');
+          frame.querySelector('.mag-photo-status').textContent='Photo could not load. Please refresh to try again.';
+        };
+        image.addEventListener('load',reveal);
+        image.addEventListener('error',failed);
+        if(image.complete){if(image.naturalWidth)reveal();else failed()}
+      });
       document.getElementById('moms-membership-float')?.addEventListener('click',()=>{
         document.querySelector('.nav-btn[data-panel="members"]')?.click();
         document.getElementById('moms-membership-card')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
