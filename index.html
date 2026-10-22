@@ -94,6 +94,9 @@
   .telegram-wallet-status{min-height:28px;padding-top:9px;font-size:11px;line-height:1.6;text-align:center;color:#dac7e8}
   .telegram-page-moms{background:linear-gradient(130deg,#38234c,#1b1228);border:1px solid #a67bcd;color:#d9b9f7}
   #panel-members .moms-wrap{width:100%;padding:24px 0 0}
+  #panel-members #moms-membership-card{padding:0;overflow:hidden;border-radius:22px;border-color:#75416b;background:linear-gradient(180deg,#21101c,#0c090d);box-shadow:0 16px 42px #0005}
+  .moms-plan-cover{display:block;width:100%;height:auto;margin:0;border-bottom:1px solid #75416b;background:#1b1119}
+  .moms-plan-details{padding:22px 18px 20px}
   #panel-moms{padding-bottom:90px}
   #moms-membership-float{border-color:#b78bdf;color:#e4c5ff;background:linear-gradient(135deg,#392449,#1d1327);bottom:calc(18px + env(safe-area-inset-bottom,0px))}
   #moms-membership-float:focus-visible{outline:2px solid #e4c5ff;outline-offset:4px}
@@ -159,7 +162,9 @@
       html=html.replace(/(<section class="panel" id="panel-moms">)([\s\S]*?)(<\/section>)/,(_,open,body,close)=>{
         const pricingStart=body.indexOf('<div class="moms-wrap">');
         if(pricingStart<0)return open+body+close;
-        momsPricing=body.slice(pricingStart).replace('<div class="moms-card">','<div class="moms-card" id="moms-membership-card">');
+        momsPricing=body.slice(pricingStart)
+          .replace('<div class="moms-card">','<div class="moms-card" id="moms-membership-card"><img class="moms-plan-cover" src="https://huggingface.co/buckets/veebluia/bluiaimages/resolve/Golden-Hour%20Countryside%20Group%20Portrait.png?download=true" alt="Bluia Moms countryside group portrait" loading="lazy" decoding="async"><div class="moms-plan-details">')
+          .replace(/<\/div><\/div>\s*$/,'</div></div></div>');
         return open+body.slice(0,pricingStart)+'<button class="feed-membership-float" id="moms-membership-float" type="button">Unlock Bluia Moms — $10/month</button>'+close;
       });
       html=html.replace(/(<section class="panel" id="panel-members">[\s\S]*?)(<\/div><\/section>)/,(_,body,end)=>body+momsPricing+end);
