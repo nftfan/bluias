@@ -27,8 +27,11 @@
     display:flex!important;
     grid-template-columns:none!important;
     align-items:center;
-    gap:7px!important;
+    gap:6px!important;
     width:100%;
+    padding:9px 10px!important;
+    border-bottom:1px solid #242429;
+    background:rgba(10,10,12,.94);
     overflow-x:auto!important;
     overflow-y:hidden!important;
     white-space:nowrap;
@@ -38,28 +41,35 @@
     -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
     -ms-overflow-style:none;
-    padding:8px 10px 9px!important;
   }
   .topnav::-webkit-scrollbar{display:none}
-  .nav-btn{
-    flex:0 0 auto!important;
-    min-width:96px;
-    padding:0 14px;
+  .topnav .nav-btn{
+    flex:1 0 auto!important;
+    min-width:80px;
+    height:38px;
+    padding:0 16px;
+    border:1px solid #29292f!important;
+    border-radius:10px;
+    background:#141417!important;
+    color:#a9a9b2!important;
+    box-shadow:none!important;
+    animation:none!important;
+    text-shadow:none;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.15px;
     scroll-snap-align:start;
+    transition:background .16s ease,border-color .16s ease,color .16s ease;
   }
-  .nav-btn[data-panel="updates"]{min-width:112px}
-  .nav-btn[data-panel="telegram"]{
-    background:linear-gradient(135deg,#2aabee,#1477aa);
-    border-color:#54c7ff;
-    color:#fff;
-    box-shadow:0 6px 20px rgba(42,171,238,.22);
+  .topnav .nav-btn.active{
+    background:#29292f!important;
+    border-color:#50505a!important;
+    color:#fff!important;
   }
-  .nav-btn[data-panel="telegram"].active{
-    background:linear-gradient(135deg,#56c8ff,#1687c2);
-    border-color:#a4e4ff;
-    color:#fff;
-    box-shadow:0 7px 24px rgba(42,171,238,.4);
+  @media(hover:hover){
+    .topnav .nav-btn:hover{background:#222227!important;border-color:#414149!important;color:#f2f2f5!important}
   }
+  .topnav .nav-btn:focus-visible{outline:2px solid #d4d4dc;outline-offset:2px}
   #panel-telegram{background:radial-gradient(ellipse at 50% 0%,#102331 0%,#080a10 40%,#000 75%)}
   .telegram-page{width:min(100%,520px);margin:0 auto;padding:40px 20px 48px;text-align:left}
   .telegram-page *{box-sizing:border-box}
@@ -101,11 +111,10 @@
   #moms-membership-float{border-color:#b78bdf;color:#e4c5ff;background:linear-gradient(135deg,#392449,#1d1327);bottom:calc(18px + env(safe-area-inset-bottom,0px))}
   #moms-membership-float:focus-visible{outline:2px solid #e4c5ff;outline-offset:4px}
   @media(max-width:380px){
-    .nav-btn{min-width:92px;padding:0 12px}
-    .nav-btn[data-panel="updates"]{min-width:108px}
+    .topnav .nav-btn{min-width:76px;padding:0 13px}
   }
   @media(prefers-reduced-motion:reduce){
-    .telegram-page-link{transition:none!important}
+    .telegram-page-link,.topnav .nav-btn{transition:none!important}
   }
 </style>`;
 
@@ -113,7 +122,10 @@
 
       const momsTab='<button class="nav-btn" data-panel="moms" type="button">Moms</button>';
       const telegramTab='<button class="nav-btn" data-panel="telegram" type="button">Telegram</button>';
-      html=html.replace(momsTab,telegramTab+'\n    '+momsTab);
+      const sistersTab='<button class="nav-btn active" data-panel="updates" type="button">Sisters</button>';
+      html=html.replace(momsTab,'');
+      html=html.replace(/<button class="nav-btn active" data-panel="updates" type="button">[\s\S]*?<\/button>/,sistersTab+'\n    '+momsTab);
+      html=html.replace('</nav>','    '+telegramTab+'\n  </nav>');
 
       const momsPanel='<section class="panel" id="panel-moms">';
       const wallet='UQARGmizoioMOOE6MqPTMwGr1aVL8M36rq6W0Uds2cOC9ODk';
