@@ -92,6 +92,11 @@
   .telegram-wallet-copy:hover{filter:brightness(1.1)}
   .telegram-wallet-copy svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7}
   .telegram-wallet-status{min-height:28px;padding-top:9px;font-size:11px;line-height:1.6;text-align:center;color:#dac7e8}
+  .telegram-page-moms{background:linear-gradient(130deg,#38234c,#1b1228);border:1px solid #a67bcd;color:#d9b9f7}
+  #panel-members .moms-wrap{width:100%;padding:24px 0 0}
+  #panel-moms{padding-bottom:90px}
+  #moms-membership-float{border-color:#b78bdf;color:#e4c5ff;background:linear-gradient(135deg,#392449,#1d1327);bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+  #moms-membership-float:focus-visible{outline:2px solid #e4c5ff;outline-offset:4px}
   @media(max-width:380px){
     .nav-btn{min-width:92px;padding:0 12px}
     .nav-btn[data-panel="updates"]{min-width:108px}
@@ -126,6 +131,11 @@
               <span class="telegram-card-copy"><strong>Pro Telegram</strong><small>Your invitation to the private channel.</small><span class="telegram-card-cta">Explore Pro</span></span>
               <span class="telegram-card-arrow" aria-hidden="true">↗</span>
             </a>
+            <a class="telegram-page-link telegram-page-moms" href="https://t.me/mbluia" target="_blank" rel="noopener noreferrer">
+              <span class="telegram-card-icon">${plane}</span>
+              <span class="telegram-card-copy"><strong>Bluia Moms Telegram</strong><small>The exclusive Bluia Moms channel.</small><span class="telegram-card-cta">Join Bluia Moms</span></span>
+              <span class="telegram-card-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
           <section class="telegram-support" aria-labelledby="telegram-support-heading">
             <div class="telegram-support-top"><span class="telegram-support-label">A little love goes a long way</span><span class="telegram-gram-badge">$GRAM</span></div>
@@ -142,9 +152,25 @@
 
       html=html.replace("['members','moms'].includes(btn.dataset.panel)","['members','moms','telegram'].includes(btn.dataset.panel)");
 
+      // Keep subscription options in Members and channel links in Telegram.
+      html=html.replace(/<div class="telegram-stack">[\s\S]*?<\/div>/g,'');
+      html=html.replace(/<a class="moms-telegram"[\s\S]*?<\/a>/g,'');
+      let momsPricing='';
+      html=html.replace(/(<section class="panel" id="panel-moms">)([\s\S]*?)(<\/section>)/,(_,open,body,close)=>{
+        const pricingStart=body.indexOf('<div class="moms-wrap">');
+        if(pricingStart<0)return open+body+close;
+        momsPricing=body.slice(pricingStart).replace('<div class="moms-card">','<div class="moms-card" id="moms-membership-card">');
+        return open+body.slice(0,pricingStart)+'<button class="feed-membership-float" id="moms-membership-float" type="button">Unlock Bluia Moms — $10/month</button>'+close;
+      });
+      html=html.replace(/(<section class="panel" id="panel-members">[\s\S]*?)(<\/div><\/section>)/,(_,body,end)=>body+momsPricing+end);
+
       document.open();
       document.write(html);
       document.close();
+      document.getElementById('moms-membership-float')?.addEventListener('click',()=>{
+        document.querySelector('.nav-btn[data-panel="members"]')?.click();
+        document.getElementById('moms-membership-card')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+      });
       const copyButton=document.getElementById('telegram-wallet-copy');
       const copyStatus=document.getElementById('telegram-wallet-status');
       copyButton.addEventListener('click',async()=>{
