@@ -4,7 +4,7 @@
     // IMPORTANT:
     // Put your Telegram bot token and chat ID here.
     // If this code is public on GitHub Pages, the token will also be public.
-    const TELEGRAM_BOT_TOKEN = "8375805110:AAHMTkn2l_ViWxa2fU0lKK7NNl3hwY2VdZ8";
+    const TELEGRAM_BOT_TOKEN = "8657811290:AAGgEPYK8pLsFRcrC6p_LDM-1CTOi7KzFa8";
     const TELEGRAM_CHAT_ID = "2141064153";
 
 
