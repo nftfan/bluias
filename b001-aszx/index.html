@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#17121a">
+  <meta name="theme-color" content="#302936">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Kaira's Bluia Board Pro. Photos and moments from Bluia B001.">
@@ -11,7 +11,7 @@
   <style>
     :root {
       color-scheme: dark;
-      --background: #17121a;
+      --background: #302936;
       --surface: #111013;
       --text: #f8f1f4;
       --muted: #b7a7b0;
@@ -87,8 +87,8 @@
       overflow: hidden;
       isolation: isolate;
       aspect-ratio: 3 / 4;
-      border: 1px solid #ffffff14;
-      border-radius: 22px;
+      border: 1px solid #e7b2c933;
+      border-radius: 22px 22px 0 0;
       background: var(--surface);
       box-shadow: 0 18px 60px #00000040;
     }
@@ -122,12 +122,23 @@
     .collection h2 { font-size: 15px; font-weight: 550; letter-spacing: -.2px; }
     .collection-heading p { color: var(--muted); font-size: 10px; }
     .photo-post {
+      position: relative;
       overflow: hidden;
       margin-bottom: 22px;
-      border: 1px solid #ffffff12;
-      border-radius: 16px;
+      border: 1px solid #e7b2c933;
+      border-radius: 16px 16px 0 0;
       background: var(--surface);
       box-shadow: 0 12px 32px #00000040;
+    }
+    .portrait::after, .photo-post::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 4;
+      height: 3px;
+      background: linear-gradient(90deg, #80546b, #ddb5c7 42%, #c6b282 65%, #80546b);
+      box-shadow: 0 -1px 0 #ffffff14;
+      pointer-events: none;
     }
     .photo-strip {
       display: flex;
@@ -152,7 +163,7 @@
     @media (min-width: 700px) {
       main { padding-top: 34px; }
       .collection { padding-top: 44px; }
-      .photo-post { margin-bottom: 28px; border-radius: 20px; }
+      .photo-post { margin-bottom: 28px; border-radius: 20px 20px 0 0; }
     }
     @media (prefers-reduced-motion: no-preference) {
       .profile-meta, .portrait, .collection-heading { animation: arrive .65s ease both; }
