@@ -216,6 +216,10 @@
       });
       html=html.replace(/(<section class="panel" id="panel-members">[\s\S]*?)(<\/div><\/section>)/,(_,body,end)=>body+momsPricing+end);
 
+      html=html.replace(/<img\b[^>]*>/g,tag=>tag
+        .replace(/\ssrcset=/g,' data-srcset=')
+        .replace(/\ssrc=/g,' data-src='));
+
       document.open();
       document.write(html);
       document.close();
@@ -243,7 +247,7 @@
         };
         image.addEventListener('load',reveal);
         image.addEventListener('error',failed);
-        if(image.complete){if(image.naturalWidth)reveal();else failed()}
+        if(image.complete&&(image.currentSrc||image.getAttribute('src'))){if(image.naturalWidth)reveal();else failed()}
       });
       document.getElementById('moms-membership-float')?.addEventListener('click',()=>{
         document.querySelector('.nav-btn[data-panel="members"]')?.click();
