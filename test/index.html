@@ -19,16 +19,17 @@
     a { color: inherit; }
     button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
     h1, h2, h3, p, figure { margin: 0; }
-    .brand-bar { position: relative; display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 61px; padding: 17px 18px; border-bottom: 1px solid #ffffff0a; background: #17121a; }
+    .brand-bar { position: relative; display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 61px; padding: 17px 18px; border-bottom: 1px solid #e7b2c938; background: radial-gradient(ellipse at 15% 0, #9eb5ed24, transparent 60%), linear-gradient(110deg, #34466c, #58354f 55%, #45315c); box-shadow: 0 5px 22px #130e1c30; }
     .brand-bar::before { content: ""; position: absolute; inset: 0 0 auto; height: 2px; background: linear-gradient(90deg, #80546b, #e7b2c9 40%, #c6b282 65%, #80546b); }
-    .brand-bar h1 { font-size: 19px; line-height: 1.2; font-weight: 650; letter-spacing: -.5px; }
-    .product-badge { padding: 4px 8px; border: 1px solid #e4cc823d; border-radius: 7px; background: #342b1959; color: #eddbab; font-size: 10px; letter-spacing: .4px; font-weight: 600; }
-    .tab-shell { background: #1c1720; border-bottom: 1px solid #e7b2c922; }
+    .brand-bar h1 { color: #fff8fc; font-size: 19px; line-height: 1.2; font-weight: 750; letter-spacing: -.5px; }
+    .product-badge { padding: 4px 8px; border: 1px solid #e4cc8266; border-radius: 7px; background: #261a36a6; color: #f3e1b4; font-size: 10px; letter-spacing: .4px; font-weight: 650; }
+    .tab-shell { background: linear-gradient(110deg, #242b42, #342438 60%, #2b213a); border-bottom: 1px solid #e7b2c938; }
     .agent-tabs { display: flex; gap: 8px; overflow-x: auto; overscroll-behavior-x: contain; padding: 13px 14px 15px; scroll-snap-type: x proximity; scrollbar-width: none; }
     .agent-tabs::-webkit-scrollbar { display: none; }
-    .agent-tab { flex: 0 0 76px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 4px; min-width: 76px; min-height: 48px; padding: 8px 10px; border: 1px solid #ffffff14; border-radius: 12px; background: #29212d; color: #d6c7d2; scroll-snap-align: center; transition: background .2s ease, border-color .2s ease, color .2s ease; }
-    .agent-tab > span { font-size: 12px; line-height: 1; font-weight: 700; letter-spacing: .2px; }
-    .agent-tab small { color: #b5a0b0; font-size: 8px; line-height: 1; font-weight: 600; letter-spacing: .4px; }
+    .agent-tab { flex: 0 0 84px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; min-width: 84px; min-height: 53px; padding: 9px 10px; border: 1px solid #ffffff1a; border-radius: 12px; background: #251e30c7; color: #e7dbe4; scroll-snap-align: center; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+    .agent-tab > .tab-code { font-size: 14px; line-height: 1; font-weight: 900; letter-spacing: .3px; }
+    .agent-tab small { color: #c6b3c1; font-size: 10px; line-height: 1.1; font-weight: 600; letter-spacing: .1px; white-space: nowrap; }
+    .agent-tab.is-soon small { font-size: 8px; letter-spacing: .2px; }
     .agent-tab:hover { border-color: #e7b2c95c; }
     .agent-tab.is-active { border-color: #f1cedb; background: linear-gradient(135deg, #edc6d7, #d9c59b); color: #261921; box-shadow: 0 5px 16px #00000026; }
     .agent-tab.is-active small { color: #614654; }
@@ -90,39 +91,39 @@
   <header class="brand-bar"><h1>Bluias</h1><span class="product-badge">Boards</span></header>
   <nav class="tab-shell" aria-label="Bluia boards">
     <div class="agent-tabs" role="tablist" aria-label="Choose a Bluia board">
-      <button class="agent-tab nav-btn is-active" id="tab-b1" data-code="B1" role="tab" aria-selected="true" aria-controls="board-panel" tabindex="0" type="button"><span>B1</span><small>Free</small></button>
-      <button class="agent-tab nav-btn" id="tab-b2" data-code="B2" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B2</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b3" data-code="B3" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B3</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b4" data-code="B4" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B4</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b5" data-code="B5" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B5</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b6" data-code="B6" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B6</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b7" data-code="B7" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B7</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b8" data-code="B8" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B8</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b9" data-code="B9" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B9</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b10" data-code="B10" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B10</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b11" data-code="B11" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B11</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b12" data-code="B12" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B12</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b13" data-code="B13" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B13</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b14" data-code="B14" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B14</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b15" data-code="B15" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B15</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b16" data-code="B16" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B16</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b17" data-code="B17" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B17</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b18" data-code="B18" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B18</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b19" data-code="B19" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B19</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b20" data-code="B20" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B20</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b21" data-code="B21" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B21</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b22" data-code="B22" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B22</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b23" data-code="B23" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B23</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b24" data-code="B24" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B24</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b25" data-code="B25" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B25</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b26" data-code="B26" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B26</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b27" data-code="B27" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B27</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b28" data-code="B28" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B28</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b29" data-code="B29" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B29</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn" id="tab-b30" data-code="B30" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B30</span><small>Pro</small></button>
-      <button class="agent-tab nav-btn is-soon" id="tab-b31" data-code="B31" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B31</span><small>Coming soon</small></button>
-      <button class="agent-tab nav-btn is-soon" id="tab-b32" data-code="B32" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B32</span><small>Coming soon</small></button>
-      <button class="agent-tab nav-btn is-soon" id="tab-b33" data-code="B33" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><span>B33</span><small>Coming soon</small></button>
+      <button class="agent-tab nav-btn is-active" id="tab-b1" data-code="B1" role="tab" aria-selected="true" aria-controls="board-panel" tabindex="0" type="button"><strong class="tab-code">B1</strong><small>Kiara</small></button>
+      <button class="agent-tab nav-btn" id="tab-b2" data-code="B2" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B2</strong><small>Sophia</small></button>
+      <button class="agent-tab nav-btn" id="tab-b3" data-code="B3" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B3</strong><small>Mila</small></button>
+      <button class="agent-tab nav-btn" id="tab-b4" data-code="B4" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B4</strong><small>Eva</small></button>
+      <button class="agent-tab nav-btn" id="tab-b5" data-code="B5" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B5</strong><small>Nina</small></button>
+      <button class="agent-tab nav-btn" id="tab-b6" data-code="B6" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B6</strong><small>Aria</small></button>
+      <button class="agent-tab nav-btn" id="tab-b7" data-code="B7" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B7</strong><small>Isla</small></button>
+      <button class="agent-tab nav-btn" id="tab-b8" data-code="B8" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B8</strong><small>Chloe</small></button>
+      <button class="agent-tab nav-btn" id="tab-b9" data-code="B9" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B9</strong><small>Zara</small></button>
+      <button class="agent-tab nav-btn" id="tab-b10" data-code="B10" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B10</strong><small>Luna</small></button>
+      <button class="agent-tab nav-btn" id="tab-b11" data-code="B11" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B11</strong><small>Maya</small></button>
+      <button class="agent-tab nav-btn" id="tab-b12" data-code="B12" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B12</strong><small>Ruby</small></button>
+      <button class="agent-tab nav-btn" id="tab-b13" data-code="B13" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B13</strong><small>Iris</small></button>
+      <button class="agent-tab nav-btn" id="tab-b14" data-code="B14" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B14</strong><small>Freya</small></button>
+      <button class="agent-tab nav-btn" id="tab-b15" data-code="B15" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B15</strong><small>Jade</small></button>
+      <button class="agent-tab nav-btn" id="tab-b16" data-code="B16" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B16</strong><small>Elena</small></button>
+      <button class="agent-tab nav-btn" id="tab-b17" data-code="B17" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B17</strong><small>Naomi</small></button>
+      <button class="agent-tab nav-btn" id="tab-b18" data-code="B18" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B18</strong><small>Cleo</small></button>
+      <button class="agent-tab nav-btn" id="tab-b19" data-code="B19" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B19</strong><small>Amara</small></button>
+      <button class="agent-tab nav-btn" id="tab-b20" data-code="B20" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B20</strong><small>Kendra</small></button>
+      <button class="agent-tab nav-btn" id="tab-b21" data-code="B21" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B21</strong><small>Valerie</small></button>
+      <button class="agent-tab nav-btn" id="tab-b22" data-code="B22" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B22</strong><small>Diana</small></button>
+      <button class="agent-tab nav-btn" id="tab-b23" data-code="B23" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B23</strong><small>Camille</small></button>
+      <button class="agent-tab nav-btn" id="tab-b24" data-code="B24" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B24</strong><small>Ava</small></button>
+      <button class="agent-tab nav-btn" id="tab-b25" data-code="B25" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B25</strong><small>Serena</small></button>
+      <button class="agent-tab nav-btn" id="tab-b26" data-code="B26" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B26</strong><small>Sienna</small></button>
+      <button class="agent-tab nav-btn" id="tab-b27" data-code="B27" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B27</strong><small>Bella</small></button>
+      <button class="agent-tab nav-btn" id="tab-b28" data-code="B28" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B28</strong><small>Lea</small></button>
+      <button class="agent-tab nav-btn" id="tab-b29" data-code="B29" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B29</strong><small>Celeste</small></button>
+      <button class="agent-tab nav-btn" id="tab-b30" data-code="B30" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B30</strong><small>Noelle</small></button>
+      <button class="agent-tab nav-btn is-soon" id="tab-b31" data-code="B31" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B31</strong><small>Coming soon</small></button>
+      <button class="agent-tab nav-btn is-soon" id="tab-b32" data-code="B32" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B32</strong><small>Coming soon</small></button>
+      <button class="agent-tab nav-btn is-soon" id="tab-b33" data-code="B33" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B33</strong><small>Coming soon</small></button>
     </div>
   </nav>
 
