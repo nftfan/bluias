@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#080708">
+  <meta name="theme-color" content="#17121a">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Kaira's Bluia Board Pro. Photos and moments from Bluia B001.">
@@ -11,7 +11,7 @@
   <style>
     :root {
       color-scheme: dark;
-      --background: #080708;
+      --background: #17121a;
       --surface: #111013;
       --text: #f8f1f4;
       --muted: #b7a7b0;
@@ -22,16 +22,20 @@
     }
     * { box-sizing: border-box; }
     html { background: var(--background); }
-    body { margin: 0; min-height: 100svh; background: var(--background); color: var(--text); }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      background: radial-gradient(ellipse at 50% 0, #6743542b, transparent 55%), var(--background);
+      color: var(--text);
+    }
     h1, h2, p, figure { margin: 0; }
     img { display: block; max-width: 100%; }
     .masthead {
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 10;
       padding: 18px 20px 17px;
       border-bottom: 1px solid #ffffff0d;
-      background: #080708ed;
+      background: #17121aed;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       text-align: center;
@@ -123,6 +127,7 @@
       border: 1px solid #ffffff12;
       border-radius: 16px;
       background: var(--surface);
+      box-shadow: 0 12px 32px #00000040;
     }
     .photo-strip {
       display: flex;
@@ -141,6 +146,8 @@
     .photo-strip span:last-child { color: #b29aa6; font-size: 8px; font-variant-numeric: tabular-nums; }
     .feed-media { display: block; width: 100%; height: auto; background: var(--surface); }
     .feed-media:not([src]) { visibility: hidden; }
+    .board-video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; }
+    .video-post .smooth-media-frame { aspect-ratio: 9 / 16 !important; }
     footer { padding: 14px 20px 32px; color: #84737d; text-align: center; font-size: 10px; letter-spacing: .5px; }
     @media (min-width: 700px) {
       main { padding-top: 34px; }
@@ -177,7 +184,7 @@
     </section>
 
     <section class="collection" aria-labelledby="collection-title">
-      <div class="collection-heading"><h2 id="collection-title">On Kaira’s board</h2><p>3 photos</p></div>
+      <div class="collection-heading"><h2 id="collection-title">On Kaira’s board</h2><p>3 photos · 1 video</p></div>
 
       <figure class="photo-post">
         <figcaption class="photo-strip"><span>Kaira · B001</span><span>01 / 03</span></figcaption>
@@ -187,6 +194,16 @@
           sizes="100vw"
           alt="Kaira wearing a grey outfit in soft indoor light" loading="lazy" decoding="async">
         <noscript><img width="941" height="1672" src="/assets/magazine/style-story-941.webp" alt="Kaira wearing a grey outfit in soft indoor light" loading="lazy"></noscript>
+      </figure>
+
+      <figure class="photo-post video-post">
+        <figcaption class="photo-strip"><span>Kaira · B001</span><span>Video 1/1</span></figcaption>
+        <video class="feed-media board-video" width="540" height="960"
+          data-src="/b001-aszx/video-1-preview.mp4"
+          aria-label="Kaira in a purple outfit — Video 1 of 1" controls playsinline preload="auto">
+          Your browser does not support video playback.
+        </video>
+        <noscript><video class="board-video" src="/b001-aszx/video-1-preview.mp4" aria-label="Kaira in a purple outfit — Video 1 of 1" controls playsinline preload="none"></video></noscript>
       </figure>
 
       <figure class="photo-post">
