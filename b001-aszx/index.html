@@ -233,15 +233,12 @@
     <h1><span class="model-title">Kiara</span><span>Bluia Board</span><span class="pro">Pro</span></h1>
     <button class="chat-trigger" id="chat-open" type="button" aria-haspopup="dialog" aria-controls="chat-dialog" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18l-2 3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5Z"/><path d="M8 8h8M8 12h5"/></svg><span>Chat</span></button>
   </header>
-  <section class="about-me" aria-labelledby="about-title">
-    <h2 id="about-title">About me</h2>
-    <p><strong>Hi Lover 💕</strong> I frequently publish new photos, videos and little moments on my board. Explore my albums and check back for my latest updates. I’m happy you’re here.</p>
-  </section>
   <nav class="album-nav" aria-label="Kiara’s media albums">
     <div class="album-tabs" role="tablist" aria-label="Choose a media album">
       <button class="album-tab nav-btn is-active" id="tab-images" data-album="images" role="tab" aria-selected="true" aria-controls="panel-images" tabindex="0" type="button"><strong>Images</strong><small data-item-count data-count-kind="photo">3 photos</small></button>
       <button class="album-tab nav-btn" id="tab-videos" data-album="videos" role="tab" aria-selected="false" aria-controls="panel-videos" tabindex="-1" type="button"><strong>Videos</strong><small data-item-count data-count-kind="video">1 video</small></button>
       <button class="album-tab nav-btn is-spicy" id="tab-spicy" data-album="spicy" role="tab" aria-selected="false" aria-controls="panel-spicy" tabindex="-1" type="button"><strong>Spicy 🌶️</strong><small data-item-count data-count-kind="item">1 item</small></button>
+      <button class="album-tab nav-btn" id="tab-about" data-album="about" role="tab" aria-selected="false" aria-controls="panel-about" tabindex="-1" type="button"><strong>About me</strong><small>Kiara</small></button>
       <button class="album-tab nav-btn" id="tab-a1" data-album="a1" role="tab" aria-selected="false" aria-controls="panel-a1" tabindex="-1" type="button"><strong>A1</strong><small data-item-count data-count-kind="item">2 items</small></button>
       <button class="album-tab nav-btn" id="tab-a2" data-album="a2" role="tab" aria-selected="false" aria-controls="panel-a2" tabindex="-1" type="button"><strong>A2</strong><small data-item-count data-count-kind="item">0 items</small></button>
     </div>
@@ -312,6 +309,13 @@
       </figure>
     </section>
 
+    <section class="panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0" hidden>
+  <section class="about-me" aria-labelledby="about-title">
+    <h2 id="about-title">About me</h2>
+    <p><strong>Hi Lover 💕</strong> I frequently publish new photos, videos and little moments on my board. Explore my albums and check back for my latest updates. I’m happy you’re here.</p>
+  </section>
+    </section>
+
     <section class="panel" id="panel-a1" role="tabpanel" aria-labelledby="tab-a1" tabindex="0" hidden>
       <div class="media-heading"><h2>Album A1</h2><p data-panel-count>2 items</p></div>
       <figure class="photo-post">
@@ -361,6 +365,7 @@
       function refreshCounts() {
         tabs.forEach((tab, index) => {
           const label = tab.querySelector("[data-item-count]");
+          if (!label) return;
           const kind = label.dataset.countKind;
           const selector = kind === "photo" ? "img.feed-media" : kind === "video" ? "video.feed-media" : "img.feed-media, video.feed-media";
           const count = panels[index].querySelectorAll(selector).length;
