@@ -157,8 +157,8 @@
     .photo-strip span:last-child { color: #b29aa6; font-size: 8px; font-variant-numeric: tabular-nums; }
     .feed-media { display: block; width: 100%; height: auto; background: var(--surface); }
     .feed-media:not([src]) { visibility: hidden; }
-    .board-video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; }
-    .video-post .smooth-media-frame { aspect-ratio: 9 / 16 !important; }
+    .board-video { display: block; width: 100%; height: auto; aspect-ratio: 540 / 948; object-fit: cover; }
+    .video-post .smooth-media-frame { aspect-ratio: 540 / 948 !important; }
     footer { padding: 14px 20px 32px; color: #84737d; text-align: center; font-size: 10px; letter-spacing: .5px; }
     @media (min-width: 700px) {
       main { padding-top: 34px; }
@@ -190,6 +190,9 @@
     .album-tab.is-spicy small { color: #e3aaa7; }
     .album-tab.is-spicy.is-active { border-color: #ffb3a6; background: linear-gradient(135deg, #c34b57, #8c263c); color: #fff5ef; }
     .album-tab.is-spicy.is-active small { color: #ffe1d8; }
+    #panel-spicy { --media-accent: #f4a18f; }
+    .spicy-post { border-color: #e5757440; }
+    .spicy-post .photo-strip { border-bottom-color: #e5757426; background: linear-gradient(90deg, #512530, #2c1722); color: #ffd7c9; }
     .panel { width: 100%; }
     .media-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 14px 17px; }
     .media-heading h2 { font-size: 15px; font-weight: 600; }
@@ -198,9 +201,6 @@
     .album-empty .album-mark { display: grid; place-items: center; min-width: 56px; height: 56px; padding: 0 12px; border: 1px solid #e7b2c92e; border-radius: 16px; background: #302332; color: #eac2d5; font-size: 20px; font-weight: 700; }
     .album-empty h2 { color: #f1dce7; font-size: 19px; font-weight: 600; letter-spacing: -.3px; }
     .album-empty p { color: var(--muted); font-size: 12px; line-height: 1.7; }
-    .spicy-empty { border-color: #db77733a; background: radial-gradient(ellipse at 50% 0, #9e394025, transparent 65%), #20131b; }
-    .spicy-empty .album-mark { border-color: #e98c6b45; background: #65302d66; }
-    .spicy-empty h2 { color: #ffccc2; }
     @media (prefers-reduced-motion: reduce) { .album-tab { transition: none; } }
   </style>
   <noscript><style>.feed-media[data-src] { display: none; }</style></noscript>
@@ -211,11 +211,11 @@
   </header>
   <nav class="album-nav" aria-label="Kiara’s media albums">
     <div class="album-tabs" role="tablist" aria-label="Choose a media album">
-      <button class="album-tab nav-btn is-active" id="tab-images" data-album="images" role="tab" aria-selected="true" aria-controls="panel-images" tabindex="0" type="button"><strong>Images</strong><small>4 photos</small></button>
-      <button class="album-tab nav-btn" id="tab-videos" data-album="videos" role="tab" aria-selected="false" aria-controls="panel-videos" tabindex="-1" type="button"><strong>Videos</strong><small>1 video</small></button>
-      <button class="album-tab nav-btn is-spicy" id="tab-spicy" data-album="spicy" role="tab" aria-selected="false" aria-controls="panel-spicy" tabindex="-1" type="button"><strong>Spicy 🌶️</strong><small>Album</small></button>
-      <button class="album-tab nav-btn" id="tab-a1" data-album="a1" role="tab" aria-selected="false" aria-controls="panel-a1" tabindex="-1" type="button"><strong>A1</strong><small>Album</small></button>
-      <button class="album-tab nav-btn" id="tab-a2" data-album="a2" role="tab" aria-selected="false" aria-controls="panel-a2" tabindex="-1" type="button"><strong>A2</strong><small>Album</small></button>
+      <button class="album-tab nav-btn is-active" id="tab-images" data-album="images" role="tab" aria-selected="true" aria-controls="panel-images" tabindex="0" type="button"><strong>Images</strong><small data-item-count data-count-kind="photo">3 photos</small></button>
+      <button class="album-tab nav-btn" id="tab-videos" data-album="videos" role="tab" aria-selected="false" aria-controls="panel-videos" tabindex="-1" type="button"><strong>Videos</strong><small data-item-count data-count-kind="video">1 video</small></button>
+      <button class="album-tab nav-btn is-spicy" id="tab-spicy" data-album="spicy" role="tab" aria-selected="false" aria-controls="panel-spicy" tabindex="-1" type="button"><strong>Spicy 🌶️</strong><small data-item-count data-count-kind="item">1 item</small></button>
+      <button class="album-tab nav-btn" id="tab-a1" data-album="a1" role="tab" aria-selected="false" aria-controls="panel-a1" tabindex="-1" type="button"><strong>A1</strong><small data-item-count data-count-kind="item">0 items</small></button>
+      <button class="album-tab nav-btn" id="tab-a2" data-album="a2" role="tab" aria-selected="false" aria-controls="panel-a2" tabindex="-1" type="button"><strong>A2</strong><small data-item-count data-count-kind="item">0 items</small></button>
     </div>
   </nav>
 
@@ -235,9 +235,9 @@
       </figure>
     </section>
       <section class="collection" aria-labelledby="collection-title">
-        <div class="collection-heading"><h2 id="collection-title">On Kiara’s board</h2><p>3 photos</p></div>
+        <div class="collection-heading"><h2 id="collection-title">On Kiara’s board</h2><p data-collection-count>2 photos</p></div>
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kiara · B001</span><span>01 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · B001</span><span>01 / 02</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/assets/magazine/style-story-941.webp"
           data-srcset="/assets/magazine/style-story-480.webp 480w, /assets/magazine/style-story-941.webp 941w"
@@ -247,7 +247,7 @@
       </figure>
 
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kiara · B001</span><span>02 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · B001</span><span>02 / 02</span></figcaption>
         <img class="feed-media" width="1122" height="1402"
           data-src="/assets/magazine/personal-style-1122.webp"
           data-srcset="/assets/magazine/personal-style-480.webp 480w, /assets/magazine/personal-style-1122.webp 1122w"
@@ -255,45 +255,40 @@
           alt="Kiara in her grey outfit in a sunny garden" loading="lazy" decoding="async">
         <noscript><img width="1122" height="1402" src="/assets/magazine/personal-style-1122.webp" alt="Kiara in her grey outfit in a sunny garden" loading="lazy"></noscript>
       </figure>
-
-      <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kiara · B001</span><span>03 / 03</span></figcaption>
-        <img class="feed-media" width="941" height="1672"
-          data-src="/assets/magazine/fashion-detail-941.webp"
-          data-srcset="/assets/magazine/fashion-detail-480.webp 480w, /assets/magazine/fashion-detail-941.webp 941w"
-          sizes="100vw"
-          alt="Kiara in a neutral-toned outfit on a city balcony" loading="lazy" decoding="async">
-        <noscript><img width="941" height="1672" src="/assets/magazine/fashion-detail-941.webp" alt="Kiara in a neutral-toned outfit on a city balcony" loading="lazy"></noscript>
-      </figure>
       </section>
     </section>
 
     <section class="panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos" tabindex="0" hidden>
-      <div class="media-heading"><h2>Kiara’s videos</h2><p>1 video</p></div>
+      <div class="media-heading"><h2>Kiara’s videos</h2><p data-panel-count>1 video</p></div>
       <figure class="photo-post video-post">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>Video 1/1</span></figcaption>
-        <video class="feed-media board-video" width="540" height="960"
-          data-src="/b001-aszx/video-1-preview.mp4"
-          aria-label="Kiara in a purple outfit — Video 1 of 1" controls playsinline preload="auto">
+        <video class="feed-media board-video" width="540" height="948"
+          data-src="/b001-aszx/media/video-b328e34f.mp4"
+          aria-label="Kiara in a black top and burgundy shorts — Video 1 of 1" controls playsinline preload="auto">
           Your browser does not support video playback.
         </video>
-        <noscript><video class="board-video" src="/b001-aszx/video-1-preview.mp4" aria-label="Kiara in a purple outfit — Video 1 of 1" controls playsinline preload="none"></video></noscript>
+        <noscript><video class="board-video" src="/b001-aszx/media/video-b328e34f.mp4" aria-label="Kiara in a black top and burgundy shorts — Video 1 of 1" controls playsinline preload="none"></video></noscript>
       </figure>
     </section>
 
     <section class="panel" id="panel-spicy" role="tabpanel" aria-labelledby="tab-spicy" tabindex="0" hidden>
-      <div class="album-empty spicy-empty">
-        <span class="album-mark" aria-hidden="true">🌶️</span>
-        <h2>Spicy 🌶️</h2>
-        <p>This album is empty for now.</p>
-      </div>
+      <div class="media-heading"><h2>Spicy 🌶️</h2><p data-panel-count>1 item</p></div>
+      <figure class="photo-post spicy-post">
+        <figcaption class="photo-strip"><span>Kiara · B001</span><span>01 / 01</span></figcaption>
+        <img class="feed-media" width="941" height="1672"
+          data-src="/b001-aszx/media/spicy-0a8cd444-941.webp"
+          data-srcset="/b001-aszx/media/spicy-0a8cd444-480.webp 480w, /b001-aszx/media/spicy-0a8cd444-941.webp 941w"
+          sizes="100vw"
+          alt="Kiara in a blue top and boots — Spicy album photo 1" loading="lazy" decoding="async">
+        <noscript><img width="941" height="1672" src="/b001-aszx/media/spicy-0a8cd444-941.webp" alt="Kiara in a blue top and boots — Spicy album photo 1" loading="lazy"></noscript>
+      </figure>
     </section>
 
     <section class="panel" id="panel-a1" role="tabpanel" aria-labelledby="tab-a1" tabindex="0" hidden>
       <div class="album-empty">
         <span class="album-mark" aria-hidden="true">A1</span>
         <h2>Album A1</h2>
-        <p>This album is empty for now.</p>
+        <p data-panel-count>0 items</p>
       </div>
     </section>
 
@@ -301,7 +296,7 @@
       <div class="album-empty">
         <span class="album-mark" aria-hidden="true">A2</span>
         <h2>Album A2</h2>
-        <p>This album is empty for now.</p>
+        <p data-panel-count>0 items</p>
       </div>
     </section>
   </main>
@@ -315,8 +310,25 @@
       const panels = tabs.map(tab => document.getElementById(tab.getAttribute("aria-controls")));
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       let selected = 0;
+      function setCount(element, count, kind) {
+        if (!element) return;
+        const label = `${count} ${kind}${count === 1 ? "" : "s"}`;
+        if (element.textContent !== label) element.textContent = label;
+      }
+      function refreshCounts() {
+        tabs.forEach((tab, index) => {
+          const label = tab.querySelector("[data-item-count]");
+          const kind = label.dataset.countKind;
+          const selector = kind === "photo" ? "img.feed-media" : kind === "video" ? "video.feed-media" : "img.feed-media, video.feed-media";
+          const count = panels[index].querySelectorAll(selector).length;
+          setCount(label, count, kind);
+          setCount(panels[index].querySelector("[data-panel-count]"), count, kind);
+        });
+        setCount(document.querySelector("[data-collection-count]"), panels[0].querySelectorAll(".collection img.feed-media").length, "photo");
+      }
       function selectAlbum(index, options = {}) {
         selected = index;
+        refreshCounts();
         tabs.forEach((tab, position) => {
           const active = position === index;
           tab.classList.toggle("is-active", active);
