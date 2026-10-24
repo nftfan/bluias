@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#302936">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Meet the Bluias. Explore individual AI creator FanPages, discover your favourites, and join their photo collections.">
+  <meta name="description" content="Discover Bluia AI models and request a personal FanPage with photos, videos and albums for $10 per month. Explore Kiara’s free preview.">
   <title>Bluias — Bluia FanPages</title>
   <style>
     :root { color-scheme: dark; --page: #302936; --surface: #151116; --rose: #e7b2c9; --gold: #e4cc82; --muted: #bcaeb9; --media-accent: #e7b2c9; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
@@ -64,9 +64,37 @@
     .primary-cta svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; }
     .primary-cta:hover { filter: brightness(1.06); }
     .soon-cta { border-color: #ffffff12; background: #2b2230; color: #a28da6; cursor: default; }
-    .contact-link { display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; margin-top: 7px; color: #e3bdd0; font-size: 11px; text-decoration: none; }
-    .contact-link svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; }
-    .purchase-note { color: #968190; text-align: center; font-size: 10px; line-height: 1.7; }
+    .fanpage-intro { padding: 23px 18px 24px; border-bottom: 1px solid #e7b2c91a; background: radial-gradient(ellipse at 12% 0, #b1799e14, transparent 70%), #211a28; }
+    .intro-inner { width: min(100%, 820px); margin: 0 auto; }
+    .intro-kicker { color: #d8bd91; font-size: 9px; font-weight: 750; letter-spacing: 1.5px; text-transform: uppercase; }
+    .fanpage-intro h2 { margin-top: 7px; color: #f5e5ee; font-size: clamp(22px, 4.7vw, 28px); line-height: 1.2; font-weight: 650; letter-spacing: -.65px; }
+    .intro-copy { max-width: 650px; margin-top: 10px; color: #c5b1bf; font-size: 12px; line-height: 1.8; }
+    .intro-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 14px; }
+    .intro-tags span { display: inline-flex; align-items: center; gap: 6px; min-height: 29px; padding: 6px 9px; border: 1px solid #e7b2c927; border-radius: 8px; background: #332535; color: #dcc3d3; font-size: 10px; line-height: 1.3; }
+    .intro-tags svg { width: 13px; height: 13px; fill: none; stroke: #e4cc82; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .intro-preview { display: inline-block; margin-top: 14px; color: #e7c5d7; font-size: 10px; line-height: 1.5; text-underline-offset: 4px; text-decoration-color: #e7c5d755; }
+    .request-plan { margin-top: 18px; padding: 18px; border: 1px solid #e4c08f40; border-radius: 16px; background: radial-gradient(ellipse at 100% 0, #b98b5c12, transparent 70%), linear-gradient(120deg, #342633, #251e2a); }
+    .request-plan-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .request-model-label { display: block; margin-bottom: 6px; color: #bfa8b8; font-size: 9px; font-weight: 600; letter-spacing: .4px; }
+    .request-model { color: #f2dce9; font-size: 13px; line-height: 1.5; font-weight: 650; }
+    .request-price { display: flex; flex: 0 0 auto; align-items: baseline; gap: 5px; white-space: nowrap; }
+    .request-price strong { color: #f8dfb5; font-size: 34px; line-height: 1; font-weight: 650; letter-spacing: -1.2px; }
+    .request-price span { color: #c6aebd; font-size: 10px; }
+    .request-benefits { display: grid; gap: 11px; margin: 17px 0 0; padding: 16px 0 0; border-top: 1px solid #e4c08f24; list-style: none; }
+    .request-benefits li { display: flex; align-items: flex-start; gap: 8px; color: #d9c4d2; font-size: 11px; line-height: 1.6; }
+    .request-benefits svg { flex: 0 0 auto; width: 16px; height: 16px; margin-top: 1px; padding: 2px; border-radius: 50%; background: #e4cc8214; fill: none; stroke: #e4cc82; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .delivery { display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; padding: 14px; border-color: #e4c08f30; background: #e4c08f08; }
+    .delivery > svg { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #dcc08e; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .delivery strong { color: #ead1a8; }
+    .payment-security { margin-top: 12px; }
+    .secure-label { display: flex; align-items: center; justify-content: center; gap: 6px; color: #bca4b5; font-size: 10px; line-height: 1.6; }
+    .secure-label svg { width: 13px; height: 13px; fill: none; stroke: #d6bd91; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .secure-label strong { color: #ddc9d6; font-weight: 650; }
+    .payment-methods { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 12px 0 0; }
+    .payment-brand { display: block; width: 52px; height: 32px; overflow: hidden; border: 1px solid #ffffff26; border-radius: 6px; background: #fff; }
+    .payment-brand svg { display: block; width: 100%; height: 100%; }
+    .payment-method-note { margin-top: 8px; color: #a990a2; text-align: center; font-size: 9px; line-height: 1.6; }
+    .purchase-note { margin-top: 12px; color: #a48b9c; text-align: center; font-size: 10px; line-height: 1.7; }
     .site-footer { margin-top: 28px; padding: 26px 18px 28px; border-top: 1px solid #e7b2c91f; background: #19141d; }
     .footer-inner { max-width: 820px; margin: 0 auto; }
     .footer-title { margin-bottom: 13px; color: #e3d2de; font-size: 12px; font-weight: 600; letter-spacing: .2px; }
@@ -90,6 +118,15 @@
 </head>
 <body>
   <header class="brand-bar"><h1>Bluias</h1><span class="product-badge">FanPages</span></header>
+  <section class="fanpage-intro" aria-labelledby="fanpage-intro-title">
+    <div class="intro-inner">
+      <p class="intro-kicker">Personal FanPages</p>
+      <h2 id="fanpage-intro-title">Your favourite Bluia. A FanPage just for you.</h2>
+      <p class="intro-copy">Bluias are AI visual models. A FanPage brings your chosen model’s photos, videos and themed albums into one dedicated space. Choose a Bluia below and request a personal FanPage, created just for you, for $10 USD per month.</p>
+      <div class="intro-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m4 17 5-5 4 4 3-3 5 5"/><circle cx="9" cy="8" r="2"/></svg>Photos, videos &amp; albums</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Made just for you</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>Your link by email</span></div>
+      <a class="intro-preview" href="/b001-aszx/">Preview the FanPage experience with Kiara for free →</a>
+    </div>
+  </section>
   <nav class="tab-shell" aria-label="Bluia FanPages">
     <div class="agent-tabs" role="tablist" aria-label="Choose a Bluia FanPage">
       <button class="agent-tab nav-btn is-active" id="tab-b1" data-code="B1" role="tab" aria-selected="true" aria-controls="board-panel" tabindex="0" type="button"><strong class="tab-code">B1</strong><small>Kiara</small></button>
@@ -97,12 +134,10 @@
       <button class="agent-tab nav-btn" id="tab-b3" data-code="B3" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B3</strong><small>Mila</small></button>
       <button class="agent-tab nav-btn" id="tab-b4" data-code="B4" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B4</strong><small>Eva</small></button>
       <button class="agent-tab nav-btn" id="tab-b5" data-code="B5" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B5</strong><small>Nina</small></button>
-      <button class="agent-tab nav-btn" id="tab-b6" data-code="B6" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B6</strong><small>Aria</small></button>
       <button class="agent-tab nav-btn" id="tab-b7" data-code="B7" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B7</strong><small>Isla</small></button>
       <button class="agent-tab nav-btn" id="tab-b8" data-code="B8" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B8</strong><small>Chloe</small></button>
       <button class="agent-tab nav-btn" id="tab-b9" data-code="B9" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B9</strong><small>Zara</small></button>
       <button class="agent-tab nav-btn" id="tab-b10" data-code="B10" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B10</strong><small>Luna</small></button>
-      <button class="agent-tab nav-btn" id="tab-b11" data-code="B11" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B11</strong><small>Maya</small></button>
       <button class="agent-tab nav-btn" id="tab-b12" data-code="B12" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B12</strong><small>Ruby</small></button>
       <button class="agent-tab nav-btn" id="tab-b13" data-code="B13" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B13</strong><small>Iris</small></button>
       <button class="agent-tab nav-btn" id="tab-b14" data-code="B14" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B14</strong><small>Freya</small></button>
@@ -115,13 +150,7 @@
       <button class="agent-tab nav-btn" id="tab-b21" data-code="B21" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B21</strong><small>Valerie</small></button>
       <button class="agent-tab nav-btn" id="tab-b22" data-code="B22" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B22</strong><small>Diana</small></button>
       <button class="agent-tab nav-btn" id="tab-b23" data-code="B23" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B23</strong><small>Camille</small></button>
-      <button class="agent-tab nav-btn" id="tab-b24" data-code="B24" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B24</strong><small>Ava</small></button>
       <button class="agent-tab nav-btn" id="tab-b25" data-code="B25" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B25</strong><small>Serena</small></button>
-      <button class="agent-tab nav-btn" id="tab-b26" data-code="B26" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B26</strong><small>Sienna</small></button>
-      <button class="agent-tab nav-btn" id="tab-b27" data-code="B27" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B27</strong><small>Bella</small></button>
-      <button class="agent-tab nav-btn" id="tab-b28" data-code="B28" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B28</strong><small>Lea</small></button>
-      <button class="agent-tab nav-btn" id="tab-b29" data-code="B29" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B29</strong><small>Celeste</small></button>
-      <button class="agent-tab nav-btn" id="tab-b30" data-code="B30" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B30</strong><small>Noelle</small></button>
       <button class="agent-tab nav-btn is-soon" id="tab-b31" data-code="B31" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B31</strong><small>Coming soon</small></button>
       <button class="agent-tab nav-btn is-soon" id="tab-b32" data-code="B32" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B32</strong><small>Coming soon</small></button>
       <button class="agent-tab nav-btn is-soon" id="tab-b33" data-code="B33" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B33</strong><small>Coming soon</small></button>
@@ -147,10 +176,27 @@
             <div class="status-line"><span class="status" id="board-status" data-kind="free">Free</span><span class="board-type" id="board-type">Open FanPage</span></div>
             <h3 id="details-title">Kiara’s FanPage Pro is free</h3>
             <p class="details-copy" id="details-copy" hidden></p>
-            <div class="delivery" id="delivery-note" hidden><strong>After payment</strong>We will send your FanPage Pro full access link to the email address you provide during payment.</div>
+            <section class="request-plan" id="request-plan" aria-label="Personal FanPage subscription" hidden>
+              <div class="request-plan-heading"><div><span class="request-model-label">Your chosen Bluia</span><strong class="request-model" id="request-model"></strong></div><p class="request-price"><strong>$10</strong><span>USD / month</span></p></div>
+              <ul class="request-benefits">
+                <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>A personal FanPage prepared just for you</span></li>
+                <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>Photos, videos and themed albums of your chosen model</span></li>
+                <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>New posts gathered in one dedicated space</span></li>
+              </ul>
+            </section>
+            <div class="delivery" id="delivery-note" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><div><strong>After payment</strong><p id="delivery-copy"></p></div></div>
             <a class="primary-cta" id="purchase-link" href="/b001-aszx/"><span id="purchase-label">See Kiara’s FanPage Pro for free</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <button class="soon-cta" id="soon-button" type="button" disabled hidden>Coming soon</button>
-            <a class="contact-link" id="contact-link" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span id="contact-label">vbluia@outlook.com</span></a>
+            <div class="payment-security" id="payment-security" hidden>
+              <p class="secure-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg><span>Secure checkout with <strong>Stripe</strong></span></p>
+              <!-- Card brands are shown below. Available methods and the final total are confirmed by Stripe at checkout. -->
+              <div class="payment-methods" role="group" aria-label="Card payment options">
+                <span class="payment-brand" role="img" aria-label="Visa"><svg viewBox="0 0 72 44" aria-hidden="true"><rect width="72" height="44" fill="#fff"/><text x="10" y="30" fill="#183878" font-family="Arial, sans-serif" font-size="25" font-weight="900" font-style="italic" letter-spacing="-1.5">VISA</text></svg></span>
+                <span class="payment-brand" role="img" aria-label="Mastercard"><svg viewBox="0 0 72 44" aria-hidden="true"><rect width="72" height="44" fill="#fff"/><circle cx="28" cy="19" r="12" fill="#eb001b"/><circle cx="44" cy="19" r="12" fill="#f79e1b"/><path d="M36 10.06a12 12 0 0 1 0 17.88 12 12 0 0 1 0-17.88" fill="#ff5f00"/><text x="36" y="38" text-anchor="middle" fill="#231f20" font-family="Arial, sans-serif" font-size="6.5" font-weight="600">mastercard</text></svg></span>
+                <span class="payment-brand" role="img" aria-label="American Express"><svg viewBox="0 0 72 44" aria-hidden="true"><rect width="72" height="44" fill="#1769aa"/><text x="36" y="20" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" font-weight="900" letter-spacing="-.3">AMERICAN</text><text x="36" y="31" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10.5" font-weight="900" letter-spacing="-.2">EXPRESS</text></svg></span>
+              </div>
+              <p class="payment-method-note">Payment options and the final total are shown at checkout.</p>
+            </div>
             <p class="purchase-note" id="purchase-note" hidden></p>
           </div>
         </div>
@@ -180,19 +226,17 @@
   <script>
     (() => {
       "use strict";
-      const email = "vbluia@outlook.com";
+      const paymentLink = "https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06";
       const boards = [
         { code: "B1", name: "Kiara", kind: "free", src: "/assets/boards/b1-6433-750.webp", srcset: "/assets/boards/b1-6433-480.webp 480w, /assets/boards/b1-6433-750.webp 750w", width: 750, height: 1334, alt: "Kiara portrait with brunette hair and gold hoop earrings" },
         { code: "B2", name: "Sophia", kind: "paid", src: "/test/media/b2-960.webp", srcset: "/test/media/b2-480.webp 480w, /test/media/b2-960.webp 960w", width: 960, height: 1197, alt: "Sophia with a short brunette bob and a soft grey top" },
         { code: "B3", name: "Mila", kind: "paid", src: "/test/media/b3-940.webp", srcset: "/test/media/b3-480.webp 480w, /test/media/b3-940.webp 940w", width: 940, height: 1672, alt: "Mila taking a mirror selfie in a red dress" },
         { code: "B4", name: "Eva", kind: "paid", src: "/test/media/b4-750.webp", srcset: "/test/media/b4-480.webp 480w, /test/media/b4-750.webp 750w", width: 750, height: 1334, alt: "Eva with blonde hair in a red swimwear look" },
         { code: "B5", name: "Nina", kind: "paid", src: "/test/media/b5-736.webp", srcset: "/test/media/b5-480.webp 480w, /test/media/b5-736.webp 736w", width: 736, height: 1328, alt: "Nina with black hair in a white resort outfit" },
-        {"code":"B6","name":"Aria","kind":"paid","src":"/test/media/cover-b6.webp","srcset":"","width":960,"height":1200,"alt":"Aria, a Bluia AI visual creator"},
         {"code":"B7","name":"Isla","kind":"paid","src":"/test/media/cover-b7.webp","srcset":"","width":960,"height":1200,"alt":"Isla, a Bluia AI visual creator"},
         {"code":"B8","name":"Chloe","kind":"paid","src":"/test/media/cover-b8.webp","srcset":"","width":960,"height":1200,"alt":"Chloe, a Bluia AI visual creator"},
         {"code":"B9","name":"Zara","kind":"paid","src":"/test/media/cover-b9.webp","srcset":"","width":960,"height":1200,"alt":"Zara, a Bluia AI visual creator"},
         {"code":"B10","name":"Luna","kind":"paid","src":"/test/media/cover-b10.webp","srcset":"","width":960,"height":1200,"alt":"Luna, a Bluia AI visual creator"},
-        {"code":"B11","name":"Maya","kind":"paid","src":"/test/media/cover-b11.webp","srcset":"","width":900,"height":1600,"alt":"Maya, a Bluia AI visual creator"},
         {"code":"B12","name":"Ruby","kind":"paid","src":"/test/media/cover-b12.webp","srcset":"","width":960,"height":1200,"alt":"Ruby, a Bluia AI visual creator"},
         {"code":"B13","name":"Iris","kind":"paid","src":"/test/media/cover-b13.webp","srcset":"","width":960,"height":1200,"alt":"Iris, a Bluia AI visual creator"},
         {"code":"B14","name":"Freya","kind":"paid","src":"/test/media/cover-b14.webp","srcset":"","width":960,"height":1200,"alt":"Freya, a Bluia AI visual creator"},
@@ -205,13 +249,7 @@
         {"code":"B21","name":"Valerie","kind":"paid","src":"/test/media/cover-b21.webp","srcset":"","width":864,"height":1536,"alt":"Valerie, a Bluia AI visual creator"},
         {"code":"B22","name":"Diana","kind":"paid","src":"/test/media/cover-b22.webp","srcset":"","width":864,"height":1536,"alt":"Diana, a Bluia AI visual creator"},
         {"code":"B23","name":"Camille","kind":"paid","src":"/test/media/cover-b23.webp","srcset":"","width":736,"height":1328,"alt":"Camille, a Bluia AI visual creator"},
-        {"code":"B24","name":"Ava","kind":"paid","src":"/assets/magazine/fashion-story-940.webp","srcset":"/assets/magazine/fashion-story-480.webp 480w, /assets/magazine/fashion-story-940.webp 940w","width":940,"height":1672,"alt":"Ava, a Bluia AI visual creator"},
         {"code":"B25","name":"Serena","kind":"paid","src":"/assets/magazine/fashion-detail-941.webp","srcset":"/assets/magazine/fashion-detail-480.webp 480w, /assets/magazine/fashion-detail-941.webp 941w","width":941,"height":1672,"alt":"Serena, a Bluia AI visual creator"},
-        {"code":"B26","name":"Sienna","kind":"paid","src":"/assets/magazine/fashion-look-941.webp","srcset":"/assets/magazine/fashion-look-480.webp 480w, /assets/magazine/fashion-look-941.webp 941w","width":941,"height":1672,"alt":"Sienna, a Bluia AI visual creator"},
-        {"code":"B27","name":"Bella","kind":"paid","src":"/assets/magazine/style-story-941.webp","srcset":"/assets/magazine/style-story-480.webp 480w, /assets/magazine/style-story-941.webp 941w","width":941,"height":1672,"alt":"Bella, a Bluia AI visual creator"},
-        {"code":"B28","name":"Lea","kind":"paid","src":"/assets/magazine/personal-style-1122.webp","srcset":"/assets/magazine/personal-style-480.webp 480w, /assets/magazine/personal-style-1122.webp 1122w","width":1122,"height":1402,"alt":"Lea, a Bluia AI visual creator"},
-        {"code":"B29","name":"Celeste","kind":"paid","src":"/test/media/cover-b29.webp","srcset":"","width":960,"height":1280,"alt":"Celeste, a Bluia AI visual creator"},
-        {"code":"B30","name":"Noelle","kind":"paid","src":"/test/media/cover-b30.webp","srcset":"","width":900,"height":1600,"alt":"Noelle, a Bluia AI visual creator"},
         ...Array.from({ length: 3 }, (_, index) => ({ code: `B${index + 31}`, kind: "soon" }))
       ];
       const byId = id => document.getElementById(id);
@@ -220,8 +258,10 @@
       const photo = byId("agent-photo");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       let selected = 0;
-      function mailLink(subject, body) {
-        return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      function checkoutLink(board) {
+        const url = new URL(paymentLink);
+        url.searchParams.set("client_reference_id", `fanpage_${board.code}_${board.name}`);
+        return url.href;
       }
       function selectBoard(index, options = {}) {
         selected = index;
@@ -249,21 +289,25 @@
           byId("agent-name").textContent = board.name;
         }
         byId("board-status").dataset.kind = board.kind;
-        byId("board-status").textContent = soon ? "Coming soon" : free ? "Free" : "$5 / month";
-        byId("board-type").textContent = soon ? board.code : free ? "Open FanPage" : `FanPage ${board.code}`;
-        byId("details-title").textContent = soon ? `${board.code} is coming soon` : free ? "Kiara’s FanPage Pro is free" : `Join ${board.name}’s FanPage`;
+        byId("board-status").textContent = soon ? "Coming soon" : free ? "Free" : "$10 / month";
+        byId("board-type").textContent = soon ? board.code : free ? "Open FanPage" : `Personal FanPage · ${board.code}`;
+        byId("details-title").textContent = soon ? `${board.code} is coming soon` : free ? "Kiara’s FanPage Pro is free" : `Your personal ${board.name} FanPage`;
         byId("details-copy").hidden = free;
-        byId("details-copy").textContent = soon ? "A new Bluia FanPage is on its way." : free ? "" : `Get monthly access to ${board.name}’s photos and posts for $5 USD. Email us to request your payment link for ${board.code}.`;
+        byId("details-copy").textContent = soon ? "A new Bluia FanPage is on its way." : free ? "" : `Request a personal FanPage featuring ${board.name}, created just for you. Enjoy her photos, videos and albums in your own dedicated space.`;
+        byId("request-plan").hidden = soon || free;
+        byId("request-model").textContent = soon || free ? "" : `${board.code} · ${board.name}`;
         byId("delivery-note").hidden = soon || free;
+        byId("delivery-copy").textContent = soon || free ? "" : `We’ll prepare your personal ${board.name} FanPage after payment. Your subscription URL will be sent to the email address you provide during payment.`;
         byId("purchase-link").hidden = soon;
         byId("soon-button").hidden = !soon;
-        byId("purchase-label").textContent = free ? "See Kiara’s FanPage Pro for free" : "Email to join — $5/month";
-        byId("purchase-link").href = free ? "/b001-aszx/" : mailLink(`${board.code} — $5/month FanPage subscription`, `Hi,\n\nI would like to join ${board.code} (${board.name}) for $5 USD per month. Please send me the payment link for this FanPage.\n\nAfter payment, please send my FanPage Pro full access link to the email address I provide during payment.\n\nThank you.`);
-        byId("contact-link").hidden = free;
-        if (free) byId("contact-link").removeAttribute("href");
-        else byId("contact-link").href = mailLink(`${board.code} ${soon ? "FanPage enquiry" : "photo request"}`, `Hi,\n\nI would like to ask about ${board.code}${board.name ? ` (${board.name})` : ""}.\n\n`);
-        byId("purchase-note").hidden = free;
-        byId("purchase-note").textContent = soon ? `Email us with ${board.code} for enquiries.` : free ? "" : "Each FanPage requires its own subscription.";
+        byId("purchase-label").textContent = soon ? "Coming soon" : free ? "See Kiara’s FanPage Pro for free" : `Request ${board.name}’s FanPage · $10/month`;
+        if (soon) byId("purchase-link").removeAttribute("href");
+        else byId("purchase-link").href = free ? "/b001-aszx/" : checkoutLink(board);
+        byId("purchase-link").target = free ? "_self" : "_blank";
+        byId("purchase-link").rel = "noopener noreferrer";
+        byId("payment-security").hidden = soon || free;
+        byId("purchase-note").hidden = soon || free;
+        byId("purchase-note").textContent = soon || free ? "" : "Each model’s personal FanPage requires its own monthly subscription.";
         if (options.updateHash) history.replaceState(null, "", `#${board.code.toLowerCase()}`);
         if (options.focus) tabs[index].focus({ preventScroll: true });
         if (options.scrollTab) tabs[index].scrollIntoView({ block: "nearest", inline: "center", behavior: reducedMotion.matches ? "auto" : "smooth" });
