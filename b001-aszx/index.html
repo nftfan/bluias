@@ -308,12 +308,13 @@
       <button class="album-tab nav-btn" id="tab-images" data-album="images" role="tab" aria-selected="false" aria-controls="panel-images" tabindex="-1" type="button"><strong>Images</strong><small data-item-count data-count-kind="photo">5 photos</small></button>
       <button class="album-tab nav-btn" id="tab-videos" data-album="videos" role="tab" aria-selected="false" aria-controls="panel-videos" tabindex="-1" type="button"><strong>Videos</strong><small data-item-count data-count-kind="video">1 video</small></button>
       <button class="album-tab nav-btn" id="tab-spicy" data-album="spicy" role="tab" aria-selected="false" aria-controls="panel-spicy" tabindex="-1" type="button"><strong>Spicy 🌶️</strong><small data-item-count data-count-kind="item">1 item</small></button>
-      <button class="album-tab nav-btn" id="tab-friends" data-album="friends" role="tab" aria-selected="false" aria-controls="panel-friends" tabindex="-1" type="button"><strong>Friends</strong><small data-item-count data-count-kind="item">3 items</small></button>
+      <button class="album-tab nav-btn" id="tab-friends" data-album="friends" role="tab" aria-selected="false" aria-controls="panel-friends" tabindex="-1" type="button"><strong>Friends</strong><small data-item-count data-count-kind="item">4 items</small></button>
       <button class="album-tab nav-btn" id="tab-a1" data-album="a1" role="tab" aria-selected="false" aria-controls="panel-a1" tabindex="-1" type="button"><strong>A1</strong><small data-item-count data-count-kind="item">2 items</small></button>
       <button class="album-tab nav-btn" id="tab-a2" data-album="a2" role="tab" aria-selected="false" aria-controls="panel-a2" tabindex="-1" type="button"><strong>A2</strong><small data-item-count data-count-kind="item">2 items</small></button>
     </div>
   </nav>
 
+  <!-- Album media is ordered newest first. Always prepend new items to their album. -->
   <main>
     <section class="panel active" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
     <section class="profile" aria-labelledby="agent-name">
@@ -408,9 +409,19 @@
 
 
     <section class="panel" id="panel-friends" role="tabpanel" aria-labelledby="tab-friends" tabindex="0" hidden>
-      <div class="media-heading"><h2>Friends</h2><p data-panel-count>3 items</p></div>
+      <div class="media-heading"><h2>Friends</h2><p data-panel-count>4 items</p></div>
+      <figure class="photo-post video-post">
+        <figcaption class="photo-strip"><span>Kiara · Friends</span><span>Video · 01 / 04</span></figcaption>
+        <video class="feed-media board-video" width="540" height="948"
+          data-src="/b001-aszx/media/friends-dd573039.mp4"
+          aria-label="Two friends together in a bedroom — Friends video 1 of 1" controls playsinline preload="auto">
+          Your browser does not support video playback.
+        </video>
+        <noscript><video class="board-video" width="540" height="948" src="/b001-aszx/media/friends-dd573039.mp4" aria-label="Two friends together in a bedroom — Friends video 1 of 1" controls playsinline preload="none"></video></noscript>
+      </figure>
+
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kiara · Friends</span><span>01 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · Friends</span><span>02 / 04</span></figcaption>
         <img class="feed-media" width="960" height="1200"
           data-src="/b001-aszx/media/friends-01dbd6f0.webp"
           alt="Two friends posing together outdoors" loading="lazy" decoding="async">
@@ -418,7 +429,7 @@
       </figure>
 
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kiara · Friends</span><span>02 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · Friends</span><span>03 / 04</span></figcaption>
         <img class="feed-media" width="960" height="1276"
           data-src="/b001-aszx/media/friends-b730ee5b.webp"
           alt="Two friends in red outfits sitting together" loading="lazy" decoding="async">
@@ -426,7 +437,7 @@
       </figure>
 
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kiara · Friends</span><span>03 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · Friends</span><span>04 / 04</span></figcaption>
         <img class="feed-media" width="960" height="1304"
           data-src="/b001-aszx/media/friends-f71a2aa2.webp"
           alt="Two friends together by the waterfront at night" loading="lazy" decoding="async">
