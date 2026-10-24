@@ -286,23 +286,19 @@
     .subscribe-benefits { display: grid; gap: 11px; margin: 0 0 21px; padding: 0; list-style: none; }
     .subscribe-benefits li { display: flex; align-items: flex-start; gap: 10px; color: #eadbe4; font-size: 12px; line-height: 1.5; }
     .subscribe-benefits svg { flex: 0 0 auto; width: 18px; height: 18px; padding: 3px; border-radius: 50%; background: #e7c9971c; color: #e9cc9d; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .subscribe-process { padding-top: 18px; border-top: 1px solid #e8c9dd20; }
-    .subscribe-process h3 { margin: 0 0 13px; color: #f2d8e5; font-size: 12px; font-weight: 700; }
-    .subscribe-steps { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; counter-reset: subscribe-step; }
-    .subscribe-steps li { display: flex; align-items: flex-start; gap: 11px; counter-increment: subscribe-step; }
-    .subscribe-steps li::before { content: counter(subscribe-step); flex: 0 0 auto; display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid #d2a9c03d; border-radius: 8px; background: #3b293d; color: #edc7dc; font-size: 10px; font-weight: 700; }
-    .subscribe-steps strong { display: block; margin: 0 0 3px; color: #ead7e3; font-size: 11px; line-height: 1.5; font-weight: 650; }
-    .subscribe-steps p { color: #bfaab9; font-size: 11px; line-height: 1.65; }
-    .subscribe-delivery { margin: 18px 0 0; padding: 13px 14px; border: 1px solid #e4c08f3b; border-radius: 12px; background: #e8c1900c; color: #ddc9bc; font-size: 11px; line-height: 1.75; }
+    .subscribe-delivery { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; padding: 14px; border: 1px solid #e4c08f3b; border-radius: 12px; background: #e8c1900c; color: #ddc9bc; font-size: 11px; line-height: 1.75; }
+    .subscribe-delivery svg { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #e4c08f; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .subscribe-delivery strong { color: #f5dfbe; font-weight: 650; }
     .subscribe-actions { position: sticky; bottom: -1px; padding: 18px 24px 19px; border-top: 1px solid #e8c9dd17; background: #211a27f5; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .subscribe-primary { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 13px; border: 1px solid #f5dfbf; border-radius: 12px; background: linear-gradient(120deg, #f2cadc, #e4ca98); color: #302029; text-align: center; text-decoration: none; font-size: 12px; font-weight: 750; box-shadow: 0 4px 16px #00000024; transition: filter .2s ease; }
     .subscribe-primary:hover { filter: brightness(1.07); }
-    .subscribe-action-note { margin-top: 9px; color: #baa5b5; text-align: center; font-size: 10px; line-height: 1.6; }
-    .subscribe-contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 5px 9px; margin: 10px 0 0; color: #c8b2c1; font-size: 10px; line-height: 1.5; }
-    .subscribe-contact a { color: #d8bfd0; text-decoration-color: #d8bfd044; text-underline-offset: 3px; }
-    .subscribe-copy { min-height: 32px; padding: 5px 8px; border: 1px solid #e7b2c92e; border-radius: 7px; background: #3b2a3e; color: #e2c8d8; font-size: 10px; cursor: pointer; }
-    .subscribe-copy-status { display: block; min-height: 15px; color: #e5c997; text-align: center; font-size: 10px; line-height: 1.5; }
+    .subscribe-action-note { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; color: #baa5b5; text-align: center; font-size: 10px; line-height: 1.6; }
+    .subscribe-action-note svg { width: 13px; height: 13px; fill: none; stroke: #d6bd91; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .subscribe-action-note strong { color: #dcc8d6; font-weight: 650; }
+    .payment-methods { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 13px 0 0; }
+    .payment-brand { display: block; width: 52px; height: 32px; overflow: hidden; border: 1px solid #ffffff26; border-radius: 6px; background: #fff; }
+    .payment-brand svg { display: block; width: 100%; height: 100%; }
+    .payment-method-note { margin-top: 8px; color: #a990a3; text-align: center; font-size: 9px; line-height: 1.6; }
     @media (min-width: 700px) { .subscribe-bar { padding-left: 22px; padding-right: 22px; } .subscribe-bar-copy strong { font-size: 15px; } .subscribe-bar-copy span { font-size: 11px; } }
     @media (max-width: 359px) { .subscribe-bar { gap: 8px; } .subscribe-bar-copy strong { font-size: 12px; } .subscribe-open { gap: 5px; padding: 10px; font-size: 11px; } .subscribe-content { padding-left: 18px; padding-right: 18px; } .subscribe-dialog-header { padding-left: 18px; } .subscribe-actions { padding-left: 18px; padding-right: 18px; } }
     @media (prefers-reduced-motion: no-preference) {
@@ -322,7 +318,7 @@
 </head>
 <body>
   <aside class="subscribe-bar" aria-label="Kiara’s FanPage subscription">
-    <div class="subscribe-bar-copy"><strong>Subscribe to Kiara’s FanPage</strong><span>Full Pro access · <b>$5 USD / month</b></span></div>
+    <div class="subscribe-bar-copy"><strong>Subscribe to Kiara’s FanPage</strong><span>Full Pro access · <b>$4.99 USD / month</b></span></div>
     <button class="subscribe-open" id="subscribe-open" type="button" aria-haspopup="dialog" aria-controls="subscribe-dialog" aria-expanded="false"><span>Join Pro</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
   </aside>
   <header class="masthead">
@@ -654,27 +650,23 @@
     </div>
     <div class="subscribe-content">
       <p class="subscribe-intro" id="subscribe-intro">Get full access to Kiara’s photos, videos and albums, with new posts added to her FanPage.</p>
-      <div class="subscribe-price"><div class="subscribe-price-main"><strong>$5</strong><span>/ month</span></div><p class="subscribe-price-note">USD · monthly subscription<br>Kiara’s FanPage only</p></div>
+      <div class="subscribe-price"><div class="subscribe-price-main"><strong>$4.99</strong><span>/ month</span></div><p class="subscribe-price-note">USD · billed monthly<br>Kiara’s FanPage only</p></div>
       <ul class="subscribe-benefits" aria-label="Subscription benefits">
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>Full access to Kiara’s FanPage Pro</span></li>
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>Photos, videos, Spicy, Friends and themed albums</span></li>
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>New posts published on her FanPage while you subscribe</span></li>
       </ul>
-      <section class="subscribe-process" aria-labelledby="subscribe-process-title">
-        <h3 id="subscribe-process-title">How to get your access</h3>
-        <ol class="subscribe-steps">
-          <li><div><strong>Request your payment link</strong><p>Email us using the button below. We’ll reply with the payment link for Kiara’s $5/month subscription.</p></div></li>
-          <li><div><strong>Pay and provide your email</strong><p>During payment, enter the email address where you want to receive your full access link.</p></div></li>
-          <li><div><strong>Receive your FanPage Pro link</strong><p>After payment, check the email address you provided, including your spam folder.</p></div></li>
-        </ol>
-      </section>
-      <p class="subscribe-delivery"><strong>After payment, Kiara’s FanPage Pro full access link will be shared with you by email</strong> at the email address you provide during payment.</p>
+      <p class="subscribe-delivery"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span>After payment, your subscription URL will be sent to the <strong>email address you provide during payment.</strong></span></p>
     </div>
     <div class="subscribe-actions">
-      <a class="subscribe-primary" id="subscribe-email" href="mailto:vbluia@outlook.com?subject=Kiara%20B001%20%E2%80%94%20%245%2Fmonth%20FanPage%20Pro%20subscription&amp;body=Hi%2C%0A%0AI%20would%20like%20to%20subscribe%20to%20Kiara%E2%80%99s%20FanPage%20Pro%20%28B001%29%20for%20%245%20USD%20per%20month.%20Please%20send%20me%20the%20payment%20link.%0A%0AI%20understand%20that%20after%20payment%2C%20Kiara%E2%80%99s%20FanPage%20Pro%20full%20access%20link%20will%20be%20shared%20with%20me%20at%20the%20email%20address%20I%20provide%20during%20payment.%0A%0AThank%20you."><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span>Email to subscribe · $5/month</span></a>
-      <p class="subscribe-action-note">Opens your email app with a ready-to-send request.</p>
-      <div class="subscribe-contact"><a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a><button class="subscribe-copy" id="subscribe-copy" type="button">Copy email</button></div>
-      <span class="subscribe-copy-status" id="subscribe-copy-status" role="status" aria-live="polite"></span>
+      <a class="subscribe-primary" id="subscribe-checkout" href="https://buy.stripe.com/4gMbITgUo0jc1yF3F5bAs04" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg><span>Subscribe securely</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="subscribe-action-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg><span>Secure checkout with <strong>Stripe</strong></span></p>
+      <div class="payment-methods" role="group" aria-label="Card payment options">
+        <span class="payment-brand" role="img" aria-label="Visa"><svg viewBox="0 0 72 44" aria-hidden="true"><rect width="72" height="44" fill="#fff"/><text x="10" y="30" fill="#183878" font-family="Arial, sans-serif" font-size="25" font-weight="900" font-style="italic" letter-spacing="-1.5">VISA</text></svg></span>
+        <span class="payment-brand" role="img" aria-label="Mastercard"><svg viewBox="0 0 72 44" aria-hidden="true"><rect width="72" height="44" fill="#fff"/><circle cx="28" cy="19" r="12" fill="#eb001b"/><circle cx="44" cy="19" r="12" fill="#f79e1b"/><path d="M36 10.06a12 12 0 0 1 0 17.88 12 12 0 0 1 0-17.88" fill="#ff5f00"/><text x="36" y="38" text-anchor="middle" fill="#231f20" font-family="Arial, sans-serif" font-size="6.5" font-weight="600">mastercard</text></svg></span>
+        <span class="payment-brand" role="img" aria-label="American Express"><svg viewBox="0 0 72 44" aria-hidden="true"><rect width="72" height="44" fill="#1769aa"/><text x="36" y="20" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" font-weight="900" letter-spacing="-.3">AMERICAN</text><text x="36" y="31" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10.5" font-weight="900" letter-spacing="-.2">EXPRESS</text></svg></span>
+      </div>
+      <p class="payment-method-note">Payment options and the final total are shown at checkout.</p>
     </div>
   </dialog>
   <script>
@@ -702,7 +694,6 @@
         document.body.classList.add("modal-open");
         dialog.showModal();
         dialog.scrollTop = 0;
-        document.getElementById("subscribe-copy-status").textContent = "";
         trigger.setAttribute("aria-expanded", "true");
       });
       document.getElementById("subscribe-close").addEventListener("click", closeSubscribe);
@@ -718,15 +709,6 @@
         trigger.setAttribute("aria-expanded", "false");
         unlockPage();
         trigger.focus({ preventScroll: true });
-      });
-      document.getElementById("subscribe-copy").addEventListener("click", async () => {
-        const status = document.getElementById("subscribe-copy-status");
-        try {
-          await navigator.clipboard.writeText("vbluia@outlook.com");
-          status.textContent = "Email copied";
-        } catch {
-          status.textContent = "Email us at vbluia@outlook.com";
-        }
       });
       const chat = document.getElementById("chat-dialog");
       document.getElementById("chat-open").addEventListener("click", () => {
