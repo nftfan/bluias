@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#302936">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Meet the Bluias. Explore individual AI creator boards, discover your favourites, and join their photo collections.">
-  <title>Bluias — Bluia Boards</title>
+  <meta name="description" content="Meet the Bluias. Explore individual AI creator FanPages, discover your favourites, and join their photo collections.">
+  <title>Bluias — Bluia FanPages</title>
   <style>
     :root { color-scheme: dark; --page: #302936; --surface: #151116; --rose: #e7b2c9; --gold: #e4cc82; --muted: #bcaeb9; --media-accent: #e7b2c9; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -89,9 +89,9 @@
   <noscript><style>.feed-media[data-src] { display: none; }</style></noscript>
 </head>
 <body>
-  <header class="brand-bar"><h1>Bluias</h1><span class="product-badge">Boards</span></header>
-  <nav class="tab-shell" aria-label="Bluia boards">
-    <div class="agent-tabs" role="tablist" aria-label="Choose a Bluia board">
+  <header class="brand-bar"><h1>Bluias</h1><span class="product-badge">FanPages</span></header>
+  <nav class="tab-shell" aria-label="Bluia FanPages">
+    <div class="agent-tabs" role="tablist" aria-label="Choose a Bluia FanPage">
       <button class="agent-tab nav-btn is-active" id="tab-b1" data-code="B1" role="tab" aria-selected="true" aria-controls="board-panel" tabindex="0" type="button"><strong class="tab-code">B1</strong><small>Kiara</small></button>
       <button class="agent-tab nav-btn" id="tab-b2" data-code="B2" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B2</strong><small>Sophia</small></button>
       <button class="agent-tab nav-btn" id="tab-b3" data-code="B3" role="tab" aria-selected="false" aria-controls="board-panel" tabindex="-1" type="button"><strong class="tab-code">B3</strong><small>Mila</small></button>
@@ -144,11 +144,11 @@
         </figure>
         <div class="board-details">
           <div class="details-inner">
-            <div class="status-line"><span class="status" id="board-status" data-kind="free">Free</span><span class="board-type" id="board-type">Open board</span></div>
-            <h3 id="details-title">Kiara’s Pro is free</h3>
+            <div class="status-line"><span class="status" id="board-status" data-kind="free">Free</span><span class="board-type" id="board-type">Open FanPage</span></div>
+            <h3 id="details-title">Kiara’s FanPage Pro is free</h3>
             <p class="details-copy" id="details-copy" hidden></p>
-            <div class="delivery" id="delivery-note" hidden><strong>After payment</strong>We will send your private board link to the email address you provide during payment.</div>
-            <a class="primary-cta" id="purchase-link" href="/b001-aszx/"><span id="purchase-label">See Kiara’s Pro for free</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <div class="delivery" id="delivery-note" hidden><strong>After payment</strong>We will send your FanPage Pro full access link to the email address you provide during payment.</div>
+            <a class="primary-cta" id="purchase-link" href="/b001-aszx/"><span id="purchase-label">See Kiara’s FanPage Pro for free</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <button class="soon-cta" id="soon-button" type="button" disabled hidden>Coming soon</button>
             <a class="contact-link" id="contact-link" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span id="contact-label">vbluia@outlook.com</span></a>
             <p class="purchase-note" id="purchase-note" hidden></p>
@@ -250,20 +250,20 @@
         }
         byId("board-status").dataset.kind = board.kind;
         byId("board-status").textContent = soon ? "Coming soon" : free ? "Free" : "$5 / month";
-        byId("board-type").textContent = soon ? board.code : free ? "Open board" : `Board ${board.code}`;
-        byId("details-title").textContent = soon ? `${board.code} is coming soon` : free ? "Kiara’s Pro is free" : `Join ${board.name}’s board`;
+        byId("board-type").textContent = soon ? board.code : free ? "Open FanPage" : `FanPage ${board.code}`;
+        byId("details-title").textContent = soon ? `${board.code} is coming soon` : free ? "Kiara’s FanPage Pro is free" : `Join ${board.name}’s FanPage`;
         byId("details-copy").hidden = free;
-        byId("details-copy").textContent = soon ? "A new Bluia board is on its way." : free ? "" : `Get monthly access to ${board.name}’s photos and posts for $5 USD. Email us to request your payment link for ${board.code}.`;
+        byId("details-copy").textContent = soon ? "A new Bluia FanPage is on its way." : free ? "" : `Get monthly access to ${board.name}’s photos and posts for $5 USD. Email us to request your payment link for ${board.code}.`;
         byId("delivery-note").hidden = soon || free;
         byId("purchase-link").hidden = soon;
         byId("soon-button").hidden = !soon;
-        byId("purchase-label").textContent = free ? "See Kiara’s Pro for free" : "Email to join — $5/month";
-        byId("purchase-link").href = free ? "/b001-aszx/" : mailLink(`${board.code} — $5/month board subscription`, `Hi,\n\nI would like to join ${board.code} (${board.name}) for $5 USD per month. Please send me the payment link for this board.\n\nAfter payment, please send my private board link to the email address I provide during payment.\n\nThank you.`);
+        byId("purchase-label").textContent = free ? "See Kiara’s FanPage Pro for free" : "Email to join — $5/month";
+        byId("purchase-link").href = free ? "/b001-aszx/" : mailLink(`${board.code} — $5/month FanPage subscription`, `Hi,\n\nI would like to join ${board.code} (${board.name}) for $5 USD per month. Please send me the payment link for this FanPage.\n\nAfter payment, please send my FanPage Pro full access link to the email address I provide during payment.\n\nThank you.`);
         byId("contact-link").hidden = free;
         if (free) byId("contact-link").removeAttribute("href");
-        else byId("contact-link").href = mailLink(`${board.code} ${soon ? "board enquiry" : "photo request"}`, `Hi,\n\nI would like to ask about ${board.code}${board.name ? ` (${board.name})` : ""}.\n\n`);
+        else byId("contact-link").href = mailLink(`${board.code} ${soon ? "FanPage enquiry" : "photo request"}`, `Hi,\n\nI would like to ask about ${board.code}${board.name ? ` (${board.name})` : ""}.\n\n`);
         byId("purchase-note").hidden = free;
-        byId("purchase-note").textContent = soon ? `Email us with ${board.code} for enquiries.` : free ? "" : "Each board requires its own subscription.";
+        byId("purchase-note").textContent = soon ? `Email us with ${board.code} for enquiries.` : free ? "" : "Each FanPage requires its own subscription.";
         if (options.updateHash) history.replaceState(null, "", `#${board.code.toLowerCase()}`);
         if (options.focus) tabs[index].focus({ preventScroll: true });
         if (options.scrollTab) tabs[index].scrollIntoView({ block: "nearest", inline: "center", behavior: reducedMotion.matches ? "auto" : "smooth" });
