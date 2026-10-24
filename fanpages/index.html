@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<!-- Active FanPages storefront. Make future storefront changes here; retain /test as the old preview. -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -66,6 +67,21 @@
     .soon-cta { border-color: #ffffff12; background: #2b2230; color: #a28da6; cursor: default; }
     .fanpage-intro { padding: 23px 18px 24px; border-bottom: 1px solid #e7b2c91a; background: radial-gradient(ellipse at 12% 0, #b1799e14, transparent 70%), #211a28; }
     .intro-inner { width: min(100%, 820px); margin: 0 auto; }
+    .fanpage-intro { position: relative; overflow: hidden; isolation: isolate; }
+    .fanpage-intro .intro-inner { position: relative; z-index: 2; }
+    .fanpage-intro::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, #211a28ed 0%, #211a28d9 35%, #211a2873 75%, #211a2899), linear-gradient(180deg, #211a2880, transparent 25%, transparent 75%, #211a28d9); }
+    .fanpage-backdrop { position: absolute; inset: -54px 0; z-index: 0; overflow: hidden; opacity: .52; filter: saturate(.82) blur(.7px); pointer-events: none; user-select: none; }
+    .backdrop-track { display: flex; align-items: center; width: max-content; height: 100%; animation: fanpageBackdropFlow 72s linear infinite; will-change: transform; }
+    .backdrop-group { display: flex; flex: 0 0 auto; align-items: center; justify-content: space-around; gap: 20px; min-width: max(100vw, 850px); padding: 28px 10px; }
+    .backdrop-photo { position: relative; flex: 0 0 auto; width: clamp(145px, 17vw, 230px); aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #efd1e04d; border-radius: 20px; background: linear-gradient(145deg, #60415b, #332a39); box-shadow: 0 16px 34px #09070c42; }
+    .backdrop-photo:nth-child(odd) { transform: translateY(-10px) rotate(-5deg); }
+    .backdrop-photo:nth-child(even) { transform: translateY(17px) rotate(4deg); }
+    .backdrop-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; opacity: 0; transition: opacity 1.15s ease; }
+    .backdrop-photo img.is-loaded { opacity: 1; }
+    .fanpage-backdrop.is-paused .backdrop-track { animation-play-state: paused; }
+    @keyframes fanpageBackdropFlow { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+    @media (max-width: 600px) { .fanpage-intro::before { background: linear-gradient(90deg, #211a28dc, #211a28b0), linear-gradient(180deg, #211a2880, transparent 30%, transparent 70%, #211a28d9); } .fanpage-backdrop { opacity: .48; } .backdrop-track { animation-duration: 85s; } }
+    @media (prefers-reduced-motion: reduce) { .backdrop-track { animation: none; will-change: auto; } .backdrop-photo img { transition: none; } }
     .intro-kicker { color: #d8bd91; font-size: 9px; font-weight: 750; letter-spacing: 1.5px; text-transform: uppercase; }
     .fanpage-intro h2 { margin-top: 7px; color: #f5e5ee; font-size: clamp(22px, 4.7vw, 28px); line-height: 1.2; font-weight: 650; letter-spacing: -.65px; }
     .intro-copy { max-width: 650px; margin-top: 10px; color: #c5b1bf; font-size: 12px; line-height: 1.8; }
@@ -114,11 +130,27 @@
     @media (min-width: 700px) { main { padding-top: 24px; } .board-details { padding: 28px 24px 30px; } .agent-card { border-radius: 24px 24px 0 0; } .site-footer { margin-top: 36px; padding-top: 30px; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
   </style>
-  <noscript><style>.feed-media[data-src] { display: none; }</style></noscript>
+  <noscript><style>.feed-media[data-src] { display: none; }.backdrop-photo img { opacity: 1; }</style></noscript>
 </head>
 <body>
   <header class="brand-bar"><h1>Bluias</h1><span class="product-badge">FanPages</span></header>
   <section class="fanpage-intro" aria-labelledby="fanpage-intro-title">
+    <div class="fanpage-backdrop" aria-hidden="true">
+      <div class="backdrop-track">
+        <div class="backdrop-group">
+          <div class="backdrop-photo"><img src="/assets/boards/b1-6433-480.webp" width="480" height="854" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+          <div class="backdrop-photo"><img src="/test/media/b2-480.webp" width="480" height="599" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+          <div class="backdrop-photo"><img src="/test/media/b3-480.webp" width="480" height="854" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+          <div class="backdrop-photo"><img src="/test/media/b5-480.webp" width="480" height="866" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+        </div>
+        <div class="backdrop-group">
+          <div class="backdrop-photo"><img src="/assets/boards/b1-6433-480.webp" width="480" height="854" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+          <div class="backdrop-photo"><img src="/test/media/b2-480.webp" width="480" height="599" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+          <div class="backdrop-photo"><img src="/test/media/b3-480.webp" width="480" height="854" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+          <div class="backdrop-photo"><img src="/test/media/b5-480.webp" width="480" height="866" alt="" loading="eager" decoding="async" fetchpriority="low"></div>
+        </div>
+      </div>
+    </div>
     <div class="intro-inner">
       <p class="intro-kicker">Personal FanPages</p>
       <h2 id="fanpage-intro-title">Your favourite Bluia. A FanPage just for you.</h2>
@@ -332,6 +364,33 @@
       }
       fromHash();
       window.addEventListener("hashchange", fromHash);
+    })();
+  </script>
+  <script>
+    (() => {
+      "use strict";
+      const backdrop = document.querySelector(".fanpage-backdrop");
+      if (!backdrop) return;
+      backdrop.querySelectorAll("img").forEach(photo => {
+        const reveal = () => {
+          if (!photo.naturalWidth) return;
+          const ready = photo.decode ? photo.decode().catch(() => {}) : Promise.resolve();
+          ready.then(() => photo.classList.add("is-loaded"));
+        };
+        photo.addEventListener("load", reveal, { once: true });
+        if (photo.complete) reveal();
+      });
+      let visible = true;
+      const updateMotion = () => backdrop.classList.toggle("is-paused", document.hidden || !visible);
+      document.addEventListener("visibilitychange", updateMotion);
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(entries => {
+          visible = entries[0].isIntersecting;
+          updateMotion();
+        }, { threshold: 0 });
+        observer.observe(backdrop.closest(".fanpage-intro"));
+      }
+      updateMotion();
     })();
   </script>
   <script src="/media-loading.js?v=20261023-scroll-2" defer></script>
