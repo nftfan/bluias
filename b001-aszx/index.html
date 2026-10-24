@@ -204,6 +204,32 @@
     .chat-trigger { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 9px 11px; border: 1px solid #e7b2c952; border-radius: 11px; background: #302331; color: #f1d5e3; font-size: 11px; font-weight: 700; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
     .chat-trigger:hover { border-color: #e7b2c98c; background: #402e42; }
     .chat-trigger svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .header-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 9px; }
+    .notification-trigger { position: relative; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid #e7b2c952; border-radius: 11px; background: #302331; color: #f1d5e3; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+    .notification-trigger:hover, .notification-trigger[aria-expanded="true"] { border-color: #e7b2c98c; background: #402e42; }
+    .notification-trigger svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .notification-count { position: absolute; top: -7px; right: -6px; display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 4px; border: 2px solid #211824; border-radius: 50%; background: #df405b; color: #fff; font-size: 9px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .notifications-panel { position: absolute; top: calc(100% - 3px); right: 14px; z-index: 20; width: min(350px, calc(100vw - 28px)); overflow: hidden; border: 1px solid #d1a7bf57; border-radius: 17px; background: #231a29; color: var(--text); text-align: left; box-shadow: 0 18px 55px #08060b80; }
+    .notifications-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 16px 13px; border-bottom: 1px solid #e7b2c91c; background: linear-gradient(120deg, #3b293c, #29202f); }
+    .notifications-heading h2 { color: #f1dce8; font-size: 13px; font-weight: 700; letter-spacing: -.15px; }
+    .notifications-heading p { margin-top: 4px; color: #baa5b5; font-size: 10px; line-height: 1.5; }
+    .notifications-close { display: grid; flex: 0 0 auto; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid #e7b2c91c; border-radius: 9px; background: #ffffff05; color: #dbc3d3; font-size: 21px; line-height: 1; cursor: pointer; }
+    .notifications-list { max-height: min(345px, 48dvh); margin: 0; padding: 5px; overflow-y: auto; overscroll-behavior: contain; list-style: none; scrollbar-width: thin; scrollbar-color: #715567 #231a29; }
+    .notification-item { display: flex; align-items: center; gap: 11px; width: 100%; min-height: 62px; padding: 12px 10px; border: 0; border-bottom: 1px solid #e7b2c910; border-radius: 9px; background: transparent; color: inherit; text-align: left; cursor: pointer; transition: background .18s ease; }
+    .notification-item:hover { background: #e7b2c90c; }
+    .notifications-list li:last-child .notification-item { border-bottom-color: transparent; }
+    .notification-icon { display: grid; flex: 0 0 auto; place-items: center; width: 34px; height: 34px; border: 1px solid #e7b2c92b; border-radius: 11px; background: #3a293d; color: #e8bad2; }
+    .notification-icon.is-video { border-color: #e4cc8238; background: #3a302b; color: #e8ce96; }
+    .notification-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .notification-copy { display: grid; gap: 5px; }
+    .notification-copy strong { color: #ead6e3; font-size: 11px; line-height: 1.4; font-weight: 600; }
+    .notification-copy small { color: #bca4b5; font-size: 10px; line-height: 1.4; }
+    .notifications-footer { padding: 10px 16px; border-top: 1px solid #e7b2c91c; color: #aa91a2; font-size: 9px; line-height: 1.5; }
+    .notifications-empty { padding: 24px 16px; color: var(--muted); text-align: center; font-size: 12px; }
+    .photo-post { scroll-margin-top: 12px; }
+    .photo-post:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+    @media (prefers-reduced-motion: no-preference) { .notifications-panel:not([hidden]) { animation: notificationsArrive .22s ease both; } @keyframes notificationsArrive { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } } }
+    @media (prefers-reduced-motion: reduce) { .notification-trigger, .notification-item { transition: none; } }
     .about-me { margin: 14px; padding: 15px 16px 16px; border: 1px solid #e7b2c92a; border-radius: 14px; background: linear-gradient(115deg, #251b2a, #1c1722); box-shadow: 0 7px 20px #00000015; }
     .about-me h2 { color: #e9cfaa; font-size: 11px; font-weight: 700; letter-spacing: .4px; }
     .about-me p { margin-top: 7px; color: #cfbdc9; font-size: 12px; line-height: 1.75; }
@@ -300,7 +326,15 @@
   </aside>
   <header class="masthead">
     <h1><span class="model-title">Kiara</span><span>Bluia FanPage</span><span class="pro">Pro</span></h1>
+    <div class="header-actions">
     <button class="chat-trigger" id="chat-open" type="button" aria-haspopup="dialog" aria-controls="chat-dialog" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18l-2 3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5Z"/><path d="M8 8h8M8 12h5"/></svg><span>Chat</span></button>
+      <button class="notification-trigger" id="notifications-open" type="button" aria-label="Notifications, 15 posted items" aria-haspopup="dialog" aria-controls="notifications-panel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4M12 2V1"/></svg><span class="notification-count" id="notification-count" aria-hidden="true">15</span></button>
+    </div>
+    <section class="notifications-panel" id="notifications-panel" role="dialog" aria-labelledby="notifications-title" hidden>
+      <div class="notifications-heading"><div><h2 id="notifications-title">Kiara’s latest posts</h2><p id="notifications-summary">15 posted items · Newest first</p></div><button class="notifications-close" id="notifications-close" type="button" aria-label="Close notifications">×</button></div>
+      <ol class="notifications-list" id="notifications-list" aria-label="Kiara’s posted photos and videos"></ol>
+      <p class="notifications-footer">Select a post to open it in its album.</p>
+    </section>
   </header>
   <nav class="album-nav" aria-label="Kiara’s media albums">
     <div class="album-tabs" role="tablist" aria-label="Choose a media album">
@@ -311,10 +345,14 @@
       <button class="album-tab nav-btn" id="tab-friends" data-album="friends" role="tab" aria-selected="false" aria-controls="panel-friends" tabindex="-1" type="button"><strong>Friends</strong><small data-item-count data-count-kind="item">4 items</small></button>
       <button class="album-tab nav-btn" id="tab-a1" data-album="a1" role="tab" aria-selected="false" aria-controls="panel-a1" tabindex="-1" type="button"><strong>A1</strong><small data-item-count data-count-kind="item">2 items</small></button>
       <button class="album-tab nav-btn" id="tab-a2" data-album="a2" role="tab" aria-selected="false" aria-controls="panel-a2" tabindex="-1" type="button"><strong>A2</strong><small data-item-count data-count-kind="item">2 items</small></button>
+      <button class="album-tab nav-btn" id="tab-a3" data-album="a3" role="tab" aria-selected="false" aria-controls="panel-a3" tabindex="-1" type="button"><strong>A3</strong><small data-item-count data-count-kind="item">0 items</small></button>
+      <button class="album-tab nav-btn" id="tab-a4" data-album="a4" role="tab" aria-selected="false" aria-controls="panel-a4" tabindex="-1" type="button"><strong>A4</strong><small data-item-count data-count-kind="item">0 items</small></button>
+      <button class="album-tab nav-btn" id="tab-a5" data-album="a5" role="tab" aria-selected="false" aria-controls="panel-a5" tabindex="-1" type="button"><strong>A5</strong><small data-item-count data-count-kind="item">0 items</small></button>
+      <button class="album-tab nav-btn" id="tab-a6" data-album="a6" role="tab" aria-selected="false" aria-controls="panel-a6" tabindex="-1" type="button"><strong>A6</strong><small data-item-count data-count-kind="item">0 items</small></button>
     </div>
   </nav>
 
-  <!-- Album media is ordered newest first. Always prepend new items to their album. -->
+  <!-- Album media is newest first. Prepend new items and give each figure a data-post-order greater than the current maximum so notifications also stay newest first. -->
   <main>
     <section class="panel active" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
     <section class="profile" aria-labelledby="agent-name">
@@ -339,7 +377,7 @@
     <section class="panel" id="panel-images" role="tabpanel" aria-labelledby="tab-images" tabindex="0" hidden>
       <section class="collection" aria-labelledby="collection-title">
         <div class="collection-heading"><h2 id="collection-title">On Kiara’s FanPage</h2><p data-collection-count>5 photos</p></div>
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="14">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>01 / 05</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/b001-aszx/media/images-f7fc2d52.webp"
@@ -347,7 +385,7 @@
         <noscript><img width="941" height="1672" src="/b001-aszx/media/images-f7fc2d52.webp" alt="Evening selfie in a red satin outfit" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="13">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>02 / 05</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/b001-aszx/media/images-d3870542.webp"
@@ -355,7 +393,7 @@
         <noscript><img width="941" height="1672" src="/b001-aszx/media/images-d3870542.webp" alt="Bathroom portrait wrapped in a white towel" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="12">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>03 / 05</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/b001-aszx/media/images-cfe69711.webp"
@@ -363,7 +401,7 @@
         <noscript><img width="941" height="1672" src="/b001-aszx/media/images-cfe69711.webp" alt="Striped outfit portrait on the bed" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="11">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>04 / 05</span></figcaption>
         <img class="feed-media" width="750" height="1333"
           data-src="/b001-aszx/media/images-8d64f7b1.webp"
@@ -371,7 +409,7 @@
         <noscript><img width="750" height="1333" src="/b001-aszx/media/images-8d64f7b1.webp" alt="Portrait in a cream outfit and heels" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="10">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>05 / 05</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/b001-aszx/media/images-2b588214.webp"
@@ -383,7 +421,7 @@
 
     <section class="panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos" tabindex="0" hidden>
       <div class="media-heading"><h2>Kiara’s videos</h2><p data-panel-count>1 video</p></div>
-      <figure class="photo-post video-post">
+<figure class="photo-post video-post" data-post-order="3">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>Video 1/1</span></figcaption>
         <video class="feed-media board-video" width="540" height="948"
           data-src="/b001-aszx/media/video-b328e34f.mp4"
@@ -396,7 +434,7 @@
 
     <section class="panel" id="panel-spicy" role="tabpanel" aria-labelledby="tab-spicy" tabindex="0" hidden>
       <div class="media-heading"><h2>Spicy 🌶️</h2><p data-panel-count>1 item</p></div>
-      <figure class="photo-post spicy-post">
+<figure class="photo-post spicy-post" data-post-order="4">
         <figcaption class="photo-strip"><span>Kiara · B001</span><span>01 / 01</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/b001-aszx/media/spicy-0a8cd444-941.webp"
@@ -410,7 +448,7 @@
 
     <section class="panel" id="panel-friends" role="tabpanel" aria-labelledby="tab-friends" tabindex="0" hidden>
       <div class="media-heading"><h2>Friends</h2><p data-panel-count>4 items</p></div>
-      <figure class="photo-post video-post">
+<figure class="photo-post video-post" data-post-order="15">
         <figcaption class="photo-strip"><span>Kiara · Friends</span><span>Video · 01 / 04</span></figcaption>
         <video class="feed-media board-video" width="540" height="948"
           data-src="/b001-aszx/media/friends-dd573039.mp4"
@@ -420,7 +458,7 @@
         <noscript><video class="board-video" width="540" height="948" src="/b001-aszx/media/friends-dd573039.mp4" aria-label="Two friends together in a bedroom — Friends video 1 of 1" controls playsinline preload="none"></video></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="9">
         <figcaption class="photo-strip"><span>Kiara · Friends</span><span>02 / 04</span></figcaption>
         <img class="feed-media" width="960" height="1200"
           data-src="/b001-aszx/media/friends-01dbd6f0.webp"
@@ -428,7 +466,7 @@
         <noscript><img width="960" height="1200" src="/b001-aszx/media/friends-01dbd6f0.webp" alt="Two friends posing together outdoors" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="8">
         <figcaption class="photo-strip"><span>Kiara · Friends</span><span>03 / 04</span></figcaption>
         <img class="feed-media" width="960" height="1276"
           data-src="/b001-aszx/media/friends-b730ee5b.webp"
@@ -436,7 +474,7 @@
         <noscript><img width="960" height="1276" src="/b001-aszx/media/friends-b730ee5b.webp" alt="Two friends in red outfits sitting together" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="7">
         <figcaption class="photo-strip"><span>Kiara · Friends</span><span>04 / 04</span></figcaption>
         <img class="feed-media" width="960" height="1304"
           data-src="/b001-aszx/media/friends-f71a2aa2.webp"
@@ -447,7 +485,7 @@
 
     <section class="panel" id="panel-a1" role="tabpanel" aria-labelledby="tab-a1" tabindex="0" hidden>
       <div class="media-heading"><h2>Album A1</h2><p data-panel-count>2 items</p></div>
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="6">
         <figcaption class="photo-strip"><span>Kiara · A1</span><span>01 / 02</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/b001-aszx/media/a1-51bc113d-941.webp"
@@ -457,7 +495,7 @@
         <noscript><img width="941" height="1672" src="/b001-aszx/media/a1-51bc113d-941.webp" alt="Kiara taking a bedroom mirror selfie in a white top and pink shorts" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="5">
         <figcaption class="photo-strip"><span>Kiara · A1</span><span>02 / 02</span></figcaption>
         <img class="feed-media" width="940" height="1672"
           data-src="/b001-aszx/media/a1-545e5844-940.webp"
@@ -470,7 +508,7 @@
 
     <section class="panel" id="panel-a2" role="tabpanel" aria-labelledby="tab-a2" tabindex="0" hidden>
       <div class="media-heading"><h2>Album A2</h2><p data-panel-count>2 items</p></div>
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="2">
         <figcaption class="photo-strip"><span>Kiara · A2</span><span>01 / 02</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/assets/magazine/style-story-941.webp"
@@ -480,7 +518,7 @@
         <noscript><img width="941" height="1672" src="/assets/magazine/style-story-941.webp" alt="Kiara wearing a grey outfit in soft indoor light" loading="lazy"></noscript>
       </figure>
 
-      <figure class="photo-post">
+<figure class="photo-post" data-post-order="1">
         <figcaption class="photo-strip"><span>Kiara · A2</span><span>02 / 02</span></figcaption>
         <img class="feed-media" width="1122" height="1402"
           data-src="/assets/magazine/personal-style-1122.webp"
@@ -489,6 +527,22 @@
           alt="Kiara in her grey outfit in a sunny garden" loading="lazy" decoding="async">
         <noscript><img width="1122" height="1402" src="/assets/magazine/personal-style-1122.webp" alt="Kiara in her grey outfit in a sunny garden" loading="lazy"></noscript>
       </figure>
+    </section>
+    <section class="panel" id="panel-a3" role="tabpanel" aria-labelledby="tab-a3" tabindex="0" hidden>
+      <div class="media-heading"><h2>Album A3</h2><p data-panel-count>0 items</p></div>
+      <div class="album-empty"><span class="album-mark" aria-hidden="true">A3</span><h2>No posts yet</h2><p>No photos or videos have been posted in this album yet.</p></div>
+    </section>
+    <section class="panel" id="panel-a4" role="tabpanel" aria-labelledby="tab-a4" tabindex="0" hidden>
+      <div class="media-heading"><h2>Album A4</h2><p data-panel-count>0 items</p></div>
+      <div class="album-empty"><span class="album-mark" aria-hidden="true">A4</span><h2>No posts yet</h2><p>No photos or videos have been posted in this album yet.</p></div>
+    </section>
+    <section class="panel" id="panel-a5" role="tabpanel" aria-labelledby="tab-a5" tabindex="0" hidden>
+      <div class="media-heading"><h2>Album A5</h2><p data-panel-count>0 items</p></div>
+      <div class="album-empty"><span class="album-mark" aria-hidden="true">A5</span><h2>No posts yet</h2><p>No photos or videos have been posted in this album yet.</p></div>
+    </section>
+    <section class="panel" id="panel-a6" role="tabpanel" aria-labelledby="tab-a6" tabindex="0" hidden>
+      <div class="media-heading"><h2>Album A6</h2><p data-panel-count>0 items</p></div>
+      <div class="album-empty"><span class="album-mark" aria-hidden="true">A6</span><h2>No posts yet</h2><p>No photos or videos have been posted in this album yet.</p></div>
     </section>
   </main>
 
@@ -679,6 +733,98 @@
         if (chat.open) document.body.classList.add("modal-open");
       });
       chat.addEventListener("close", unlockPage);
+    })();
+  </script>
+  <script>
+    (() => {
+      "use strict";
+      const trigger = document.getElementById("notifications-open");
+      const panel = document.getElementById("notifications-panel");
+      const list = document.getElementById("notifications-list");
+      const closeButton = document.getElementById("notifications-close");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      function getPosts() {
+        return [...document.querySelectorAll('main [role="tabpanel"]:not(#panel-about) .feed-media')].map((media, index) => {
+          const post = media.closest(".photo-post");
+          const album = media.closest('[role="tabpanel"]');
+          const tab = document.getElementById(album.getAttribute("aria-labelledby"));
+          const code = tab.dataset.album;
+          const albumName = /^a\d+$/.test(code) ? `Album ${code.toUpperCase()}` : tab.querySelector("strong").textContent;
+          const order = Number(post?.dataset.postOrder);
+          return { media, post, tab, albumName, index, order: order > 0 ? order : Number.MAX_SAFE_INTEGER - index };
+        }).filter(item => item.post).sort((a, b) => b.order - a.order || a.index - b.index);
+      }
+      function refreshSummary(posts) {
+        const count = posts.length;
+        document.getElementById("notification-count").textContent = count;
+        document.getElementById("notifications-summary").textContent = `${count} posted item${count === 1 ? "" : "s"} · Newest first`;
+        trigger.setAttribute("aria-label", `Notifications, ${count} posted item${count === 1 ? "" : "s"}`);
+      }
+      function closeNotifications(restoreFocus = false) {
+        panel.hidden = true;
+        trigger.setAttribute("aria-expanded", "false");
+        if (restoreFocus) trigger.focus({ preventScroll: true });
+      }
+      function renderNotifications() {
+        const posts = getPosts();
+        refreshSummary(posts);
+        list.replaceChildren();
+        if (!posts.length) {
+          const empty = document.createElement("li");
+          empty.className = "notifications-empty";
+          empty.textContent = "No posts yet.";
+          list.append(empty);
+        }
+        posts.forEach(item => {
+          const video = item.media.tagName === "VIDEO";
+          const row = document.createElement("li");
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "notification-item";
+          const icon = document.createElement("span");
+          icon.className = `notification-icon${video ? " is-video" : ""}`;
+          icon.setAttribute("aria-hidden", "true");
+          icon.innerHTML = video ? '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="m10 8 6 4-6 4Z"/></svg>' : '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="m4 17 5-5 4 4 3-3 5 5"/></svg>';
+          const copy = document.createElement("span");
+          copy.className = "notification-copy";
+          const title = document.createElement("strong");
+          title.textContent = `Kiara posted ${video ? "a video" : "an image"}`;
+          const detail = document.createElement("small");
+          detail.textContent = `${item.albumName} · View post`;
+          copy.append(title, detail);
+          button.append(icon, copy);
+          button.addEventListener("click", () => {
+            closeNotifications();
+            item.tab.click();
+            requestAnimationFrame(() => {
+              item.post.tabIndex = -1;
+              item.post.scrollIntoView({ block: "start", behavior: reducedMotion.matches ? "auto" : "smooth" });
+              item.post.focus({ preventScroll: true });
+            });
+          });
+          row.append(button);
+          list.append(row);
+        });
+      }
+      trigger.addEventListener("click", () => {
+        if (!panel.hidden) { closeNotifications(); return; }
+        renderNotifications();
+        panel.hidden = false;
+        list.scrollTop = 0;
+        trigger.setAttribute("aria-expanded", "true");
+        closeButton.focus({ preventScroll: true });
+      });
+      closeButton.addEventListener("click", () => closeNotifications(true));
+      document.addEventListener("click", event => {
+        if (!panel.hidden && !panel.contains(event.target) && !trigger.contains(event.target)) closeNotifications();
+      });
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !panel.hidden) { event.preventDefault(); closeNotifications(true); }
+      });
+      document.addEventListener("focusin", event => {
+        if (!panel.hidden && !panel.contains(event.target) && !trigger.contains(event.target)) closeNotifications();
+      });
+      refreshSummary(getPosts());
     })();
   </script>
   <script src="/media-loading.js?v=20261023-scroll-2" defer></script>
