@@ -796,8 +796,10 @@
           icon.innerHTML = icons[kind];
           const copy = document.createElement("span");
           copy.className = "notification-copy";
-          const albumLabel = kind === "album" ? album.toUpperCase() : item.albumName.replace(" 🌶️", "");
-          copy.textContent = `Kiara updated ${albumLabel} album`;
+          copy.textContent = kind === "album" ? `Kiara updated ${album.toUpperCase()} album`
+            : kind === "spicy" ? `Kiara posted a spicy ${video ? "video" : "image"}`
+            : kind === "friend" ? `Kiara posted a Friends ${video ? "video" : "image"}`
+            : `Kiara posted ${video ? "a video" : "an image"}`;
           button.append(icon, copy);
           button.addEventListener("click", () => {
             closeNotifications();
