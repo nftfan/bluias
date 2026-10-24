@@ -42,6 +42,7 @@
     .agent-visual { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border-bottom: 1px solid #e7b2c933; background: #1b151e; }
     .photo-slot, .photo-slot .smooth-media-frame { width: 100%; height: 100%; aspect-ratio: 3 / 4 !important; }
     .feed-media { display: block; width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; border-radius: 0; }
+    #board-panel[aria-labelledby="tab-b1"] #agent-photo { object-position: center; }
     .feed-media:not([src]) { visibility: hidden; }
     .empty-photo { position: absolute; inset: 0; border: 1px dashed #a68ba035; background: linear-gradient(145deg, #382d3e, #211a28); }
     .photo-caption { position: absolute; inset: auto 0 0; z-index: 3; padding: 72px 22px 23px; background: linear-gradient(transparent, #0b080bd9); pointer-events: none; }
@@ -132,11 +133,11 @@
       <article class="agent-card">
         <figure class="agent-visual">
           <div class="photo-slot" id="photo-slot">
-            <img class="feed-media" id="agent-photo" width="1086" height="1448"
-              data-src="/assets/magazine/signature-style-1086.webp"
-              data-srcset="/assets/magazine/signature-style-480.webp 480w, /assets/magazine/signature-style-1086.webp 1086w"
-              sizes="100vw" alt="Kiara in a denim outfit outside a flower shop" fetchpriority="high" decoding="async">
-            <noscript><img class="feed-media" src="/assets/magazine/signature-style-1086.webp" width="1086" height="1448" alt="Kiara in a denim outfit outside a flower shop"></noscript>
+            <img class="feed-media" id="agent-photo" width="750" height="1334"
+              data-src="/assets/boards/b1-6433-750.webp"
+              data-srcset="/assets/boards/b1-6433-480.webp 480w, /assets/boards/b1-6433-750.webp 750w"
+              sizes="100vw" alt="Kiara portrait with brunette hair and gold hoop earrings" fetchpriority="high" decoding="async">
+            <noscript><img class="feed-media" src="/assets/boards/b1-6433-750.webp" width="750" height="1334" alt="Kiara portrait with brunette hair and gold hoop earrings"></noscript>
           </div>
           <div class="empty-photo" id="empty-photo" role="img" aria-label="Photo coming soon" hidden></div>
           <figcaption class="photo-caption" id="photo-caption"><span class="code" id="agent-code">B1</span><h2 id="agent-name">Kiara</h2><p>AI visual creator</p></figcaption>
@@ -181,7 +182,7 @@
       "use strict";
       const email = "vbluia@outlook.com";
       const boards = [
-        { code: "B1", name: "Kiara", kind: "free", src: "/assets/magazine/signature-style-1086.webp", srcset: "/assets/magazine/signature-style-480.webp 480w, /assets/magazine/signature-style-1086.webp 1086w", width: 1086, height: 1448, alt: "Kiara in a denim outfit outside a flower shop" },
+        { code: "B1", name: "Kiara", kind: "free", src: "/assets/boards/b1-6433-750.webp", srcset: "/assets/boards/b1-6433-480.webp 480w, /assets/boards/b1-6433-750.webp 750w", width: 750, height: 1334, alt: "Kiara portrait with brunette hair and gold hoop earrings" },
         { code: "B2", name: "Sophia", kind: "paid", src: "/test/media/b2-960.webp", srcset: "/test/media/b2-480.webp 480w, /test/media/b2-960.webp 960w", width: 960, height: 1197, alt: "Sophia with a short brunette bob and a soft grey top" },
         { code: "B3", name: "Mila", kind: "paid", src: "/test/media/b3-940.webp", srcset: "/test/media/b3-480.webp 480w, /test/media/b3-940.webp 940w", width: 940, height: 1672, alt: "Mila taking a mirror selfie in a red dress" },
         { code: "B4", name: "Eva", kind: "paid", src: "/test/media/b4-750.webp", srcset: "/test/media/b4-480.webp 480w, /test/media/b4-750.webp 750w", width: 750, height: 1334, alt: "Eva with blonde hair in a red swimwear look" },
