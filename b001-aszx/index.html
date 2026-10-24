@@ -186,10 +186,6 @@
     .album-tab:hover { border-color: #d8adc45e; }
     .album-tab.is-active { border-color: #f1cedb; background: linear-gradient(135deg, #edc6d7, #d9c59b); color: #281a22; box-shadow: 0 5px 18px #00000024; }
     .album-tab.is-active small { color: #624856; }
-    .album-tab.is-spicy { border-color: #e575746b; background: linear-gradient(135deg, #642534, #3e1a29); color: #ffd4cc; }
-    .album-tab.is-spicy small { color: #e3aaa7; }
-    .album-tab.is-spicy.is-active { border-color: #ffb3a6; background: linear-gradient(135deg, #c34b57, #8c263c); color: #fff5ef; }
-    .album-tab.is-spicy.is-active small { color: #ffe1d8; }
     #panel-spicy { --media-accent: #f4a18f; }
     .spicy-post { border-color: #e5757440; }
     .spicy-post .photo-strip { border-bottom-color: #e5757426; background: linear-gradient(90deg, #512530, #2c1722); color: #ffd7c9; }
@@ -225,10 +221,83 @@
     .chat-dismiss { width: 100%; min-height: 44px; margin-top: 21px; padding: 10px 16px; border: 1px solid #edc6d74d; border-radius: 11px; background: linear-gradient(135deg, #edc6d7, #d9c59b); color: #281a22; font-size: 12px; font-weight: 700; cursor: pointer; }
     @keyframes chatArrive { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: reduce) { .chat-trigger { transition: none; } .chat-dialog[open] { animation: none; } }
+    :root { --subscribe-bar-height: calc(70px + env(safe-area-inset-top, 0px)); }
+    html { scroll-padding-top: calc(var(--subscribe-bar-height) + 12px); scrollbar-gutter: stable; }
+    body { padding-top: var(--subscribe-bar-height); }
+    body.modal-open { overflow: hidden; }
+    a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .subscribe-bar {
+      position: fixed; inset: 0 0 auto; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      min-height: var(--subscribe-bar-height);
+      padding: calc(12px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) 12px max(14px, env(safe-area-inset-left, 0px));
+      border-bottom: 1px solid #e8c9a478;
+      background: linear-gradient(110deg, #473044, #302637 60%, #493b2c);
+      box-shadow: 0 5px 24px #09070c66;
+    }
+    .subscribe-bar-copy { display: grid; gap: 5px; min-width: 0; }
+    .subscribe-bar-copy strong { color: #fff4f7; font-size: 13px; line-height: 1.3; letter-spacing: -.15px; }
+    .subscribe-bar-copy span { color: #dac5d0; font-size: 10px; line-height: 1.3; }
+    .subscribe-bar-copy b { color: #f4dcac; font-weight: 700; }
+    .subscribe-open { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 11px 15px; border: 1px solid #f5dcbb; border-radius: 11px; background: linear-gradient(125deg, #f5d5df, #e7c791); color: #34212a; font-size: 12px; font-weight: 750; cursor: pointer; box-shadow: 0 3px 14px #0b070a33; transition: box-shadow .2s ease, transform .2s ease; }
+    .subscribe-open:hover { transform: translateY(-1px); box-shadow: 0 5px 20px #e8c4b130; }
+    .subscribe-open svg, .subscribe-primary svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .subscribe-dialog { width: min(92vw, 492px); max-width: calc(100vw - 24px); max-height: calc(100dvh - 28px); margin: auto; padding: 0; overflow-y: auto; overscroll-behavior: contain; border: 1px solid #d3afc36b; border-radius: 24px; background: #211a27; color: var(--text); box-shadow: 0 26px 100px #000000a0; scrollbar-width: thin; scrollbar-color: #715567 #211a27; }
+    .subscribe-dialog::backdrop { background: #09060bd4; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .subscribe-dialog-header { position: relative; display: flex; align-items: center; gap: 12px; padding: 23px 54px 19px 24px; border-bottom: 1px solid #efd3e11a; background: radial-gradient(ellipse at 5% 0, #ad6d8f38, transparent 75%), #2d2233; }
+    .subscribe-avatar { flex: 0 0 auto; width: 52px; height: 52px; border: 1px solid #e7c3948c; border-radius: 16px; object-fit: cover; object-position: center 38%; background: #302936; }
+    .subscribe-kicker { margin-bottom: 5px; color: #e4c395; font-size: 9px; font-weight: 750; letter-spacing: 1.6px; text-transform: uppercase; }
+    .subscribe-dialog h2 { font-size: 21px; line-height: 1.2; font-weight: 650; letter-spacing: -.6px; }
+    .subscribe-dialog .chat-close { top: 12px; right: 10px; }
+    .subscribe-content { padding: 21px 24px 0; }
+    .subscribe-intro { color: #d5c2cf; font-size: 12px; line-height: 1.65; }
+    .subscribe-price { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 17px 0 18px; padding: 15px 17px; border: 1px solid #edc9973b; border-radius: 15px; background: linear-gradient(120deg, #423039, #322b2c); }
+    .subscribe-price-main { display: flex; align-items: baseline; gap: 6px; }
+    .subscribe-price-main strong { color: #ffead0; font-size: 37px; line-height: 1; font-weight: 650; letter-spacing: -1.6px; }
+    .subscribe-price-main span { color: #dcc6cf; font-size: 12px; }
+    .subscribe-price-note { color: #c5afba; font-size: 10px; line-height: 1.6; text-align: right; }
+    .subscribe-benefits { display: grid; gap: 11px; margin: 0 0 21px; padding: 0; list-style: none; }
+    .subscribe-benefits li { display: flex; align-items: flex-start; gap: 10px; color: #eadbe4; font-size: 12px; line-height: 1.5; }
+    .subscribe-benefits svg { flex: 0 0 auto; width: 18px; height: 18px; padding: 3px; border-radius: 50%; background: #e7c9971c; color: #e9cc9d; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .subscribe-process { padding-top: 18px; border-top: 1px solid #e8c9dd20; }
+    .subscribe-process h3 { margin: 0 0 13px; color: #f2d8e5; font-size: 12px; font-weight: 700; }
+    .subscribe-steps { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; counter-reset: subscribe-step; }
+    .subscribe-steps li { display: flex; align-items: flex-start; gap: 11px; counter-increment: subscribe-step; }
+    .subscribe-steps li::before { content: counter(subscribe-step); flex: 0 0 auto; display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid #d2a9c03d; border-radius: 8px; background: #3b293d; color: #edc7dc; font-size: 10px; font-weight: 700; }
+    .subscribe-steps strong { display: block; margin: 0 0 3px; color: #ead7e3; font-size: 11px; line-height: 1.5; font-weight: 650; }
+    .subscribe-steps p { color: #bfaab9; font-size: 11px; line-height: 1.65; }
+    .subscribe-delivery { margin: 18px 0 0; padding: 13px 14px; border: 1px solid #e4c08f3b; border-radius: 12px; background: #e8c1900c; color: #ddc9bc; font-size: 11px; line-height: 1.75; }
+    .subscribe-delivery strong { color: #f5dfbe; font-weight: 650; }
+    .subscribe-actions { position: sticky; bottom: -1px; padding: 18px 24px 19px; border-top: 1px solid #e8c9dd17; background: #211a27f5; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .subscribe-primary { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 13px; border: 1px solid #f5dfbf; border-radius: 12px; background: linear-gradient(120deg, #f2cadc, #e4ca98); color: #302029; text-align: center; text-decoration: none; font-size: 12px; font-weight: 750; box-shadow: 0 4px 16px #00000024; transition: filter .2s ease; }
+    .subscribe-primary:hover { filter: brightness(1.07); }
+    .subscribe-action-note { margin-top: 9px; color: #baa5b5; text-align: center; font-size: 10px; line-height: 1.6; }
+    .subscribe-contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 5px 9px; margin: 10px 0 0; color: #c8b2c1; font-size: 10px; line-height: 1.5; }
+    .subscribe-contact a { color: #d8bfd0; text-decoration-color: #d8bfd044; text-underline-offset: 3px; }
+    .subscribe-copy { min-height: 32px; padding: 5px 8px; border: 1px solid #e7b2c92e; border-radius: 7px; background: #3b2a3e; color: #e2c8d8; font-size: 10px; cursor: pointer; }
+    .subscribe-copy-status { display: block; min-height: 15px; color: #e5c997; text-align: center; font-size: 10px; line-height: 1.5; }
+    @media (min-width: 700px) { .subscribe-bar { padding-left: 22px; padding-right: 22px; } .subscribe-bar-copy strong { font-size: 15px; } .subscribe-bar-copy span { font-size: 11px; } }
+    @media (max-width: 359px) { .subscribe-bar { gap: 8px; } .subscribe-bar-copy strong { font-size: 12px; } .subscribe-open { gap: 5px; padding: 10px; font-size: 11px; } .subscribe-content { padding-left: 18px; padding-right: 18px; } .subscribe-dialog-header { padding-left: 18px; } .subscribe-actions { padding-left: 18px; padding-right: 18px; } }
+    @media (prefers-reduced-motion: no-preference) {
+      .subscribe-bar { animation: subscribeBarArrive .65s cubic-bezier(.22,.61,.36,1) both; }
+      .subscribe-dialog[open] { animation: subscribeArrive .34s cubic-bezier(.22,.61,.36,1) both; }
+      .subscribe-dialog[open]::backdrop { animation: subscribeBackdrop .3s ease both; }
+      .subscribe-dialog.is-closing { animation: subscribeLeave .18s ease both; }
+      .subscribe-dialog.is-closing::backdrop { animation: subscribeBackdrop .18s ease reverse both; }
+      @keyframes subscribeBarArrive { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes subscribeArrive { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      @keyframes subscribeLeave { to { opacity: 0; transform: translateY(10px) scale(.985); } }
+      @keyframes subscribeBackdrop { from { opacity: 0; } to { opacity: 1; } }
+    }
+    @media (prefers-reduced-motion: reduce) { .subscribe-open, .subscribe-primary { transition: none; } }
   </style>
   <noscript><style>.feed-media[data-src] { display: none; }</style></noscript>
 </head>
 <body>
+  <aside class="subscribe-bar" aria-label="Kiara’s Board subscription">
+    <div class="subscribe-bar-copy"><strong>Subscribe to Kiara’s Board</strong><span>Full Pro access · <b>$5 USD / month</b></span></div>
+    <button class="subscribe-open" id="subscribe-open" type="button" aria-haspopup="dialog" aria-controls="subscribe-dialog" aria-expanded="false"><span>Join Pro</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </aside>
   <header class="masthead">
     <h1><span class="model-title">Kiara</span><span>Bluia Board</span><span class="pro">Pro</span></h1>
     <button class="chat-trigger" id="chat-open" type="button" aria-haspopup="dialog" aria-controls="chat-dialog" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18l-2 3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5Z"/><path d="M8 8h8M8 12h5"/></svg><span>Chat</span></button>
@@ -238,7 +307,7 @@
       <button class="album-tab nav-btn is-active" id="tab-about" data-album="about" role="tab" aria-selected="true" aria-controls="panel-about" tabindex="0" type="button"><strong>About me</strong><small>Kiara</small></button>
       <button class="album-tab nav-btn" id="tab-images" data-album="images" role="tab" aria-selected="false" aria-controls="panel-images" tabindex="-1" type="button"><strong>Images</strong><small data-item-count data-count-kind="photo">5 photos</small></button>
       <button class="album-tab nav-btn" id="tab-videos" data-album="videos" role="tab" aria-selected="false" aria-controls="panel-videos" tabindex="-1" type="button"><strong>Videos</strong><small data-item-count data-count-kind="video">1 video</small></button>
-      <button class="album-tab nav-btn is-spicy" id="tab-spicy" data-album="spicy" role="tab" aria-selected="false" aria-controls="panel-spicy" tabindex="-1" type="button"><strong>Spicy 🌶️</strong><small data-item-count data-count-kind="item">1 item</small></button>
+      <button class="album-tab nav-btn" id="tab-spicy" data-album="spicy" role="tab" aria-selected="false" aria-controls="panel-spicy" tabindex="-1" type="button"><strong>Spicy 🌶️</strong><small data-item-count data-count-kind="item">1 item</small></button>
       <button class="album-tab nav-btn" id="tab-friends" data-album="friends" role="tab" aria-selected="false" aria-controls="panel-friends" tabindex="-1" type="button"><strong>Friends</strong><small data-item-count data-count-kind="item">3 items</small></button>
       <button class="album-tab nav-btn" id="tab-a1" data-album="a1" role="tab" aria-selected="false" aria-controls="panel-a1" tabindex="-1" type="button"><strong>A1</strong><small data-item-count data-count-kind="item">2 items</small></button>
       <button class="album-tab nav-btn" id="tab-a2" data-album="a2" role="tab" aria-selected="false" aria-controls="panel-a2" tabindex="-1" type="button"><strong>A2</strong><small data-item-count data-count-kind="item">2 items</small></button>
@@ -510,6 +579,95 @@
         trigger.setAttribute("aria-expanded", "false");
         trigger.focus({ preventScroll: true });
       });
+    })();
+  </script>
+  <dialog class="subscribe-dialog" id="subscribe-dialog" aria-labelledby="subscribe-title" aria-describedby="subscribe-intro">
+    <div class="subscribe-dialog-header">
+      <img class="subscribe-avatar" id="subscribe-avatar" data-subscribe-src="/assets/boards/b1-6433-480.webp" width="52" height="52" alt="Kiara" decoding="async">
+      <div><p class="subscribe-kicker">Kiara · Board Pro</p><h2 id="subscribe-title">Subscribe to Kiara’s Board</h2></div>
+      <button class="chat-close" id="subscribe-close" type="button" aria-label="Close subscription details" autofocus>×</button>
+    </div>
+    <div class="subscribe-content">
+      <p class="subscribe-intro" id="subscribe-intro">Get full access to Kiara’s photos, videos and albums, with new posts added to her board.</p>
+      <div class="subscribe-price"><div class="subscribe-price-main"><strong>$5</strong><span>/ month</span></div><p class="subscribe-price-note">USD · monthly subscription<br>Kiara’s board only</p></div>
+      <ul class="subscribe-benefits" aria-label="Subscription benefits">
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>Full access to Kiara’s Board Pro</span></li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>Photos, videos, Spicy, Friends and themed albums</span></li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg><span>New posts published on her board while you subscribe</span></li>
+      </ul>
+      <section class="subscribe-process" aria-labelledby="subscribe-process-title">
+        <h3 id="subscribe-process-title">How to get your access</h3>
+        <ol class="subscribe-steps">
+          <li><div><strong>Request your payment link</strong><p>Email us using the button below. We’ll reply with the payment link for Kiara’s $5/month subscription.</p></div></li>
+          <li><div><strong>Pay and provide your email</strong><p>During payment, enter the email address where you want to receive your full access link.</p></div></li>
+          <li><div><strong>Receive your Pro board link</strong><p>After payment, check the email address you provided, including your spam folder.</p></div></li>
+        </ol>
+      </section>
+      <p class="subscribe-delivery"><strong>After payment, Kiara’s Board Pro full access link will be shared with you by email</strong> at the email address you provide during payment.</p>
+    </div>
+    <div class="subscribe-actions">
+      <a class="subscribe-primary" id="subscribe-email" href="mailto:vbluia@outlook.com?subject=Kiara%20B001%20%E2%80%94%20%245%2Fmonth%20Board%20Pro%20subscription&amp;body=Hi%2C%0A%0AI%20would%20like%20to%20subscribe%20to%20Kiara%E2%80%99s%20Board%20Pro%20%28B001%29%20for%20%245%20USD%20per%20month.%20Please%20send%20me%20the%20payment%20link.%0A%0AI%20understand%20that%20after%20payment%2C%20Kiara%E2%80%99s%20Board%20Pro%20full%20access%20link%20will%20be%20shared%20with%20me%20at%20the%20email%20address%20I%20provide%20during%20payment.%0A%0AThank%20you."><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span>Email to subscribe · $5/month</span></a>
+      <p class="subscribe-action-note">Opens your email app with a ready-to-send request.</p>
+      <div class="subscribe-contact"><a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a><button class="subscribe-copy" id="subscribe-copy" type="button">Copy email</button></div>
+      <span class="subscribe-copy-status" id="subscribe-copy-status" role="status" aria-live="polite"></span>
+    </div>
+  </dialog>
+  <script>
+    (() => {
+      "use strict";
+      const trigger = document.getElementById("subscribe-open");
+      const dialog = document.getElementById("subscribe-dialog");
+      const avatar = document.getElementById("subscribe-avatar");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let closeTimer;
+      function unlockPage() {
+        if (!document.querySelector("dialog[open]")) document.body.classList.remove("modal-open");
+      }
+      function closeSubscribe() {
+        if (!dialog.open || dialog.classList.contains("is-closing")) return;
+        if (reducedMotion.matches) { dialog.close(); return; }
+        dialog.classList.add("is-closing");
+        closeTimer = window.setTimeout(() => dialog.close(), 180);
+      }
+      trigger.addEventListener("click", () => {
+        if (dialog.open) return;
+        window.clearTimeout(closeTimer);
+        dialog.classList.remove("is-closing");
+        if (!avatar.getAttribute("src")) avatar.src = avatar.dataset.subscribeSrc;
+        document.body.classList.add("modal-open");
+        dialog.showModal();
+        dialog.scrollTop = 0;
+        document.getElementById("subscribe-copy-status").textContent = "";
+        trigger.setAttribute("aria-expanded", "true");
+      });
+      document.getElementById("subscribe-close").addEventListener("click", closeSubscribe);
+      dialog.addEventListener("cancel", event => { event.preventDefault(); closeSubscribe(); });
+      dialog.addEventListener("click", event => {
+        if (event.target !== dialog) return;
+        const bounds = dialog.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeSubscribe();
+      });
+      dialog.addEventListener("close", () => {
+        window.clearTimeout(closeTimer);
+        dialog.classList.remove("is-closing");
+        trigger.setAttribute("aria-expanded", "false");
+        unlockPage();
+        trigger.focus({ preventScroll: true });
+      });
+      document.getElementById("subscribe-copy").addEventListener("click", async () => {
+        const status = document.getElementById("subscribe-copy-status");
+        try {
+          await navigator.clipboard.writeText("vbluia@outlook.com");
+          status.textContent = "Email copied";
+        } catch {
+          status.textContent = "Email us at vbluia@outlook.com";
+        }
+      });
+      const chat = document.getElementById("chat-dialog");
+      document.getElementById("chat-open").addEventListener("click", () => {
+        if (chat.open) document.body.classList.add("modal-open");
+      });
+      chat.addEventListener("close", unlockPage);
     })();
   </script>
   <script src="/media-loading.js?v=20261023-scroll-2" defer></script>
