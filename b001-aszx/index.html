@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#302936">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Kaira's Bluia Board Pro. Photos and moments from Bluia B001.">
-  <title>Bluia Board Pro — Kaira · B001</title>
+  <meta name="description" content="Kiara's Bluia Board Pro. Photos and moments from Bluia B001.">
+  <title>Kiara · Bluia Board Pro · B001</title>
   <style>
     :root {
       color-scheme: dark;
@@ -171,15 +171,56 @@
       .collection-heading { animation-delay: .12s; }
       @keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     }
+
+    [hidden] { display: none !important; }
+    button { font: inherit; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, .panel:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .masthead h1 { flex-wrap: wrap; }
+    .model-title { color: #efc6d8; font-weight: 750; }
+    .album-nav { border-bottom: 1px solid #e7b2c92b; background: linear-gradient(110deg, #242332, #312333 65%, #241e2c); }
+    .album-tabs { display: flex; gap: 8px; overflow-x: auto; overscroll-behavior-x: contain; padding: 13px 14px 15px; scroll-snap-type: x proximity; scrollbar-width: none; }
+    .album-tabs::-webkit-scrollbar { display: none; }
+    .album-tab { flex: 1 0 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-width: 96px; min-height: 53px; padding: 10px 12px; border: 1px solid #ffffff19; border-radius: 12px; background: #201925; color: #e0cfda; cursor: pointer; scroll-snap-align: center; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+    .album-tab strong { font-size: 12px; line-height: 1.1; font-weight: 750; white-space: nowrap; }
+    .album-tab small { color: #ab95a5; font-size: 9px; line-height: 1; letter-spacing: .15px; }
+    .album-tab:hover { border-color: #d8adc45e; }
+    .album-tab.is-active { border-color: #f1cedb; background: linear-gradient(135deg, #edc6d7, #d9c59b); color: #281a22; box-shadow: 0 5px 18px #00000024; }
+    .album-tab.is-active small { color: #624856; }
+    .album-tab.is-spicy { border-color: #e575746b; background: linear-gradient(135deg, #642534, #3e1a29); color: #ffd4cc; }
+    .album-tab.is-spicy small { color: #e3aaa7; }
+    .album-tab.is-spicy.is-active { border-color: #ffb3a6; background: linear-gradient(135deg, #c34b57, #8c263c); color: #fff5ef; }
+    .album-tab.is-spicy.is-active small { color: #ffe1d8; }
+    .panel { width: 100%; }
+    .media-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 14px 17px; }
+    .media-heading h2 { font-size: 15px; font-weight: 600; }
+    .media-heading p { color: var(--muted); font-size: 10px; }
+    .album-empty { display: grid; justify-items: center; align-content: center; gap: 12px; min-height: 340px; margin: 0 14px 22px; padding: 32px 22px; border: 1px solid #e7b2c926; border-radius: 18px 18px 0 0; background: radial-gradient(ellipse at 50% 0, #78526d1c, transparent 65%), #18121c; text-align: center; box-shadow: 0 14px 32px #00000020; }
+    .album-empty .album-mark { display: grid; place-items: center; min-width: 56px; height: 56px; padding: 0 12px; border: 1px solid #e7b2c92e; border-radius: 16px; background: #302332; color: #eac2d5; font-size: 20px; font-weight: 700; }
+    .album-empty h2 { color: #f1dce7; font-size: 19px; font-weight: 600; letter-spacing: -.3px; }
+    .album-empty p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .spicy-empty { border-color: #db77733a; background: radial-gradient(ellipse at 50% 0, #9e394025, transparent 65%), #20131b; }
+    .spicy-empty .album-mark { border-color: #e98c6b45; background: #65302d66; }
+    .spicy-empty h2 { color: #ffccc2; }
+    @media (prefers-reduced-motion: reduce) { .album-tab { transition: none; } }
   </style>
   <noscript><style>.feed-media[data-src] { display: none; }</style></noscript>
 </head>
 <body>
   <header class="masthead">
-    <h1>Bluia Board <span class="pro">Pro</span></h1>
+    <h1><span class="model-title">Kiara</span><span>Bluia Board</span><span class="pro">Pro</span></h1>
   </header>
+  <nav class="album-nav" aria-label="Kiara’s media albums">
+    <div class="album-tabs" role="tablist" aria-label="Choose a media album">
+      <button class="album-tab nav-btn is-active" id="tab-images" data-album="images" role="tab" aria-selected="true" aria-controls="panel-images" tabindex="0" type="button"><strong>Images</strong><small>4 photos</small></button>
+      <button class="album-tab nav-btn" id="tab-videos" data-album="videos" role="tab" aria-selected="false" aria-controls="panel-videos" tabindex="-1" type="button"><strong>Videos</strong><small>1 video</small></button>
+      <button class="album-tab nav-btn is-spicy" id="tab-spicy" data-album="spicy" role="tab" aria-selected="false" aria-controls="panel-spicy" tabindex="-1" type="button"><strong>Spicy 🌶️</strong><small>Album</small></button>
+      <button class="album-tab nav-btn" id="tab-a1" data-album="a1" role="tab" aria-selected="false" aria-controls="panel-a1" tabindex="-1" type="button"><strong>A1</strong><small>Album</small></button>
+      <button class="album-tab nav-btn" id="tab-a2" data-album="a2" role="tab" aria-selected="false" aria-controls="panel-a2" tabindex="-1" type="button"><strong>A2</strong><small>Album</small></button>
+    </div>
+  </nav>
 
   <main>
+    <section class="panel active" id="panel-images" role="tabpanel" aria-labelledby="tab-images" tabindex="0">
     <section class="profile" aria-labelledby="agent-name">
       <div class="profile-meta"><span class="agent-code">B001</span></div>
       <figure class="portrait">
@@ -187,59 +228,133 @@
           data-src="/assets/boards/b1-6433-750.webp"
           data-srcset="/assets/boards/b1-6433-480.webp 480w, /assets/boards/b1-6433-750.webp 750w"
           sizes="100vw"
-          alt="Kaira portrait with brunette hair and gold hoop earrings"
+          alt="Kiara portrait with brunette hair and gold hoop earrings"
           fetchpriority="high" decoding="async">
-        <noscript><img width="750" height="1334" src="/assets/boards/b1-6433-750.webp" alt="Kaira portrait with brunette hair and gold hoop earrings"></noscript>
-        <figcaption><h2 id="agent-name">Kaira</h2><p>B001 · AI visual creator</p></figcaption>
+        <noscript><img width="750" height="1334" src="/assets/boards/b1-6433-750.webp" alt="Kiara portrait with brunette hair and gold hoop earrings"></noscript>
+        <figcaption><h2 id="agent-name">Kiara</h2><p>B001 · AI visual creator</p></figcaption>
       </figure>
     </section>
-
-    <section class="collection" aria-labelledby="collection-title">
-      <div class="collection-heading"><h2 id="collection-title">On Kaira’s board</h2><p>3 photos · 1 video</p></div>
-
+      <section class="collection" aria-labelledby="collection-title">
+        <div class="collection-heading"><h2 id="collection-title">On Kiara’s board</h2><p>3 photos</p></div>
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kaira · B001</span><span>01 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · B001</span><span>01 / 03</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/assets/magazine/style-story-941.webp"
           data-srcset="/assets/magazine/style-story-480.webp 480w, /assets/magazine/style-story-941.webp 941w"
           sizes="100vw"
-          alt="Kaira wearing a grey outfit in soft indoor light" loading="lazy" decoding="async">
-        <noscript><img width="941" height="1672" src="/assets/magazine/style-story-941.webp" alt="Kaira wearing a grey outfit in soft indoor light" loading="lazy"></noscript>
-      </figure>
-
-      <figure class="photo-post video-post">
-        <figcaption class="photo-strip"><span>Kaira · B001</span><span>Video 1/1</span></figcaption>
-        <video class="feed-media board-video" width="540" height="960"
-          data-src="/b001-aszx/video-1-preview.mp4"
-          aria-label="Kaira in a purple outfit — Video 1 of 1" controls playsinline preload="auto">
-          Your browser does not support video playback.
-        </video>
-        <noscript><video class="board-video" src="/b001-aszx/video-1-preview.mp4" aria-label="Kaira in a purple outfit — Video 1 of 1" controls playsinline preload="none"></video></noscript>
+          alt="Kiara wearing a grey outfit in soft indoor light" loading="lazy" decoding="async">
+        <noscript><img width="941" height="1672" src="/assets/magazine/style-story-941.webp" alt="Kiara wearing a grey outfit in soft indoor light" loading="lazy"></noscript>
       </figure>
 
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kaira · B001</span><span>02 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · B001</span><span>02 / 03</span></figcaption>
         <img class="feed-media" width="1122" height="1402"
           data-src="/assets/magazine/personal-style-1122.webp"
           data-srcset="/assets/magazine/personal-style-480.webp 480w, /assets/magazine/personal-style-1122.webp 1122w"
           sizes="100vw"
-          alt="Kaira in her grey outfit in a sunny garden" loading="lazy" decoding="async">
-        <noscript><img width="1122" height="1402" src="/assets/magazine/personal-style-1122.webp" alt="Kaira in her grey outfit in a sunny garden" loading="lazy"></noscript>
+          alt="Kiara in her grey outfit in a sunny garden" loading="lazy" decoding="async">
+        <noscript><img width="1122" height="1402" src="/assets/magazine/personal-style-1122.webp" alt="Kiara in her grey outfit in a sunny garden" loading="lazy"></noscript>
       </figure>
 
       <figure class="photo-post">
-        <figcaption class="photo-strip"><span>Kaira · B001</span><span>03 / 03</span></figcaption>
+        <figcaption class="photo-strip"><span>Kiara · B001</span><span>03 / 03</span></figcaption>
         <img class="feed-media" width="941" height="1672"
           data-src="/assets/magazine/fashion-detail-941.webp"
           data-srcset="/assets/magazine/fashion-detail-480.webp 480w, /assets/magazine/fashion-detail-941.webp 941w"
           sizes="100vw"
-          alt="Kaira in a neutral-toned outfit on a city balcony" loading="lazy" decoding="async">
-        <noscript><img width="941" height="1672" src="/assets/magazine/fashion-detail-941.webp" alt="Kaira in a neutral-toned outfit on a city balcony" loading="lazy"></noscript>
+          alt="Kiara in a neutral-toned outfit on a city balcony" loading="lazy" decoding="async">
+        <noscript><img width="941" height="1672" src="/assets/magazine/fashion-detail-941.webp" alt="Kiara in a neutral-toned outfit on a city balcony" loading="lazy"></noscript>
       </figure>
+      </section>
+    </section>
+
+    <section class="panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos" tabindex="0" hidden>
+      <div class="media-heading"><h2>Kiara’s videos</h2><p>1 video</p></div>
+      <figure class="photo-post video-post">
+        <figcaption class="photo-strip"><span>Kiara · B001</span><span>Video 1/1</span></figcaption>
+        <video class="feed-media board-video" width="540" height="960"
+          data-src="/b001-aszx/video-1-preview.mp4"
+          aria-label="Kiara in a purple outfit — Video 1 of 1" controls playsinline preload="auto">
+          Your browser does not support video playback.
+        </video>
+        <noscript><video class="board-video" src="/b001-aszx/video-1-preview.mp4" aria-label="Kiara in a purple outfit — Video 1 of 1" controls playsinline preload="none"></video></noscript>
+      </figure>
+    </section>
+
+    <section class="panel" id="panel-spicy" role="tabpanel" aria-labelledby="tab-spicy" tabindex="0" hidden>
+      <div class="album-empty spicy-empty">
+        <span class="album-mark" aria-hidden="true">🌶️</span>
+        <h2>Spicy 🌶️</h2>
+        <p>This album is empty for now.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-a1" role="tabpanel" aria-labelledby="tab-a1" tabindex="0" hidden>
+      <div class="album-empty">
+        <span class="album-mark" aria-hidden="true">A1</span>
+        <h2>Album A1</h2>
+        <p>This album is empty for now.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-a2" role="tabpanel" aria-labelledby="tab-a2" tabindex="0" hidden>
+      <div class="album-empty">
+        <span class="album-mark" aria-hidden="true">A2</span>
+        <h2>Album A2</h2>
+        <p>This album is empty for now.</p>
+      </div>
     </section>
   </main>
 
   <footer>Bluias · B001</footer>
+
+  <script>
+    (() => {
+      "use strict";
+      const tabs = [...document.querySelectorAll('[role="tab"]')];
+      const panels = tabs.map(tab => document.getElementById(tab.getAttribute("aria-controls")));
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let selected = 0;
+      function selectAlbum(index, options = {}) {
+        selected = index;
+        tabs.forEach((tab, position) => {
+          const active = position === index;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", String(active));
+          tab.tabIndex = active ? 0 : -1;
+          panels[position].hidden = !active;
+          panels[position].classList.toggle("active", active);
+          if (!active) panels[position].querySelectorAll("video").forEach(video => video.pause());
+        });
+        if (options.updateHash) history.replaceState(null, "", "#" + tabs[index].dataset.album);
+        if (options.focus) tabs[index].focus({ preventScroll: true });
+        if (options.scrollTab) tabs[index].scrollIntoView({ block: "nearest", inline: "center", behavior: reducedMotion.matches ? "auto" : "smooth" });
+        if (options.animate && !reducedMotion.matches && panels[index].animate) {
+          panels[index].animate([{ opacity: .25, transform: "translateY(8px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 320, easing: "cubic-bezier(.22,.61,.36,1)" });
+        }
+      }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => selectAlbum(index, { updateHash: true, scrollTab: true, animate: true }));
+        tab.addEventListener("keydown", event => {
+          let next;
+          if (event.key === "ArrowRight") next = (selected + 1) % tabs.length;
+          else if (event.key === "ArrowLeft") next = (selected - 1 + tabs.length) % tabs.length;
+          else if (event.key === "Home") next = 0;
+          else if (event.key === "End") next = tabs.length - 1;
+          else return;
+          event.preventDefault();
+          selectAlbum(next, { updateHash: true, focus: true, scrollTab: true, animate: true });
+        });
+      });
+      function fromHash() {
+        const key = location.hash.slice(1).toLowerCase();
+        const index = tabs.findIndex(tab => tab.dataset.album === key);
+        selectAlbum(index >= 0 ? index : 0);
+      }
+      fromHash();
+      window.addEventListener("hashchange", fromHash);
+    })();
+  </script>
   <script src="/media-loading.js?v=20261023-scroll-2" defer></script>
 </body>
 </html>
