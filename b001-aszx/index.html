@@ -214,17 +214,18 @@
     .notifications-heading h2 { color: #f1dce8; font-size: 13px; font-weight: 700; letter-spacing: -.15px; }
     .notifications-heading p { margin-top: 4px; color: #baa5b5; font-size: 10px; line-height: 1.5; }
     .notifications-close { display: grid; flex: 0 0 auto; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid #e7b2c91c; border-radius: 9px; background: #ffffff05; color: #dbc3d3; font-size: 21px; line-height: 1; cursor: pointer; }
-    .notifications-list { max-height: min(345px, 48dvh); margin: 0; padding: 5px; overflow-y: auto; overscroll-behavior: contain; list-style: none; scrollbar-width: thin; scrollbar-color: #715567 #231a29; }
-    .notification-item { display: flex; align-items: center; gap: 11px; width: 100%; min-height: 62px; padding: 12px 10px; border: 0; border-bottom: 1px solid #e7b2c910; border-radius: 9px; background: transparent; color: inherit; text-align: left; cursor: pointer; transition: background .18s ease; }
+    .notifications-list { max-height: min(300px, 48dvh); margin: 0; padding: 5px; overflow-y: auto; overscroll-behavior: contain; list-style: none; scrollbar-width: thin; scrollbar-color: #715567 #231a29; }
+    .notification-item { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 10px; border: 0; border-bottom: 1px solid #e7b2c910; border-radius: 7px; background: transparent; color: inherit; text-align: left; cursor: pointer; transition: background .18s ease; }
     .notification-item:hover { background: #e7b2c90c; }
     .notifications-list li:last-child .notification-item { border-bottom-color: transparent; }
-    .notification-icon { display: grid; flex: 0 0 auto; place-items: center; width: 34px; height: 34px; border: 1px solid #e7b2c92b; border-radius: 11px; background: #3a293d; color: #e8bad2; }
-    .notification-icon.is-video { border-color: #e4cc8238; background: #3a302b; color: #e8ce96; }
-    .notification-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-    .notification-copy { display: grid; gap: 5px; }
-    .notification-copy strong { color: #ead6e3; font-size: 11px; line-height: 1.4; font-weight: 600; }
-    .notification-copy small { color: #bca4b5; font-size: 10px; line-height: 1.4; }
-    .notifications-footer { padding: 10px 16px; border-top: 1px solid #e7b2c91c; color: #aa91a2; font-size: 9px; line-height: 1.5; }
+    .notification-icon { display: grid; flex: 0 0 auto; place-items: center; width: 19px; height: 19px; color: #e8bad2; }
+    .notification-icon.is-video { color: #e8ce96; }
+    .notification-icon.is-spicy { color: #f0939d; }
+    .notification-icon.is-friend { color: #b8c7f3; }
+    .notification-icon.is-album { color: #d0b4ea; }
+    .notification-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .notification-copy { display: block; flex: 1; min-width: 0; overflow: hidden; color: #ead6e3; font-size: 11px; line-height: 1.45; font-weight: 500; white-space: nowrap; text-overflow: ellipsis; }
+    @media (pointer: coarse) { .notification-item { min-height: 44px; } }
     .notifications-empty { padding: 24px 16px; color: var(--muted); text-align: center; font-size: 12px; }
     .photo-post { scroll-margin-top: 12px; }
     .photo-post:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
@@ -333,7 +334,6 @@
     <section class="notifications-panel" id="notifications-panel" role="dialog" aria-labelledby="notifications-title" hidden>
       <div class="notifications-heading"><div><h2 id="notifications-title">Kiara’s latest posts</h2><p id="notifications-summary">15 posted items · Newest first</p></div><button class="notifications-close" id="notifications-close" type="button" aria-label="Close notifications">×</button></div>
       <ol class="notifications-list" id="notifications-list" aria-label="Kiara’s posted photos and videos"></ol>
-      <p class="notifications-footer">Select a post to open it in its album.</p>
     </section>
   </header>
   <nav class="album-nav" aria-label="Kiara’s media albums">
@@ -769,6 +769,13 @@
         const posts = getPosts();
         refreshSummary(posts);
         list.replaceChildren();
+        const icons = {
+          image: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="m4 17 5-5 4 4 3-3 5 5"/></svg>',
+          video: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="m10 8 6 4-6 4Z"/></svg>',
+          spicy: '<svg viewBox="0 0 24 24"><path d="M16 8c0-4 2-5 4-5M16 8c-3-4-9-2-9 3 0 5-3 8-5 9 6 1 15-3 16-9 .2-1.4-.7-2.6-2-3ZM12 8c1 1 3 1 4 0"/></svg>',
+          friend: '<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M21 21v-2a5 5 0 0 0-4-4"/></svg>',
+          album: '<svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="14" rx="3"/><path d="M7 3h10M6 5h12M8 12h8M8 16h5"/></svg>'
+        };
         if (!posts.length) {
           const empty = document.createElement("li");
           empty.className = "notifications-empty";
@@ -777,21 +784,22 @@
         }
         posts.forEach(item => {
           const video = item.media.tagName === "VIDEO";
+          const album = item.tab.dataset.album;
+          const kind = /^a\d+$/.test(album) ? "album" : album === "spicy" ? "spicy" : album === "friends" ? "friend" : video ? "video" : "image";
           const row = document.createElement("li");
           const button = document.createElement("button");
           button.type = "button";
           button.className = "notification-item";
           const icon = document.createElement("span");
-          icon.className = `notification-icon${video ? " is-video" : ""}`;
+          icon.className = `notification-icon is-${kind}`;
           icon.setAttribute("aria-hidden", "true");
-          icon.innerHTML = video ? '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="m10 8 6 4-6 4Z"/></svg>' : '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="m4 17 5-5 4 4 3-3 5 5"/></svg>';
+          icon.innerHTML = icons[kind];
           const copy = document.createElement("span");
           copy.className = "notification-copy";
-          const title = document.createElement("strong");
-          title.textContent = `Kiara posted ${video ? "a video" : "an image"}`;
-          const detail = document.createElement("small");
-          detail.textContent = `${item.albumName} · View post`;
-          copy.append(title, detail);
+          copy.textContent = kind === "album" ? `Kiara posted ${item.albumName}`
+            : kind === "spicy" ? `Kiara posted a spicy ${video ? "video" : "image"}`
+            : kind === "friend" ? `Kiara posted a Friends ${video ? "video" : "image"}`
+            : `Kiara posted ${video ? "a video" : "an image"}`;
           button.append(icon, copy);
           button.addEventListener("click", () => {
             closeNotifications();
