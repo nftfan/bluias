@@ -56,6 +56,12 @@
     .feed-media{display:block;width:100%;height:auto;margin:0;background:#eff4f7}
     .feed-media.reel{aspect-ratio:9/16;object-fit:contain}.feed-media.tv{aspect-ratio:16/9;object-fit:contain}
     .post-caption{padding:3px 13px 12px;color:#8b9ba7;font-size:10px;line-height:1.7}
+    .post-locked .post-media .feed-media{filter:blur(22px) saturate(.8);transform:scale(1.08);pointer-events:none;user-select:none;-webkit-user-select:none}
+    .unlock-overlay{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:11px;padding:20px;background:linear-gradient(145deg,#edf8ff40,#d8ecf85c);text-align:center}
+    .unlock-label{color:#52758d;font-size:10px;font-weight:750;letter-spacing:1px;text-transform:uppercase;text-shadow:0 1px 8px #ffffffb3}
+    .unlock-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:43px;padding:12px 23px;border:1px solid #009cdb;border-radius:999px;background:linear-gradient(115deg,#14b6ed,#0099dc);box-shadow:0 5px 20px #0079ac24;color:#fff;font-size:12px;font-weight:750;transition:filter .2s ease}
+    .unlock-button:hover{filter:brightness(1.06)}.unlock-button .mi{width:16px;height:16px}
+    .unlock-note{padding:6px 10px;border:1px solid #ffffff8c;border-radius:7px;background:#ffffffb8;color:#65869b;font-size:9px;font-weight:600;line-height:1.6;backdrop-filter:blur(10px)}
     .onlyfans-app .smooth-media-frame{border-radius:inherit;background:#edf3f7;--media-accent-fallback:#00a7e7}
     .onlyfans-app .smooth-media-frame::before{background-image:linear-gradient(110deg,transparent 15%,#ffffff59 36%,#ffffffb3 48%,#ffffff59 60%,transparent 82%)}
     .onlyfans-app .smooth-media-indicator{padding:10px 12px;background:#ffffffb8;border:1px solid #d7e9f4;box-shadow:0 3px 12px #73a5c00d}
@@ -105,7 +111,7 @@
     @keyframes panelArrive{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:none}}
     @media(max-width:480px){.header-inner{padding:10px 12px 0}.brand{gap:8px;padding:0 0 10px}.brand h1{font-size:17px}.brand-photo{flex-basis:32px;width:32px;height:32px}.brand-title{gap:3px}.brand-verified .mi{width:13px;height:13px}.header-telegram{min-height:32px;gap:5px;padding:8px 9px;font-size:9px}.tabs{gap:5px}.tab{min-height:41px;font-size:11px}main{padding:16px 10px 25px}.section-heading{padding:0 4px 13px}.section-heading h2{font-size:16px}.section-heading p{font-size:10px}.post{margin-bottom:12px;border-radius:14px}.post-heading{padding:10px}.post-media{margin:0 6px 6px;border-radius:10px}.post-caption{padding:3px 11px 10px;font-size:9px}.subscription-copy{padding:20px 17px}.subscription-copy h3{font-size:24px}.subscription-card{border-radius:14px}.vip-notice{padding:11px}.vip-notice>div{gap:7px;font-size:9px}.notice-buy{font-size:9px}.price-row strong{font-size:40px}}
     @media(max-width:360px){.brand{gap:7px}.brand h1{font-size:15px;letter-spacing:-.45px}.brand-photo{flex-basis:30px;width:30px;height:30px}.brand-verified .mi{width:12px;height:12px}.header-telegram{gap:4px;padding:8px;font-size:9px}.header-telegram svg{width:13px;height:13px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}.panel.active{animation:none}.has-motion .post{opacity:1;transform:none;transition:none}.tab,.load-more,.subscribe-button{transition:none}.subscribe-button:hover{transform:none}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}.panel.active{animation:none}.has-motion .post{opacity:1;transform:none;transition:none}.tab,.load-more,.subscribe-button,.unlock-button{transition:none}.subscribe-button:hover{transform:none}}
   </style>
 </head>
 <body class="onlyfans-app">
@@ -121,7 +127,7 @@
   </div></header>
   <main>
     <section class="panel active" id="panel-free" role="tabpanel" aria-labelledby="tab-free" tabindex="0">
-      <div class="section-heading"><div><h2>The photo collection.</h2><p>A little more Bluias, free to explore.</p></div><span class="collection-count"><svg class="mi" aria-hidden="true"><use href="#mi-photos"/></svg>81 photos</span></div>
+      <div class="section-heading"><div><h2>The photo collection.</h2><p>Enjoy the free posts. Discover more with Vip.</p></div><span class="collection-count"><svg class="mi" aria-hidden="true"><use href="#mi-photos"/></svg>81 photos</span></div>
       <div id="free-feed" aria-label="Free Bluias photos"></div><div class="feed-sentinel" id="free-sentinel" aria-hidden="true"></div><button class="load-more" id="free-more" type="button">More photos</button><p class="feed-end" id="free-end" hidden>You’ve seen the photo collection. Find more moments in Vip.</p>
     </section>
     <section class="panel" id="panel-vip" role="tabpanel" aria-labelledby="tab-vip" tabindex="0" hidden>
@@ -144,25 +150,28 @@
     const tabs=[...document.querySelectorAll('[role="tab"]')],panels=[...document.querySelectorAll('[role="tabpanel"]')];
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
     const state={free:{cursor:0},vip:{cursor:0}};
+    function randomLockedPosts(length){const indices=Array.from({length},(_,index)=>index);for(let i=indices.length-1;i>0;i--){const other=Math.floor(Math.random()*(i+1));[indices[i],indices[other]]=[indices[other],indices[i]]}return new Set(indices.slice(0,Math.floor(length/2)))}
+    const lockedPosts={free:randomLockedPosts(MEDIA.free.length),vip:randomLockedPosts(MEDIA.vip.length)};
     if(!reduced.matches)document.body.classList.add('has-motion');
     const icon=name=>'<svg class="mi" aria-hidden="true"><use href="#mi-'+name+'"/></svg>';
     const enter='IntersectionObserver' in window?new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('post-visible');enter.unobserve(entry.target)}}),{threshold:.01}):null;
-    function visibleVideo(video){const bounds=video.getBoundingClientRect();return video.closest('.panel').classList.contains('active')&&!document.hidden&&Math.min(bounds.bottom,innerHeight)-Math.max(bounds.top,0)>=bounds.height*.3}
+    function visibleVideo(video){if(video.closest('.post-locked'))return false;const bounds=video.getBoundingClientRect();return video.closest('.panel').classList.contains('active')&&!document.hidden&&Math.min(bounds.bottom,innerHeight)-Math.max(bounds.top,0)>=bounds.height*.3}
     function playNear(video){if(!reduced.matches&&visibleVideo(video)&&video.readyState>=2){document.querySelectorAll('video').forEach(other=>{if(other!==video)other.pause()});video.play().catch(()=>{})}}
     const videos='IntersectionObserver' in window?new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting&&entry.intersectionRatio>=.3)playNear(entry.target);else entry.target.pause()}),{threshold:[0,.3,.7]}):null;
     function post(item,index,collection){
-      const video=item.kind==='video',spicy=item.kind==='spicy',card=document.createElement('article');
-      card.className='post';card.dataset.kind=item.kind;card.dataset.source=item.src;
+      const video=item.kind==='video',spicy=item.kind==='spicy',locked=lockedPosts[collection].has(index),card=document.createElement('article');
+      card.className=locked?'post post-locked':'post';card.dataset.kind=item.kind;card.dataset.source=item.src;card.dataset.locked=String(locked);
       const heading=document.createElement('header');heading.className='post-heading';
       const avatar=document.createElement('span');avatar.className='post-avatar';avatar.innerHTML=icon(collection==='vip'?'vip':'photos');
-      const copy=document.createElement('div'),brand=document.createElement('div'),kind=document.createElement('div');brand.className='post-brand';brand.textContent='Bluias';brand.insertAdjacentHTML('beforeend',icon('verified'));kind.className='post-kind';kind.textContent=spicy?'Spicy photo':video?'Vip video':'Free photo';copy.append(brand,kind);
+      const copy=document.createElement('div'),brand=document.createElement('div'),kind=document.createElement('div');brand.className='post-brand';brand.textContent='Bluias';brand.insertAdjacentHTML('beforeend',icon('verified'));kind.className='post-kind';kind.textContent=locked?'Vip preview':spicy?'Spicy photo':video?'Vip video':'Free photo';copy.append(brand,kind);
       const count=document.createElement('span');count.className='post-index';count.innerHTML=icon(video?'play':'photos');const position=document.createElement('span');position.textContent=(index+1)+' / '+MEDIA[collection].length;count.append(position);heading.append(avatar,copy,count);card.append(heading);
       const frame=document.createElement('div');frame.className='post-media';
       const media=document.createElement(video?'video':'img');media.className='feed-media '+(video?item.format:'photo');media.dataset.src=item.src;
       if(item.width&&item.height){media.width=item.width;media.height=item.height}
-      if(video){media.controls=true;media.muted=true;media.defaultMuted=true;media.playsInline=true;media.loop=true;media.preload='none';media.setAttribute('muted','');media.setAttribute('playsinline','');media.setAttribute('aria-label',item.alt);media.addEventListener('canplay',()=>playNear(media));if(videos)videos.observe(media)}
-      else{media.alt=item.alt;media.loading='lazy';media.decoding='async';if(item.srcset){media.dataset.srcset=item.srcset;media.sizes='(max-width:640px) calc(100vw - 40px), 586px'}}
+      if(video){media.controls=!locked;media.muted=true;media.defaultMuted=true;media.playsInline=true;media.loop=!locked;media.preload='none';media.setAttribute('muted','');media.setAttribute('playsinline','');if(locked){media.tabIndex=-1;media.setAttribute('aria-hidden','true')}else{media.setAttribute('aria-label',item.alt);media.addEventListener('canplay',()=>playNear(media));if(videos)videos.observe(media)}}
+      else{media.alt=locked?'Blurred Vip photo preview':item.alt;media.loading='lazy';media.decoding='async';if(item.srcset){media.dataset.srcset=item.srcset;media.sizes='(max-width:640px) calc(100vw - 40px), 586px'}}
       frame.append(media);card.append(frame);
+      if(locked){const overlay=document.createElement('div');overlay.className='unlock-overlay';const label=document.createElement('span');label.className='unlock-label';label.textContent=video?'Vip video':'Vip photo';const unlock=document.createElement('button');unlock.type='button';unlock.className='unlock-button';unlock.innerHTML='<svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg><span>Unlock</span>';unlock.setAttribute('aria-label','Unlock '+(video?'video':'photo')+' '+(index+1)+' in '+collection);unlock.addEventListener('click',()=>tabs.find(tab=>tab.dataset.tab==='buy').click());const note=document.createElement('p');note.className='unlock-note';note.textContent='VIP Bluia Feed · $10/month';overlay.append(label,unlock,note);frame.append(overlay)}
       if(item.alt&&!/^Bluias (photo|video|spicy photo)$/.test(item.alt)){const caption=document.createElement('p');caption.className='post-caption';caption.textContent=item.alt;card.append(caption)}
       if(enter)enter.observe(card);else card.classList.add('post-visible');return card;
     }
