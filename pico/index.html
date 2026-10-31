@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Pico Cam</title>
+<style>
+:root{
+  --red:#ff3b30;
+  --red2:#ef2e29;
+  --panel:#39232f;
+  --cream:#fffdf8;
+  --orange:#ff9800;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--red);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;color:#fff}
+body{
+  min-height:100dvh;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255,255,255,.10), transparent 30%),
+    linear-gradient(#ff453a,#f2352f 75%,#e72d28);
+  overflow-x:hidden;
+}
+.app{
+  width:min(100%,480px);
+  min-height:100dvh;
+  margin:auto;
+  padding:calc(env(safe-area-inset-top) + 14px) 18px calc(env(safe-area-inset-bottom) + 24px);
+}
+.camera-shell{
+  width:82%;
+  aspect-ratio:1/1;
+  margin:0 auto 18px;
+  padding:11px;
+  border-radius:27%;
+  background:#050505;
+  border:3px solid rgba(255,255,255,.22);
+  box-shadow:0 11px 20px rgba(70,0,0,.34), inset 0 0 0 2px rgba(255,79,67,.65);
+  display:grid;
+  place-items:center;
+}
+.viewfinder{
+  width:72%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:22%;
+  background:#111;
+  position:relative;
+}
+video{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transform:scaleX(1);
+}
+video.mirror{transform:scaleX(-1)}
+.camera-hint{
+  position:absolute;inset:0;display:grid;place-items:center;
+  color:#bbb;font-size:13px;text-align:center;padding:18px;
+}
+.controls{
+  display:grid;
+  grid-template-columns:1fr 1.7fr 1fr;
+  align-items:center;
+  gap:18px;
+  width:88%;
+  margin:4px auto 0;
+}
+.round{
+  border:0;
+  border-radius:50%;
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  box-shadow:0 7px 14px rgba(80,0,0,.3), inset 0 0 0 2px rgba(0,0,0,.32);
+}
+.flash-btn{
+  width:65px;
+  justify-self:start;
+  background:#6f8437;
+  color:#1f2a14;
+  font-size:28px;
+  font-weight:800;
+}
+.shutter{
+  width:98px;
+  justify-self:center;
+  background:var(--orange);
+  border:5px solid #ed4b38;
+  box-shadow:0 8px 14px rgba(80,0,0,.30), inset 0 0 0 3px #151515;
+}
+.flip{
+  width:65px;
+  justify-self:end;
+  background:#ff4339;
+  color:#52211f;
+  font-size:31px;
+}
+.brand{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:700;
+  text-align:center;
+  font-size:34px;
+  line-height:.78;
+  margin:16px 0 18px;
+  text-shadow:0 2px 0 rgba(0,0,0,.08);
+}
+.brand span{display:block;font-size:21px;margin-left:34px}
+.tray{
+  min-height:250px;
+  background:var(--panel);
+  border-radius:13px 13px 0 0;
+  border:2px solid rgba(0,0,0,.40);
+  box-shadow:0 -2px 0 rgba(255,255,255,.08), 0 8px 25px rgba(0,0,0,.18);
+  padding:20px 14px 28px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.polaroid{
+  background:#fff;
+  padding:7px 7px 16px;
+  border-radius:3px;
+  box-shadow:0 2px 5px rgba(0,0,0,.20);
+  position:relative;
+}
+.polaroid img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  background:#ddd;
+}
+.polaroid button{
+  position:absolute;right:4px;top:4px;
+  border:0;background:rgba(0,0,0,.58);color:white;
+  width:24px;height:24px;border-radius:50%;
+  font-size:14px;display:none;
+}
+.polaroid:hover button,.polaroid:focus-within button{display:block}
+.empty{grid-column:1/-1;text-align:center;color:#d8cbd2;padding:42px 12px;font-size:14px}
+#flashOverlay{
+  pointer-events:none;position:fixed;inset:0;background:#fff;opacity:0;z-index:20;transition:opacity .16s;
+}
+.notice{
+  display:none;
+  width:88%;margin:10px auto 0;
+  background:rgba(50,0,0,.24);border-radius:12px;padding:10px 12px;
+  font-size:13px;line-height:1.35;text-align:center;
+}
+@media(max-width:380px){
+ .controls{gap:12px}.flash-btn,.flip{width:57px}.shutter{width:90px}.grid{gap:10px}.app{padding-left:12px;padding-right:12px}
+}
+</style>
+</head>
+<body>
+<div id="flashOverlay"></div>
+<main class="app">
+  <section class="camera-shell">
+    <div class="viewfinder">
+      <video id="video" autoplay muted playsinline></video>
+      <div class="camera-hint" id="hint">Tap the orange button to allow camera access.</div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="round flash-btn" id="flashBtn" aria-label="Flash effect">⚡</button>
+    <button class="round shutter" id="shutter" aria-label="Take photo"></button>
+    <button class="round flip" id="flipBtn" aria-label="Flip camera">↻</button>
+  </div>
+
+  <div class="notice" id="notice"></div>
+
+  <div class="brand">pico<span>cam</span></div>
+
+  <section class="tray">
+    <div class="grid" id="photoGrid">
+      <div class="empty" id="empty">Your photos will appear here.</div>
+    </div>
+  </section>
+</main>
+
+<canvas id="canvas" hidden></canvas>
+
+<script>
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const shutter = document.getElementById('shutter');
+const flipBtn = document.getElementById('flipBtn');
+const flashBtn = document.getElementById('flashBtn');
+const flashOverlay = document.getElementById('flashOverlay');
+const hint = document.getElementById('hint');
+const notice = document.getElementById('notice');
+const photoGrid = document.getElementById('photoGrid');
+
+let stream = null;
+let facingMode = 'environment';
+let flashEffect = true;
+let db;
+
+function showNotice(msg){
+  notice.textContent = msg;
+  notice.style.display = 'block';
+}
+function clearNotice(){ notice.style.display='none'; }
+
+function openDB(){
+  return new Promise((resolve,reject)=>{
+    const req = indexedDB.open('PicoCamDB',1);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if(!d.objectStoreNames.contains('photos')){
+        d.createObjectStore('photos',{keyPath:'id',autoIncrement:true});
+      }
+    };
+    req.onsuccess = e => { db=e.target.result; resolve(db); };
+    req.onerror = () => reject(req.error);
+  });
+}
+function addPhoto(blob){
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction('photos','readwrite');
+    const req=tx.objectStore('photos').add({blob,created:Date.now()});
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+function deletePhoto(id){
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction('photos','readwrite');
+    const req=tx.objectStore('photos').delete(id);
+    req.onsuccess=resolve; req.onerror=()=>reject(req.error);
+  });
+}
+function getPhotos(){
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction('photos','readonly');
+    const req=tx.objectStore('photos').getAll();
+    req.onsuccess=()=>resolve(req.result.sort((a,b)=>b.created-a.created));
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function renderPhotos(){
+  const photos=await getPhotos();
+  photoGrid.innerHTML='';
+  if(!photos.length){
+    photoGrid.innerHTML='<div class="empty">Your photos will appear here.</div>';
+    return;
+  }
+  photos.forEach(p=>{
+    const card=document.createElement('div');
+    card.className='polaroid';
+    const img=document.createElement('img');
+    const url=URL.createObjectURL(p.blob);
+    img.src=url;
+    img.onload=()=>URL.revokeObjectURL(url);
+    img.alt='Captured photo';
+    img.addEventListener('click',()=>{
+      const a=document.createElement('a');
+      const dl=URL.createObjectURL(p.blob);
+      a.href=dl; a.download=`pico-${new Date(p.created).toISOString().replace(/[:.]/g,'-')}.jpg`;
+      a.click(); setTimeout(()=>URL.revokeObjectURL(dl),1500);
+    });
+    const del=document.createElement('button');
+    del.textContent='×'; del.setAttribute('aria-label','Delete photo');
+    del.onclick=async(e)=>{e.stopPropagation(); await deletePhoto(p.id); renderPhotos();};
+    card.append(img,del);
+    photoGrid.appendChild(card);
+  });
+}
+
+async function startCamera(){
+  clearNotice();
+  if(!navigator.mediaDevices?.getUserMedia){
+    showNotice('Camera access is not available here. Open this page in Safari over HTTPS.');
+    return;
+  }
+  if(stream) stream.getTracks().forEach(t=>t.stop());
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({
+      video:{
+        facingMode:{ideal:facingMode},
+        width:{ideal:1920},
+        height:{ideal:1920}
+      },
+      audio:false
+    });
+    video.srcObject=stream;
+    await video.play();
+    hint.style.display='none';
+    video.classList.toggle('mirror',facingMode==='user');
+  }catch(err){
+    console.error(err);
+    showNotice('Camera permission was blocked. On iPhone, allow Camera access for this website in Safari settings, then reload.');
+  }
+}
+
+async function takePhoto(){
+  if(!stream){
+    await startCamera();
+    if(!stream) return;
+  }
+  if(video.readyState<2) return;
+
+  if(flashEffect){
+    flashOverlay.style.opacity='0.92';
+    setTimeout(()=>flashOverlay.style.opacity='0',90);
+  }
+
+  const vw=video.videoWidth, vh=video.videoHeight;
+  const size=Math.min(vw,vh);
+  const sx=(vw-size)/2, sy=(vh-size)/2;
+  canvas.width=size; canvas.height=size;
+  const ctx=canvas.getContext('2d');
+
+  if(facingMode==='user'){
+    ctx.translate(size,0); ctx.scale(-1,1);
+  }
+  ctx.drawImage(video,sx,sy,size,size,0,0,size,size);
+
+  canvas.toBlob(async blob=>{
+    if(!blob) return;
+    await addPhoto(blob);
+    await renderPhotos();
+  },'image/jpeg',0.92);
+}
+
+shutter.addEventListener('click',takePhoto);
+flipBtn.addEventListener('click',async()=>{
+  facingMode = facingMode==='environment' ? 'user' : 'environment';
+  await startCamera();
+});
+flashBtn.addEventListener('click',()=>{
+  flashEffect=!flashEffect;
+  flashBtn.style.opacity=flashEffect?'1':'.45';
+});
+
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible' && !stream) startCamera();
+});
+
+(async()=>{
+  try{
+    await openDB();
+    await renderPhotos();
+  }catch(e){
+    showNotice('Could not open local photo storage in this browser.');
+  }
+  startCamera();
+})();
+</script>
+</body>
+</html>
