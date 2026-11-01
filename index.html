@@ -79,7 +79,7 @@ a{color:inherit}
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap"><div class="feed-grid" id="feed-grid"></div></div>
   </section>
- class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Unlock Pro for $10 per month" title="Unlock Pro for $10 per month"><span>PRO</span><b aria-hidden="true">↗</b></a>
+<a class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Subscribe for $10 per month" title="Subscribe for $10 per month"><span>✿ $10</span><b aria-hidden="true">↗</b></a>
 <footer class="site-foot"><span class="footer-flower" aria-hidden="true">✿</span>Bluia Sisters Blog · Stories from the sisters<span class="footer-flower" aria-hidden="true">✿</span></footer>
 <script>
 (function(){
@@ -104,7 +104,8 @@ a{color:inherit}
     {type:"video",title:"The Bluias Edit",src:"/assets/home/links-preview.mp4",poster:"/assets/home/links-preview.webp"},
     {type:"photo",title:"Quiet Confidence",src:"/test/media/cover-b19.webp"},
     {type:"photo",title:"The Last Look",src:"/test/media/cover-b20.webp"}
-    const grid=document.getElementById("feed-grid");
+  ];
+  const grid=document.getElementById("feed-grid");
   const orderedItems=shuffle(items);
   const blurredTitles=new Set(shuffle(items.map(function(item){return item.title;})).slice(0,6));
   const captionPairs=[
