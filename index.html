@@ -112,61 +112,83 @@ body.pro-active .story-shade{opacity:1}
     {type:"photo",title:"The Last Look",src:"/test/media/cover-b20.webp"}
   ];
   const grid=document.getElementById("feed-grid");
-  items.forEach(function(item,index){
-    const card=document.createElement("article");
-    card.className="story";
-    const visual=document.createElement("div");
-    visual.className="story-visual";
-    let media;
-    if(item.type==="video"){
-      media=document.createElement("video");
-      media.src=item.src;
-      media.poster=item.poster;
-      media.muted=true;
-      media.loop=true;
-      media.autoplay=true;
-      media.playsInline=true;
-      media.preload="metadata";
-      media.setAttribute("aria-label",item.title);
-    }else{
-      media=document.createElement("img");
-      media.src=item.src;
-      media.alt=item.title;
-      media.loading="lazy";
-      media.decoding="async";
-    }
-    media.className="story-media";
-    const shade=document.createElement("div");
-    shade.className="story-shade";
-    shade.innerHTML='<span class="lock-mark" aria-hidden="true">✦</span>';
-    const type=document.createElement("span");
-    type.className="type-pill";
-    type.textContent=item.type;
-    visual.append(media,shade,type);
-    const copy=document.createElement("div");
-    copy.className="story-copy";
-    const title=document.createElement("h3");
-    title.textContent=item.title;
-    const caption=document.createElement("div");
-    caption.className="post-caption";
-    const captionLines=[
-      ["A little sunshine to carry into the week.","Saving this moment for a rainy day."],
-      ["Soft light, good company, easy afternoons.","A tiny reminder to enjoy the little things."],
-      ["A new look, a familiar feeling.","Just us, making another lovely memory."],
-      ["Blue skies and a slower kind of morning.","Some moments deserve a second look."],
-      ["A little note from our side of the story.","Keeping the good energy close today."],
-      ["A favorite frame from a favorite day.","More moments like this, please."],
-      ["The best plans leave room for a detour.","A fresh page, a little sparkle."],
-      ["Here’s to the in-between moments.","A small detail made the whole day."],
-      ["A soft mood for a bright new week.","Take the long way when you can."],
-      ["One of those days we want to remember.","Good things happen when we slow down."]
-    ];
-    const lines=captionLines[Math.floor(Math.random()*captionLines.length)];
-    lines.forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
-    copy.append(title,caption);
-    card.append(visual,copy);
-    grid.appendChild(card);
-  });
+  const freeItems=shuffle(items.slice(0,10));
+  const proItems=shuffle(items.slice(10));
+  const captionPairs=[
+    ["A bright sky followed us all afternoon.","Saving a little sunshine for later."],
+    ["A slow morning, with nowhere else to be.","The smallest moments stay with us."],
+    ["Found a new favorite around the corner.","Good company makes the day feel lighter."],
+    ["The evening had its own kind of sparkle.","One more memory for the collection."],
+    ["A little color changed the whole mood.","This is what a happy pause looks like."],
+    ["We took the scenic route again.","Some days are made for getting lost."],
+    ["Soft light, open windows, easy plans.","Keeping this moment close."],
+    ["The playlist was right, and so was the timing.","A day that felt like ours."],
+    ["A new view made an old favorite feel fresh.","Here’s to finding beauty nearby."],
+    ["We laughed longer than we planned.","That’s usually how the best days go."],
+    ["A breezy afternoon and a familiar smile.","Could stay in this moment awhile."],
+    ["The city felt quieter from here.","A small escape in the middle of the week."],
+    ["We saved the best light for last.","Some scenes need no extra plans."],
+    ["A favorite outfit met a favorite place.","The little details made the day."],
+    ["A quick hello turned into a whole afternoon.","We’ll remember this one."],
+    ["The colors seemed brighter after the rain.","A fresh page, with room to wander."],
+    ["Nothing on the schedule but good company.","Exactly the kind of day we needed."],
+    ["We found a peaceful corner to call ours.","A little calm goes a long way."],
+    ["A shared joke made the moment even better.","More days with this kind of energy."],
+    ["We brought the long way home with us.","Some memories feel like a deep breath."]
+  ];
+  const captionByTitle=new Map(shuffle(captionPairs).map(function(pair,index){return [items[index].title,pair];}));
+  function shuffle(list){
+    const copy=list.slice();
+    for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
+    return copy;
+  }
+  function captionPairsFor(item){return captionByTitle.get(item.title)||[];}
+  function renderItems(list){
+    grid.replaceChildren();
+    list.forEach(function(item){
+      const card=document.createElement("article");
+      card.className="story";
+      const visual=document.createElement("div");
+      visual.className="story-visual";
+      let media;
+      if(item.type==="video"){
+        media=document.createElement("video");
+        media.src=item.src;
+        media.poster=item.poster;
+        media.muted=true;
+        media.loop=true;
+        media.autoplay=true;
+        media.playsInline=true;
+        media.preload="metadata";
+        media.setAttribute("aria-label",item.title);
+      }else{
+        media=document.createElement("img");
+        media.src=item.src;
+        media.alt=item.title;
+        media.loading="lazy";
+        media.decoding="async";
+      }
+      media.className="story-media";
+      const shade=document.createElement("div");
+      shade.className="story-shade";
+      shade.innerHTML='<span class="lock-mark" aria-hidden="true">✦</span>';
+      const type=document.createElement("span");
+      type.className="type-pill";
+      type.textContent=item.type;
+      visual.append(media,shade,type);
+      const copy=document.createElement("div");
+      copy.className="story-copy";
+      const title=document.createElement("h3");
+      title.textContent=item.title;
+      const caption=document.createElement("div");
+      caption.className="post-caption";
+      captionPairsFor(item).forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
+      copy.append(title,caption);
+      card.append(visual,copy);
+      grid.appendChild(card);
+    });
+  }
+  renderItems(freeItems);
   const tabs=[...document.querySelectorAll(".feed-tab")];
   tabs.forEach(function(tab){
     tab.addEventListener("click",function(){
@@ -178,6 +200,7 @@ body.pro-active .story-shade{opacity:1}
         other.setAttribute("aria-selected",String(selected));
       });
       grid.setAttribute("aria-labelledby",isPro?"pro-tab":"free-tab");
+      renderItems(isPro?proItems:freeItems);
     });
   });
 })();
