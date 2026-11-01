@@ -15,13 +15,13 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
 a{color:inherit}
 .wrap{width:min(1080px,calc(100% - 40px));margin-inline:auto}
-.hero{padding:0 0 0}
+.hero{padding:0}
 .cover{position:relative;overflow:hidden;width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);border-radius:0;background:#f9dce8;aspect-ratio:auto;min-height:0}
 .cover img{display:block;width:100%;height:auto;max-height:none;position:relative;inset:auto;object-fit:contain;object-position:center}
 .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;padding:14px 0 24px}
 .action{display:inline-flex;min-height:48px;align-items:center;justify-content:center;gap:10px;padding:0 19px;border:1px solid transparent;border-radius:4px;text-decoration:none;font-size:12px;font-weight:800;transition:transform .2s ease,background .2s ease,color .2s ease}
 .action:hover{transform:translateY(-3px)}
-.action:focus-visible{outline:3px solid #d94d89;outline-offset:3px}
+.action:focus-visible,.read-more:focus-visible,.dialog-close:focus-visible{outline:3px solid #d94d89;outline-offset:3px}
 .action-telegram{background:var(--yellow);border-color:#efc84e;color:#503e18}
 .action-pro{background:var(--pink);border-color:var(--pink);color:#fff}
 .action-pro:hover{background:var(--pink-deep)}
@@ -34,19 +34,31 @@ a{color:inherit}
 .blog-flower.alt{color:#e7b833;animation-delay:-1.4s}
 .feed-section{padding:0 0 72px;background:linear-gradient(180deg,#fff8df 0%,var(--cream) 230px)}
 .feed-grid{display:grid;grid-template-columns:minmax(0,1fr);max-width:600px;margin:0 auto;gap:24px}
-.story{min-width:0;background:var(--white);border:1px solid var(--line);border-radius:5px;overflow:hidden;transition:transform .22s ease,border-color .22s ease}
-.story:hover{transform:translateY(-3px);border-color:#e8adc6}
-.story-visual{position:relative;aspect-ratio:9/16;overflow:hidden;background:#fbe6ee}
-.story-media{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;filter:blur(0);transition:filter .35s ease}
+.story{min-width:0;background:var(--white);border:1px solid var(--line);border-radius:5px;overflow:hidden;transition:border-color .22s ease}
+.story:hover{border-color:#e8adc6}
+.story-visual{position:relative;overflow:visible;width:100%;height:auto;background:#fbe6ee}
+.story-media{display:block;width:auto;height:auto;max-width:100%;max-height:none;margin:0 auto;object-fit:contain;object-position:center;filter:blur(0);transition:filter .35s ease}
 .story.is-blurred .story-media{filter:blur(13px)}
 .story-shade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#44263814 20%,#44263870);opacity:0;pointer-events:none;transition:opacity .25s ease}
 .story.is-blurred .story-shade{opacity:1}
 .lock-mark{display:grid;place-items:center;width:48px;height:48px;border:1px solid #fff;border-radius:50%;background:var(--yellow);color:#705723;font-size:21px}
 .type-pill{position:absolute;left:12px;top:12px;border-radius:3px;padding:6px 9px;background:var(--yellow-pale);color:#684f20;font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
 .story-copy{padding:15px 16px 17px;border-top:3px solid var(--yellow)}
-.story-copy h3{margin:0;color:#58394a;font-family:Georgia,"Times New Roman",serif;font-size:20px;line-height:1.3;font-weight:600}
-.post-caption{display:grid;gap:4px;margin:8px 0 0;color:#776a70;font-size:12px;line-height:1.6;font-weight:500}
+.story-copy h2{margin:0;color:#58394a;font-family:Georgia,"Times New Roman",serif;font-size:20px;line-height:1.3;font-weight:600}
+.post-meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:6px;color:#947c88;font-size:11px}
+.post-caption{display:grid;gap:4px;margin:9px 0 0;color:#776a70;font-size:12px;line-height:1.6;font-weight:500}
 .post-caption span{display:block}
+.read-more{display:inline-flex;align-items:center;justify-content:center;margin-top:12px;padding:9px 14px;border:1px solid #e9b5c9;border-radius:4px;background:var(--pink-pale);color:#8e3e63;font-size:11px;font-weight:800;cursor:pointer;transition:background .18s ease,transform .18s ease}
+.read-more:hover{background:#ffe2ed;transform:translateY(-2px)}
+.post-dialog{width:min(760px,calc(100% - 28px));max-width:none;max-height:90vh;margin:auto;padding:0;border:1px solid #efcfdd;border-radius:7px;background:#fffaf5;color:var(--ink);overflow:visible}
+.post-dialog::backdrop{background:#34232d99;animation:backdrop-in .24s ease both}
+.post-dialog[open]{animation:dialog-in .28s cubic-bezier(.2,.8,.2,1) both}
+.dialog-panel{position:relative;max-height:90vh;overflow:auto;padding:22px;background:#fffaf5}
+.dialog-close{position:sticky;z-index:2;top:0;float:right;width:38px;height:38px;border:0;border-radius:50%;background:var(--yellow);color:#553f1a;font-size:24px;line-height:1;cursor:pointer}
+.dialog-panel h2{margin:6px 48px 5px 0;color:#58394a;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,34px)}
+.dialog-meta{margin:0 48px 15px 0;color:#947c88;font-size:12px}
+.dialog-media{display:block;width:auto;height:auto;max-width:100%;max-height:68vh;margin:0 auto 16px;object-fit:contain}
+.dialog-caption{display:grid;gap:8px;color:#65545d;font-size:14px;line-height:1.65}
 .floating-pro{position:fixed;z-index:20;right:18px;bottom:20px;width:64px;height:64px;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:var(--pink);color:#fff;text-decoration:none;font-size:12px;font-weight:900;letter-spacing:.06em;box-shadow:0 0 0 3px var(--yellow);transition:transform .2s ease,background .2s ease;animation:float-up 3.5s ease-in-out infinite}
 .floating-pro b{position:absolute;right:5px;top:4px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--yellow);color:#664d21;font-size:14px}
 .floating-pro:hover{transform:translateY(-4px) rotate(-5deg);background:var(--pink-deep)}
@@ -55,7 +67,15 @@ a{color:inherit}
 .footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}
 @keyframes flower-sway{0%,100%{transform:rotate(-9deg) translateY(0)}50%{transform:rotate(9deg) translateY(-5px)}}
 @keyframes float-up{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@media(max-width:560px){.wrap{width:min(100% - 28px,1080px)}.cover{aspect-ratio:auto}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h3{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}}
+@keyframes dialog-in{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes backdrop-in{from{opacity:0}to{opacity:1}}
+@media(max-width:560px){.wrap{width:min(100% - 28px,1080px)}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{<dialog class="post-dialog" id="post-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-panel">
+    <button class="dialog-close" type="button" aria-label="Close post">×</button>
+    <div id="dialog-content"></div>
+  </div>
+</dialog>
+gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h2{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}.dialog-panel{padding:16px}.dialog-media{max-height:62vh}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -84,33 +104,36 @@ a{color:inherit}
 <script>
 (function(){
   const items=[
-    {type:"photo",title:"Morning Light",src:"/test/media/cover-b6.webp"},
-    {type:"photo",title:"Blue Hour Portrait",src:"/test/media/cover-b7.webp"},
-    {type:"photo",title:"A Softer Sunday",src:"/test/media/cover-b8.webp"},
-    {type:"video",title:"Sisterhood in Motion",src:"/b001-aszx/media/friends-dd573039.mp4",poster:"/b001-aszx/media/friends-b730ee5b.webp"},
-    {type:"photo",title:"The Little Things",src:"/test/media/cover-b9.webp"},
-    {type:"photo",title:"A New Favorite",src:"/test/media/cover-b10.webp"},
-    {type:"video",title:"Behind the Blue",src:"/b001-aszx/media/video-b328e34f.mp4",poster:"/b001-aszx/media/images-2b588214.webp"},
-    {type:"photo",title:"Weekend Notes",src:"/test/media/cover-b11.webp"},
-    {type:"photo",title:"Soft Focus",src:"/test/media/cover-b12.webp"},
-    {type:"photo",title:"In Our Own Time",src:"/test/media/cover-b13.webp"},
-    {type:"video",title:"A Little Daydream",src:"/b001-aszx/video-1-preview.mp4",poster:"/b001-aszx/media/a3-4e86ad58-480.webp"},
-    {type:"photo",title:"Golden Afternoon",src:"/test/media/cover-b14.webp"},
-    {type:"photo",title:"The Everyday Edit",src:"/test/media/cover-b15.webp"},
-    {type:"video",title:"A Day With Us",src:"/assets/home/entertainment-preview.mp4",poster:"/assets/home/entertainment-preview.webp"},
-    {type:"photo",title:"Sunlit Stories",src:"/test/media/cover-b16.webp"},
-    {type:"photo",title:"A Little More Blue",src:"/test/media/cover-b17.webp"},
-    {type:"photo",title:"Sisters at Heart",src:"/test/media/cover-b18.webp"},
-    {type:"video",title:"The Bluias Edit",src:"/assets/home/links-preview.mp4",poster:"/assets/home/links-preview.webp"},
-    {type:"photo",title:"Quiet Confidence",src:"/test/media/cover-b19.webp"},
-    {type:"photo",title:"The Last Look",src:"/test/media/cover-b20.webp"}
+    {type:"photo",title:"Morning Light",date:"2026-07-31",src:"/test/media/cover-b6.webp"},
+    {type:"photo",title:"Blue Hour Portrait",date:"2026-07-03",src:"/test/media/cover-b7.webp"},
+    {type:"photo",title:"A Softer Sunday",date:"2026-07-26",src:"/test/media/cover-b8.webp"},
+    {type:"video",title:"Sisterhood in Motion",date:"2026-07-12",src:"/b001-aszx/media/friends-dd573039.mp4",poster:"/b001-aszx/media/friends-b730ee5b.webp"},
+    {type:"photo",title:"The Little Things",date:"2026-07-29",src:"/test/media/cover-b9.webp"},
+    {type:"photo",title:"A New Favorite",date:"2026-07-05",src:"/test/media/cover-b10.webp"},
+    {type:"video",title:"Behind the Blue",date:"2026-07-24",src:"/b001-aszx/media/video-b328e34f.mp4",poster:"/b001-aszx/media/images-2b588214.webp"},
+    {type:"photo",title:"Weekend Notes",date:"2026-07-09",src:"/test/media/cover-b11.webp"},
+    {type:"photo",title:"Soft Focus",date:"2026-07-18",src:"/test/media/cover-b12.webp"},
+    {type:"photo",title:"In Our Own Time",date:"2026-07-01",src:"/test/media/cover-b13.webp"},
+    {type:"video",title:"A Little Daydream",date:"2026-07-27",src:"/b001-aszx/video-1-preview.mp4",poster:"/b001-aszx/media/a3-4e86ad58-480.webp"},
+    {type:"photo",title:"Golden Afternoon",date:"2026-07-14",src:"/test/media/cover-b14.webp"},
+    {type:"photo",title:"The Everyday Edit",date:"2026-07-22",src:"/test/media/cover-b15.webp"},
+    {type:"video",title:"A Day With Us",date:"2026-07-06",src:"/assets/home/entertainment-preview.mp4",poster:"/assets/home/entertainment-preview.webp"},
+    {type:"photo",title:"Sunlit Stories",date:"2026-07-30",src:"/test/media/cover-b16.webp"},
+    {type:"photo",title:"A Little More Blue",date:"2026-07-11",src:"/test/media/cover-b17.webp"},
+    {type:"photo",title:"Sisters at Heart",date:"2026-07-20",src:"/test/media/cover-b18.webp"},
+    {type:"video",title:"The Bluias Edit",date:"2026-07-08",src:"/assets/home/links-preview.mp4",poster:"/assets/home/links-preview.webp"},
+    {type:"photo",title:"Quiet Confidence",date:"2026-07-16",src:"/test/media/cover-b19.webp"},
+    {type:"photo",title:"The Last Look",date:"2026-07-02",src:"/test/media/cover-b20.webp"}
   ];
   function shuffle(list){
     const copy=list.slice();
     for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
     return copy;
   }
-  const orderedItems=shuffle(items);
+  function formatDate(value){
+    return new Intl.DateTimeFormat("en-US",{month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(new Date(value+"T12:00:00Z"));
+  }
+  const orderedItems=items.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
   const blurredTitles=new Set(shuffle(items.map(function(item){return item.title;})).slice(0,6));
   const captionPairs=[
     ["A bright sky followed us all afternoon.","Saving a little sunshine for later."],
@@ -136,50 +159,87 @@ a{color:inherit}
   ];
   const captionByTitle=new Map(shuffle(captionPairs).map(function(pair,index){return [items[index].title,pair];}));
   const grid=document.getElementById("feed-grid");
+  const dialog=document.getElementById("post-dialog");
+  const dialogContent=document.getElementById("dialog-content");
+  function makeMedia(item,fullSize){
+    let media;
+    if(item.type==="video"){
+      media=document.createElement("video");
+      media.src=item.src;
+      media.poster=item.poster;
+      media.muted=!fullSize;
+      media.loop=!fullSize;
+      media.autoplay=!fullSize;
+      media.playsInline=true;
+      media.preload="metadata";
+      if(fullSize)media.controls=true;
+      media.setAttribute("aria-label",item.title);
+    }else{
+      media=document.createElement("img");
+      media.src=item.src;
+      media.alt=item.title;
+      media.loading=fullSize?"eager":"lazy";
+      media.decoding="async";
+    }
+    media.className=fullSize?"dialog-media":"story-media";
+    return media;
+  }
+  function openPost(item,lines){
+    dialogContent.replaceChildren();
+    const heading=document.createElement("h2");
+    heading.id="dialog-title";
+    heading.textContent=item.title;
+    const meta=document.createElement("p");
+    meta.className="dialog-meta";
+    meta.textContent="By: Bluia Sisters · "+formatDate(item.date);
+    const media=makeMedia(item,true);
+    const caption=document.createElement("div");
+    caption.className="dialog-caption";
+    lines.forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
+    dialogContent.append(heading,meta,media,caption);
+    dialog.showModal();
+  }
   orderedItems.forEach(function(item){
     const card=document.createElement("article");
     card.className="story";
     if(blurredTitles.has(item.title))card.classList.add("is-blurred");
     const visual=document.createElement("div");
     visual.className="story-visual";
-    let media;
-    if(item.type==="video"){
-      media=document.createElement("video");
-      media.src=item.src;
-      media.poster=item.poster;
-      media.muted=true;
-      media.loop=true;
-      media.autoplay=true;
-      media.playsInline=true;
-      media.preload="metadata";
-      media.setAttribute("aria-label",item.title);
-    }else{
-      media=document.createElement("img");
-      media.src=item.src;
-      media.alt=item.title;
-      media.loading="lazy";
-      media.decoding="async";
-    }
-    media.className="story-media";
+    visual.append(makeMedia(item,false));
     const shade=document.createElement("div");
     shade.className="story-shade";
     shade.innerHTML='<span class="lock-mark" aria-hidden="true">✿</span>';
+    visual.append(shade);
     const type=document.createElement("span");
     type.className="type-pill";
     type.textContent=item.type;
-    visual.append(media,shade,type);
+    visual.append(type);
     const copy=document.createElement("div");
     copy.className="story-copy";
     const title=document.createElement("h2");
     title.textContent=item.title;
+    const meta=document.createElement("div");
+    meta.className="post-meta";
+    meta.textContent="By: Bluia Sisters · ";
+    const date=document.createElement("time");
+    date.dateTime=item.date;
+    date.textContent=formatDate(item.date);
+    meta.append(date);
     const caption=document.createElement("div");
     caption.className="post-caption";
     const lines=captionByTitle.get(item.title)||[];
     lines.forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
-    copy.append(title,caption);
+    const more=document.createElement("button");
+    more.className="read-more";
+    more.type="button";
+    more.textContent="Read more";
+    more.addEventListener("click",function(){openPost(item,lines);});
+    copy.append(title,meta,caption,more);
     card.append(visual,copy);
     grid.appendChild(card);
   });
+  document.querySelector(".dialog-close").addEventListener("click",function(){dialog.close();});
+  dialog.addEventListener("click",function(event){if(event.target===dialog)dialog.close();});
 })();
 </script>
 </body>
