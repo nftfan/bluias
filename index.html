@@ -16,8 +16,10 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,-apple-
 a{color:inherit}
 .wrap{width:min(1080px,calc(100% - 40px));margin-inline:auto}
 .hero{padding:0}
-.cover{position:relative;overflow:hidden;width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);border-radius:0;background:#f9dce8;aspect-ratio:auto;min-height:0}
-.cover img{display:block;width:100%;height:auto;max-height:none;position:relative;inset:auto;object-fit:contain;object-position:center}
+.cover{position:relative;display:block;overflow:hidden;width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);border-radius:0;background:linear-gradient(100deg,#fff0f6 20%,#fff8d9 38%,#ffe1ed 52%,#fff0f6 70%);background-size:220% 100%;aspect-ratio:16/9;min-height:0}
+.cover.is-loading{animation:media-shimmer 1.8s linear infinite}
+.cover.is-loading::after{content:"✿";position:absolute;left:50%;top:50%;color:var(--pink-deep);font-size:34px;line-height:1;transform:translate(-50%,-50%);animation:flower-loading 1.1s ease-in-out infinite}
+.cover video{display:block;width:100%;height:100%;border-block:3px solid var(--yellow);object-fit:contain;background:#231923}
 .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;padding:14px 0 24px}
 .action{display:inline-flex;min-height:48px;align-items:center;justify-content:center;gap:10px;padding:0 19px;border:1px solid transparent;border-radius:4px;text-decoration:none;font-size:12px;font-weight:800;transition:transform .2s ease,background .2s ease,color .2s ease}
 .action:hover{transform:translateY(-3px)}
@@ -70,7 +72,7 @@ a{color:inherit}
 .floating-pro:hover{transform:translateY(-4px) rotate(-5deg);background:var(--pink-deep)}
 .floating-pro:focus-visible{outline:3px solid #d94d89;outline-offset:4px}
 .site-foot{padding:28px 20px 34px;border-top:3px solid var(--yellow);background:var(--pink-pale);color:#684759;font-family:Georgia,"Times New Roman",serif;font-size:14px;text-align:center}
-.footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}
+.footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}\n.footer-cover-image{display:block;width:min(100%,420px);height:auto;margin:18px auto 14px;border-block:3px solid var(--yellow)}
 .blog-title h1,.story-title,.dialog-panel h2{font-family:"Iowan Old Style","Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif}
 .story-title{margin:0;padding:18px 16px 14px;background:#fff;color:#58394a;text-align:center;font-size:clamp(21px,3vw,30px);line-height:1.3;font-weight:600}
 .blog-title p{font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-style:italic}
@@ -106,16 +108,17 @@ a{color:inherit}
 <body>
 <main>
   <section class="hero wrap" aria-label="Bluias Sisters introduction">
-    <div class="cover">
-      <img src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Bluias Sisters cover portrait" fetchpriority="high" decoding="async">
-      
+    <div class="cover is-loading" id="cover-frame">
+      <video id="cover-video" autoplay muted loop playsinline controls preload="metadata" poster="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" aria-label="A Day With Us video cover">
+        <source src="/assets/home/entertainment-preview.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="actions" aria-label="Join the Bluias Sisters">
       <a class="action action-telegram" href="https://t.me/vbluia" target="_blank" rel="noopener noreferrer">Join our Telegram <span class="arrow" aria-hidden="true">↗</span></a>
       <a class="action action-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06">Subscribe <small>$10 / month</small> <span class="arrow" aria-hidden="true">↗</span></a>
     </div>
   </section>
-  <section  <section class="blog-title wrap" aria-labelledby="blog-title">
+  <section class="blog-title wrap" aria-labelledby="blog-title">
     <span class="blog-flower" aria-hidden="true">✿</span>
     <div><h1 id="blog-title">Bluia Sisters Blog</h1><p>Stories, style and little moments from the sisters</p></div>
     <span class="blog-flower alt" aria-hidden="true">❀</span>
@@ -145,9 +148,16 @@ a{color:inherit}
   </div>
 </dialog>
 <a class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Unlock full access" title="Unlock full access"><span>Unlock<br>full<br>access</span></a>
-<footer class="site-foot"><span class="footer-flower" aria-hidden="true">✿</span>Bluia Sisters Blog · Stories from the sisters<br><span class="support-label">Support: <a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a></span><span class="footer-flower" aria-hidden="true">✿</span></footer>
+<footer class="site-foot"><span class="footer-flower" aria-hidden="true">✿</span>Bluia Sisters Blog · Stories from the sisters<br><img class="footer-cover-image" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Bluia Sisters portrait" loading="lazy" decoding="async"><br><span class="support-label">Support: <a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a></span><span class="footer-flower" aria-hidden="true">✿</span></footer>
 <script>
 (function(){
+  const coverFrame=document.getElementById("cover-frame");
+  const coverVideo=document.getElementById("cover-video");
+  function finishCover(){coverFrame.classList.remove("is-loading");coverFrame.removeAttribute("aria-busy");}
+  coverFrame.setAttribute("aria-busy","true");
+  coverVideo.addEventListener("loadeddata",finishCover,{once:true});
+  coverVideo.addEventListener("error",finishCover,{once:true});
+  if(coverVideo.readyState>=2)finishCover();
   const items=[
     {type:"photo",title:"Kira & Kaya Bluia: A Staircase Moment in Pink",date:"2026-11-01",src:"https://huggingface.co/buckets/Bluia/bimg/resolve/C18847E5-C5BF-42DE-AFB3-896BC5408379.png?download=true",gallery:[
       {src:"https://huggingface.co/buckets/Bluia/bimg/resolve/C18847E5-C5BF-42DE-AFB3-896BC5408379.png?download=true",alt:"Kaya Bluia and Kira Bluia together on the staircase"},
@@ -203,9 +213,6 @@ a{color:inherit}
   function renderItem(item){
     const card=document.createElement("article");
     card.className="story";
-    const title=document.createElement("h2");
-    title.className="story-title";
-    title.textContent=item.title;
     const visual=document.createElement("div");
     visual.className="story-visual";
     if(item.gallery&&item.gallery.length){item.gallery.forEach(function(image){visual.append(makeMediaFrame({type:"photo",title:image.alt,src:image.src}));});}
@@ -218,7 +225,7 @@ a{color:inherit}
     divider.className="post-divider";
     divider.setAttribute("aria-hidden","true");
     divider.textContent="✿ ❀ ✿";
-    card.append(title,visual,divider);
+    card.append(visual,divider);
     grid.appendChild(card);
   }
   function renderNextBatch(){
