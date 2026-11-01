@@ -71,7 +71,8 @@ a{color:inherit}
 .floating-pro:focus-visible{outline:3px solid #d94d89;outline-offset:4px}
 .site-foot{padding:28px 20px 34px;border-top:3px solid var(--yellow);background:var(--pink-pale);color:#684759;font-family:Georgia,"Times New Roman",serif;font-size:14px;text-align:center}
 .footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}
-.blog-title h1,.story-copy h2,.dialog-panel h2{font-family:"Iowan Old Style","Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif}
+.blog-title h1,.story-title,.dialog-panel h2{font-family:"Iowan Old Style","Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif}
+.story-title{margin:0;padding:18px 16px 14px;background:#fff;color:#58394a;text-align:center;font-size:clamp(21px,3vw,30px);line-height:1.3;font-weight:600}
 .blog-title p{font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-style:italic}
 .post-excerpt{margin:10px 0 0;color:#6f5963;font-family:"Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:15px;line-height:1.72}
 .post-caption{display:grid;gap:10px;margin:12px 0 0;color:#65545d;font-family:"Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:16px;line-height:1.78}
@@ -155,18 +156,6 @@ a{color:inherit}
     ]},
     {type:"video",title:"A Day With Us",date:"2026-07-08",src:"/assets/home/entertainment-preview.mp4",poster:"/assets/home/entertainment-preview.webp"}
   ];
-  const storyWriting={
-    "Kira & Kaya Bluia: A Staircase Moment in Pink":{excerpt:"Kaya and Kira turn a familiar staircase into their own little fashion story, pairing soft pink with a relaxed, rosy-lilac look.",paragraphs:["A marble staircase, warm evening light, and two different takes on pink set the scene for this sisters’ style moment. Kaya Bluia joins Kira Bluia for a relaxed portrait together: Kaya in a soft lilac top and light shorts, while Kira wears a pink fitted look with simple white heels. The gentle colors feel coordinated without being identical, giving each sister room to bring her own character to the frame.","Then the story becomes Kira’s for a few solo frames. She pauses on the stairs, glances back over her shoulder, and later turns toward the wall for a quieter pose. The changing angles make the set feel like a little walk through the same beautiful space rather than a single posed shot. We love how a familiar corner can become a backdrop for a new memory when you share it with someone close."]},
-    "A Day With Us":{excerpt:"A good day is better when it leaves room for a little entertainment.",paragraphs:["Not every day needs a big event. A funny clip, a favorite tune, a story shared with someone we love, or a few minutes of easy entertainment can change the tone of an afternoon.","We like the kind of fun that brings people together and asks very little in return. Press play, take a breath, and let yourself enjoy the moment without overthinking it."]}
-  };
-  function shuffle(list){
-    const copy=list.slice();
-    for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
-    return copy;
-  }
-  function formatDate(value){
-    return new Intl.DateTimeFormat("en-US",{month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(new Date(value+"T12:00:00Z"));
-  }
   const orderedItems=items.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
   const blurredTitles=new Set();
   const grid=document.getElementById("feed-grid");
@@ -212,10 +201,11 @@ a{color:inherit}
     return frame;
   }
   function renderItem(item){
-    const writing=storyWriting[item.title];
     const card=document.createElement("article");
     card.className="story";
-    if(blurredTitles.has(item.title))card.classList.add("is-blurred");
+    const title=document.createElement("h2");
+    title.className="story-title";
+    title.textContent=item.title;
     const visual=document.createElement("div");
     visual.className="story-visual";
     if(item.gallery&&item.gallery.length){item.gallery.forEach(function(image){visual.append(makeMediaFrame({type:"photo",title:image.alt,src:image.src}));});}
@@ -224,29 +214,11 @@ a{color:inherit}
     shade.className="story-shade";
     shade.innerHTML='<span class="lock-mark" aria-hidden="true">✿</span>';
     visual.append(shade);
-    const copy=document.createElement("div");
-    copy.className="story-copy";
-    const title=document.createElement("h2");
-    title.textContent=item.title;
-    const meta=document.createElement("div");
-    meta.className="post-meta";
-    meta.textContent="By: Bluia Sisters · ";
-    const date=document.createElement("time");
-    date.dateTime=item.date;
-    date.textContent=formatDate(item.date);
-    meta.append(date);
-    const excerpt=document.createElement("p");
-    excerpt.className="post-excerpt";
-    excerpt.textContent=writing.excerpt;
-    const body=document.createElement("div");
-    body.className="post-caption";
-    writing.paragraphs.forEach(function(paragraph){const p=document.createElement("p");p.textContent=paragraph;body.appendChild(p);});
-    copy.append(title,meta,excerpt,body);
     const divider=document.createElement("div");
     divider.className="post-divider";
     divider.setAttribute("aria-hidden","true");
     divider.textContent="✿ ❀ ✿";
-    card.append(visual,copy,divider);
+    card.append(title,visual,divider);
     grid.appendChild(card);
   }
   function renderNextBatch(){
