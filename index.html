@@ -71,8 +71,8 @@ a{color:inherit}
 .floating-pro span{font-size:8px;line-height:1.12;text-align:center}
 .floating-pro:hover{transform:translateY(-4px) rotate(-5deg);background:var(--pink-deep)}
 .floating-pro:focus-visible{outline:3px solid #d94d89;outline-offset:4px}
-.site-foot{padding:28px 20px 34px;border-top:3px solid var(--yellow);background:var(--pink-pale);color:#684759;font-family:Georgia,"Times New Roman",serif;font-size:14px;text-align:center}
-.footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}\n.footer-cover-image{display:block;width:min(100%,420px);height:auto;margin:18px auto 14px;border-block:3px solid var(--yellow)}
+.site-foot{width:100%;max-width:100%;overflow:hidden;padding:28px 16px 34px;border-top:3px solid var(--yellow);background:var(--pink-pale);color:#684759;font-family:Georgia,"Times New Roman",serif;font-size:14px;text-align:center}
+.footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}\n.footer-cover-image{display:block;width:min(100%,360px);max-width:100%;height:auto;margin:18px auto 14px;border-block:3px solid var(--yellow)}
 .blog-title h1,.story-title,.dialog-panel h2{font-family:"Iowan Old Style","Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif}
 .story-title{margin:0;padding:18px 16px 14px;background:#fff;color:#58394a;text-align:center;font-size:clamp(21px,3vw,30px);line-height:1.3;font-weight:600}
 .blog-title p{font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-style:italic}
@@ -93,7 +93,7 @@ a{color:inherit}
 @keyframes dialog-in{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes backdrop-in{from{opacity:0}to{opacity:1}}
 @media(min-width:768px){.feed-grid{width:min(100%,840px);max-width:840px;margin:0 auto}}
-@media(max-width:560px){.wrap{width:min(100% - 28px,1080px)}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h2{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}.dialog-panel{padding:16px}.dialog-media{max-height:62vh}}
+@media(max-width:560px){.site-foot{padding:24px 12px 28px;font-size:13px}.footer-cover-image{width:min(100%,300px);margin:14px auto 12px}.footer-brand,.footer-support{max-width:100%;overflow-wrap:anywhere}.support-label{font-size:11px}.wrap{width:min(100% - 28px,1080px)}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h2{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}.dialog-panel{padding:16px}.dialog-media{max-height:62vh}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 .subscribe-dialog{max-width:560px}
 .subscribe-panel{height:auto;max-height:82vh;padding:28px}
@@ -148,7 +148,7 @@ a{color:inherit}
   </div>
 </dialog>
 <a class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Unlock full access" title="Unlock full access"><span>Unlock<br>full<br>access</span></a>
-<footer class="site-foot"><span class="footer-flower" aria-hidden="true">✿</span>Bluia Sisters Blog · Stories from the sisters<br><img class="footer-cover-image" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Bluia Sisters portrait" loading="lazy" decoding="async"><br><span class="support-label">Support: <a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a></span><span class="footer-flower" aria-hidden="true">✿</span></footer>
+<footer class="site-foot"><div class="footer-brand"><span class="footer-flower" aria-hidden="true">✿</span>Bluia Sisters Blog · Stories from the sisters<span class="footer-flower" aria-hidden="true">✿</span></div><img class="footer-cover-image" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Bluia Sisters portrait" loading="lazy" decoding="async"><div class="footer-support"><span class="support-label">Support: <a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a></span></div></footer>
 <script>
 (function(){
   const coverFrame=document.getElementById("cover-frame");
@@ -164,7 +164,6 @@ a{color:inherit}
       {src:"https://huggingface.co/buckets/Bluia/bimg/resolve/16141D9D-53F5-4BF7-9A7C-0997658D5487.png?download=true",alt:"Kira Bluia looking back on the staircase"},
       {src:"https://huggingface.co/buckets/Bluia/bimg/resolve/C3E9D659-E1ED-4513-AA99-F492ED54A679.png?download=true",alt:"Kira Bluia pausing beside the staircase wall"}
     ]},
-    {type:"video",title:"A Day With Us",date:"2026-07-08",src:"/assets/home/entertainment-preview.mp4",poster:"/assets/home/entertainment-preview.webp"}
   ];
   const orderedItems=items.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
   const blurredTitles=new Set();
