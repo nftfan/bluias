@@ -105,7 +105,11 @@ a{color:inherit}
     {type:"photo",title:"Quiet Confidence",src:"/test/media/cover-b19.webp"},
     {type:"photo",title:"The Last Look",src:"/test/media/cover-b20.webp"}
   ];
-  const grid=document.getElementById("feed-grid");
+  function shuffle(list){
+    const copy=list.slice();
+    for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
+    return copy;
+  }
   const orderedItems=shuffle(items);
   const blurredTitles=new Set(shuffle(items.map(function(item){return item.title;})).slice(0,6));
   const captionPairs=[
@@ -131,15 +135,11 @@ a{color:inherit}
     ["We brought the long way home with us.","Some memories feel like a deep breath."]
   ];
   const captionByTitle=new Map(shuffle(captionPairs).map(function(pair,index){return [items[index].title,pair];}));
-  function shuffle(list){
-    const copy=list.slice();
-    for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
-    return copy;
-  }
+  const grid=document.getElementById("feed-grid");
   orderedItems.forEach(function(item){
     const card=document.createElement("article");
     card.className="story";
-    if(blurredTitles.has(item.title)) card.classList.add("is-blurred");
+    if(blurredTitles.has(item.title))card.classList.add("is-blurred");
     const visual=document.createElement("div");
     visual.className="story-visual";
     let media;
@@ -180,7 +180,6 @@ a{color:inherit}
     card.append(visual,copy);
     grid.appendChild(card);
   });
-);
 })();
 </script>
 </body>
