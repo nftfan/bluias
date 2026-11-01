@@ -168,7 +168,8 @@ a{color:inherit}
     return new Intl.DateTimeFormat("en-US",{month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(new Date(value+"T12:00:00Z"));
   }
   const orderedItems=items.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
-  const blurredTitles=new Set(shuffle(items.map(function(item){return item.title;})).slice(0,6));
+  const blurredCount=Math.max(1,Math.ceil(items.length*0.3));
+  const blurredTitles=new Set(shuffle(items.map(function(item){return item.title;})).slice(0,blurredCount));
   const grid=document.getElementById("feed-grid");
   const sentinel=document.getElementById("feed-sentinel");
   const feedStatus=document.getElementById("feed-status");
