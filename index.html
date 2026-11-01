@@ -20,6 +20,9 @@ a{color:inherit}
 .cover.is-loading{animation:media-shimmer 1.8s linear infinite}
 .cover.is-loading::after{content:"✿";position:absolute;left:50%;top:50%;color:var(--pink-deep);font-size:34px;line-height:1;transform:translate(-50%,-50%);animation:flower-loading 1.1s ease-in-out infinite}
 .cover video{position:absolute;inset:0;display:block;width:100%;height:100%;border-block:3px solid var(--yellow);object-fit:cover;background:#231923}
+.cover-brand{position:absolute;z-index:2;left:50%;top:50%;color:#fff;font-family:"Iowan Old Style","Baskerville","Palatino Linotype",Georgia,serif;font-size:clamp(24px,6vw,64px);font-weight:600;letter-spacing:.035em;line-height:1.05;white-space:nowrap;text-align:center;text-shadow:0 3px 18px #000,0 0 28px #ed75a8;opacity:0;pointer-events:none}
+.cover-brand.animate{animation:cover-brand-transition 3.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes cover-brand-transition{0%{opacity:0;transform:translate(-50%,calc(-50% + 22px)) scale(.94);filter:blur(8px)}20%,70%{opacity:1;transform:translate(-50%,-50%) scale(1);filter:blur(0)}100%{opacity:0;transform:translate(-50%,calc(-50% - 14px)) scale(1.04);filter:blur(5px)}}
 .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;padding:14px 0 24px}
 .action{display:inline-flex;min-height:48px;align-items:center;justify-content:center;gap:10px;padding:0 19px;border:1px solid transparent;border-radius:4px;text-decoration:none;font-size:12px;font-weight:800;transition:transform .2s ease,background .2s ease,color .2s ease}
 .action:hover{transform:translateY(-3px)}
@@ -110,9 +113,10 @@ a{color:inherit}
 <main>
   <section class="hero wrap" aria-label="Bluias Sisters introduction">
     <div class="cover is-loading" id="cover-frame">
-      <video id="cover-video" autoplay muted loop playsinline controls preload="metadata" poster="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" aria-label="A Day With Us video cover">
+      <video id="cover-video" autoplay muted playsinline controls preload="metadata" poster="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" aria-label="Bluia Sisters Blog cover videos">
         <source src="/assets/home/entertainment-preview.mp4" type="video/mp4">
       </video>
+      <div class="cover-brand" id="cover-brand" aria-hidden="true">Bluia Sisters Blog</div>
     </div>
     <div class="actions" aria-label="Join the Bluias Sisters">
       <a class="action action-telegram" href="https://t.me/vbluia" target="_blank" rel="noopener noreferrer">Join our Telegram <span class="arrow" aria-hidden="true">↗</span></a>
@@ -154,13 +158,24 @@ a{color:inherit}
 (function(){
   const coverFrame=document.getElementById("cover-frame");
   const coverVideo=document.getElementById("cover-video");
+  const coverBrand=document.getElementById("cover-brand");
+  const coverVideos=["/assets/home/entertainment-preview.mp4","https://huggingface.co/buckets/Bluia/b1/resolve/_users_35d22728-f5cf-4697-8bb1-414b12fdb8ea_generated_c77f7c0d-8a69-4731-ab10-cf5ac5a494fa_generated_video.mp4?download=true"];
+  let coverVideoIndex=0;
   function finishCover(){coverFrame.classList.remove("is-loading");coverFrame.removeAttribute("aria-busy");}
+  function animateCoverBrand(){coverBrand.classList.remove("animate");void coverBrand.offsetWidth;coverBrand.classList.add("animate");}
   coverFrame.setAttribute("aria-busy","true");
   coverVideo.addEventListener("loadeddata",finishCover,{once:true});
   coverVideo.addEventListener("error",finishCover,{once:true});
+  coverVideo.addEventListener("ended",function(){
+    coverVideoIndex=(coverVideoIndex+1)%coverVideos.length;
+    coverVideo.src=coverVideos[coverVideoIndex];
+    coverVideo.load();
+    coverVideo.play().catch(function(){});
+    animateCoverBrand();
+  });
+  animateCoverBrand();
   if(coverVideo.readyState>=2)finishCover();
   const items=[
-    {type:"video",title:"Bluia Sisters — New Video",date:"2026-11-01",src:"https://huggingface.co/buckets/Bluia/b1/resolve/_users_35d22728-f5cf-4697-8bb1-414b12fdb8ea_generated_c77f7c0d-8a69-4731-ab10-cf5ac5a494fa_generated_video.mp4?download=true"},
     {type:"photo",title:"Bluia Sisters — IMG_8039",date:"2026-11-01",src:"https://huggingface.co/buckets/Bluia/b1/resolve/IMG_8039.jpeg?download=true",alt:"Bluia Sisters photo"},
     {type:"photo",title:"Bluia Sisters — IMG_8026",date:"2026-11-01",src:"https://huggingface.co/buckets/Bluia/b1/resolve/IMG_8026.jpeg?download=true",alt:"Bluia Sisters photo"},
     {type:"photo",title:"Kira & Kaya Bluia: A Staircase Moment in Pink",date:"2026-11-01",src:"https://huggingface.co/buckets/Bluia/bimg/resolve/C18847E5-C5BF-42DE-AFB3-896BC5408379.png?download=true",gallery:[
