@@ -36,8 +36,8 @@ a{color:inherit}
 .feed-grid{display:grid;grid-template-columns:minmax(0,1fr);width:100vw;max-width:none;margin:0 0 0 calc(50% - 50vw);gap:24px}
 .story{min-width:0;background:var(--white);border:0;border-bottom:1px solid var(--line);border-radius:0;overflow:hidden;transition:border-color .22s ease}
 .story:hover{border-color:#e8adc6}
-.story-visual{position:relative;display:grid;gap:0;overflow:visible;width:100%;height:auto;background:#fbe6ee}
-.story-media{display:block;width:100%;height:auto;max-width:100%;max-height:none;margin:0;object-fit:contain;object-position:center;filter:blur(0);transition:filter .35s ease}
+.story-visual{position:relative;display:grid;gap:8px;overflow:visible;width:100%;height:auto;background:#fbe6ee}
+.story-media{display:block;width:100%;height:auto;max-width:100%;max-height:none;margin:0;border-block:3px solid var(--yellow);object-fit:contain;object-position:center;filter:blur(0);transition:filter .35s ease}
 .story.is-blurred .story-media{filter:blur(13px)}
 .story-shade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#44263814 20%,#44263870);opacity:0;pointer-events:none;transition:opacity .25s ease}
 .story.is-blurred .story-shade{opacity:1}
