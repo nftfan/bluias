@@ -65,6 +65,12 @@ a{color:inherit}
 .floating-pro:focus-visible{outline:3px solid #d94d89;outline-offset:4px}
 .site-foot{padding:28px 20px 34px;border-top:3px solid var(--yellow);background:var(--pink-pale);color:#684759;font-family:Georgia,"Times New Roman",serif;font-size:14px;text-align:center}
 .footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}
+.blog-title h1,.story-copy h2,.dialog-panel h2{font-family:"Iowan Old Style","Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif}
+.blog-title p{font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-style:italic}
+.post-excerpt{margin:10px 0 0;color:#6f5963;font-family:"Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:15px;line-height:1.72}
+.dialog-caption p{margin:0 0 15px;color:#65545d;font-family:"Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:17px;line-height:1.78}
+.feed-sentinel{height:2px}
+.feed-status{margin:18px auto 0;text-align:center;color:#947c88;font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-size:13px;font-style:italic}
 @keyframes flower-sway{0%,100%{transform:rotate(-9deg) translateY(0)}50%{transform:rotate(9deg) translateY(-5px)}}
 @keyframes float-up{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes dialog-in{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -99,7 +105,11 @@ a{color:inherit}
     <span class="blog-flower alt" aria-hidden="true">❀</span>
   </section>
   <section class="feed-section" aria-labelledby="blog-title">
-    <div class="wrap"><div class="feed-grid" id="feed-grid"></div></div>
+    <div class="wrap">
+      <div class="feed-grid" id="feed-grid"></div>
+      <div id="feed-sentinel" class="feed-sentinel" aria-hidden="true"></div>
+      <p id="feed-status" class="feed-status" aria-live="polite">Scroll for more stories</p>
+    </div>
   </section>
 <dialog class="post-dialog" id="post-dialog" aria-labelledby="dialog-title">
   <div class="dialog-panel">
@@ -144,6 +154,28 @@ a{color:inherit}
     {type:"photo",title:"Quiet Confidence",date:"2026-08-29",src:"/test/media/cover-b19.webp"},
     {type:"photo",title:"The Last Look",date:"2026-07-24",src:"/test/media/cover-b20.webp"}
   ];
+  const storyWriting={
+    "Morning Light":{excerpt:"A gentle start can change the shape of an entire day.",paragraphs:["Some mornings arrive quietly, giving us a little space before the day begins to ask for things. In that pause, the familiar can feel new again: a first cup, an open window, a thought worth keeping.","We are learning to leave room for these softer beginnings. They do not need to be grand to matter; sometimes a calm start is its own small celebration."]},
+    "Blue Hour Portrait":{excerpt:"The last blue of evening has a story all its own.",paragraphs:["There is a brief hour when the day lets go of its edges and the evening has not yet decided what it will become. The light turns cool, the pace eases, and ordinary details seem to hold a little more feeling.","We like this in-between time because it asks for nothing but attention. Stay for a moment, notice what changes, and let the day end without rushing it."]},
+    "A Softer Sunday":{excerpt:"A Sunday feels richer when we let it unfold at its own pace.",paragraphs:["A softer Sunday is less about a perfect plan and more about choosing a kinder rhythm. We make room for the people we love, the things that restore us, and the little pauses that often disappear during the week.","The best part is how simple it can be. One good conversation, an unhurried afternoon, and a few hours with nowhere urgent to go are sometimes more than enough."]},
+    "Sisterhood in Motion":{excerpt:"Friendship is a collection of small moments that keep finding their way back.",paragraphs:["The word friends can sound simple, but the feeling is made of a thousand little things: showing up, sharing a laugh, listening closely, and making an ordinary day feel brighter together.","We are grateful for the friendships that move with us through every season. They remind us that belonging is not a grand gesture; it is the steady comfort of knowing someone is there."]},
+    "The Little Things":{excerpt:"The small details are often the ones we remember longest.",paragraphs:["A day is rarely made memorable by one enormous event. More often, it is a favorite detail, a passing joke, a kind message, or a moment when everything feels just right for a few seconds.","We are trying to notice those pieces while they are happening. Paying attention turns the everyday into something we can carry with us, long after the moment has passed."]},
+    "A New Favorite":{excerpt:"Every so often, something familiar makes room for a new favorite.",paragraphs:["Finding a new favorite does not always mean replacing the old ones. Sometimes it is simply a fresh idea, a different point of view, or a small change that makes a familiar routine feel exciting again.","We like keeping a little room for discovery. It makes the days feel less predictable and reminds us that there is always something lovely just around the next corner."]},
+    "Behind the Blue":{excerpt:"There is always more to a story than the first glance reveals.",paragraphs:["The phrase behind the blue feels like an invitation to look a little closer. What is the mood beneath the color? What small detail changes the whole scene? What part of the story might be easy to miss if we move too quickly?","We enjoy leaving a few questions open. Not every moment needs an explanation; sometimes curiosity is the most beautiful way to stay with it."]},
+    "Weekend Notes":{excerpt:"A few notes from a weekend that deserved to last a little longer.",paragraphs:["Weekends have a way of collecting their own small chapters. There are the plans we keep, the plans we change, and the unexpected moments that become the best part of the story.","We are saving a note for the slower hours: keep the calendar light when you can, make time for good company, and let a little spontaneity into the day."]},
+    "Soft Focus":{excerpt:"A softer focus helps us see what deserves our attention.",paragraphs:["Not everything needs to be sharp and certain all the time. Some days are better when we let the background settle, pay attention to one good thing, and stop trying to make every detail fit into place.","That gentler view can make room for calm. It gives us permission to enjoy the present without turning every moment into a task or a perfect picture."]},
+    "In Our Own Time":{excerpt:"There is no need to rush a chapter that is still becoming.",paragraphs:["Everyone has a different pace for growing, changing, and finding their way. It can be tempting to compare our progress with someone else’s, but a life is not a race with one shared finish line.","We are choosing to trust the timing of our own story. A slower step is still a step, and a quiet season can be doing more work than we can see."]},
+    "A Little Daydream":{excerpt:"A little daydream can make an ordinary afternoon feel full of possibility.",paragraphs:["Daydreaming is not always an escape. Sometimes it is a gentle way to imagine what might be possible, collect an idea, or give the mind a little room to wander before returning to the day.","We like keeping that window open. A bright thought can become a plan, a creative spark, or simply a pleasant moment that makes the next hour feel lighter."]},
+    "Golden Afternoon":{excerpt:"Some afternoons seem to hold the warmth of the whole week.",paragraphs:["There is a kind of afternoon that asks us to slow down and stay a little longer. The light softens, the day feels less demanding, and the hours seem to stretch just enough for us to notice them.","We are trying to make more room for that feeling, even when life is busy. A small pause can be enough to bring a little warmth back into the day."]},
+    "The Everyday Edit":{excerpt:"A thoughtful edit makes space for what matters most.",paragraphs:["An edit is not only about what we choose; it is also about what we decide to leave out. A little less noise can make the good things easier to see, whether we are choosing a plan, a favorite detail, or where to spend our attention.","This is our reminder to keep the things that feel true, useful, and joyful. The rest can wait outside the frame for another day."]},
+    "A Day With Us":{excerpt:"A good day is better when it leaves room for a little entertainment.",paragraphs:["Not every day needs a big event. A funny clip, a favorite tune, a story shared with someone we love, or a few minutes of easy entertainment can change the tone of an afternoon.","We like the kind of fun that brings people together and asks very little in return. Press play, take a breath, and let yourself enjoy the moment without overthinking it."]},
+    "Sunlit Stories":{excerpt:"A little brightness can make even a familiar story feel new.",paragraphs:["Some stories are worth telling again because the details keep changing. We remember them differently with time, notice a new part, or understand why one small moment stayed with us.","This is a note to keep collecting those bright fragments. They do not need to be dramatic to deserve a place in the story; sometimes they are simply reminders that good things happen in ordinary days."]},
+    "A Little More Blue":{excerpt:"A little more blue, a little more room to breathe.",paragraphs:["Color can change the way a moment feels before we have found the words for it. Blue can feel calm, thoughtful, playful, or full of possibility, depending on the day and the mood we bring to it.","We are keeping space for that range. There is no need to choose one version of ourselves and stay there; a good week has room for every shade."]},
+    "Sisters at Heart":{excerpt:"Sisterhood is a feeling built from showing up for one another.",paragraphs:["Being sisters at heart is less about having the same answers and more about making space for one another’s differences. It is listening, laughing, checking in, and finding ways to make the other person feel seen.","We are thankful for the people who make life feel more connected. Their care is not always loud, but it is often the part we remember most."]},
+    "The Bluias Edit":{excerpt:"A good edit gathers the little things we would happily share.",paragraphs:["The best edits feel personal. They collect ideas, moments, and small discoveries that make us pause, then leave enough space for everyone to make the story their own.","This is our open invitation to browse slowly and keep what speaks to you. A note, a scene, or a new thought can be the start of a story you carry somewhere else."]},
+    "Quiet Confidence":{excerpt:"Quiet confidence does not need to announce itself to be felt.",paragraphs:["Confidence can be calm. It can look like trusting a choice, keeping a promise to yourself, or being comfortable with a version of your life that does not need to impress anyone else.","We are learning that self-assurance grows through small acts of honesty. It takes time, and it is worth celebrating even when nobody else notices."]},
+    "The Last Look":{excerpt:"One last look can help us notice how far the story has come.",paragraphs:["Endings are not always dramatic. Sometimes they are simply a moment to look back, appreciate what stayed with us, and recognize the small changes that happened along the way.","We are closing this chapter with gratitude and leaving the next one open. There is always another day to begin again, and always another detail waiting to be noticed."]}
+  };
   function shuffle(list){
     const copy=list.slice();
     for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
@@ -154,32 +186,13 @@ a{color:inherit}
   }
   const orderedItems=items.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
   const blurredTitles=new Set(shuffle(items.map(function(item){return item.title;})).slice(0,6));
-  const captionPairs=[
-    ["A bright sky followed us all afternoon.","Saving a little sunshine for later."],
-    ["A slow morning, with nowhere else to be.","The smallest moments stay with us."],
-    ["Found a new favorite around the corner.","Good company makes the day feel lighter."],
-    ["The evening had its own kind of sparkle.","One more memory for the collection."],
-    ["A little color changed the whole mood.","This is what a happy pause looks like."],
-    ["We took the scenic route again.","Some days are made for getting lost."],
-    ["Soft light, open windows, easy plans.","Keeping this moment close."],
-    ["The playlist was right, and so was the timing.","A day that felt like ours."],
-    ["A new view made an old favorite feel fresh.","Here’s to finding beauty nearby."],
-    ["We laughed longer than we planned.","That’s usually how the best days go."],
-    ["A breezy afternoon and a familiar smile.","Could stay in this moment awhile."],
-    ["The city felt quieter from here.","A small escape in the middle of the week."],
-    ["We saved the best light for last.","Some scenes need no extra plans."],
-    ["A favorite outfit met a favorite place.","The little details made the day."],
-    ["A quick hello turned into a whole afternoon.","We’ll remember this one."],
-    ["The colors seemed brighter after the rain.","A fresh page, with room to wander."],
-    ["Nothing on the schedule but good company.","Exactly the kind of day we needed."],
-    ["We found a peaceful corner to call ours.","A little calm goes a long way."],
-    ["A shared joke made the moment even better.","More days with this kind of energy."],
-    ["We brought the long way home with us.","Some memories feel like a deep breath."]
-  ];
-  const captionByTitle=new Map(shuffle(captionPairs).map(function(pair,index){return [items[index].title,pair];}));
   const grid=document.getElementById("feed-grid");
+  const sentinel=document.getElementById("feed-sentinel");
+  const feedStatus=document.getElementById("feed-status");
   const dialog=document.getElementById("post-dialog");
   const dialogContent=document.getElementById("dialog-content");
+  let nextIndex=0;
+  let observer=null;
   function makeMedia(item,fullSize){
     let media;
     if(item.type==="video"){
@@ -190,7 +203,7 @@ a{color:inherit}
       media.loop=!fullSize;
       media.autoplay=!fullSize;
       media.playsInline=true;
-      media.preload="metadata";
+      media.preload=fullSize?"metadata":"none";
       if(fullSize)media.controls=true;
       media.setAttribute("aria-label",item.title);
     }else{
@@ -203,7 +216,7 @@ a{color:inherit}
     media.className=fullSize?"dialog-media":"story-media";
     return media;
   }
-  function openPost(item,lines){
+  function openPost(item,writing){
     dialogContent.replaceChildren();
     const heading=document.createElement("h2");
     heading.id="dialog-title";
@@ -214,11 +227,12 @@ a{color:inherit}
     const media=makeMedia(item,true);
     const caption=document.createElement("div");
     caption.className="dialog-caption";
-    lines.forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
+    writing.paragraphs.forEach(function(paragraph){const p=document.createElement("p");p.textContent=paragraph;caption.appendChild(p);});
     dialogContent.append(heading,meta,media,caption);
     dialog.showModal();
   }
-  orderedItems.forEach(function(item){
+  function renderItem(item){
+    const writing=storyWriting[item.title];
     const card=document.createElement("article");
     card.className="story";
     if(blurredTitles.has(item.title))card.classList.add("is-blurred");
@@ -244,27 +258,47 @@ a{color:inherit}
     date.dateTime=item.date;
     date.textContent=formatDate(item.date);
     meta.append(date);
-    const caption=document.createElement("div");
-    caption.className="post-caption";
-    const lines=captionByTitle.get(item.title)||[];
-    lines.forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
+    const excerpt=document.createElement("p");
+    excerpt.className="post-excerpt";
+    excerpt.textContent=writing.excerpt;
     const more=document.createElement("button");
     more.className="read-more";
     more.type="button";
     more.textContent="Read more";
-    more.addEventListener("click",function(){openPost(item,lines);});
-    copy.append(title,meta,caption,more);
+    more.addEventListener("click",function(){openPost(item,writing);});
+    copy.append(title,meta,excerpt,more);
     card.append(visual,copy);
     grid.appendChild(card);
-  });
+  }
+  function renderNextBatch(){
+    const start=nextIndex;
+    const end=Math.min(start+4,orderedItems.length);
+    orderedItems.slice(start,end).forEach(renderItem);
+    nextIndex=end;
+    if(nextIndex>=orderedItems.length){
+      if(observer)observer.disconnect();
+      sentinel.hidden=true;
+      feedStatus.textContent="You’ve reached the end of the stories.";
+    }else{
+      feedStatus.textContent="More stories below";
+    }
+  }
+  function onScrollFallback(){
+    if(sentinel.getBoundingClientRect().top<window.innerHeight+500)renderNextBatch();
+  }
+  renderNextBatch();
+  if("IntersectionObserver" in window){
+    observer=new IntersectionObserver(function(entries){if(entries.some(function(entry){return entry.isIntersecting;}))renderNextBatch();},{rootMargin:"600px 0px"});
+    observer.observe(sentinel);
+  }else{
+    window.addEventListener("scroll",onScrollFallback,{passive:true});
+    onScrollFallback();
+  }
   document.querySelector(".dialog-close").addEventListener("click",function(){dialog.close();});
   dialog.addEventListener("click",function(event){if(event.target===dialog)dialog.close();});
   const subscribeDialog=document.getElementById("subscribe-dialog");
   document.querySelectorAll(".action-pro,.floating-pro").forEach(function(link){
-    link.addEventListener("click",function(event){
-      event.preventDefault();
-      subscribeDialog.showModal();
-    });
+    link.addEventListener("click",function(event){event.preventDefault();subscribeDialog.showModal();});
   });
   document.querySelector(".subscribe-close").addEventListener("click",function(){subscribeDialog.close();});
   document.querySelector(".subscribe-cancel").addEventListener("click",function(){subscribeDialog.close();});
