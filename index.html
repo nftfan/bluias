@@ -133,6 +133,11 @@ a{color:inherit}
 <script>
 (function(){
   const items=[
+    {type:"photo",title:"Kira & Kaya Bluia: A Staircase Moment in Pink",date:"2026-11-01",src:"https://huggingface.co/buckets/Bluia/bimg/resolve/C18847E5-C5BF-42DE-AFB3-896BC5408379.png?download=true",gallery:[
+      {src:"https://huggingface.co/buckets/Bluia/bimg/resolve/C18847E5-C5BF-42DE-AFB3-896BC5408379.png?download=true",alt:"Kaya Bluia and Kira Bluia together on the staircase"},
+      {src:"https://huggingface.co/buckets/Bluia/bimg/resolve/16141D9D-53F5-4BF7-9A7C-0997658D5487.png?download=true",alt:"Kira Bluia looking back on the staircase"},
+      {src:"https://huggingface.co/buckets/Bluia/bimg/resolve/C3E9D659-E1ED-4513-AA99-F492ED54A679.png?download=true",alt:"Kira Bluia pausing beside the staircase wall"}
+    ]},
     {type:"photo",title:"Morning Light",date:"2026-11-01",src:"/test/media/cover-b6.webp"},
     {type:"photo",title:"Blue Hour Portrait",date:"2026-07-04",src:"/test/media/cover-b7.webp"},
     {type:"photo",title:"A Softer Sunday",date:"2026-09-25",src:"/test/media/cover-b8.webp"},
@@ -155,6 +160,7 @@ a{color:inherit}
     {type:"photo",title:"The Last Look",date:"2026-07-24",src:"/test/media/cover-b20.webp"}
   ];
   const storyWriting={
+    "Kira & Kaya Bluia: A Staircase Moment in Pink":{excerpt:"Kaya and Kira turn a familiar staircase into their own little fashion story, pairing soft pink with a relaxed, rosy-lilac look.",paragraphs:["A marble staircase, warm evening light, and two different takes on pink set the scene for this sisters’ style moment. Kaya Bluia joins Kira Bluia for a relaxed portrait together: Kaya in a soft lilac top and light shorts, while Kira wears a pink fitted look with simple white heels. The gentle colors feel coordinated without being identical, giving each sister room to bring her own character to the frame.","Then the story becomes Kira’s for a few solo frames. She pauses on the stairs, glances back over her shoulder, and later turns toward the wall for a quieter pose. The changing angles make the set feel like a little walk through the same beautiful space rather than a single posed shot. We love how a familiar corner can become a backdrop for a new memory when you share it with someone close."]},
     "Morning Light":{excerpt:"A gentle start can change the shape of an entire day.",paragraphs:["Some mornings arrive quietly, giving us a little space before the day begins to ask for things. In that pause, the familiar can feel new again: a first cup, an open window, a thought worth keeping.","We are learning to leave room for these softer beginnings. They do not need to be grand to matter; sometimes a calm start is its own small celebration."]},
     "Blue Hour Portrait":{excerpt:"The last blue of evening has a story all its own.",paragraphs:["There is a brief hour when the day lets go of its edges and the evening has not yet decided what it will become. The light turns cool, the pace eases, and ordinary details seem to hold a little more feeling.","We like this in-between time because it asks for nothing but attention. Stay for a moment, notice what changes, and let the day end without rushing it."]},
     "A Softer Sunday":{excerpt:"A Sunday feels richer when we let it unfold at its own pace.",paragraphs:["A softer Sunday is less about a perfect plan and more about choosing a kinder rhythm. We make room for the people we love, the things that restore us, and the little pauses that often disappear during the week.","The best part is how simple it can be. One good conversation, an unhurried afternoon, and a few hours with nowhere urgent to go are sometimes more than enough."]},
@@ -224,11 +230,16 @@ a{color:inherit}
     const meta=document.createElement("p");
     meta.className="dialog-meta";
     meta.textContent="By: Bluia Sisters · "+formatDate(item.date);
-    const media=makeMedia(item,true);
+    const mediaNodes=[];
+    if(item.gallery&&item.gallery.length){
+      item.gallery.forEach(function(image){const media=makeMedia({type:"photo",title:image.alt,src:image.src},true);mediaNodes.push(media);});
+    }else{
+      mediaNodes.push(makeMedia(item,true));
+    }
     const caption=document.createElement("div");
     caption.className="dialog-caption";
     writing.paragraphs.forEach(function(paragraph){const p=document.createElement("p");p.textContent=paragraph;caption.appendChild(p);});
-    dialogContent.append(heading,meta,media,caption);
+    dialogContent.append(heading,meta,...mediaNodes,caption);
     dialog.showModal();
   }
   function renderItem(item){
