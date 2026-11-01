@@ -20,13 +20,13 @@ a{color:inherit}
 .brand{font-size:17px;letter-spacing:.16em;font-weight:900;color:#133d73}
 .head-note{color:var(--muted);font-size:12px;font-weight:650}
 .hero{padding:18px 0 52px}
-.cover{position:relative;overflow:hidden;border-radius:26px;background:#c9def7;aspect-ratio:2.15/1;min-height:260px;box-shadow:var(--shadow)}
-.cover img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center 38%}
-.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#071b36bd 0%,#0c2d503e 52%,transparent 100%)}
-.cover-title{position:absolute;z-index:1;left:clamp(22px,6vw,70px);bottom:clamp(24px,5vw,58px);color:#fff;max-width:570px}
+.cover{position:relative;overflow:hidden;width:100vw;margin-left:calc(50% - 50vw);border-radius:0;background:#dceaf8;aspect-ratio:auto;min-height:0;box-shadow:none}
+.cover img{display:block;width:100%;height:auto;max-height:none;position:relative;inset:auto;object-fit:contain;object-position:center}
+
+
 .kicker{font-size:10px;font-weight:850;letter-spacing:.22em;text-transform:uppercase;color:#c8e4ff}
-.cover-title h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,6.4vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:500;margin:12px 0 12px}
-.cover-title p{font-size:14px;line-height:1.6;color:#eff7ff;max-width:430px;margin:0}
+
+
 .intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;padding:30px 0 26px}
 .intro-copy{max-width:620px}
 .eyebrow{font-size:10px;letter-spacing:.2em;font-weight:850;text-transform:uppercase;color:var(--blue);margin:0 0 9px}
@@ -58,12 +58,12 @@ a{color:inherit}
 .type-pill{position:absolute;left:11px;top:11px;border-radius:999px;padding:6px 9px;background:#f5faffeb;color:#245e9a;font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 3px 12px #092a4b18}
 .story-copy{padding:13px 14px 15px}
 .story-copy h3{margin:0;color:#173b66;font-size:13px;line-height:1.35;font-weight:800}
-.story-copy p{margin:5px 0 0;color:#8092a7;font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:750}
+.post-caption{display:grid;gap:3px;margin:7px 0 0;color:#7086a0;font-size:10px;line-height:1.5;font-weight:550}.post-caption span{display:block}
 .section-tail{display:flex;align-items:center;justify-content:center;margin-top:30px;text-align:center}
 .section-tail span{color:#6682a0;font-size:12px;line-height:1.7}
 .site-foot{padding:22px 0 30px;border-top:1px solid var(--line);background:#fff;color:#7890aa;font-size:10px;text-align:center;letter-spacing:.04em}
 @media(max-width:850px){.feed-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.intro{grid-template-columns:1fr;gap:20px}.actions{justify-content:flex-start}}
-@media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}.site-head{height:60px}.head-note{font-size:10px}.hero{padding:8px 0 35px}.cover{aspect-ratio:1.12/1;min-height:320px;border-radius:20px}.cover img{object-position:54% center}.cover-title{left:23px;right:20px;bottom:25px}.cover-title h1{font-size:46px}.cover-title p{font-size:12px}.intro{padding:21px 0 22px}.intro h2{font-size:36px}.intro p{font-size:13px}.actions{display:grid;grid-template-columns:1fr 1.2fr}.action{padding:0 11px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.feed-section{padding:29px 0 52px}.feed-heading{align-items:center;margin-bottom:16px}.feed-heading h2{font-size:29px}.feed-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.story{border-radius:14px}.story-copy{padding:11px 10px 12px}.story-copy h3{font-size:11px}.story-copy p{font-size:9px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.lock-mark{width:36px;height:36px;font-size:15px}}
+@media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}.site-head{height:60px}.head-note{font-size:10px}.hero{padding:8px 0 35px}.cover{aspect-ratio:auto;min-height:0;border-radius:0}.cover img{object-position:center}.intro{padding:21px 0 22px}.intro h2{font-size:36px}.intro p{font-size:13px}.actions{display:grid;grid-template-columns:1fr 1.2fr}.action{padding:0 11px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.feed-section{padding:29px 0 52px}.feed-heading{align-items:center;margin-bottom:16px}.feed-heading h2{font-size:29px}.feed-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.story{border-radius:14px}.story-copy{padding:11px 10px 12px}.story-copy h3{font-size:11px}.post-caption{font-size:9px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.lock-mark{width:36px;height:36px;font-size:15px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.action,.story,.story-media{transition:none!important}.story:hover,.action:hover{transform:none}}
 </style>
 </head>
@@ -76,11 +76,7 @@ a{color:inherit}
   <section class="hero wrap" aria-labelledby="hero-title">
     <div class="cover">
       <img src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Bluias Sisters cover portrait" fetchpriority="high" decoding="async">
-      <div class="cover-title">
-        <div class="kicker">A little window into our world</div>
-        <h1 id="hero-title">The Bluias<br>Sisters</h1>
-        <p>Style, stories and the small moments we love sharing with you.</p>
-      </div>
+      
     </div>
     <div class="intro">
       <div class="intro-copy">
@@ -94,15 +90,15 @@ a{color:inherit}
       </div>
       <div class="actions" aria-label="Join the Bluias Sisters">
         <a class="action action-telegram" href="https://t.me/vbluia" target="_blank" rel="noopener noreferrer">Join our Telegram <span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="action action-pro" href="/pro/">Subscribe <small>$10 / month</small> <span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="action action-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06">Subscribe <small>$10 / month</small> <span class="arrow" aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
   <section class="feed-section" aria-labelledby="feed-title">
     <div class="wrap">
       <div class="feed-heading">
-        <div><p class="eyebrow">Fresh from the sisters</p><h2 id="feed-title">The latest feed</h2><p>Little glimpses, new stories and moments worth keeping.</p></div>
-        <span class="feed-count">20 previews</span>
+        <div><p class="eyebrow">Fresh from the sisters</p><h2 id="feed-title">Bluias posts</h2><p>Little glimpses, new stories and moments worth keeping.</p></div>
+        <span class="feed-count">20 posts</span>
       </div>
       <div class="feed-grid" id="feed-grid"></div>
       <div class="section-tail"><span>Unlock unlimited stories and news from the Bluias Sisters.<br>New moments are waiting inside.</span></div>
@@ -170,9 +166,23 @@ a{color:inherit}
     copy.className="story-copy";
     const title=document.createElement("h3");
     title.textContent=item.title;
-    const kind=document.createElement("p");
-    kind.textContent=item.type==="video"?"Bluias video":"Sisters’ story";
-    copy.append(title,kind);
+    const caption=document.createElement("div");
+    caption.className="post-caption";
+    const captionLines=[
+      ["A little sunshine to carry into the week.","Saving this moment for a rainy day."],
+      ["Soft light, good company, easy afternoons.","A tiny reminder to enjoy the little things."],
+      ["A new look, a familiar feeling.","Just us, making another lovely memory."],
+      ["Blue skies and a slower kind of morning.","Some moments deserve a second look."],
+      ["A little note from our side of the story.","Keeping the good energy close today."],
+      ["A favorite frame from a favorite day.","More moments like this, please."],
+      ["The best plans leave room for a detour.","A fresh page, a little sparkle."],
+      ["Here’s to the in-between moments.","A small detail made the whole day."],
+      ["A soft mood for a bright new week.","Take the long way when you can."],
+      ["One of those days we want to remember.","Good things happen when we slow down."]
+    ];
+    const lines=captionLines[Math.floor(Math.random()*captionLines.length)];
+    lines.forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
+    copy.append(title,caption);
     card.append(visual,copy);
     grid.appendChild(card);
   });
