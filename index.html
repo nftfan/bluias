@@ -53,11 +53,11 @@ a{color:inherit}
 .post-dialog{width:min(760px,calc(100% - 28px));max-width:none;max-height:90vh;margin:auto;padding:0;border:1px solid #efcfdd;border-radius:7px;background:#fffaf5;color:var(--ink);overflow:visible}
 .post-dialog::backdrop{background:#34232d99;animation:backdrop-in .24s ease both}
 .post-dialog[open]{animation:dialog-in .28s cubic-bezier(.2,.8,.2,1) both}
-.dialog-panel{position:relative;max-height:90vh;overflow:auto;padding:22px;background:#fffaf5}
+.dialog-panel{position:relative;height:min(82vh,820px);max-height:82vh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-gutter:stable;padding:22px;background:#fffaf5}
 .dialog-close{position:sticky;z-index:2;top:0;float:right;width:38px;height:38px;border:0;border-radius:50%;background:var(--yellow);color:#553f1a;font-size:24px;line-height:1;cursor:pointer}
 .dialog-panel h2{margin:6px 48px 5px 0;color:#58394a;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,34px)}
 .dialog-meta{margin:0 48px 15px 0;color:#947c88;font-size:12px}
-.dialog-media{display:block;width:auto;height:auto;max-width:100%;max-height:68vh;margin:0 auto 16px;object-fit:contain}
+.dialog-media{display:block;width:auto;height:auto;max-width:100%;max-height:68vh;margin:0 auto 16px;border-radius:12px;object-fit:contain}
 .dialog-caption{display:grid;gap:8px;color:#65545d;font-size:14px;line-height:1.65}
 .floating-pro{position:fixed;z-index:20;right:18px;bottom:20px;width:64px;height:64px;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:var(--pink);color:#fff;text-decoration:none;font-size:12px;font-weight:900;letter-spacing:.06em;box-shadow:0 0 0 3px var(--yellow);transition:transform .2s ease,background .2s ease;animation:float-up 3.5s ease-in-out infinite}
 .floating-pro b{position:absolute;right:5px;top:4px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--yellow);color:#664d21;font-size:14px}
@@ -72,7 +72,7 @@ a{color:inherit}
 @media(max-width:560px){.wrap{width:min(100% - 28px,1080px)}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h2{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}.dialog-panel{padding:16px}.dialog-media{max-height:62vh}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 .subscribe-dialog{max-width:560px}
-.subscribe-panel{padding:28px}
+.subscribe-panel{height:auto;max-height:82vh;padding:28px}
 .subscribe-copy h2{margin:6px 48px 12px 0}
 .subscribe-copy p{margin:0 0 20px;color:#65545d;font-size:14px;line-height:1.7}
 .subscribe-continue{display:inline-flex;align-items:center;gap:10px;padding:13px 17px;border:1px solid var(--pink);border-radius:4px;background:var(--pink);color:#fff;text-decoration:none;font-size:12px;font-weight:850;transition:background .18s ease,transform .18s ease}
@@ -122,26 +122,26 @@ a{color:inherit}
 <script>
 (function(){
   const items=[
-    {type:"photo",title:"Morning Light",date:"2026-07-31",src:"/test/media/cover-b6.webp"},
-    {type:"photo",title:"Blue Hour Portrait",date:"2026-07-03",src:"/test/media/cover-b7.webp"},
-    {type:"photo",title:"A Softer Sunday",date:"2026-07-26",src:"/test/media/cover-b8.webp"},
-    {type:"video",title:"Sisterhood in Motion",date:"2026-07-12",src:"/b001-aszx/media/friends-dd573039.mp4",poster:"/b001-aszx/media/friends-b730ee5b.webp"},
-    {type:"photo",title:"The Little Things",date:"2026-07-29",src:"/test/media/cover-b9.webp"},
-    {type:"photo",title:"A New Favorite",date:"2026-07-05",src:"/test/media/cover-b10.webp"},
-    {type:"video",title:"Behind the Blue",date:"2026-07-24",src:"/b001-aszx/media/video-b328e34f.mp4",poster:"/b001-aszx/media/images-2b588214.webp"},
-    {type:"photo",title:"Weekend Notes",date:"2026-07-09",src:"/test/media/cover-b11.webp"},
-    {type:"photo",title:"Soft Focus",date:"2026-07-18",src:"/test/media/cover-b12.webp"},
+    {type:"photo",title:"Morning Light",date:"2026-11-01",src:"/test/media/cover-b6.webp"},
+    {type:"photo",title:"Blue Hour Portrait",date:"2026-07-04",src:"/test/media/cover-b7.webp"},
+    {type:"photo",title:"A Softer Sunday",date:"2026-09-25",src:"/test/media/cover-b8.webp"},
+    {type:"video",title:"Sisterhood in Motion",date:"2026-08-12",src:"/b001-aszx/media/friends-dd573039.mp4",poster:"/b001-aszx/media/friends-b730ee5b.webp"},
+    {type:"photo",title:"The Little Things",date:"2026-10-26",src:"/test/media/cover-b9.webp"},
+    {type:"photo",title:"A New Favorite",date:"2026-07-15",src:"/test/media/cover-b10.webp"},
+    {type:"video",title:"Behind the Blue",date:"2026-09-12",src:"/b001-aszx/media/video-b328e34f.mp4",poster:"/b001-aszx/media/images-2b588214.webp"},
+    {type:"photo",title:"Weekend Notes",date:"2026-07-28",src:"/test/media/cover-b11.webp"},
+    {type:"photo",title:"Soft Focus",date:"2026-08-20",src:"/test/media/cover-b12.webp"},
     {type:"photo",title:"In Our Own Time",date:"2026-07-01",src:"/test/media/cover-b13.webp"},
-    {type:"video",title:"A Little Daydream",date:"2026-07-27",src:"/b001-aszx/video-1-preview.mp4",poster:"/b001-aszx/media/a3-4e86ad58-480.webp"},
-    {type:"photo",title:"Golden Afternoon",date:"2026-07-14",src:"/test/media/cover-b14.webp"},
-    {type:"photo",title:"The Everyday Edit",date:"2026-07-22",src:"/test/media/cover-b15.webp"},
-    {type:"video",title:"A Day With Us",date:"2026-07-06",src:"/assets/home/entertainment-preview.mp4",poster:"/assets/home/entertainment-preview.webp"},
-    {type:"photo",title:"Sunlit Stories",date:"2026-07-30",src:"/test/media/cover-b16.webp"},
-    {type:"photo",title:"A Little More Blue",date:"2026-07-11",src:"/test/media/cover-b17.webp"},
-    {type:"photo",title:"Sisters at Heart",date:"2026-07-20",src:"/test/media/cover-b18.webp"},
-    {type:"video",title:"The Bluias Edit",date:"2026-07-08",src:"/assets/home/links-preview.mp4",poster:"/assets/home/links-preview.webp"},
-    {type:"photo",title:"Quiet Confidence",date:"2026-07-16",src:"/test/media/cover-b19.webp"},
-    {type:"photo",title:"The Last Look",date:"2026-07-02",src:"/test/media/cover-b20.webp"}
+    {type:"video",title:"A Little Daydream",date:"2026-10-11",src:"/b001-aszx/video-1-preview.mp4",poster:"/b001-aszx/media/a3-4e86ad58-480.webp"},
+    {type:"photo",title:"Golden Afternoon",date:"2026-08-04",src:"/test/media/cover-b14.webp"},
+    {type:"photo",title:"The Everyday Edit",date:"2026-09-30",src:"/test/media/cover-b15.webp"},
+    {type:"video",title:"A Day With Us",date:"2026-07-08",src:"/assets/home/entertainment-preview.mp4",poster:"/assets/home/entertainment-preview.webp"},
+    {type:"photo",title:"Sunlit Stories",date:"2026-10-18",src:"/test/media/cover-b16.webp"},
+    {type:"photo",title:"A Little More Blue",date:"2026-07-19",src:"/test/media/cover-b17.webp"},
+    {type:"photo",title:"Sisters at Heart",date:"2026-09-04",src:"/test/media/cover-b18.webp"},
+    {type:"video",title:"The Bluias Edit",date:"2026-07-11",src:"/assets/home/links-preview.mp4",poster:"/assets/home/links-preview.webp"},
+    {type:"photo",title:"Quiet Confidence",date:"2026-08-29",src:"/test/media/cover-b19.webp"},
+    {type:"photo",title:"The Last Look",date:"2026-07-24",src:"/test/media/cover-b20.webp"}
   ];
   function shuffle(list){
     const copy=list.slice();
