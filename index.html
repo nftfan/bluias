@@ -33,11 +33,11 @@ a{color:inherit}
 .blog-flower{display:inline-block;color:var(--pink);font-size:35px;line-height:1;animation:flower-sway 4s ease-in-out infinite}
 .blog-flower.alt{color:#e7b833;animation-delay:-1.4s}
 .feed-section{padding:0 0 72px;background:linear-gradient(180deg,#fff8df 0%,var(--cream) 230px)}
-.feed-grid{display:grid;grid-template-columns:minmax(0,1fr);max-width:600px;margin:0 auto;gap:24px}
-.story{min-width:0;background:var(--white);border:1px solid var(--line);border-radius:5px;overflow:hidden;transition:border-color .22s ease}
+.feed-grid{display:grid;grid-template-columns:minmax(0,1fr);width:100vw;max-width:none;margin:0 0 0 calc(50% - 50vw);gap:24px}
+.story{min-width:0;background:var(--white);border:0;border-bottom:1px solid var(--line);border-radius:0;overflow:hidden;transition:border-color .22s ease}
 .story:hover{border-color:#e8adc6}
-.story-visual{position:relative;overflow:visible;width:100%;height:auto;background:#fbe6ee}
-.story-media{display:block;width:auto;height:auto;max-width:100%;max-height:none;margin:0 auto;object-fit:contain;object-position:center;filter:blur(0);transition:filter .35s ease}
+.story-visual{position:relative;display:grid;gap:0;overflow:visible;width:100%;height:auto;background:#fbe6ee}
+.story-media{display:block;width:100%;height:auto;max-width:100%;max-height:none;margin:0;object-fit:contain;object-position:center;filter:blur(0);transition:filter .35s ease}
 .story.is-blurred .story-media{filter:blur(13px)}
 .story-shade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#44263814 20%,#44263870);opacity:0;pointer-events:none;transition:opacity .25s ease}
 .story.is-blurred .story-shade{opacity:1}
@@ -59,6 +59,9 @@ a{color:inherit}
 .dialog-meta{margin:0 48px 15px 0;color:#947c88;font-size:12px}
 .dialog-media{display:block;width:auto;height:auto;max-width:100%;max-height:68vh;margin:0 auto 16px;border-radius:12px;object-fit:contain}
 .dialog-caption{display:grid;gap:8px;color:#65545d;font-size:14px;line-height:1.65}
+.post-divider{display:flex;align-items:center;justify-content:center;gap:12px;padding:22px 18px;color:var(--pink-deep);font-size:20px;line-height:1}
+.post-divider::before,.post-divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#e8adc6)}
+.post-divider::after{transform:scaleX(-1)}
 .floating-pro{position:fixed;z-index:20;right:18px;bottom:20px;width:64px;height:64px;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:var(--pink);color:#fff;text-decoration:none;font-size:12px;font-weight:900;letter-spacing:.06em;box-shadow:0 0 0 3px var(--yellow);transition:transform .2s ease,background .2s ease;animation:float-up 3.5s ease-in-out infinite}
 .floating-pro span{font-size:8px;line-height:1.12;text-align:center}
 .floating-pro:hover{transform:translateY(-4px) rotate(-5deg);background:var(--pink-deep)}
@@ -68,6 +71,8 @@ a{color:inherit}
 .blog-title h1,.story-copy h2,.dialog-panel h2{font-family:"Iowan Old Style","Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif}
 .blog-title p{font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-style:italic}
 .post-excerpt{margin:10px 0 0;color:#6f5963;font-family:"Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:15px;line-height:1.72}
+.post-caption{display:grid;gap:10px;margin:12px 0 0;color:#65545d;font-family:"Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:16px;line-height:1.78}
+.post-caption p{margin:0}
 .dialog-caption p{margin:0 0 15px;color:#65545d;font-family:"Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:17px;line-height:1.78}
 .feed-sentinel{height:2px}
 .feed-status{margin:18px auto 0;text-align:center;color:#947c88;font-family:"Baskerville","Palatino Linotype",Georgia,serif;font-size:13px;font-style:italic}
@@ -111,18 +116,12 @@ a{color:inherit}
       <p id="feed-status" class="feed-status" aria-live="polite">Scroll for more stories</p>
     </div>
   </section>
-<dialog class="post-dialog" id="post-dialog" aria-labelledby="dialog-title">
-  <div class="dialog-panel">
-    <button class="dialog-close" type="button" aria-label="Close post">×</button>
-    <div id="dialog-content"></div>
-  </div>
-</dialog>
 <dialog class="post-dialog subscribe-dialog" id="subscribe-dialog" aria-labelledby="subscribe-title">
   <div class="dialog-panel subscribe-panel">
     <button class="dialog-close subscribe-close" type="button" aria-label="Close subscription notice">×</button>
     <div class="subscribe-copy">
-      <h2 id="subscribe-title">Your Pro Blog link is sent by email</h2>
-      <p>After your secure Stripe payment, we’ll email you the subscriber link for the Pro Blog at the address you provide during checkout. Check your inbox after payment, and check your spam or junk folder if you don’t see it.</p>
+      <h2 id="subscribe-title">Unlock hundreds of stories, photos &amp; videos</h2>
+      <p>Subscribe for $10 per month to unlock unlimited access to hundreds of stories, photos and videos from the Bluia Sisters Pro Blog. After your secure Stripe payment, we’ll email your subscriber link to the address you provide during checkout. Check your inbox after payment, and check your spam or junk folder if you don’t see it.</p>
       <a class="subscribe-continue" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Continue to secure Stripe checkout <span aria-hidden="true">↗</span></a>
       <button class="subscribe-cancel" type="button">Not now</button>
     </div>
@@ -195,8 +194,6 @@ a{color:inherit}
   const grid=document.getElementById("feed-grid");
   const sentinel=document.getElementById("feed-sentinel");
   const feedStatus=document.getElementById("feed-status");
-  const dialog=document.getElementById("post-dialog");
-  const dialogContent=document.getElementById("dialog-content");
   let nextIndex=0;
   let observer=null;
   function makeMedia(item,fullSize){
@@ -222,26 +219,6 @@ a{color:inherit}
     media.className=fullSize?"dialog-media":"story-media";
     return media;
   }
-  function openPost(item,writing){
-    dialogContent.replaceChildren();
-    const heading=document.createElement("h2");
-    heading.id="dialog-title";
-    heading.textContent=item.title;
-    const meta=document.createElement("p");
-    meta.className="dialog-meta";
-    meta.textContent="By: Bluia Sisters · "+formatDate(item.date);
-    const mediaNodes=[];
-    if(item.gallery&&item.gallery.length){
-      item.gallery.forEach(function(image){const media=makeMedia({type:"photo",title:image.alt,src:image.src},true);mediaNodes.push(media);});
-    }else{
-      mediaNodes.push(makeMedia(item,true));
-    }
-    const caption=document.createElement("div");
-    caption.className="dialog-caption";
-    writing.paragraphs.forEach(function(paragraph){const p=document.createElement("p");p.textContent=paragraph;caption.appendChild(p);});
-    dialogContent.append(heading,meta,...mediaNodes,caption);
-    dialog.showModal();
-  }
   function renderItem(item){
     const writing=storyWriting[item.title];
     const card=document.createElement("article");
@@ -249,7 +226,8 @@ a{color:inherit}
     if(blurredTitles.has(item.title))card.classList.add("is-blurred");
     const visual=document.createElement("div");
     visual.className="story-visual";
-    visual.append(makeMedia(item,false));
+    if(item.gallery&&item.gallery.length){item.gallery.forEach(function(image){visual.append(makeMedia({type:"photo",title:image.alt,src:image.src},false));});}
+    else{visual.append(makeMedia(item,false));}
     const shade=document.createElement("div");
     shade.className="story-shade";
     shade.innerHTML='<span class="lock-mark" aria-hidden="true">✿</span>';
@@ -268,13 +246,15 @@ a{color:inherit}
     const excerpt=document.createElement("p");
     excerpt.className="post-excerpt";
     excerpt.textContent=writing.excerpt;
-    const more=document.createElement("button");
-    more.className="read-more";
-    more.type="button";
-    more.textContent="Read more";
-    more.addEventListener("click",function(){openPost(item,writing);});
-    copy.append(title,meta,excerpt,more);
-    card.append(visual,copy);
+    const body=document.createElement("div");
+    body.className="post-caption";
+    writing.paragraphs.forEach(function(paragraph){const p=document.createElement("p");p.textContent=paragraph;body.appendChild(p);});
+    copy.append(title,meta,excerpt,body);
+    const divider=document.createElement("div");
+    divider.className="post-divider";
+    divider.setAttribute("aria-hidden","true");
+    divider.textContent="✿ ❀ ✿";
+    card.append(visual,copy,divider);
     grid.appendChild(card);
   }
   function renderNextBatch(){
@@ -301,8 +281,6 @@ a{color:inherit}
     window.addEventListener("scroll",onScrollFallback,{passive:true});
     onScrollFallback();
   }
-  document.querySelector(".dialog-close").addEventListener("click",function(){dialog.close();});
-  dialog.addEventListener("click",function(event){if(event.target===dialog)dialog.close();});
   const subscribeDialog=document.getElementById("subscribe-dialog");
   document.querySelectorAll(".action-pro,.floating-pro").forEach(function(link){
     link.addEventListener("click",function(event){event.preventDefault();subscribeDialog.showModal();});
