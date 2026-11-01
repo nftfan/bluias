@@ -9,58 +9,54 @@
 <meta property="og:description" content="A little window into the Bluias Sisters' world.">
 <meta property="og:image" content="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true">
 <title>Bluias Sisters — Stories, style & more</title>
-<style>
-:root{color-scheme:light;--ink:#10284b;--muted:#647995;--blue:#2476e8;--line:#dce9f8;--pale:#f5f9ff;--sky:#e9f3ff;--white:#fff;--shadow:0 16px 42px #2b5d9617}
+<style>:root{color-scheme:light;--ink:#342b32;--muted:#766b70;--pink:#ed75a8;--pink-deep:#d94d89;--pink-pale:#fff0f6;--yellow:#ffd968;--yellow-pale:#fff8d9;--line:#f0dce4;--cream:#fffaf0;--white:#fff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--pale);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
 a{color:inherit}
-.wrap{width:min(1120px,calc(100% - 40px));margin-inline:auto}
-.site-head{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{font-size:17px;letter-spacing:.16em;font-weight:900;color:#133d73}
-.head-note{color:var(--muted);font-size:12px;font-weight:650}
-.hero{padding:0 0 52px}
-.cover{position:relative;overflow:hidden;width:100vw;margin-left:calc(50% - 50vw);border-radius:0;background:#dceaf8;aspect-ratio:auto;min-height:0;box-shadow:none}
+.wrap{width:min(1080px,calc(100% - 40px));margin-inline:auto}
+.hero{padding:0 0 0}
+.cover{position:relative;overflow:hidden;width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);border-radius:0;background:#f9dce8;aspect-ratio:auto;min-height:0}
 .cover img{display:block;width:100%;height:auto;max-height:none;position:relative;inset:auto;object-fit:contain;object-position:center}
-
-
-.kicker{font-size:10px;font-weight:850;letter-spacing:.22em;text-transform:uppercase;color:#c8e4ff}
-
-
-.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;padding:14px 0 18px}
-.action{display:inline-flex;min-height:48px;align-items:center;justify-content:center;gap:10px;padding:0 19px;border-radius:13px;text-decoration:none;font-size:12px;font-weight:800;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
-.action:hover{transform:translateY(-2px)}
-.action:focus-visible{outline:3px solid #75b8ff;outline-offset:3px}
-.action-telegram{background:#e4f2ff;border:1px solid #b9d9fa;color:#15599e}
-.action-pro{background:linear-gradient(135deg,#277ce9,#1459bb);border:1px solid #1d6bd1;color:#fff;box-shadow:0 8px 22px #2377e637}
-.action-pro small{font-size:10px;font-weight:650;opacity:.84}
+.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;padding:14px 0 24px}
+.action{display:inline-flex;min-height:48px;align-items:center;justify-content:center;gap:10px;padding:0 19px;border:1px solid transparent;border-radius:4px;text-decoration:none;font-size:12px;font-weight:800;transition:transform .2s ease,background .2s ease,color .2s ease}
+.action:hover{transform:translateY(-3px)}
+.action:focus-visible{outline:3px solid #d94d89;outline-offset:3px}
+.action-telegram{background:var(--yellow);border-color:#efc84e;color:#503e18}
+.action-pro{background:var(--pink);border-color:var(--pink);color:#fff}
+.action-pro:hover{background:var(--pink-deep)}
+.action-pro small{font-size:10px;font-weight:700;opacity:.9}
 .arrow{font-size:16px}
-.feed-section{padding:0 0 72px;background:linear-gradient(180deg,#f0f7ff 0%,#f8fbff 260px)}
-.feed-tabs{display:flex;justify-content:center;gap:8px;margin:0 auto 19px}
-.feed-tab{min-width:112px;padding:11px 22px;border:1px solid #c9dcf1;border-radius:999px;background:#fff;color:#52708f;font:750 12px Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;cursor:pointer;transition:background .18s ease,color .18s ease,box-shadow .18s ease}
-.feed-tab.is-active{border-color:#1e70d7;background:#2476e8;color:#fff;box-shadow:0 7px 18px #2476e833}
-.feed-tab:focus-visible{outline:3px solid #75b8ff;outline-offset:3px}
-.feed-grid{display:grid;grid-template-columns:minmax(0,1fr);max-width:560px;margin:0 auto;gap:20px}
-.story{min-width:0;background:#fff;border:1px solid #e4edf8;border-radius:18px;overflow:hidden;box-shadow:0 7px 22px #25578c0b;transition:transform .2s ease,box-shadow .2s ease}
-.story:hover{transform:translateY(-3px);box-shadow:0 14px 32px #25578c17}
-.story-visual{position:relative;aspect-ratio:9/16;overflow:hidden;background:#dbe9f8}
-.story-media{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;filter:blur(0);transform:none;transition:filter .38s ease}
-.story-shade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071d3410 30%,#0c2d554f);opacity:0;pointer-events:none;transition:opacity .25s ease}
-body.pro-active .story-media{filter:blur(14px)}
-body.pro-active .story-shade{opacity:1}
-.lock-mark{display:grid;place-items:center;width:43px;height:43px;border:1px solid #ffffff85;border-radius:50%;background:#f8fbffdd;color:#19518a;font-size:17px;box-shadow:0 5px 20px #123c682b}
-.type-pill{position:absolute;left:11px;top:11px;border-radius:999px;padding:6px 9px;background:#f5faffeb;color:#245e9a;font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 3px 12px #092a4b18}
-.story-copy{padding:13px 14px 15px}
-.story-copy h3{margin:0;color:#173b66;font-size:13px;line-height:1.35;font-weight:800}
-.post-caption{display:grid;gap:3px;margin:7px 0 0;color:#7086a0;font-size:10px;line-height:1.5;font-weight:550}.post-caption span{display:block}
-.floating-pro{position:fixed;z-index:20;right:18px;bottom:20px;width:62px;height:62px;display:grid;place-items:center;border:1px solid #ffffffb5;border-radius:50%;background:linear-gradient(145deg,#398cf3,#1458b7);color:#fff;text-decoration:none;box-shadow:0 10px 28px #164d91a8;font-size:12px;font-weight:900;letter-spacing:.08em;transition:transform .18s ease,box-shadow .18s ease}
-.floating-pro b{position:absolute;right:7px;top:5px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#fff;color:#1764c4;font-size:12px}
-.floating-pro:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 32px #164d91c2}
-.floating-pro:focus-visible{outline:3px solid #75b8ff;outline-offset:3px}
-.site-foot{padding:22px 0 30px;border-top:1px solid var(--line);background:#fff;color:#7890aa;font-size:10px;text-align:center;letter-spacing:.04em}
-@media(max-width:850px){.feed-grid{gap:15px}}
-@media(max-width:560px){.floating-pro{right:14px;bottom:16px;width:58px;height:58px}.wrap{width:min(100% - 28px,1120px)}.hero{padding:0 0 15px}.cover{aspect-ratio:auto;min-height:0;border-radius:0}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 12px}.action{padding:0 11px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.feed-section{padding:0 0 52px}.feed-tabs{margin-bottom:14px}.feed-tab{min-width:100px}.feed-grid{gap:11px}.story{border-radius:14px}.story-copy{padding:11px 10px 12px}.story-copy h3{font-size:11px}.post-caption{font-size:9px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.lock-mark{width:36px;height:36px;font-size:15px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.action,.story,.story-media{transition:none!important}.story:hover,.action:hover{transform:none}}
+.blog-title{position:relative;display:flex;justify-content:center;align-items:center;gap:17px;text-align:center;padding:13px 0 28px}
+.blog-title h1{margin:0;color:#5a3446;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,5vw,54px);font-weight:500;letter-spacing:-.04em}
+.blog-title p{margin:8px 0 0;color:var(--muted);font-size:13px}
+.blog-flower{display:inline-block;color:var(--pink);font-size:35px;line-height:1;animation:flower-sway 4s ease-in-out infinite}
+.blog-flower.alt{color:#e7b833;animation-delay:-1.4s}
+.feed-section{padding:0 0 72px;background:linear-gradient(180deg,#fff8df 0%,var(--cream) 230px)}
+.feed-grid{display:grid;grid-template-columns:minmax(0,1fr);max-width:600px;margin:0 auto;gap:24px}
+.story{min-width:0;background:var(--white);border:1px solid var(--line);border-radius:5px;overflow:hidden;transition:transform .22s ease,border-color .22s ease}
+.story:hover{transform:translateY(-3px);border-color:#e8adc6}
+.story-visual{position:relative;aspect-ratio:9/16;overflow:hidden;background:#fbe6ee}
+.story-media{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;filter:blur(0);transition:filter .35s ease}
+.story.is-blurred .story-media{filter:blur(13px)}
+.story-shade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#44263814 20%,#44263870);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.story.is-blurred .story-shade{opacity:1}
+.lock-mark{display:grid;place-items:center;width:48px;height:48px;border:1px solid #fff;border-radius:50%;background:var(--yellow);color:#705723;font-size:21px}
+.type-pill{position:absolute;left:12px;top:12px;border-radius:3px;padding:6px 9px;background:var(--yellow-pale);color:#684f20;font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.story-copy{padding:15px 16px 17px;border-top:3px solid var(--yellow)}
+.story-copy h3{margin:0;color:#58394a;font-family:Georgia,"Times New Roman",serif;font-size:20px;line-height:1.3;font-weight:600}
+.post-caption{display:grid;gap:4px;margin:8px 0 0;color:#776a70;font-size:12px;line-height:1.6;font-weight:500}
+.post-caption span{display:block}
+.floating-pro{position:fixed;z-index:20;right:18px;bottom:20px;width:64px;height:64px;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:var(--pink);color:#fff;text-decoration:none;font-size:12px;font-weight:900;letter-spacing:.06em;box-shadow:0 0 0 3px var(--yellow);transition:transform .2s ease,background .2s ease;animation:float-up 3.5s ease-in-out infinite}
+.floating-pro b{position:absolute;right:5px;top:4px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--yellow);color:#664d21;font-size:14px}
+.floating-pro:hover{transform:translateY(-4px) rotate(-5deg);background:var(--pink-deep)}
+.floating-pro:focus-visible{outline:3px solid #d94d89;outline-offset:4px}
+.site-foot{padding:28px 20px 34px;border-top:3px solid var(--yellow);background:var(--pink-pale);color:#684759;font-family:Georgia,"Times New Roman",serif;font-size:14px;text-align:center}
+.footer-flower{display:inline-block;margin:0 7px;color:var(--pink-deep);animation:flower-sway 4s ease-in-out infinite}
+@keyframes flower-sway{0%,100%{transform:rotate(-9deg) translateY(0)}50%{transform:rotate(9deg) translateY(-5px)}}
+@keyframes float-up{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(max-width:560px){.wrap{width:min(100% - 28px,1080px)}.cover{aspect-ratio:auto}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h3{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
@@ -75,18 +71,16 @@ body.pro-active .story-shade{opacity:1}
       <a class="action action-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06">Subscribe <small>$10 / month</small> <span class="arrow" aria-hidden="true">↗</span></a>
     </div>
   </section>
-  <section class="feed-section" aria-labelledby="feed-title">
-    <div class="wrap">
-      <div class="feed-tabs" role="tablist" aria-label="Choose free or pro posts">
-        <button class="feed-tab is-active" id="free-tab" type="button" role="tab" aria-selected="true" data-view="free">Free</button>
-        <button class="feed-tab" id="pro-tab" type="button" role="tab" aria-selected="false" data-view="pro">Pro</button>
-      </div>
-      <div class="feed-grid" id="feed-grid" role="tabpanel" aria-labelledby="free-tab"></div>
-    </div>
+  <section  <section class="blog-title wrap" aria-labelledby="blog-title">
+    <span class="blog-flower" aria-hidden="true">✿</span>
+    <div><h1 id="blog-title">Bluia Sisters Blog</h1><p>Stories, style and little moments from the sisters</p></div>
+    <span class="blog-flower alt" aria-hidden="true">❀</span>
   </section>
-</main>
-<a class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Unlock Pro for $10 per month" title="Unlock Pro for $10 per month"><span>PRO</span><b aria-hidden="true">↗</b></a>
-<footer class="site-foot">BLUIAS · A brighter little corner of the internet</footer>
+  <section class="feed-section" aria-labelledby="blog-title">
+    <div class="wrap"><div class="feed-grid" id="feed-grid"></div></div>
+  </section>
+ class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Unlock Pro for $10 per month" title="Unlock Pro for $10 per month"><span>PRO</span><b aria-hidden="true">↗</b></a>
+<footer class="site-foot"><span class="footer-flower" aria-hidden="true">✿</span>Bluia Sisters Blog · Stories from the sisters<span class="footer-flower" aria-hidden="true">✿</span></footer>
 <script>
 (function(){
   const items=[
@@ -110,10 +104,9 @@ body.pro-active .story-shade{opacity:1}
     {type:"video",title:"The Bluias Edit",src:"/assets/home/links-preview.mp4",poster:"/assets/home/links-preview.webp"},
     {type:"photo",title:"Quiet Confidence",src:"/test/media/cover-b19.webp"},
     {type:"photo",title:"The Last Look",src:"/test/media/cover-b20.webp"}
-  ];
-  const grid=document.getElementById("feed-grid");
-  const freeItems=shuffle(items.slice(0,10));
-  const proItems=shuffle(items.slice(10));
+    const grid=document.getElementById("feed-grid");
+  const orderedItems=shuffle(items);
+  const blurredTitles=new Set(shuffle(items.map(function(item){return item.title;})).slice(0,6));
   const captionPairs=[
     ["A bright sky followed us all afternoon.","Saving a little sunshine for later."],
     ["A slow morning, with nowhere else to be.","The smallest moments stay with us."],
@@ -142,67 +135,51 @@ body.pro-active .story-shade{opacity:1}
     for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
     return copy;
   }
-  function captionPairsFor(item){return captionByTitle.get(item.title)||[];}
-  function renderItems(list){
-    grid.replaceChildren();
-    list.forEach(function(item){
-      const card=document.createElement("article");
-      card.className="story";
-      const visual=document.createElement("div");
-      visual.className="story-visual";
-      let media;
-      if(item.type==="video"){
-        media=document.createElement("video");
-        media.src=item.src;
-        media.poster=item.poster;
-        media.muted=true;
-        media.loop=true;
-        media.autoplay=true;
-        media.playsInline=true;
-        media.preload="metadata";
-        media.setAttribute("aria-label",item.title);
-      }else{
-        media=document.createElement("img");
-        media.src=item.src;
-        media.alt=item.title;
-        media.loading="lazy";
-        media.decoding="async";
-      }
-      media.className="story-media";
-      const shade=document.createElement("div");
-      shade.className="story-shade";
-      shade.innerHTML='<span class="lock-mark" aria-hidden="true">✦</span>';
-      const type=document.createElement("span");
-      type.className="type-pill";
-      type.textContent=item.type;
-      visual.append(media,shade,type);
-      const copy=document.createElement("div");
-      copy.className="story-copy";
-      const title=document.createElement("h3");
-      title.textContent=item.title;
-      const caption=document.createElement("div");
-      caption.className="post-caption";
-      captionPairsFor(item).forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
-      copy.append(title,caption);
-      card.append(visual,copy);
-      grid.appendChild(card);
-    });
-  }
-  renderItems(freeItems);
-  const tabs=[...document.querySelectorAll(".feed-tab")];
-  tabs.forEach(function(tab){
-    tab.addEventListener("click",function(){
-      const isPro=tab.dataset.view==="pro";
-      document.body.classList.toggle("pro-active",isPro);
-      tabs.forEach(function(other){
-        const selected=other===tab;
-        other.classList.toggle("is-active",selected);
-        other.setAttribute("aria-selected",String(selected));
-      });
-      grid.setAttribute("aria-labelledby",isPro?"pro-tab":"free-tab");
-      renderItems(isPro?proItems:freeItems);
-    });
+  orderedItems.forEach(function(item){
+    const card=document.createElement("article");
+    card.className="story";
+    if(blurredTitles.has(item.title)) card.classList.add("is-blurred");
+    const visual=document.createElement("div");
+    visual.className="story-visual";
+    let media;
+    if(item.type==="video"){
+      media=document.createElement("video");
+      media.src=item.src;
+      media.poster=item.poster;
+      media.muted=true;
+      media.loop=true;
+      media.autoplay=true;
+      media.playsInline=true;
+      media.preload="metadata";
+      media.setAttribute("aria-label",item.title);
+    }else{
+      media=document.createElement("img");
+      media.src=item.src;
+      media.alt=item.title;
+      media.loading="lazy";
+      media.decoding="async";
+    }
+    media.className="story-media";
+    const shade=document.createElement("div");
+    shade.className="story-shade";
+    shade.innerHTML='<span class="lock-mark" aria-hidden="true">✿</span>';
+    const type=document.createElement("span");
+    type.className="type-pill";
+    type.textContent=item.type;
+    visual.append(media,shade,type);
+    const copy=document.createElement("div");
+    copy.className="story-copy";
+    const title=document.createElement("h2");
+    title.textContent=item.title;
+    const caption=document.createElement("div");
+    caption.className="post-caption";
+    const lines=captionByTitle.get(item.title)||[];
+    lines.forEach(function(line){const span=document.createElement("span");span.textContent=line;caption.appendChild(span);});
+    copy.append(title,caption);
+    card.append(visual,copy);
+    grid.appendChild(card);
   });
+);
 })();
 </script>
 </body>
