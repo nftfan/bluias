@@ -69,13 +69,7 @@ a{color:inherit}
 @keyframes float-up{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes dialog-in{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes backdrop-in{from{opacity:0}to{opacity:1}}
-@media(max-width:560px){.wrap{width:min(100% - 28px,1080px)}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{<dialog class="post-dialog" id="post-dialog" aria-labelledby="dialog-title">
-  <div class="dialog-panel">
-    <button class="dialog-close" type="button" aria-label="Close post">×</button>
-    <div id="dialog-content"></div>
-  </div>
-</dialog>
-gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h2{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}.dialog-panel{padding:16px}.dialog-media{max-height:62vh}}
+@media(max-width:560px){.wrap{width:min(100% - 28px,1080px)}.cover img{object-position:center}.actions{gap:8px;padding:10px 0 18px}.action{padding:0 12px;min-height:46px;font-size:11px}.action-pro{gap:6px}.action-pro small{font-size:9px}.blog-title{gap:10px;padding:8px 0 21px}.blog-title h1{font-size:36px}.blog-title p{font-size:11px}.blog-flower{font-size:27px}.feed-section{padding-bottom:52px}.feed-grid{gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h2{font-size:18px}.post-caption{font-size:11px}.type-pill{left:8px;top:8px;font-size:8px;padding:5px 7px}.floating-pro{right:14px;bottom:16px;width:58px;height:58px}.dialog-panel{padding:16px}.dialog-media{max-height:62vh}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -99,6 +93,12 @@ gap:17px}.story-copy{padding:12px 12px 14px}.story-copy h2{font-size:18px}.post-
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap"><div class="feed-grid" id="feed-grid"></div></div>
   </section>
+<dialog class="post-dialog" id="post-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-panel">
+    <button class="dialog-close" type="button" aria-label="Close post">×</button>
+    <div id="dialog-content"></div>
+  </div>
+</dialog>
 <a class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Subscribe for $10 per month" title="Subscribe for $10 per month"><span>✿ $10</span><b aria-hidden="true">↗</b></a>
 <footer class="site-foot"><span class="footer-flower" aria-hidden="true">✿</span>Bluia Sisters Blog · Stories from the sisters<span class="footer-flower" aria-hidden="true">✿</span></footer>
 <script>
