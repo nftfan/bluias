@@ -18,24 +18,28 @@ nav{display:flex;justify-content:space-between;border-bottom:1px solid #e5edf6;f
 a{color:inherit}nav a{text-decoration:none}nav strong{letter-spacing:.2em}
 header{text-align:center;padding:30px 16px 12px}h1{font:normal clamp(36px,8vw,54px)/1.1 Georgia,serif;margin:8px 0}header p{color:#52667e;margin:8px}
 article{overflow:hidden;margin-bottom:36px;border:1px solid #dae5ef;border-radius:24px;box-shadow:0 10px 32px #244c7512}
-.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}.slides::-webkit-scrollbar{display:none}
-.slide{flex:0 0 100%;min-width:0;position:relative;aspect-ratio:4/5;scroll-snap-align:start;background:#eef4fb}
-.slide img{display:block;width:100%;height:100%;object-fit:cover}.product{background:linear-gradient(140deg,#fff,#eaf3ff)}.product img{object-fit:contain;padding:14px 14px 54px}
+.portrait {position:relative}
+.portrait > img {display:block;width:100%;height:auto}
 button,summary,.pay{font:600 15px/1.4 system-ui,sans-serif;cursor:pointer;display:flex;gap:9px;align-items:center;justify-content:center;min-height:46px}
 svg{width:21px;height:21px;fill:currentColor;flex:none}
-.swipe,.back{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);white-space:nowrap;border:1px solid #ffffff80;border-radius:32px;padding:9px 17px;color:white;background:#142c48ed}.back{background:white;color:#254368;border-color:#c6d8eb}
-.body{padding:20px}.body h2{display:table;background:#1469c8;color:white;border-radius:18px 18px 18px 4px;font-size:clamp(18px,4vw,23px);padding:12px 18px;margin:0 0 16px}
+.view-gift {position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid #d8e5ef;border-radius:32px;background:white;color:#174b80;font-weight:700;text-decoration:none;box-shadow:0 3px 15px #15324c38}
+.gift-preview {width:min(92vw,540px);max-height:90vh;max-height:90dvh;padding:16px;border:0;border-radius:20px;color:#162538;background:white}
+.gift-preview::backdrop {background:#152238ae}
+.gift-preview img {display:block;width:100%;height:auto;max-height:68vh;object-fit:contain}
+.gift-preview form {display:flex;justify-content:flex-end;margin:0 0 8px}
+.gift-preview button {padding:8px 16px;border:0;border-radius:24px;background:#edf5ff;color:#174b80}
+.body{padding:8px 20px 20px}.body h2{position:relative}.body h2::before{content:"";position:absolute;bottom:100%;left:24px;border:12px solid transparent;border-top:0;border-bottom:16px solid #1469c8}.body h2{display:table;background:#1469c8;color:white;border-radius:18px 18px 18px 4px;font-size:clamp(18px,4vw,23px);padding:12px 18px;margin:0 0 16px}
 details{margin-bottom:12px}summary{background:#edf5ff;color:#184b80;border-radius:13px;list-style:none}summary::-webkit-details-marker{display:none}.letter{padding:16px;color:#364e68;background:#f5f9ff;border-radius:12px}.letter p{margin:6px 0 0}
 .pay{text-decoration:none;border-radius:13px;color:white;background:#cc203a;min-height:52px}.pay:hover{background:#ad1830}
-footer{text-align:center;font-size:14px;color:#536579}a:focus-visible,button:focus-visible,summary:focus-visible,.slides:focus-visible{outline:3px solid #e7ae29;outline-offset:-3px}
-@media(prefers-reduced-motion:no-preference){.slides{scroll-behavior:smooth}details[open] .letter{animation:appear .28s ease-out}@keyframes appear{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+footer{text-align:center;font-size:14px;color:#536579}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #e7ae29;outline-offset:-3px}
+@media(prefers-reduced-motion:no-preference){details[open] .letter{animation:appear .28s ease-out}@keyframes appear{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
 </style></head><body>
 <nav><a href="/"><strong>BLUIAS</strong></a><a href="/">Back to the sisters</a></nav>
 <header><h1>Gift Bluia Sisters</h1><p>Every gift is $5</p></header>
 <main><article aria-label="thong gift">
-  <div class="slides" tabindex="0" aria-label="Swipe between portrait and gift">
-    <div class="slide"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/5FAF637D-B5C3-43BA-949E-DC6EDA3CCFC1.jpeg?download=true" alt="Bluia Sisters portrait"><button class="swipe" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12v-2H7.83l5.59-5.59L12 3l-8 8 8 8 1.41-1.41L7.83 12H20z"/></svg> Swipe left to see my gift</button></div>
-    <div class="slide product"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/2D4ABA4B-525D-4369-ABFA-B4F8F604F9B8.png?download=true" alt="thong gift preview"><button class="back" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12v-2H7.83l5.59-5.59L12 3l-8 8 8 8 1.41-1.41L7.83 12H20z"/></svg> Back to photo</button></div>
+  <div class="portrait">
+    <img src="https://huggingface.co/buckets/Bluia/naughty/resolve/5FAF637D-B5C3-43BA-949E-DC6EDA3CCFC1.jpeg?download=true" alt="Bluia Sisters portrait">
+    <a class="view-gift" aria-haspopup="dialog" href="https://huggingface.co/buckets/Bluia/naughty/resolve/2D4ABA4B-525D-4369-ABFA-B4F8F604F9B8.png?download=true" data-alt="thong gift preview"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 8h18v4H3zM5 13h6v8H5zm8 0h6v8h-6z"/><path d="M12 8H8a2.5 2.5 0 1 1 2.5-2.5L12 8Zm0 0h4a2.5 2.5 0 1 0-2.5-2.5L12 8Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>View gift</a>
   </div>
   <div class="body"><h2 aria-label="Please buy me this thong ❤️"><span aria-hidden="true">Please buy me this thong ❤️</span></h2>
     <details><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg> View my message to you</summary><div class="letter"><strong>Our little secret</strong><p>If this were the gift you chose for me, I’d tuck a little kiss into this note for you. Every time I wore it, I’d remember who made me blush. ❤️</p></div></details>
@@ -43,9 +47,9 @@ footer{text-align:center;font-size:14px;color:#536579}a:focus-visible,button:foc
   </div>
 </article>
 <article aria-label="panty gift">
-  <div class="slides" tabindex="0" aria-label="Swipe between portrait and gift">
-    <div class="slide"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8725.png?download=true" alt="Bluia Sisters portrait" loading="lazy"><button class="swipe" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12v-2H7.83l5.59-5.59L12 3l-8 8 8 8 1.41-1.41L7.83 12H20z"/></svg> Swipe left to see my gift</button></div>
-    <div class="slide product"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/863C86BA-D5A1-44F5-821F-85F90F1A5B8B.png?download=true" alt="panty gift preview"><button class="back" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12v-2H7.83l5.59-5.59L12 3l-8 8 8 8 1.41-1.41L7.83 12H20z"/></svg> Back to photo</button></div>
+  <div class="portrait">
+    <img src="https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8725.png?download=true" alt="Bluia Sisters portrait" loading="lazy">
+    <a class="view-gift" aria-haspopup="dialog" href="https://huggingface.co/buckets/Bluia/naughty/resolve/863C86BA-D5A1-44F5-821F-85F90F1A5B8B.png?download=true" data-alt="panty gift preview"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 8h18v4H3zM5 13h6v8H5zm8 0h6v8h-6z"/><path d="M12 8H8a2.5 2.5 0 1 1 2.5-2.5L12 8Zm0 0h4a2.5 2.5 0 1 0-2.5-2.5L12 8Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>View gift</a>
   </div>
   <div class="body"><h2 aria-label="Please buy me this panty ❤️"><span aria-hidden="true">Please buy me this panty ❤️</span></h2>
     <details><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg> View my message to you</summary><div class="letter"><strong>Wish you were here</strong><p>I’m picturing a sleepy Sunday, your shirt slipping off my shoulder, and this little gift underneath. If you were here, I’d pull you close and thank you with a kiss. ❤️</p></div></details>
@@ -53,24 +57,20 @@ footer{text-align:center;font-size:14px;color:#536579}a:focus-visible,button:foc
   </div>
 </article></main>
 <footer><a href="mailto:vbluia@outlook.com">Contact us</a></footer>
-<script>for (const card of document.querySelectorAll('article')) {
-  const slides = card.querySelector('.slides');
-  const back = card.querySelector('.back');
-  const next = card.querySelector('.swipe');
-  next.onclick = () => { slides.scrollTo({left: slides.clientWidth}); back.focus({preventScroll:true}); };
-  back.onclick = () => { slides.scrollTo({left:0}); next.focus({preventScroll:true}); };
-  const message = card.querySelector('h2 span');
-  const characters = Array.from(message.textContent);
-  let played = false;
-  slides.addEventListener('scroll', () => {
-    if (played || slides.scrollLeft < slides.clientWidth * 0.55) return;
-    played = true;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    message.textContent = '';
-    let index = 0;
-    const timer = setInterval(() => {
-      message.textContent += characters[index++];
-      if (index === characters.length) clearInterval(timer);
-    }, 32);
-  }, {passive:true});
-}</script></body></html>
+<dialog class="gift-preview" aria-label="Gift preview">
+  <form method="dialog"><button autofocus>Close</button></form>
+  <img alt="">
+</dialog>
+<script>
+const preview = document.querySelector('.gift-preview');
+const giftImage = preview.querySelector('img');
+for (const link of document.querySelectorAll('.view-gift')) {
+  link.addEventListener('click', event => {
+    if (typeof preview.showModal !== 'function' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    giftImage.src = link.href;
+    giftImage.alt = link.dataset.alt;
+    preview.showModal();
+  });
+}
+</script></body></html>
