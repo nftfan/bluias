@@ -42,6 +42,13 @@ main{max-width:620px;margin:auto;padding:0 20px 20px}.gift{margin:0 0 38px;borde
 footer{text-align:center;padding:8px 20px 36px;color:#63778b;font-size:12px;line-height:1.8}footer a{text-underline-offset:4px}
 @media(max-width:480px){.top{padding:20px}header{padding-top:36px}main{padding:0 12px 12px}.gift-body{padding:25px 18px 20px}.gift{border-radius:16px;margin-bottom:26px}}
 @media(prefers-reduced-motion:reduce){.buy{transition:none}.buy:hover{transform:none}}
+
+.gift-dialog{box-sizing:border-box;width:min(390px,calc(100% - 32px));max-height:90vh;overflow:auto;padding:26px;border:1px solid #dbe6f3;border-radius:22px;background:white;color:#162538;text-align:center;box-shadow:0 20px 70px #13253b42}
+.gift-dialog::backdrop{background:rgba(14,29,49,.58)}
+.gift-dialog img{width:132px;height:132px;object-fit:contain;border-radius:15px}
+.gift-dialog h2{font:normal 30px/1.15 Georgia,serif;margin:16px 0}
+.gift-dialog p{font-size:17px;line-height:1.55;color:#334b65;margin:0 0 22px}
+.dismiss{padding:12px 18px;margin-top:4px;background:white;border:0;color:#465f7b;font:inherit;cursor:pointer}
 </style>
 </head>
 <body>
@@ -53,16 +60,46 @@ footer{text-align:center;padding:8px 20px 36px;color:#63778b;font-size:12px;line
 <div class="gift-body"><div class="gift-message">
   <img class="gift-thumbnail" src="https://huggingface.co/buckets/Bluia/naughty/resolve/2D4ABA4B-525D-4369-ABFA-B4F8F604F9B8.png?download=true" alt="Thong gift" width="84" decoding="async">
   <h2 class="bubble" id="thong-title">Buy this thong for me ❤️</h2>
-</div><a class="buy" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy thong gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
+</div><a class="buy" aria-haspopup="dialog" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy thong gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
 </article>
 <article class="gift" aria-labelledby="panty-title">
 <img class="photo" src="https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8725.png?download=true" alt="Bluia Sisters panty gift photo" loading="lazy" decoding="async">
 <div class="gift-body"><div class="gift-message">
   <img class="gift-thumbnail" src="https://huggingface.co/buckets/Bluia/naughty/resolve/863C86BA-D5A1-44F5-821F-85F90F1A5B8B.png?download=true" alt="Panty gift" width="84" decoding="async">
   <h2 class="bubble" id="panty-title">buy me this panty</h2>
-</div><a class="buy" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy panty gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
+</div><a class="buy" aria-haspopup="dialog" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy panty gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
 </article>
 </main>
 <footer>Thank you for treating the Bluia Sisters.<br><a href="mailto:vbluia@outlook.com">Contact us</a></footer>
+<dialog class="gift-dialog" id="gift-dialog" aria-labelledby="gift-heading" aria-describedby="gift-letter">
+  <img id="gift-preview" alt="">
+  <h2 id="gift-heading"></h2>
+  <p id="gift-letter"></p>
+  <a class="buy" id="gift-payment">Pay $5 with Stripe</a>
+  <form method="dialog"><button class="dismiss" autofocus>Back to gifts</button></form>
+</dialog>
+<script>
+const letters = {
+  "thong-title": ["Our little secret", "If this were the gift you chose for me, I’d tuck a little kiss into this note for you. Every time I wore it, I’d remember who made me blush. ❤️"],
+  "panty-title": ["Wish you were here", "I’m picturing a sleepy Sunday, your shirt slipping off my shoulder, and this little gift underneath. If you were here, I’d pull you close and thank you with a kiss. ❤️"]
+};
+const dialog = document.getElementById("gift-dialog");
+for (const link of document.querySelectorAll(".gift .buy")) {
+  link.addEventListener("click", event => {
+    if (typeof dialog.showModal !== "function" || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const card = link.closest(".gift");
+    const [heading, letter] = letters[card.getAttribute("aria-labelledby")];
+    const thumbnail = card.querySelector(".gift-thumbnail");
+    const preview = document.getElementById("gift-preview");
+    preview.src = thumbnail.src;
+    preview.alt = thumbnail.alt;
+    document.getElementById("gift-heading").textContent = heading;
+    document.getElementById("gift-letter").textContent = letter;
+    document.getElementById("gift-payment").href = link.href;
+    dialog.showModal();
+  });
+}
+</script>
 </body>
 </html>
