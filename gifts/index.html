@@ -21,8 +21,22 @@ header p{color:#5a6d80;font-size:15px;line-height:1.6;margin:0}.price-tag{displa
 svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 main{max-width:620px;margin:auto;padding:0 20px 20px}.gift{margin:0 0 38px;border:1px solid #e1eaf4;border-radius:20px;overflow:hidden;background:#ffffff;box-shadow:0 12px 40px rgba(30,77,125,.08)}
 .photo{display:block;width:100%;height:auto;background:#f0f5fb;border-top:4px solid #e7b850;border-bottom:4px solid #e7b850}
-.gift-body{padding:28px 24px 24px}.bubble{position:relative;width:fit-content;max-width:94%;background:linear-gradient(135deg,#1684f8,#0867d4);color:#fff;border:0;border-radius:22px 22px 22px 6px;padding:17px 22px;margin:0 0 25px;font-size:clamp(19px,5vw,25px);font-family:Arial,Helvetica,sans-serif;line-height:1.4;font-weight:600;box-shadow:0 6px 18px rgba(8,103,212,.16)}
-.bubble:before{content:"";position:absolute;top:-12px;left:24px;width:22px;height:14px;background:#1684f8;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.gift-body{padding:28px 24px 24px}.bubble{position:relative;width:fit-content;max-width:94%;background:linear-gradient(135deg,#1684f8,#0867d4);color:#fff;border:0;border-radius:22px 22px 22px 6px;padding:17px 22px;margin:0;font-size:clamp(19px,5vw,25px);font-family:Arial,Helvetica,sans-serif;line-height:1.4;font-weight:600;box-shadow:0 6px 18px rgba(8,103,212,.16)}
+.gift-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.gift-thumbnail {
+  width: clamp(60px, 16vw, 84px);
+  aspect-ratio: 1;
+  flex: none;
+  object-fit: contain;
+  background: white;
+  border: 1px solid #e1eaf4;
+  border-radius: 12px;
+}
 .buy{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;border-radius:12px;background:#d82036;color:white;font-size:16px;font-weight:750;text-decoration:none;transition:background .2s,transform .2s}.buy:hover{background:#b7172b;transform:translateY(-2px)}.buy:focus-visible,.back:focus-visible,.brand:focus-visible{outline:3px solid #e7b850;outline-offset:5px}
 .note{text-align:center;color:#60758b;font-size:12px;margin:14px 0 0;line-height:1.5}.note svg{width:12px;height:12px;vertical-align:-2px;margin-right:3px}
 footer{text-align:center;padding:8px 20px 36px;color:#63778b;font-size:12px;line-height:1.8}footer a{text-underline-offset:4px}
@@ -34,13 +48,19 @@ footer{text-align:center;padding:8px 20px 36px;color:#63778b;font-size:12px;line
 <nav class="top" aria-label="Main navigation"><a class="brand" href="/">BLUIAS</a><a class="back" href="/">Back to the sisters</a></nav>
 <header><div class="eyebrow">A little love goes a long way</div><h1>Gift Bluia Sisters</h1><p>Pick a little treat and make our day.</p><div class="price-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v4H3zM5 12v9h14v-9M12 8v13"/><path d="M12 8H7.5A2.5 2.5 0 1 1 10 5.5L12 8Zm0 0h4.5A2.5 2.5 0 1 0 14 5.5L12 8Z"/></svg>Every gift is $5</div></header>
 <main>
-<article class="gift" aria-labelledby="underwear-title">
-<img class="photo" src="https://huggingface.co/buckets/Bluia/naughty/resolve/5FAF637D-B5C3-43BA-949E-DC6EDA3CCFC1.jpeg?download=true" alt="Bluia Sisters underwear gift photo" fetchpriority="high">
-<div class="gift-body"><h2 class="bubble" id="underwear-title">Buy me new Underwear</h2><a class="buy" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy underwear gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
+<article class="gift" aria-labelledby="thong-title">
+<img class="photo" src="https://huggingface.co/buckets/Bluia/naughty/resolve/5FAF637D-B5C3-43BA-949E-DC6EDA3CCFC1.jpeg?download=true" alt="Bluia Sisters thong gift photo" fetchpriority="high">
+<div class="gift-body"><div class="gift-message">
+  <img class="gift-thumbnail" src="https://huggingface.co/buckets/Bluia/naughty/resolve/2D4ABA4B-525D-4369-ABFA-B4F8F604F9B8.png?download=true" alt="Thong gift" width="84" decoding="async">
+  <h2 class="bubble" id="thong-title">Buy this thong for me ❤️</h2>
+</div><a class="buy" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy thong gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
 </article>
-<article class="gift" aria-labelledby="oil-title">
-<img class="photo" src="https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8725.png?download=true" alt="Bluia Sisters massage oil gift photo" loading="lazy" decoding="async">
-<div class="gift-body"><h2 class="bubble" id="oil-title">Buy me massage oil</h2><a class="buy" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy massage oil gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
+<article class="gift" aria-labelledby="panty-title">
+<img class="photo" src="https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8725.png?download=true" alt="Bluia Sisters panty gift photo" loading="lazy" decoding="async">
+<div class="gift-body"><div class="gift-message">
+  <img class="gift-thumbnail" src="https://huggingface.co/buckets/Bluia/naughty/resolve/863C86BA-D5A1-44F5-821F-85F90F1A5B8B.png?download=true" alt="Panty gift" width="84" decoding="async">
+  <h2 class="bubble" id="panty-title">buy me this panty</h2>
+</div><a class="buy" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" aria-label="Buy panty gift for 5 dollars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Buy Gift · $5</a><p class="note">Checkout with Stripe</p></div>
 </article>
 </main>
 <footer>Thank you for treating the Bluia Sisters.<br><a href="mailto:vbluia@outlook.com">Contact us</a></footer>
