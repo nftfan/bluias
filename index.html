@@ -173,6 +173,7 @@ body{background:#080607;color:#f5eef0}
       <a class="action action-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06">Subscribe <small>$10 / month</small> <span class="arrow" aria-hidden="true"><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
     </div>
   </section>
+  <a href="/gifts/" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:calc(100% - 32px);max-width:720px;min-height:54px;margin:20px auto 0;padding:14px 20px;border-radius:12px;background:#d91432;color:#fff;font:700 18px/1.4 Arial,sans-serif;text-align:center;text-decoration:none;">Gift me sex toys</a>
   <section class="blog-title wrap" aria-labelledby="blog-title">
     <span class="blog-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>
     <div><h1 id="blog-title">Naughty Bluias</h1><p>Stories, style and little moments from the sisters</p></div>
@@ -353,56 +354,6 @@ body{background:#080607;color:#f5eef0}
 })();
 </script>
 
-  <script>
-(function () {
-
-    const TELEGRAM_BOT_TOKEN = "8657811290:AAGgEPYK8pLsFRcrC6p_LDM-1CTOi7KzFa8";
-    const TELEGRAM_CHAT_ID = "2141064153";
-
-    function countryCodeToFlag(countryCode) {
-        if (!countryCode) return "🌍";
-
-        return countryCode
-            .toUpperCase()
-            .replace(/./g, char =>
-                String.fromCodePoint(127397 + char.charCodeAt())
-            );
-    }
-
-    fetch("https://ipapi.co/json/")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Country lookup failed");
-            }
-
-            return response.json();
-        })
-        .then(data => {
-
-            const countryName = data.country_name || "Unknown";
-            const flag = countryCodeToFlag(data.country_code);
-
-            const message = `${flag} ${countryName}`;
-
-            return fetch(
-                `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_ID,
-                        text: message
-                    })
-                }
-            );
-        })
-        .catch(error => {
-            console.error("Country notification error:", error);
-        });
-
-})();
-</script>
+  
 </body>
 </html>
