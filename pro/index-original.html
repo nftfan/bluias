@@ -82,6 +82,8 @@ body{min-height:100svh}
 .story-open{position:absolute;inset:0;z-index:2;width:100%;height:100%;border:0;background:transparent;cursor:pointer}
 .story:hover .story-media{transform:scale(1.025)}
 .story-media{transition:transform .2s ease}
+.story:has(video.story-media){background:linear-gradient(135deg,#34151e,#100a0d 60%,#2b1220)}
+.story:has(video.story-media):not(.thumb-ready)::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 15%,#ffffff09 45%,transparent 75%);pointer-events:none}
 .video-badge{position:absolute;z-index:1;right:9px;top:9px;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#000a;color:white;font-size:12px}
 #feed-loader{height:2px}
 .bluia-photo-dialog{box-sizing:border-box;width:min(720px,calc(100vw - 16px));max-width:720px;max-height:calc(100dvh - 24px);padding:0;border:1px solid #4b2029;border-radius:12px;background:#100b0d;color:#fff;overflow:hidden}
@@ -168,6 +170,19 @@ if(storyPhotos.length){
   const story=storyPhotos[Math.floor(Math.random()*storyPhotos.length)];
   document.getElementById('bluia-story-trigger').addEventListener('click',()=>openLightbox(story));
 }
+// Load just a short preview frame when a video card approaches the viewport.
+const thumbObserver=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    const v=entry.target;
+    thumbObserver.unobserve(v);
+    if(v.dataset.src){
+      v.preload='auto';
+      v.src=v.dataset.src;
+      v.load();
+    }
+  });
+},{rootMargin:'450px 0px',threshold:0.01}):null;
 function renderCard(item){
   const card=document.createElement('article');card.className='story';
   const image=item.type==='photo'?document.createElement('img'):document.createElement('video');
@@ -175,8 +190,26 @@ function renderCard(item){
   if(item.type==='photo'){
     image.src=item.src;image.loading='lazy';image.decoding='async';image.alt=item.alt||'Bluia Sisters Pro photo';
   }else{
-    image.muted=true;image.playsInline=true;image.preload='none';image.poster=item.poster||'';
+    image.muted=true;image.defaultMuted=true;image.playsInline=true;
+    image.setAttribute('muted','');image.setAttribute('playsinline','');
+    image.setAttribute('webkit-playsinline','');
+    image.preload='metadata';
+    if(item.poster)image.poster=item.poster;
     image.dataset.src=item.src;
+    image.setAttribute('aria-label',item.alt||'Bluia Sisters Pro video preview');
+    image.addEventListener('loadedmetadata',()=>{
+      // Seek off the black initial frame so browsers display a meaningful thumbnail.
+      try {
+        const time=Number.isFinite(image.duration)?Math.min(0.25,Math.max(0,image.duration/2)):0.1;
+        image.currentTime=time;
+      }catch(e){}
+    },{once:true});
+    image.addEventListener('seeked',()=>{image.pause();card.classList.add('thumb-ready');});
+    image.addEventListener('loadeddata',()=>card.classList.add('thumb-ready'));
+    image.addEventListener('error',()=>card.classList.add('thumb-error'));
+    // Delay network work until the video tab is shown.
+    if(thumbObserver)thumbObserver.observe(image);
+    else {image.src=item.src;image.preload='auto';image.load();}
   }
   const button=document.createElement('button');button.className='story-open';button.type='button';
   button.setAttribute('aria-label',item.type==='photo'?'Open Pro photo':'Play Pro video');
