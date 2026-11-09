@@ -57,9 +57,11 @@ body{min-height:100svh;overflow:hidden}
 </style>`;
     html=html.replace('</head>',loaderUpgrade+'\n</head>');
 
-    html=html.replace(/<img\b[^>]*>/g,tag=>tag
-      .replace(/\ssrcset=/g,' data-srcset=')
-      .replace(/\ssrc=/g,' data-src='));
+    html=html.replace(/<img\b[^>]*>/g,tag=>{
+      // The visible profile and popup avatar must load immediately.
+      if(tag.includes('class="bluia-avatar"')||tag.includes('class="bluia-photo-avatar"'))return tag;
+      return tag.replace(/\ssrcset=/g,' data-srcset=').replace(/\ssrc=/g,' data-src=');
+    });
 
     document.open();
     document.write(html);
