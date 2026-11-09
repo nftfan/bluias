@@ -204,11 +204,67 @@ body{background:#080607;color:#f5eef0}
 .below-feed .cover{width:min(100vw,900px);max-width:900px;left:auto;margin:0 auto}
 .below-feed .actions{margin:0 auto}
 @media(max-width:560px){.bluia-tab{min-height:45px}.pro-unlock{margin:18px 12px 30px;padding:25px 14px}.below-feed{padding-top:0}.below-feed .cover{width:100vw;max-width:100vw}}
+
+/* Mobile-first layout hardening and story profile */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body,main,.feed-section,.below-feed{min-width:0;max-width:100%}
+main{width:100%;overflow-x:clip}
+img,video,svg{max-width:100%}
+.wrap,.feed-section>.wrap{box-sizing:border-box;min-width:0}
+.bluia-profile{box-sizing:border-box;width:min(900px,100%);max-width:100%;padding:20px clamp(12px,4vw,26px);margin:0 auto 8px;gap:clamp(14px,4vw,28px)}
+.bluia-profile-info{flex:1;min-width:0;overflow-wrap:anywhere}
+.bluia-profile h1{font-size:clamp(18px,4.5vw,30px);line-height:1.2}
+.bluia-stats{gap:8px 20px;line-height:1.4}
+.bluia-story-ring{position:relative;isolation:isolate;display:grid;place-items:center;flex:none;width:clamp(112px,26vw,152px);height:clamp(112px,26vw,152px);padding:6px;border:0;border-radius:50%;background:transparent;cursor:pointer}
+.bluia-story-ring::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:50%;background:conic-gradient(#ff2948,#ffae00,#63fc56,#19d7ff,#b42cff,#ff2948);animation:bluia-story-spin 4s linear infinite;box-shadow:0 0 14px #f3274360,0 0 22px #178fff30}
+.bluia-story-ring::after{content:"";position:absolute;inset:5px;z-index:-1;border-radius:50%;background:#080607}
+.bluia-story-ring .bluia-avatar{display:block;width:100%;height:100%;border:3px solid #080607;border-radius:50%;object-fit:cover;box-sizing:border-box}
+.bluia-story-indicator{position:absolute;bottom:3px;right:5px;display:grid;place-items:center;width:27px;height:27px;border:2px solid #080607;border-radius:50%;background:#ec1942;color:#fff;font-size:20px;font-weight:700}
+.bluia-story-ring:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@keyframes bluia-story-spin{to{transform:rotate(360deg)}}
+.story-media{object-position:center top!important}
+.below-feed{box-sizing:border-box;width:100%;overflow:hidden;padding:12px 0 44px}
+.below-feed .hero{box-sizing:border-box;width:100%;max-width:100%;padding:0;margin:0}
+.below-feed .cover{box-sizing:border-box;position:relative;left:auto!important;width:100%!important;max-width:100%!important;min-width:0;margin:0!important;aspect-ratio:16/9}
+.below-feed .actions{box-sizing:border-box;width:100%;max-width:100%;padding:14px 12px 22px}
+.below-feed .action{min-width:0;max-width:100%;white-space:normal;text-align:center}
+.bluia-photo-dialog,.post-dialog{box-sizing:border-box;max-width:calc(100vw - 16px)}
+.bluia-photo-shell,.dialog-panel{min-width:0;max-width:100%}
+.feed-grid{box-sizing:border-box;width:100%!important;max-width:100%!important;min-width:0;margin-left:0!important;grid-template-columns:repeat(3,minmax(0,1fr))}
+.feed-grid .story{min-width:0}
+.feed-grid .story img{max-width:100%}
+.pro-unlock{box-sizing:border-box;max-width:100%;overflow-wrap:anywhere}
+.pro-unlock .action{max-width:100%}
+.site-foot{box-sizing:border-box;max-width:100%;overflow:hidden}
+@media(max-width:560px){
+  .bluia-profile{padding:18px 12px 14px;gap:14px}
+  .bluia-story-ring{width:clamp(106px,29vw,132px);height:clamp(106px,29vw,132px);padding:5px}
+  .bluia-stats{font-size:12px;gap:5px 12px}
+  .bluia-profile h1{margin-bottom:9px}
+  .bluia-age{font-size:10px}
+  .feed-section>.wrap{width:100%;padding:0}
+  .feed-grid{gap:2px}
+  .story-media{object-position:center top!important}
+  .feed-status{padding:0 12px}
+  .below-feed .actions{gap:8px;justify-content:center}
+  .below-feed .action{font-size:11px;padding:9px 12px}
+  .bluia-photo-dialog{width:calc(100vw - 12px)}
+  .floating-pro{right:10px;bottom:max(14px,env(safe-area-inset-bottom))}
+}
+@media(max-width:350px){
+  .bluia-profile{gap:10px;padding-left:9px;padding-right:9px}
+  .bluia-story-ring{width:98px;height:98px}
+  .bluia-profile h1{font-size:17px}
+  .bluia-stats{gap:4px 8px;font-size:11px}
+  .bluia-stats strong{font-size:12px}
+  .below-feed .actions .action{flex:1 1 125px}
+}
+@media(prefers-reduced-motion:reduce){.bluia-story-ring::before{animation:none}}
 </style>
 </head>
 <body>
 <main>
-  <section class="bluia-profile" aria-label="Bluia Sisters profile"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile picture"><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span><strong id="bluia-post-count">0</strong> posts</span><span><strong>125</strong> Pro Followers</span></div></div></section>
+  <section class="bluia-profile" aria-label="Bluia Sisters profile"><button class="bluia-story-ring" id="bluia-story-trigger" type="button" aria-label="View Bluia Sisters story"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile picture"><span class="bluia-story-indicator" aria-hidden="true">+</span></button><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span><strong id="bluia-post-count">0</strong> posts</span><span><strong>125</strong> Pro Followers</span></div></div></section>
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap">
       <div class="bluia-tabs" role="tablist" aria-label="Photo galleries">
@@ -368,6 +424,14 @@ body{background:#080607;color:#f5eef0}
   document.querySelector(".bluia-photo-close").addEventListener("click",()=>photoDialog.close());
   photoDialog.addEventListener("click",event=>{if(event.target===photoDialog)photoDialog.close();});
   photoDialog.addEventListener("close",()=>fullPhoto.removeAttribute("src"));
+  // Select one existing public photo afresh on every page load.
+  // The story ring remains the supplied profile photo until tapped.
+  const storyPool=orderedItems.filter(function(item){return item.type==="photo"&&item.src;});
+  const selectedStory=storyPool.length?storyPool[Math.floor(Math.random()*storyPool.length)]:null;
+  const storyTrigger=document.getElementById("bluia-story-trigger");
+  if(storyTrigger&&selectedStory){
+    storyTrigger.addEventListener("click",function(){openPhoto(selectedStory);});
+  }
   function renderItem(item){
     const card=document.createElement("article");card.className="story";
     const visual=document.createElement("div");visual.className="story-visual";
@@ -409,7 +473,7 @@ body{background:#080607;color:#f5eef0}
   const proGrid=document.getElementById("pro-grid");
   // A public preview only; Pro subscriber content remains behind the existing checkout.
   if(orderedItems.length){
-    const item=orderedItems[0];
+    const item={type:"photo",title:"Bluia Sisters — Pro Preview",src:"https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_9667.png?download=true",alt:"Bluia Sisters Pro preview"};
     const preview=document.createElement("article");
     preview.className="story";
     const frame=document.createElement("div");
