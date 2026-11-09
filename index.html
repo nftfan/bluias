@@ -185,11 +185,53 @@ body{background:#080607;color:#f5eef0}
 .bluia-full-photo{display:block;max-width:100%;width:auto;max-height:calc(100dvh - 110px);margin:auto;object-fit:contain}
 .bluia-photo-caption{padding:10px 16px 14px;color:#d7c8cd;font-size:12px}
 @media(max-width:560px){.bluia-profile{gap:15px;margin:22px auto}.bluia-avatar{width:78px;height:78px}.bluia-stats{gap:5px 14px;font-size:12px}.bluia-stats strong{font-size:13px}.feed-grid{gap:2px}.bluia-photo-dialog{width:calc(100vw - 12px)}}
+
+/* Free / Pro gallery tabs and content below the photo grid */
+.bluia-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;margin:0 0 3px;border-bottom:1px solid #38232b}
+.bluia-tab{min-height:50px;padding:12px;border:0;border-bottom:3px solid transparent;background:transparent;color:#a9979e;font:700 14px/1.2 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
+.bluia-tab[aria-selected="true"]{color:white;border-bottom-color:#f32743}
+.bluia-tab:focus-visible{outline:2px solid #ff4960;outline-offset:-2px}
+.pro-panel[hidden],#free-panel[hidden]{display:none!important}
+.pro-preview-grid{margin-top:12px;margin-bottom:0}
+.pro-preview-grid .story{max-width:100%}
+.pro-unlock{max-width:650px;margin:26px auto 46px;padding:30px 20px 34px;text-align:center;border:1px solid #48202b;border-radius:16px;background:linear-gradient(135deg,#230d15,#10090c)}
+.pro-lock-symbol{font-size:34px;color:#ff4a69}
+.pro-unlock h2{margin:12px 0;color:#fff;font-size:clamp(21px,4vw,30px)}
+.pro-unlock p{margin:0 auto 23px;max-width:460px;color:#c7b3bb;font-size:14px;line-height:1.6}
+.pro-buy{min-width:210px}
+.below-feed{padding:12px 0 48px}
+.below-feed .hero{padding-top:0}
+.below-feed .cover{width:min(100vw,900px);max-width:900px;left:auto;margin:0 auto}
+.below-feed .actions{margin:0 auto}
+@media(max-width:560px){.bluia-tab{min-height:45px}.pro-unlock{margin:18px 12px 30px;padding:25px 14px}.below-feed{padding-top:0}.below-feed .cover{width:100vw;max-width:100vw}}
 </style>
 </head>
 <body>
 <main>
-  <section class="hero wrap" aria-label="Naughty Bluias introduction">
+  <section class="bluia-profile" aria-label="Bluia Sisters profile"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile picture"><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span><strong id="bluia-post-count">0</strong> posts</span><span><strong>125</strong> Pro Followers</span></div></div></section>
+  <section class="feed-section" aria-labelledby="blog-title">
+    <div class="wrap">
+      <div class="bluia-tabs" role="tablist" aria-label="Photo galleries">
+        <button id="tab-free" class="bluia-tab" type="button" role="tab" aria-selected="true" aria-controls="free-panel">Free</button>
+        <button id="tab-pro" class="bluia-tab" type="button" role="tab" aria-selected="false" aria-controls="pro-panel" tabindex="-1">Pro <span aria-hidden="true">✦</span></button>
+      </div>
+      <div id="free-panel" role="tabpanel" aria-labelledby="tab-free">
+        <div class="feed-grid" id="feed-grid"></div>
+      <div id="feed-sentinel" class="feed-sentinel" aria-hidden="true"></div>
+      <p id="feed-status" class="feed-status" aria-live="polite">Scroll for more stories</p>
+      </div>
+      <section id="pro-panel" class="pro-panel" role="tabpanel" aria-labelledby="tab-pro" hidden>
+        <div class="feed-grid pro-preview-grid" id="pro-grid"></div>
+        <div class="pro-unlock">
+          <div class="pro-lock-symbol" aria-hidden="true">✦</div>
+          <h2>Unlock 1,000+ more Pro images and videos</h2>
+          <p>Join Bluia Sisters Pro for exclusive photos, videos and new posts.</p>
+          <a class="action action-pro pro-buy" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06">Unlock Pro · $10/month</a>
+        </div>
+      </section>
+    </div>
+  </section>
+  <div class="below-feed">  <section class="hero wrap moved-hero" aria-label="Naughty Bluias introduction">
     <div class="cover is-loading" id="cover-frame">
       <video id="cover-video" autoplay muted playsinline controls preload="metadata" poster="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" aria-label="Naughty Bluias cover videos">
         <source src="/assets/home/entertainment-preview.mp4" type="video/mp4">
@@ -202,21 +244,8 @@ body{background:#080607;color:#f5eef0}
     </div>
   </section>
   <a href="/gifts/" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:calc(100% - 32px);max-width:720px;min-height:54px;margin:20px auto 0;padding:14px 20px;border-radius:12px;background:#d91432;color:#fff;font:700 18px/1.4 Arial,sans-serif;text-align:center;text-decoration:none;">Gift me sex toys</a>
-  <section class="bluia-profile" aria-label="Bluia Sisters profile"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Bluia Sisters profile picture"><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span><strong id="bluia-post-count">0</strong> posts</span><span><strong>125</strong> Pro Followers</span></div></div></section>
-  <section class="feed-section" aria-labelledby="blog-title">
-    <div class="wrap">
-      <div class="feed-grid" id="feed-grid"></div>
-      <div id="feed-sentinel" class="feed-sentinel" aria-hidden="true"></div>
-      <p id="feed-status" class="feed-status" aria-live="polite">Scroll for more stories</p>
-      <section class="feed-subscribe" aria-label="Subscribe for Pro stories">
-        <span class="devil-end" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <h2>Want even more from the Naughty Bluias?</h2>
-        <p>Subscribe to unlock hundreds of stories, photos and videos in the Pro Blog. Your subscriber link will arrive by email after secure Stripe checkout.</p>
-        <a class="action action-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Subscribe and unlock full access">Subscribe · $10 / month</a>
-      </section>
-    </div>
-  </section>
-<dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""><div class="bluia-photo-caption" id="bluia-photo-caption"></div></div></dialog>
+</div>
+<dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""><div class="bluia-photo-caption" id="bluia-photo-caption"></div></div></dialog>
 <dialog class="post-dialog subscribe-dialog" id="subscribe-dialog" aria-labelledby="subscribe-title">
   <div class="dialog-panel subscribe-panel">
     <button class="dialog-close subscribe-close" type="button" aria-label="Close subscription notice">×</button>
@@ -372,6 +401,49 @@ body{background:#080607;color:#f5eef0}
     window.addEventListener("scroll",onScrollFallback,{passive:true});
     onScrollFallback();
   }
+  // Maintain separate, keyboard-accessible Free and Pro gallery views.
+  const freeTab=document.getElementById("tab-free");
+  const proTab=document.getElementById("tab-pro");
+  const freePanel=document.getElementById("free-panel");
+  const proPanel=document.getElementById("pro-panel");
+  const proGrid=document.getElementById("pro-grid");
+  // A public preview only; Pro subscriber content remains behind the existing checkout.
+  if(orderedItems.length){
+    const item=orderedItems[0];
+    const preview=document.createElement("article");
+    preview.className="story";
+    const frame=document.createElement("div");
+    frame.className="story-visual";
+    frame.append(makeMediaFrame(item));
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="story-open";
+    button.setAttribute("aria-label","View Pro preview photo");
+    button.addEventListener("click",function(){openPhoto(item);});
+    preview.append(frame,button);
+    proGrid.append(preview);
+  }
+  function activateTab(which){
+    const isPro=which==="pro";
+    freeTab.setAttribute("aria-selected",String(!isPro));
+    proTab.setAttribute("aria-selected",String(isPro));
+    freeTab.tabIndex=isPro?-1:0;
+    proTab.tabIndex=isPro?0:-1;
+    freePanel.hidden=isPro;
+    proPanel.hidden=!isPro;
+  }
+  freeTab.addEventListener("click",function(){activateTab("free");});
+  proTab.addEventListener("click",function(){activateTab("pro");});
+  [freeTab,proTab].forEach(function(tab){
+    tab.addEventListener("keydown",function(event){
+      if(event.key==="ArrowLeft"||event.key==="ArrowRight"){
+        event.preventDefault();
+        const other=tab===freeTab?proTab:freeTab;
+        activateTab(other===proTab?"pro":"free");
+        other.focus();
+      }
+    });
+  });
   const subscribeDialog=document.getElementById("subscribe-dialog");
   document.querySelectorAll(".action-pro,.floating-pro").forEach(function(link){
     link.addEventListener("click",function(event){event.preventDefault();subscribeDialog.showModal();});
