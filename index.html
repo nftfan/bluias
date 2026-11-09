@@ -260,6 +260,7 @@ img,video,svg{max-width:100%}
   .below-feed .actions .action{flex:1 1 125px}
 }
 @media(prefers-reduced-motion:reduce){.bluia-story-ring::before{animation:none}}
+.bluia-tabs .bluia-tab{display:flex;align-items:center;justify-content:center;color:#ec2345!important;border-bottom-color:transparent}.bluia-tabs .bluia-tab[aria-selected="true"]{color:#ff3557!important;border-bottom-color:#f32743}.bluia-tabs .bluia-tab svg{display:block;width:25px;height:25px;max-width:none}.bluia-tabs .bluia-tab:hover{background:#2b0e17}
 </style>
 </head>
 <body>
@@ -268,8 +269,8 @@ img,video,svg{max-width:100%}
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap">
       <div class="bluia-tabs" role="tablist" aria-label="Photo galleries">
-        <button id="tab-free" class="bluia-tab" type="button" role="tab" aria-selected="true" aria-controls="free-panel">Free</button>
-        <button id="tab-pro" class="bluia-tab" type="button" role="tab" aria-selected="false" aria-controls="pro-panel" tabindex="-1">Pro <span aria-hidden="true">✦</span></button>
+        <button id="tab-free" class="bluia-tab" type="button" role="tab" aria-label="Free photos" aria-selected="true" aria-controls="free-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></button>
+        <button id="tab-pro" class="bluia-tab" type="button" role="tab" aria-label="Pro photos and videos" aria-selected="false" aria-controls="pro-panel" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v5c0 5.4 3.4 8.6 8 11 4.6-2.4 8-5.6 8-11V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></button>
       </div>
       <div id="free-panel" role="tabpanel" aria-labelledby="tab-free">
         <div class="feed-grid" id="feed-grid"></div>
