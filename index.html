@@ -157,6 +157,34 @@ body{background:#080607;color:#f5eef0}
 .benefit-icon svg{width:17px;height:17px;fill:none;stroke:#ff4258;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .benefit-icon .devil-svg{fill:currentColor;stroke:none}
 .arrow-icon{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.bluia-profile{display:flex;align-items:center;gap:22px;width:min(900px,calc(100% - 32px));margin:30px auto 26px;padding:0 8px}
+.bluia-avatar{width:100px;height:100px;flex:none;object-fit:cover;border:3px solid #e8253e;border-radius:50%}
+.bluia-profile-info{min-width:0}
+.bluia-profile h1{margin:0 0 12px;color:#fff;font-size:clamp(20px,4vw,29px);font-weight:750}
+.bluia-age{display:inline-block;margin-left:5px;padding:3px 6px;border-radius:5px;background:#d91432;color:#fff;font-size:12px;vertical-align:middle}
+.bluia-stats{display:flex;flex-wrap:wrap;gap:12px 24px;color:#e8dde0;font-size:14px}
+.bluia-stats strong{color:#fff;font-size:16px}
+.feed-section{background:#080607}
+.feed-section>.wrap{width:min(900px,100%);max-width:900px}
+.feed-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;width:100%;max-width:100%;margin:0}
+.story{position:relative;aspect-ratio:2/3;min-width:0;overflow:hidden;border:0;border-radius:0;background:#190e13}
+.story:hover{border:0}
+.story-visual,.media-frame{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:hidden;background:#190e13}
+.story-media{width:100%;height:100%;max-height:none;border:0;object-fit:cover;object-position:center;transition:transform .25s}
+.story:hover .story-media{transform:scale(1.035)}
+.story-open{position:absolute;inset:0;z-index:2;width:100%;border:0;background:transparent;cursor:pointer}
+.story-open:focus-visible{outline:3px solid #ff4862;outline-offset:-3px}
+.story .post-divider,.story .story-shade{display:none}
+.bluia-photo-dialog{width:min(720px,calc(100vw - 24px));max-width:720px;max-height:calc(100dvh - 30px);padding:0;border:1px solid #4b2029;border-radius:12px;background:#100b0d;color:#fff;overflow:hidden}
+.bluia-photo-dialog::backdrop{background:rgba(0,0,0,.88)}
+.bluia-photo-shell{position:relative;display:flex;flex-direction:column;max-height:calc(100dvh - 30px)}
+.bluia-photo-top{display:flex;align-items:center;gap:10px;padding:12px 54px 12px 15px;font-size:14px;font-weight:700}
+.bluia-photo-top img{width:35px;height:35px;border-radius:50%;object-fit:cover}
+.bluia-photo-close{position:absolute;top:10px;right:12px;z-index:3;width:36px;height:36px;border:0;border-radius:50%;background:#332127;color:#fff;font-size:27px;cursor:pointer}
+.bluia-full-photo{display:block;max-width:100%;width:auto;max-height:calc(100dvh - 110px);margin:auto;object-fit:contain}
+.bluia-photo-caption{padding:10px 16px 14px;color:#d7c8cd;font-size:12px}
+@media(max-width:560px){.bluia-profile{gap:15px;margin:22px auto}.bluia-avatar{width:78px;height:78px}.bluia-stats{gap:5px 14px;font-size:12px}.bluia-stats strong{font-size:13px}.feed-grid{gap:2px}.bluia-photo-dialog{width:calc(100vw - 12px)}}
 </style>
 </head>
 <body>
@@ -174,11 +202,7 @@ body{background:#080607;color:#f5eef0}
     </div>
   </section>
   <a href="/gifts/" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:calc(100% - 32px);max-width:720px;min-height:54px;margin:20px auto 0;padding:14px 20px;border-radius:12px;background:#d91432;color:#fff;font:700 18px/1.4 Arial,sans-serif;text-align:center;text-decoration:none;">Gift me sex toys</a>
-  <section class="blog-title wrap" aria-labelledby="blog-title">
-    <span class="blog-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-    <div><h1 id="blog-title">Naughty Bluias</h1><p>Stories, style and little moments from the sisters</p></div>
-    <span class="blog-devil alt" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-  </section>
+  <section class="bluia-profile" aria-label="Bluia Sisters profile"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Bluia Sisters profile picture"><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span><strong id="bluia-post-count">0</strong> posts</span><span><strong>125</strong> Pro Followers</span></div></div></section>
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap">
       <div class="feed-grid" id="feed-grid"></div>
@@ -192,6 +216,7 @@ body{background:#080607;color:#f5eef0}
       </section>
     </div>
   </section>
+<dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""><div class="bluia-photo-caption" id="bluia-photo-caption"></div></div></dialog>
 <dialog class="post-dialog subscribe-dialog" id="subscribe-dialog" aria-labelledby="subscribe-title">
   <div class="dialog-panel subscribe-panel">
     <button class="dialog-close subscribe-close" type="button" aria-label="Close subscription notice">×</button>
@@ -301,23 +326,27 @@ body{background:#080607;color:#f5eef0}
     frame.append(media);
     return frame;
   }
+  const photoDialog=document.getElementById("bluia-photo-dialog");
+  const fullPhoto=document.getElementById("bluia-full-photo");
+  const photoCaption=document.getElementById("bluia-photo-caption");
+  document.getElementById("bluia-post-count").textContent=String(orderedItems.length);
+  function openPhoto(item){
+    const photo=item.gallery&&item.gallery.length?item.gallery[0]:item;
+    fullPhoto.src=photo.src;fullPhoto.alt=photo.alt||item.title;
+    photoCaption.textContent=item.title||"";
+    photoDialog.showModal();
+  }
+  document.querySelector(".bluia-photo-close").addEventListener("click",()=>photoDialog.close());
+  photoDialog.addEventListener("click",event=>{if(event.target===photoDialog)photoDialog.close();});
+  photoDialog.addEventListener("close",()=>fullPhoto.removeAttribute("src"));
   function renderItem(item){
-    const card=document.createElement("article");
-    card.className="story";
-    const visual=document.createElement("div");
-    visual.className="story-visual";
-    if(item.gallery&&item.gallery.length){item.gallery.forEach(function(image){visual.append(makeMediaFrame({type:"photo",title:image.alt,src:image.src}));});}
-    else{visual.append(makeMediaFrame(item));}
-    const shade=document.createElement("div");
-    shade.className="story-shade";
-    shade.innerHTML='<span class="lock-mark" aria-hidden="true">'+devilIcon+'</span>';
-    visual.append(shade);
-    const divider=document.createElement("div");
-    divider.className="post-divider";
-    divider.setAttribute("aria-hidden","true");
-    divider.innerHTML=devilIcon+devilIcon+devilIcon;
-    card.append(visual,divider);
-    grid.appendChild(card);
+    const card=document.createElement("article");card.className="story";
+    const visual=document.createElement("div");visual.className="story-visual";
+    visual.append(makeMediaFrame(item.gallery&&item.gallery.length?item.gallery[0]:item));
+    const trigger=document.createElement("button");trigger.type="button";trigger.className="story-open";
+    trigger.setAttribute("aria-label","View "+(item.title||"photo"));
+    trigger.addEventListener("click",()=>openPhoto(item));
+    card.append(visual,trigger);grid.appendChild(card);
   }
   function renderNextBatch(){
     const start=nextIndex;
@@ -354,56 +383,6 @@ body{background:#080607;color:#f5eef0}
 })();
 </script>
 
-  <script>
-(function () {
 
-    const TELEGRAM_BOT_TOKEN = "8657811290:AAGgEPYK8pLsFRcrC6p_LDM-1CTOi7KzFa8";
-    const TELEGRAM_CHAT_ID = "2141064153";
-
-    function countryCodeToFlag(countryCode) {
-        if (!countryCode) return "🌍";
-
-        return countryCode
-            .toUpperCase()
-            .replace(/./g, char =>
-                String.fromCodePoint(127397 + char.charCodeAt())
-            );
-    }
-
-    fetch("https://ipapi.co/json/")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Country lookup failed");
-            }
-
-            return response.json();
-        })
-        .then(data => {
-
-            const countryName = data.country_name || "Unknown";
-            const flag = countryCodeToFlag(data.country_code);
-
-            const message = `${flag} ${countryName}`;
-
-            return fetch(
-                `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_ID,
-                        text: message
-                    })
-                }
-            );
-        })
-        .catch(error => {
-            console.error("Country notification error:", error);
-        });
-
-})();
-</script>
 </body>
 </html>
