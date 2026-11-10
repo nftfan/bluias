@@ -330,6 +330,19 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
 .bluia-tabs .bluia-pro-label{display:inline-block;color:#e9b949!important;font-size:10px;font-weight:800;line-height:1}
 #pro-panel[hidden],#unlock-panel[hidden]{display:none!important}
 #unlock-panel .pro-unlock{margin:18px auto 38px}
+
+/* Teaser photos and their membership destination in the image viewer */
+.story.is-locked .story-media{filter:blur(15px) brightness(.72);transform:scale(1.07)}
+.story.is-locked:hover .story-media{transform:scale(1.07)}
+.story.is-locked::after{content:"🔒";position:absolute;z-index:1;inset:0;display:grid;place-items:center;color:white;font-size:27px;text-shadow:0 2px 14px #000b;pointer-events:none}
+.bluia-photo-dialog.is-locked .bluia-full-photo{filter:blur(22px) brightness(.58);transform:scale(1.02)}
+.bluia-photo-dialog.is-locked .bluia-photo-shell{overflow:hidden}
+.bluia-locked-actions{position:absolute;z-index:2;left:50%;top:55%;width:min(90%,330px);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:12px;padding:22px 12px;text-align:center}
+.bluia-locked-actions[hidden]{display:none!important}
+.bluia-lock-icon{font-size:30px}
+.bluia-locked-actions p{margin:0;color:white;font-size:15px;font-weight:750;text-shadow:0 2px 14px #000}
+#bluia-popup-unlock{min-height:44px;padding:11px 24px;border:0;border-radius:8px;background:#d91432;color:white;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 5px 24px #0008}
+#bluia-popup-unlock:focus-visible{outline:3px solid #fff;outline-offset:3px}
 </style>
 </head>
 <body>
@@ -375,7 +388,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   </section>
   <a href="/gifts/" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:calc(100% - 32px);max-width:720px;min-height:54px;margin:20px auto 0;padding:14px 20px;border-radius:12px;background:#d91432;color:#fff;font:700 18px/1.4 Arial,sans-serif;text-align:center;text-decoration:none;">Gift me sex toys</a>
 </div>
-<dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""></div></dialog>
+<dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""><div class="bluia-locked-actions" id="bluia-locked-actions" hidden><span class="bluia-lock-icon" aria-hidden="true">🔒</span><p>Unlock more Bluia Sisters photos</p><button id="bluia-popup-unlock" type="button">Unlock Pro</button></div></div></dialog>
 
 <a class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Unlock full access" title="Unlock full access"><span>Unlock<br>full<br>access</span></a>
 <footer class="site-foot"><div class="footer-brand"><span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>Naughty Bluias · Stories from the sisters<span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span></div><img class="footer-cover-image" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Naughty Bluias portrait" loading="lazy" decoding="async"><div class="footer-support"><span class="support-label">Support: <a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a></span></div></footer>
@@ -472,9 +485,24 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   const photoDialog=document.getElementById("bluia-photo-dialog");
   const fullPhoto=document.getElementById("bluia-full-photo");
   let savedPhotoScrollY=0;
+  const lockedActions=document.getElementById("bluia-locked-actions");
+  // Public teaser effects only; use restricted hosting for genuinely private media.
+  const lockedPreviewNames=new Set(["IMG_9574.png","IMG_9699.png","IMG_9702.png"]);
+  function isLockedPreview(item){
+    return Boolean(item&&item.src&&[...lockedPreviewNames].some(name=>item.src.split("?")[0].endsWith("/"+name)));
+  }
+  document.getElementById("bluia-popup-unlock").addEventListener("click",function(){
+    photoDialog.close();
+    activateTab("unlock");
+    document.getElementById("tab-unlock").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+
   document.getElementById("bluia-post-count").textContent=String(orderedItems.length);
   function openPhoto(item){
     if(photoDialog.open)return;
+    const locked=isLockedPreview(item);
+    photoDialog.classList.toggle("is-locked",locked);
+    lockedActions.hidden=!locked;
     const albumContainer=document.getElementById("bluia-album-grid");
     if(albumContainer)albumContainer.remove();
     if(item.gallery&&item.gallery.length>1){
@@ -508,6 +536,8 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   photoDialog.addEventListener("close",()=>{
     fullPhoto.removeAttribute("src");
     fullPhoto.hidden=false;
+    photoDialog.classList.remove("is-locked");
+    lockedActions.hidden=true;
     const albumContainer=document.getElementById("bluia-album-grid");
     if(albumContainer)albumContainer.remove();
     document.body.classList.remove("bluia-modal-locked");
@@ -526,6 +556,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   function renderItem(item){
     const card=document.createElement("article");
     card.className="story";
+    if(isLockedPreview(item))card.classList.add("is-locked");
     const visual=document.createElement("div");
     visual.className="story-visual";
     visual.append(makeMediaFrame(item.gallery&&item.gallery.length?item.gallery[0]:item));
