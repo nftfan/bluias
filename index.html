@@ -299,6 +299,15 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
 .bluia-profile .bluia-stats{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(14px,3.6vw,36px);justify-content:space-between}
 .bluia-profile .bluia-stat{min-width:0;white-space:normal}
 @media(max-width:420px){.bluia-profile .bluia-stats{column-gap:clamp(12px,3vw,22px)}.bluia-profile .bluia-stat small{font-size:10px}}
+
+/* Album indicator and scrollable popup album, retaining the homepage theme */
+.story-album-badge{position:absolute;top:8px;right:8px;z-index:3;display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid #ffffff30;border-radius:50%;background:#090909b5;color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer}
+.story-album-badge svg{display:block;width:17px;height:17px}
+.story-album-badge:focus-visible{outline:2px solid #ff3557;outline-offset:2px}
+.bluia-album-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 14px 16px;width:100%;min-width:0}
+.bluia-album-grid img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:center top;border-radius:10px;background:#150d10}
+.bluia-full-photo[hidden]{display:none!important}
+@media(max-width:560px){.story-album-badge{top:6px;right:6px;width:24px;height:24px}.story-album-badge svg{width:14px;height:14px}.bluia-album-grid{gap:5px;padding:0 8px 12px}}
 </style>
 </head>
 <body>
@@ -397,6 +406,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   });
   if(coverVideo.readyState>=2)finishCover();
   const items=[
+    {"type":"photo","title":"Bluia Sisters — Album","date":"2026-11-10","src":"https://huggingface.co/buckets/Bluia/albums/resolve/156F4FF5-5B53-4DDA-BCEC-5EA625D51269.png","alt":"Bluia Sisters album cover","gallery":[{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/156F4FF5-5B53-4DDA-BCEC-5EA625D51269.png","alt":"Bluia Sisters album image 1"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/419010DC-D3C8-4DCB-8E55-E3476DCBD8C0.png","alt":"Bluia Sisters album image 2"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/6BC3F2CF-CCCE-4AB0-8692-90B649C225F8.png","alt":"Bluia Sisters album image 3"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/7EE2EF45-E9FB-48CB-825E-E9C4081E0DFE.png","alt":"Bluia Sisters album image 4"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/998032C2-129A-4CE8-9785-F7D6D18DB688.png","alt":"Bluia Sisters album image 5"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/A2A33852-D6FE-4562-8309-698488B0CAE9.png","alt":"Bluia Sisters album image 6"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/BF6DABCA-21A4-41DE-A634-EFC27F3FCEAD.png","alt":"Bluia Sisters album image 7"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/C822148E-C1AB-48E4-B436-C6E1D6D7E175.png","alt":"Bluia Sisters album image 8"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/F12BB69C-62A7-43C7-B8C6-F9B2EC896753.png","alt":"Bluia Sisters album image 9"},{"src":"https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9668.png","alt":"Bluia Sisters album image 10"}]},
     {type:"photo",title:"Naughty Bluias — IMG_8088",date:"2026-11-02",src:"https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8088.jpeg?download=true",alt:"Naughty Bluias photo IMG_8088"},
     {type:"photo",title:"Naughty Bluias — IMG_8089",date:"2026-11-02",src:"https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8089.jpeg?download=true",alt:"Naughty Bluias photo IMG_8089"},
     {type:"photo",title:"Naughty Bluias — IMG_8091",date:"2026-11-02",src:"https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8091.jpeg?download=true",alt:"Naughty Bluias photo IMG_8091"},
@@ -454,10 +464,30 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   let savedPhotoScrollY=0;
   document.getElementById("bluia-post-count").textContent=String(orderedItems.length);
   function openPhoto(item){
-    const photo=item.gallery&&item.gallery.length?item.gallery[0]:item;
-    fullPhoto.src=photo.src;
-    fullPhoto.alt="Bluia Sisters photo";
     if(photoDialog.open)return;
+    const albumContainer=document.getElementById("bluia-album-grid");
+    if(albumContainer)albumContainer.remove();
+    if(item.gallery&&item.gallery.length>1){
+      fullPhoto.removeAttribute("src");
+      fullPhoto.hidden=true;
+      const albumGrid=document.createElement("div");
+      albumGrid.className="bluia-album-grid";
+      albumGrid.id="bluia-album-grid";
+      item.gallery.forEach(function(photo,i){
+        const image=document.createElement("img");
+        image.src=photo.src;
+        image.alt=photo.alt||"Bluia Sisters album photo "+(i+1);
+        image.loading=i<2?"eager":"lazy";
+        image.decoding="async";
+        albumGrid.append(image);
+      });
+      document.querySelector(".bluia-photo-shell").append(albumGrid);
+    }else{
+      const photo=item.gallery&&item.gallery.length?item.gallery[0]:item;
+      fullPhoto.hidden=false;
+      fullPhoto.src=photo.src;
+      fullPhoto.alt="Bluia Sisters photo";
+    }
     savedPhotoScrollY=window.scrollY||window.pageYOffset||0;
     document.body.style.top="-"+savedPhotoScrollY+"px";
     document.body.classList.add("bluia-modal-locked");
@@ -467,6 +497,9 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   photoDialog.addEventListener("click",event=>{if(event.target===photoDialog)photoDialog.close();});
   photoDialog.addEventListener("close",()=>{
     fullPhoto.removeAttribute("src");
+    fullPhoto.hidden=false;
+    const albumContainer=document.getElementById("bluia-album-grid");
+    if(albumContainer)albumContainer.remove();
     document.body.classList.remove("bluia-modal-locked");
     document.body.style.top="";
     window.scrollTo(0,savedPhotoScrollY);
@@ -479,14 +512,29 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   if(storyTrigger&&selectedStory){
     storyTrigger.addEventListener("click",function(){openPhoto(selectedStory);});
   }
+  const albumIconSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="11" height="11" rx="2"/><rect x="4" y="4" width="11" height="11" rx="2"/></svg>';
   function renderItem(item){
-    const card=document.createElement("article");card.className="story";
-    const visual=document.createElement("div");visual.className="story-visual";
+    const card=document.createElement("article");
+    card.className="story";
+    const visual=document.createElement("div");
+    visual.className="story-visual";
     visual.append(makeMediaFrame(item.gallery&&item.gallery.length?item.gallery[0]:item));
-    const trigger=document.createElement("button");trigger.type="button";trigger.className="story-open";
-    trigger.setAttribute("aria-label","View "+(item.title||"photo"));
+    const trigger=document.createElement("button");
+    trigger.type="button";
+    trigger.className="story-open";
+    trigger.setAttribute("aria-label",(item.gallery&&item.gallery.length>1?"Open album: ":"View ")+(item.title||"photo"));
     trigger.addEventListener("click",()=>openPhoto(item));
-    card.append(visual,trigger);grid.appendChild(card);
+    card.append(visual,trigger);
+    if(item.gallery&&item.gallery.length>1){
+      const badge=document.createElement("button");
+      badge.type="button";
+      badge.className="story-album-badge";
+      badge.setAttribute("aria-label","Open photo album");
+      badge.innerHTML=albumIconSvg;
+      badge.addEventListener("click",event=>{event.stopPropagation();openPhoto(item);});
+      card.appendChild(badge);
+    }
+    grid.appendChild(card);
   }
   function renderNextBatch(){
     const start=nextIndex;
