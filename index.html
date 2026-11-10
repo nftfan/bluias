@@ -323,6 +323,13 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
 .pro-membership-steps li::marker{color:#e9b949;font-weight:800}
 #pro-unlock-panel .pro-unlock{margin:16px auto 38px}
 @media(max-width:560px){.pro-inner-tab{font-size:12px;min-height:46px}.pro-inner-tab svg{width:20px;height:20px}.pro-membership-steps{padding:0 4px}}
+
+/* Single top-level Pro / Unlock icon navigation, shared image grid */
+.bluia-tabs #tab-pro,.bluia-tabs #tab-unlock{display:flex;align-items:center;justify-content:center;gap:6px;color:#e9b949!important}
+.bluia-tabs #tab-pro[aria-selected="true"],.bluia-tabs #tab-unlock[aria-selected="true"]{border-bottom-color:#e9b949!important}
+.bluia-tabs .bluia-pro-label{display:inline-block;color:#e9b949!important;font-size:10px;font-weight:800;line-height:1}
+#pro-panel[hidden],#unlock-panel[hidden]{display:none!important}
+#unlock-panel .pro-unlock{margin:18px auto 38px}
 </style>
 </head>
 <body>
@@ -330,24 +337,16 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   <section class="bluia-profile" aria-label="Bluia Sisters profile"><button class="bluia-story-ring" id="bluia-story-trigger" type="button" aria-label="View Bluia Sisters story"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile picture"></button><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span class="bluia-stat"><strong id="bluia-post-count">0</strong><small>Posts</small></span><span class="bluia-stat"><strong id="bluia-pro-post-count">108</strong><small>Pro posts</small></span><span class="bluia-stat"><strong>125</strong><small>Pro Followers</small></span></div></div></section>
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap">
-      <div class="bluia-tabs" role="tablist" aria-label="Photo galleries">
-        <button id="tab-free" class="bluia-tab" type="button" role="tab" aria-label="Free photos" aria-selected="true" aria-controls="free-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></button>
-        <button id="tab-pro" class="bluia-tab" type="button" role="tab" aria-label="Pro photos and videos" aria-selected="false" aria-controls="pro-panel" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="bluia-pro-label" aria-hidden="true">Pro</span></button>
+      <div class="bluia-tabs" role="tablist" aria-label="Pro gallery and membership">
+        <button id="tab-pro" class="bluia-tab" type="button" role="tab" aria-label="Pro images" aria-selected="true" aria-controls="pro-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="bluia-pro-label">Pro</span></button>
+        <button id="tab-unlock" class="bluia-tab" type="button" role="tab" aria-label="Unlock membership" aria-selected="false" aria-controls="unlock-panel" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span class="bluia-pro-label">Unlock</span></button>
       </div>
-      <div id="free-panel" role="tabpanel" aria-labelledby="tab-free">
-        <div class="feed-grid" id="feed-grid"></div>
-      <div id="feed-sentinel" class="feed-sentinel" aria-hidden="true"></div>
-      <p id="feed-status" class="feed-status" aria-live="polite">Scroll for more stories</p>
-      </div>
-      <section id="pro-panel" class="pro-panel" role="tabpanel" aria-labelledby="tab-pro" hidden>
-        <div class="pro-inner-tabs" role="tablist" aria-label="Pro photos and membership">
-          <button id="pro-photos-tab" class="pro-inner-tab" type="button" role="tab" aria-controls="pro-photos-panel" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Photos</span></button>
-          <button id="pro-unlock-tab" class="pro-inner-tab" type="button" role="tab" aria-controls="pro-unlock-panel" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Unlock</span></button>
-        </div>
-        <div id="pro-photos-panel" role="tabpanel" aria-labelledby="pro-photos-tab">
-          <div class="feed-grid pro-preview-grid" id="pro-grid"></div>
-        </div>
-        <div id="pro-unlock-panel" role="tabpanel" aria-labelledby="pro-unlock-tab" hidden>
+      <section id="pro-panel" class="pro-panel" role="tabpanel" aria-labelledby="tab-pro">
+        <div class="feed-grid pro-preview-grid" id="feed-grid"></div>
+        <div id="feed-sentinel" class="feed-sentinel" aria-hidden="true"></div>
+        <p id="feed-status" class="feed-status" aria-live="polite">More photos below</p>
+      </section>
+      <section id="unlock-panel" class="pro-panel" role="tabpanel" aria-labelledby="tab-unlock" hidden>
           <div class="pro-unlock">
             <div class="pro-lock-symbol" aria-hidden="true">✦</div>
             <h2>Unlock 1,000+ more Pro images and videos</h2>
@@ -358,7 +357,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
             </div>
             <a class="action action-pro pro-buy" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Buy Pro Membership · $10/month</a>
           </div>
-        </div>
+
       </section>
     </div>
   </section>
@@ -588,11 +587,11 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
     onScrollFallback();
   }
   // Maintain separate, keyboard-accessible Free and Pro gallery views.
-  const freeTab=document.getElementById("tab-free");
   const proTab=document.getElementById("tab-pro");
-  const freePanel=document.getElementById("free-panel");
+  const unlockTab=document.getElementById("tab-unlock");
   const proPanel=document.getElementById("pro-panel");
-  const proGrid=document.getElementById("pro-grid");
+  const unlockPanel=document.getElementById("unlock-panel");
+  const proGrid=document.getElementById("feed-grid");
   // Featured public Pro previews. Subscriber-only content remains on the Pro page.
   const proPreviewPhotos=[
     {type:"photo",title:"Bluia Sisters — Pro Preview",src:"https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_9667.png?download=true",alt:"Bluia Sisters Pro preview"},
@@ -603,7 +602,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
     {type:"photo",title:"Bluia Sisters — Pro Photo 6",src:"https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9701.png",alt:"Bluia Sisters Pro photo 6"},
     {type:"photo",title:"Bluia Sisters — Pro Photo 7",src:"https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9702.png",alt:"Bluia Sisters Pro photo 7"}
   ];
-  proPreviewPhotos.forEach(function(item){
+  proPreviewPhotos.slice().reverse().forEach(function(item){
     const preview=document.createElement("article");
     preview.className="story";
     const frame=document.createElement("div");
@@ -615,49 +614,26 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
     button.setAttribute("aria-label","View Pro photo");
     button.addEventListener("click",function(){openPhoto(item);});
     preview.append(frame,button);
-    proGrid.append(preview);
-  });
-  const proInnerTabs=[document.getElementById("pro-photos-tab"),document.getElementById("pro-unlock-tab")];
-  const proPhotosPanel=document.getElementById("pro-photos-panel");
-  const proUnlockPanel=document.getElementById("pro-unlock-panel");
-  function selectProInnerTab(which){
-    const unlock=which==="unlock";
-    proInnerTabs[0].setAttribute("aria-selected",String(!unlock));
-    proInnerTabs[1].setAttribute("aria-selected",String(unlock));
-    proInnerTabs[0].tabIndex=unlock?-1:0;
-    proInnerTabs[1].tabIndex=unlock?0:-1;
-    proPhotosPanel.hidden=unlock;
-    proUnlockPanel.hidden=!unlock;
-  }
-  proInnerTabs.forEach(function(tab,index){
-    tab.addEventListener("click",function(){selectProInnerTab(index===0?"photos":"unlock");});
-    tab.addEventListener("keydown",function(event){
-      if(event.key==="ArrowLeft"||event.key==="ArrowRight"){
-        event.preventDefault();
-        const next=1-index;
-        selectProInnerTab(next===0?"photos":"unlock");
-        proInnerTabs[next].focus();
-      }
-    });
+    proGrid.prepend(preview);
   });
   function activateTab(which){
-    const isPro=which==="pro";
-    freeTab.setAttribute("aria-selected",String(!isPro));
-    proTab.setAttribute("aria-selected",String(isPro));
-    freeTab.tabIndex=isPro?-1:0;
-    proTab.tabIndex=isPro?0:-1;
-    freePanel.hidden=isPro;
-    proPanel.hidden=!isPro;
+    const unlocked=which==="unlock";
+    proTab.setAttribute("aria-selected",String(!unlocked));
+    unlockTab.setAttribute("aria-selected",String(unlocked));
+    proTab.tabIndex=unlocked?-1:0;
+    unlockTab.tabIndex=unlocked?0:-1;
+    proPanel.hidden=unlocked;
+    unlockPanel.hidden=!unlocked;
   }
-  freeTab.addEventListener("click",function(){activateTab("free");});
   proTab.addEventListener("click",function(){activateTab("pro");});
-  [freeTab,proTab].forEach(function(tab){
+  unlockTab.addEventListener("click",function(){activateTab("unlock");});
+  [proTab,unlockTab].forEach(function(tab){
     tab.addEventListener("keydown",function(event){
       if(event.key==="ArrowLeft"||event.key==="ArrowRight"){
         event.preventDefault();
-        const other=tab===freeTab?proTab:freeTab;
-        activateTab(other===proTab?"pro":"free");
-        other.focus();
+        const target=tab===proTab?unlockTab:proTab;
+        activateTab(target===proTab?"pro":"unlock");
+        target.focus();
       }
     });
   });
