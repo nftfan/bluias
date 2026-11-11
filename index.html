@@ -344,10 +344,24 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
 #bluia-popup-unlock{min-height:44px;padding:11px 24px;border:0;border-radius:8px;background:#d91432;color:white;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 5px 24px #0008}
 #bluia-popup-unlock:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .pro-join-divider{display:flex;align-items:center;gap:12px;max-width:430px;margin:24px auto 15px;color:#b8a8ad;font-size:12px}.pro-join-divider::before,.pro-join-divider::after{content:"";height:1px;flex:1;background:#51303a}.pro-telegram-copy{max-width:440px;margin:0 auto 16px!important;font-size:14px;line-height:1.55}.pro-telegram-button{display:inline-flex;align-items:center;justify-content:center;min-width:210px;max-width:100%;min-height:48px;padding:13px 22px;border:1px solid #1686e8;border-radius:8px;background:#1686e8;color:white!important;font-size:13px;font-weight:800;box-shadow:0 7px 22px #1686e833;text-decoration:none}.pro-telegram-button:hover{background:#0876d5;transform:translateY(-2px)}.pro-telegram-button:focus-visible{outline:3px solid #a7d5ff;outline-offset:3px}
+
+/* Stars balance and 100-star previews */
+.bluia-stars-balance{position:relative;z-index:4;display:flex;align-items:center;justify-content:flex-end;gap:5px;width:min(900px,100%);margin:0 auto;padding:10px clamp(12px,4vw,26px) 0;color:#f4d16a;font-size:12px;font-weight:750;white-space:nowrap}
+.bluia-stars-balance>span{font-size:18px;color:#f3c94c;text-shadow:0 0 10px #e9b94988}
+.bluia-stars-balance strong{font-size:14px;font-variant-numeric:tabular-nums}
+#bluia-popup-stars{min-height:44px;padding:11px 22px;border:1px solid #e5b43d;border-radius:8px;background:linear-gradient(135deg,#f8d766,#bb852a);color:#281807;font-size:14px;font-weight:850;cursor:pointer;box-shadow:0 5px 24px #0008}
+#bluia-popup-stars[hidden]{display:none!important}
+#bluia-popup-stars:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#bluia-stars-status{display:block;color:#ffe4a1;font-size:12px}
+#bluia-stars-status[hidden]{display:none!important}
+.bluia-locked-actions{max-height:65%;overflow-y:auto}
+.bluia-photo-dialog.is-locked .bluia-full-photo{pointer-events:none}
+@media(max-width:560px){.bluia-stars-balance{padding:8px 12px 0;font-size:11px}}
 </style>
 </head>
 <body>
 <main>
+  <div class="bluia-stars-balance" aria-live="polite"><span aria-hidden="true">★</span> My Stars: <strong id="bluia-stars-count">300</strong></div>
   <section class="bluia-profile" aria-label="Bluia Sisters profile"><button class="bluia-story-ring" id="bluia-story-trigger" type="button" aria-label="View Bluia Sisters story"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile picture"></button><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span class="bluia-stat"><strong id="bluia-post-count">0</strong><small>Posts</small></span><span class="bluia-stat"><strong id="bluia-pro-post-count">108</strong><small>Pro posts</small></span><span class="bluia-stat"><strong>125</strong><small>Pro Followers</small></span></div></div></section>
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap">
@@ -363,13 +377,13 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
       <section id="unlock-panel" class="pro-panel" role="tabpanel" aria-labelledby="tab-unlock" hidden>
           <div class="pro-unlock">
             <div class="pro-lock-symbol" aria-hidden="true">✦</div>
-            <h2>Unlock 1,000+ more Pro images and videos</h2>
-            <p>Join Bluia Sisters Pro for exclusive photos, videos and new posts.</p>
+            <h2>Buy 10,000 Stars with a monthly subscription</h2>
+            <p>Get 10,000 Stars with Bluia Sisters Pro for $10/month. Use 100 Stars to unlock eligible photo previews.</p>
             <div class="pro-membership-steps">
               <h3>How to get Pro access</h3>
               <ol><li>Tap the button below to open secure Stripe checkout.</li><li>Subscribe for <strong>$10 per month</strong> using your email address.</li><li>Check your inbox for your Pro access link after checkout. If you don't see it, check spam or junk.</li><li>Open your access link to view the Pro content.</li></ol>
             </div>
-            <a class="action action-pro pro-buy" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Buy Pro Membership · $10/month</a>
+            <a class="action action-pro pro-buy" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Buy 10,000 Stars · $10/month</a>
             <div class="pro-join-divider"><span>or join via Telegram</span></div>
             <p class="pro-telegram-copy">Join the Bluia Sisters OnlyFans Telegram channel and find the Pro access link there.</p>
             <a class="action pro-telegram-button" href="https://t.me/+vieXRo_X9rM5NzRk" target="_blank" rel="noopener noreferrer" aria-label="Join Bluia Sisters OnlyFans Telegram channel">Join Telegram Channel</a>
@@ -392,7 +406,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   </section>
   <a href="/gifts/" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:calc(100% - 32px);max-width:720px;min-height:54px;margin:20px auto 0;padding:14px 20px;border-radius:12px;background:#d91432;color:#fff;font:700 18px/1.4 Arial,sans-serif;text-align:center;text-decoration:none;">Gift me sex toys</a>
 </div>
-<dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""><div class="bluia-locked-actions" id="bluia-locked-actions" hidden><span class="bluia-lock-icon" aria-hidden="true">🔒</span><p>Unlock more Bluia Sisters photos</p><button id="bluia-popup-unlock" type="button">Unlock Pro</button></div></div></dialog>
+<dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""><div class="bluia-locked-actions" id="bluia-locked-actions" hidden><span class="bluia-lock-icon" aria-hidden="true">🔒</span><p>Unlock more Bluia Sisters photos</p><button id="bluia-popup-stars" type="button" hidden>Unlock for 100 ★</button><button id="bluia-popup-unlock" type="button">Unlock Pro</button><small id="bluia-stars-status" role="status" hidden></small></div></div></dialog>
 
 <a class="floating-pro" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" aria-label="Unlock full access" title="Unlock full access"><span>Unlock<br>full<br>access</span></a>
 <footer class="site-foot"><div class="footer-brand"><span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>Naughty Bluias · Stories from the sisters<span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span></div><img class="footer-cover-image" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Naughty Bluias portrait" loading="lazy" decoding="async"><div class="footer-support"><span class="support-label">Support: <a href="mailto:vbluia@outlook.com">vbluia@outlook.com</a></span></div></footer>
@@ -490,10 +504,53 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   const fullPhoto=document.getElementById("bluia-full-photo");
   let savedPhotoScrollY=0;
   const lockedActions=document.getElementById("bluia-locked-actions");
-  // Public teaser effects only; use restricted hosting for genuinely private media.
-  function isLockedPreview(item){
-    return Boolean(item&&item.isLockedPreview);
+  const starsCount=document.getElementById("bluia-stars-count");
+  const starsButton=document.getElementById("bluia-popup-stars");
+  const starsStatus=document.getElementById("bluia-stars-status");
+  const starsKey="bluias-stars-demo-v1";
+  const starsUnlockedKey="bluias-stars-unlocked-demo-v1";
+  let starsBalance=300;
+  let starsUnlocked=new Set();
+  // Browser-local preview state only; production stars require a verified backend ledger.
+  try{
+    const stored=localStorage.getItem(starsKey);
+    if(stored!==null&&Number.isInteger(Number(stored))&&Number(stored)>=0&&Number(stored)<=300)starsBalance=Number(stored);
+    const list=JSON.parse(localStorage.getItem(starsUnlockedKey)||"[]");
+    if(Array.isArray(list))starsUnlocked=new Set(list.filter(x=>typeof x==="string"));
+  }catch(error){}
+  function saveStars(){
+    starsCount.textContent=String(starsBalance);
+    try{
+      localStorage.setItem(starsKey,String(starsBalance));
+      localStorage.setItem(starsUnlockedKey,JSON.stringify([...starsUnlocked]));
+    }catch(error){}
   }
+  saveStars();
+  let activePhotoItem=null;
+  function photoKey(item){return String(item.src||"").split("?")[0];}
+  function isLockedPreview(item){
+    return Boolean(item&&item.isLockedPreview&&!starsUnlocked.has(photoKey(item)));
+  }
+  function refreshUnlockedCards(){
+    document.querySelectorAll(".story[data-star-key]").forEach(card=>{
+      card.classList.toggle("is-locked",!starsUnlocked.has(card.dataset.starKey));
+    });
+  }
+  starsButton.addEventListener("click",function(){
+    const item=activePhotoItem;
+    if(!item||!item.starEligible||!isLockedPreview(item))return;
+    if(starsBalance<100){
+      starsStatus.hidden=false;
+      starsStatus.textContent="Not enough Stars. Visit Unlock for membership options.";
+      return;
+    }
+    starsBalance-=100;
+    starsUnlocked.add(photoKey(item));
+    saveStars();
+    refreshUnlockedCards();
+    photoDialog.classList.remove("is-locked");
+    lockedActions.hidden=true;
+  });
   document.getElementById("bluia-popup-unlock").addEventListener("click",function(){
     photoDialog.close();
     activateTab("unlock");
@@ -503,9 +560,14 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   document.getElementById("bluia-post-count").textContent=String(orderedItems.length);
   function openPhoto(item){
     if(photoDialog.open)return;
+    activePhotoItem=item;
+    starsStatus.hidden=true;
+    starsStatus.textContent="";
     const locked=isLockedPreview(item);
     photoDialog.classList.toggle("is-locked",locked);
     lockedActions.hidden=!locked;
+    starsButton.hidden=!(locked&&item.starEligible);
+    document.getElementById("bluia-popup-unlock").textContent=item.starEligible?"Get more Stars":"Unlock Pro";
     const albumContainer=document.getElementById("bluia-album-grid");
     if(albumContainer)albumContainer.remove();
     if(item.gallery&&item.gallery.length>1){
@@ -541,6 +603,8 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
     fullPhoto.hidden=false;
     photoDialog.classList.remove("is-locked");
     lockedActions.hidden=true;
+    activePhotoItem=null;
+    starsButton.hidden=true;
     const albumContainer=document.getElementById("bluia-album-grid");
     if(albumContainer)albumContainer.remove();
     document.body.classList.remove("bluia-modal-locked");
@@ -559,6 +623,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   function renderItem(item){
     const card=document.createElement("article");
     card.className="story";
+    if(item.starEligible)card.dataset.starKey=photoKey(item);
     if(isLockedPreview(item))card.classList.add("is-locked");
     const visual=document.createElement("div");
     visual.className="story-visual";
@@ -601,13 +666,17 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   const unifiedPosts=[...orderedItems,...proPreviewPhotos];
   const seen=new Set();
   let visiblePostIndex=0;
+  let eligibleLockedCount=0;
   unifiedPosts.forEach(function(item){
     const key=item.src.split("?")[0];
     if(seen.has(key))return;
     seen.add(key);
-    // Three cards per row: blur the first two; show the third.
-    // Use a copied item so source data and the story viewer stay unchanged.
-    renderItem({...item,isLockedPreview:visiblePostIndex%3!==2});
+    // Every row: two blurred, one visible. Only the first three blurred
+    // cards accept 100-star unlocks; remaining previews link to membership.
+    const blurred=visiblePostIndex%3!==2;
+    const starEligible=blurred&&eligibleLockedCount<3;
+    if(blurred)eligibleLockedCount++;
+    renderItem({...item,isLockedPreview:blurred,starEligible});
     visiblePostIndex++;
   });
   document.getElementById("bluia-post-count").textContent=String(seen.size);
