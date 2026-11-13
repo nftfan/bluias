@@ -187,7 +187,7 @@ body{background:#080607;color:#f5eef0}
 @media(max-width:560px){.bluia-profile{gap:15px;margin:22px auto}.bluia-avatar{width:78px;height:78px}.bluia-stats{gap:5px 14px;font-size:12px}.bluia-stats strong{font-size:13px}.feed-grid{gap:2px}.bluia-photo-dialog{width:calc(100vw - 12px)}}
 
 /* Free / Pro gallery tabs and content below the photo grid */
-.bluia-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;width:100%;margin:0 0 3px;border-bottom:1px solid #38232b}
+.bluia-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;width:100%;margin:0 0 3px;border-bottom:1px solid #38232b}
 .bluia-tab{min-height:50px;padding:12px;border:0;border-bottom:3px solid transparent;background:transparent;color:#a9979e;font:700 14px/1.2 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
 .bluia-tab[aria-selected="true"]{color:white;border-bottom-color:#f32743}
 .bluia-tab:focus-visible{outline:2px solid #ff4960;outline-offset:-2px}
@@ -359,121 +359,29 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
 @media(max-width:560px){.bluia-stars-balance{padding:8px 12px 0;font-size:11px}}
 .pro-discount-banner{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin:8px auto 16px;color:#fff}.pro-discount-banner strong{display:inline-flex;align-items:center;padding:7px 11px;border-radius:7px;background:#d91432;color:#fff;font-size:13px;font-weight:900;letter-spacing:.05em}.pro-discount-banner span{display:inline-flex;align-items:center;gap:9px;font-size:17px}.pro-discount-banner del{color:#ad9ca1;font-size:14px}.pro-discount-banner b{color:#fff;font-size:21px}
 
-/* About Me: professional listening service, default landing tab */
-.bl-about{max-width:770px;margin:0 auto 32px;background:#110d12;color:#f6f0f2}
-.bl-about-photo{width:100%;height:auto;max-height:none;overflow:visible;background:#20131a;border-radius:13px 13px 0 0}
-.bl-about-photo img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;transform:none;border-radius:13px 13px 0 0}
-.bl-about-body{padding:clamp(17px,4vw,35px)}
-.bl-about-eyebrow{display:block;color:#e9b949;font-size:10px;font-weight:900;letter-spacing:.11em;margin-bottom:9px}
-.bl-about h2{font-size:clamp(23px,4vw,34px);line-height:1.17;letter-spacing:-.025em;margin:0 0 16px}
-.bl-about h3{font-size:18px;line-height:1.3;margin:25px 0 15px}
-.bl-about p{color:#d5c4cb;font-size:14px;line-height:1.75;margin:0 0 14px}
-.bl-about-services{display:grid;gap:10px}
-.bl-about-services article{display:flex;gap:14px;padding:14px;background:#211820;border:1px solid #3c2a32;border-radius:10px}
-.bl-about-services article>span{display:grid;place-items:center;flex:none;width:30px;height:30px;background:#362831;border-radius:8px;color:#e9b949;font-size:22px}
-.bl-about-services strong{display:block;margin-bottom:5px;color:#fff;font-size:13px}
-.bl-about-services p{font-size:12px;margin:0;line-height:1.6}
-.bl-about-booking{margin-top:28px;padding:clamp(15px,3vw,25px);background:#241b23;border:1px solid #614454;border-radius:13px}
-.bl-about-booking h3{margin:0 0 9px;font-size:21px}
-.bl-about-price{display:flex;align-items:center;gap:13px;margin:15px 0}
-.bl-about-price strong{font-size:30px;color:#fff}
-.bl-about-price span{color:#c5b5bd;font-size:12px}
-.bl-about-pay{display:flex;align-items:center;justify-content:center;min-height:49px;background:#e9b949;color:#1f160a!important;text-decoration:none;border-radius:9px;font-size:14px;font-weight:900;text-align:center;padding:12px 15px}
-.bl-about-pay:hover{background:#f7ce6a}
-.bl-after-payment{padding-top:20px}
-.bl-after-payment h4{font-size:15px;margin:0 0 10px;color:#fff}
-.bl-after-payment ol{margin:0 0 18px;padding-left:19px;color:#e3d5dc;font-size:12px;line-height:1.75}
-.bl-after-payment li+li{margin-top:7px}
-.bl-email-copy{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:#120e14;border:1px solid #564050;padding:9px 10px;border-radius:9px}
-.bl-email-copy a{color:#fff;font-size:13px;overflow-wrap:anywhere}
-.bl-email-copy button{cursor:pointer;flex:none;border:0;background:#e9b949;color:#22170a;border-radius:6px;padding:9px 12px;font-size:12px;font-weight:800}
-.bl-copy-status{display:block;min-height:18px;color:#e9b949;font-size:11px;padding-top:4px}
-.bl-about .bl-about-note{font-size:11px;line-height:1.6;color:#af9fa8;margin:18px 0 0}
-@media(max-width:520px){.bluia-tab{padding:9px 2px}.bluia-pro-label{font-size:10px}.bl-about-photo img{max-height:none;height:auto;object-fit:contain;transform:none}.bl-email-copy a{font-size:12px}}
-
-.bl-send-booking-email{display:flex;align-items:center;justify-content:center;min-height:46px;margin-top:12px;border:1px solid #e9b949;border-radius:9px;background:#e9b949;color:#211608!important;text-align:center;text-decoration:none;font-size:13px;font-weight:850;padding:11px 15px;transition:background .2s}
-.bl-send-booking-email:hover{background:#f8d276}
-.bl-send-booking-email:focus-visible{outline:3px solid #fff;outline-offset:3px}
-.bl-after-payment .bl-email-hint{margin:9px 0 0;color:#bdaeb7;font-size:11px;line-height:1.55}
-
-/* Zangi download choices for confirmed private appointments */
-.bl-zangi{margin:18px 0;padding:15px;background:#161720;border:1px solid #36445e;border-radius:12px}
-.bl-zangi-head{display:flex;align-items:center;gap:12px}
-.bl-zangi-head img{width:48px;height:48px;flex:none;object-fit:contain;border-radius:13px}
-.bl-zangi-head strong{display:block;color:#fff;font-size:14px;margin-bottom:3px}
-.bl-about .bl-zangi-head p{font-size:12px;line-height:1.5;margin:0;color:#d3d5e0}
-.bl-zangi-stores{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
-.bl-zangi-stores a{display:inline-flex;align-items:center;justify-content:center;flex:1;min-width:160px;padding:11px 12px;background:#2766d6;border:1px solid #4b82e4;border-radius:8px;color:#fff;text-decoration:none;text-align:center;font-size:12px;font-weight:800}
-.bl-zangi-stores a:hover{background:#397be9}
-.bl-zangi-stores a:focus-visible{outline:3px solid #c4d6ff;outline-offset:2px}
-.bl-about .bl-zangi-footnote{font-size:11px;color:#acb5c9;line-height:1.55;margin:11px 0 0}
-.bl-consultant-intro{text-align:center;padding:22px 18px 16px;background:#110d12}.bl-consultant-intro h2{margin:0 0 8px;color:#f8e9f0;font-size:clamp(20px,4vw,28px);line-height:1.25}.bl-consultant-intro p{margin:0;color:#dac8d1;font-size:13px;line-height:1.6}
+/* Top subscribe action: switch to Buy Stars without leaving the homepage */
+.bl-profile-subscribe-wrap{width:min(900px,calc(100% - 24px));margin:2px auto 18px}
+.bl-profile-subscribe{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;width:100%;min-height:52px;padding:12px 18px;border:0;border-radius:10px;background:#d91432;color:#fff;font:800 16px/1.3 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;cursor:pointer;box-shadow:0 7px 20px #d9143238;transition:background .18s ease}
+.bl-profile-subscribe:hover{background:#f12546}
+.bl-profile-subscribe:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.bl-profile-subscribe span{font-size:11px;background:#fff;color:#b60725;border-radius:5px;padding:4px 8px;letter-spacing:.04em}
+@media(max-width:520px){.bl-profile-subscribe{font-size:14px;min-height:50px}}
 .bl-gift-tab-link{display:flex;align-items:center;justify-content:center;max-width:430px;min-height:50px;margin:20px auto 0;padding:12px 18px;border-radius:10px;background:#d91432;color:#fff!important;font-size:14px;font-weight:800;text-decoration:none;text-align:center}.bl-gift-tab-link:hover{background:#f02646}.bl-gift-tab-link:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .bl-more-actions{display:grid;gap:12px;max-width:430px;margin:20px auto 0}.bl-more-actions .action{display:flex;justify-content:center;align-items:center;min-height:48px;text-align:center;text-decoration:none;gap:6px}.bl-more-actions .bl-gift-tab-link{width:100%;margin:0;max-width:none}
-
-.bl-zangi-contact{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:12px;background:#120e14;border:1px solid #564050;border-radius:9px}
-.bl-zangi-contact span{font-size:12px;color:#d1c2ca}
-.bl-zangi-contact strong{font-size:19px;color:#fff;letter-spacing:.02em}
-.bl-zangi-contact button{padding:9px 12px;border:0;border-radius:7px;background:#e9b949;color:#22170a;cursor:pointer;font-size:12px;font-weight:800}
-.bl-zangi-contact button:focus-visible{outline:2px solid white;outline-offset:2px}
 </style>
 </head>
 <body>
 <main>
   <div class="bluia-stars-balance" aria-live="polite"><span aria-hidden="true">★</span> My Stars: <strong id="bluia-stars-count">300</strong></div>
   <section class="bluia-profile" aria-label="Bluia Sisters profile"><button class="bluia-story-ring" id="bluia-story-trigger" type="button" aria-label="View Bluia Sisters story"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile picture"></button><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span class="bluia-stat"><strong id="bluia-post-count">0</strong><small>Posts</small></span><span class="bluia-stat"><strong id="bluia-pro-post-count">108</strong><small>Pro posts</small></span><span class="bluia-stat"><strong>125</strong><small>Pro Followers</small></span></div></div></section>
+  <div class="bl-profile-subscribe-wrap"><button id="bl-profile-subscribe" class="bl-profile-subscribe" type="button">Subscribe — $5/month <span>50% OFF</span></button></div>
   <section class="feed-section" aria-labelledby="blog-title">
     <div class="wrap">
       <div class="bluia-tabs" role="tablist" aria-label="Pro gallery and membership">
-        <button id="tab-about" class="bluia-tab" type="button" role="tab" aria-label="About Me" aria-selected="true" aria-controls="about-panel" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg><span class="bluia-pro-label">About Me</span></button>
-        <button id="tab-pro" class="bluia-tab" type="button" role="tab" aria-label="Pro images" aria-selected="false" aria-controls="pro-panel" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="bluia-pro-label">Pro</span></button>
+        <button id="tab-pro" class="bluia-tab" type="button" role="tab" aria-label="Pro images" aria-selected="true" aria-controls="pro-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="bluia-pro-label">Pro</span></button>
         <button id="tab-unlock" class="bluia-tab" type="button" role="tab" aria-label="Buy Stars" aria-selected="false" aria-controls="unlock-panel" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.1 6.3 7 .99-5.05 4.93 1.2 6.97L12 17.9l-6.25 3.29 1.2-6.97L1.9 9.29l7-.99L12 2Z"/></svg><span class="bluia-pro-label">Buy Stars</span></button>
       </div>
-      <section id="about-panel" class="pro-panel bl-about-panel" role="tabpanel" aria-labelledby="tab-about">
-        <div class="bl-about">
-          <div class="bl-consultant-intro"><h2>Bluia ♡ — Personal Consultant</h2><p>Share your problems, feelings, and worries. I’m here to listen and support you.</p></div>
-          <div class="bl-about-photo"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9820.png?download=true" alt="Bluia portrait" loading="eager" decoding="async"></div>
-          <div class="bl-about-body">
-            <span class="bl-about-eyebrow">PRIVATE LISTENING &amp; PERSONAL SUPPORT</span>
-            <h2>Hi, I’m Bluia ♡</h2>
-            <p>I’m a loving, friendly listener. Feeling lonely or carrying a problem you can’t share? Talk to me privately. I’ll listen with care, respect, and without judgment.</p>
-            <h3>Share what’s on your mind</h3>
-            <div class="bl-about-services">
-              <article><span aria-hidden="true">♡</span><div><strong>Relationships &amp; emotions</strong><p>Breakups, trust, and personal worries.</p></div></article>
-              <article><span aria-hidden="true">✦</span><div><strong>Stress &amp; pressure</strong><p>Talk through what feels overwhelming.</p></div></article>
-              <article><span aria-hidden="true">◇</span><div><strong>Family &amp; friendships</strong><p>Conflicts and difficult conversations.</p></div></article>
-              <article><span aria-hidden="true">☏</span><div><strong>Loneliness</strong><p>Be heard without judgment.</p></div></article>
-              <article><span aria-hidden="true">✧</span><div><strong>Life decisions</strong><p>Explore your thoughts and options.</p></div></article>
-            </div>
-            <div class="bl-about-booking">
-              <span class="bl-about-eyebrow">PRIVATE TEXT-CHAT APPOINTMENT</span>
-              <h3>Chat privately with me</h3>
-              <p>15-minute private text chat for a <strong>one-time $5 payment</strong>. Pay first, then text me on Zangi at <strong>1993539103</strong> to arrange a time.</p>
-              <div class="bl-about-price"><strong>$5</strong><span>one-time payment · not a subscription</span></div>
-              <div class="bl-zangi">
-                <div class="bl-zangi-head">
-                  <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cb/5b/f2/cb5bf254-eecd-a781-1334-19350044164e/AppIcon-0-0-1x_U007epad-0-1-0-P3-85-220.png/0x0ss-85.png" alt="Zangi app logo" loading="lazy" width="48" height="48">
-                  <div><strong>Chat with me on Zangi</strong><p>After paying, send me a Zangi message at 1993539103 to arrange your private chat.</p></div>
-                </div>
-                <div class="bl-zangi-stores">
-                  <a href="https://apps.apple.com/be/app/zangi-private-messenger/id549493839" target="_blank" rel="noopener noreferrer" aria-label="Download Zangi on the Apple App Store">Download on the App Store</a>
-                  <a href="https://play.google.com/store/apps/details?id=com.beint.zangi" target="_blank" rel="noopener noreferrer" aria-label="Download Zangi on Google Play">Get it on Google Play</a>
-                </div>
-                <p class="bl-zangi-footnote">My Zangi number: <strong>1993539103</strong>. Please text me after payment with your preferred appointment time and time zone.</p>
-              </div>
-              <a class="bl-about-pay" href="https://buy.stripe.com/14A3cngUo3vodhncbBbAs08" target="_blank" rel="noopener noreferrer">Pay $5 &amp; Request Appointment</a>
-              <div class="bl-after-payment">
-                <h4>After your payment</h4>
-                <ol><li>Complete the one-time $5 payment above.</li><li>Open Zangi and text me at <strong>1993539103</strong>.</li><li>Mention that you paid and share your preferred appointment times and time zone. I’ll confirm an available time after checking the payment.</li></ol>
-                <div class="bl-zangi-contact"><span>My Zangi number</span><strong>1993539103</strong><button id="bl-copy-zangi-number" type="button" aria-label="Copy my Zangi number">Copy number</button></div>
-                <span id="bl-copy-zangi-status" class="bl-copy-status" role="status" aria-live="polite"></span>
-              </div>
-              <p class="bl-about-note">This is a personal listening and conversational support service, not licensed therapy, medical advice, or crisis assistance. Please avoid sending highly sensitive details in your first message. Appointments are arranged after payment verification and availability confirmation.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="pro-panel" class="pro-panel" role="tabpanel" aria-labelledby="tab-pro" hidden>
+      <section id="pro-panel" class="pro-panel" role="tabpanel" aria-labelledby="tab-pro">
         <div class="feed-grid pro-preview-grid" id="feed-grid"></div>
         <div id="feed-sentinel" class="feed-sentinel" aria-hidden="true"></div>
         <p id="feed-status" class="feed-status" aria-live="polite">More photos below</p>
@@ -505,7 +413,7 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
 <dialog class="bluia-photo-dialog" id="bluia-photo-dialog" aria-label="Photo viewer"><div class="bluia-photo-shell"><div class="bluia-photo-top"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt=""><span>Bluia Sisters <span class="bluia-age">18+</span></span></div><button class="bluia-photo-close" type="button" aria-label="Close photo">×</button><img class="bluia-full-photo" id="bluia-full-photo" alt=""><div class="bluia-locked-actions" id="bluia-locked-actions" hidden><span class="bluia-lock-icon" aria-hidden="true">🔒</span><p>Unlock more Bluia Sisters photos</p><button id="bluia-popup-stars" type="button" hidden>Unlock for 100 ★</button><button id="bluia-popup-unlock" type="button">Unlock Pro</button><small id="bluia-stars-status" role="status" hidden></small></div></div></dialog>
 
 <a class="floating-pro" href="https://buy.stripe.com/4gMbITgUo0jc1yF3F5bAs04" aria-label="Unlock full access" title="Unlock full access"><span>Unlock<br>full<br>access</span></a>
-<footer class="site-foot"><div class="footer-brand"><span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>Naughty Bluias · Stories from the sisters<span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span></div><img class="footer-cover-image" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Naughty Bluias portrait" loading="lazy" decoding="async"><div class="footer-support"><span class="support-label">Zangi: <strong>1993539103</strong></span></div></footer>
+<footer class="site-foot"><div class="footer-brand"><span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span>Naughty Bluias · Stories from the sisters<span class="footer-devil" aria-hidden="true"><svg class="devil-svg" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M8 11 4 3l9 5a12 12 0 0 1 6 0l9-5-4 9a12 12 0 1 1-16-1Z"/><circle cx="12" cy="17" r="1.5" fill="#14080b"/><circle cx="20" cy="17" r="1.5" fill="#14080b"/><path d="M12.5 22q3.5 3 7 0" fill="none" stroke="#14080b" stroke-width="1.8" stroke-linecap="round"/></svg></span></div><img class="footer-cover-image" src="https://huggingface.co/buckets/Bluia/bimg/resolve/4ACE6C13-B935-4145-B851-240C424E24B8.png?download=true" alt="Naughty Bluias portrait" loading="lazy" decoding="async"></footer>
 <script>
 (function(){
   const items=[
@@ -711,30 +619,10 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
     grid.appendChild(card);
   }
   // Single Pro gallery and Unlock membership navigation.
-  const aboutTab=document.getElementById("tab-about");
-  const aboutPanel=document.getElementById("about-panel");
   const proTab=document.getElementById("tab-pro");
   const unlockTab=document.getElementById("tab-unlock");
   const proPanel=document.getElementById("pro-panel");
   const unlockPanel=document.getElementById("unlock-panel");
-  document.getElementById("bl-copy-zangi-number").addEventListener("click",async function(){
-    const number="1993539103";
-    const status=document.getElementById("bl-copy-zangi-status");
-    try{
-      if(navigator.clipboard&&window.isSecureContext){
-        await navigator.clipboard.writeText(number);
-      }else{
-        const input=document.createElement("textarea");
-        input.value=number;input.style.position="fixed";input.style.opacity="0";
-        document.body.appendChild(input);input.select();
-        if(!document.execCommand("copy"))throw Error("copy failed");
-        input.remove();
-      }
-      status.textContent="Zangi number copied!";
-    }catch(e){
-      status.textContent="Please copy the Zangi number shown above.";
-    }
-  });
   const proGrid=document.getElementById("feed-grid");
   // Featured public Pro previews. Subscriber-only content remains on the Pro page.
   const proPreviewPhotos=[
@@ -764,7 +652,6 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
   sentinel.hidden=true;
   feedStatus.hidden=true;
   const tabDefs=[
-    {key:"about",tab:aboutTab,panel:aboutPanel},
     {key:"pro",tab:proTab,panel:proPanel},
     {key:"unlock",tab:unlockTab,panel:unlockPanel}
   ];
@@ -791,7 +678,11 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
       }
     });
   });
-  activateTab("about");
+  activateTab("pro");
+  document.getElementById("bl-profile-subscribe").addEventListener("click",function(){
+    activateTab("unlock");
+    unlockTab.scrollIntoView({behavior:"smooth",block:"start"});
+  });
 
 })();
 </script>
