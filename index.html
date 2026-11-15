@@ -390,10 +390,18 @@ body.bluia-modal-locked{position:fixed!important;width:100%!important;left:0;rig
 .bl-podcast-subscribe:hover{background:#f02646}
 .bl-podcast-subscribe:focus-visible{outline:3px solid #fff;outline-offset:3px}
 @media(max-width:480px){.bl-podcast-panel{padding:13px 0 28px}.bl-podcast-content{border-radius:10px}.bluia-tabs .bluia-tab{padding-inline:5px}}
+
+/* Main homepage cover: show the entire supplied image without zooming or cropping */
+.bl-home-cover{display:flex;align-items:center;justify-content:center;width:100%;margin:0 auto 12px;background:#080607;overflow:hidden}
+.bl-home-cover img{display:block;width:auto;max-width:100%;height:auto;max-height:72svh;object-fit:contain;object-position:center;margin:0 auto}
+@media(max-width:600px){.bl-home-cover img{max-height:70svh}}
 </style>
 </head>
 <body>
 <main>
+  <section class="bl-home-cover" aria-label="Bluia Sisters cover image">
+    <img src="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true" alt="Bluia Sisters cover" fetchpriority="high" decoding="async">
+  </section>
   <div class="bluia-stars-balance" aria-live="polite"><span aria-hidden="true">★</span> My Stars: <strong id="bluia-stars-count">300</strong></div>
   <section class="bluia-profile" aria-label="Bluia Sisters profile"><button class="bluia-story-ring" id="bluia-story-trigger" type="button" aria-label="View Bluia Sisters story"><img class="bluia-avatar" src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile picture"></button><div class="bluia-profile-info"><h1 id="blog-title">Bluia Sisters <span class="bluia-age">18+</span></h1><div class="bluia-stats"><span class="bluia-stat"><strong id="bluia-post-count">0</strong><small>Posts</small></span><span class="bluia-stat"><strong id="bluia-pro-post-count">108</strong><small>Pro posts</small></span><span class="bluia-stat"><strong>125</strong><small>Pro Followers</small></span></div></div></section>
   <div class="bl-profile-subscribe-wrap"><button id="bl-profile-subscribe" class="bl-profile-subscribe" type="button">Subscribe — $5/month <span>50% OFF</span></button></div>
