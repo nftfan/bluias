@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#f5f9ff">
 <title>Bluias Pro</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#000;color:#fff;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+html,body{margin:0;min-height:100%;background:#f5f9ff;color:#154579;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 body{min-height:100svh;overflow:hidden}
-.pro-boot{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 45%,rgba(242,92,154,.10),transparent 42%),#000}
-.feed-startup-title{color:#ffe7f1;font:800 13px/1 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:.7px;text-shadow:0 0 18px rgba(242,92,154,.42)}
-.feed-startup-bar{width:min(62vw,240px);height:4px;border-radius:999px;overflow:hidden;background:#241019;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
-.feed-startup-progress{display:block;width:42%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#b82d69,#ff79ad,#ffd3e4);box-shadow:0 0 14px rgba(255,89,154,.72);animation:startupBar 1.15s cubic-bezier(.4,0,.2,1) infinite}
+.pro-boot{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 45%,rgba(28,131,244,.10),transparent 42%),#f5f9ff}
+.feed-startup-title{color:#155ea9;font:800 13px/1 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:.7px;text-shadow:0 0 18px rgba(23,113,228,.25)}
+.feed-startup-bar{width:min(62vw,240px);height:4px;border-radius:999px;overflow:hidden;background:#d9eafc;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+.feed-startup-progress{display:block;width:42%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#0862d0,#399cf4,#cbebff);box-shadow:0 0 14px rgba(43,131,238,.5);animation:startupBar 1.15s cubic-bezier(.4,0,.2,1) infinite}
 @keyframes startupBar{0%{transform:translateX(-115%)}60%,100%{transform:translateX(250%)}}
 @media(prefers-reduced-motion:reduce){.feed-startup-progress{animation:none!important;transform:none!important;width:100%!important}}
 </style>
@@ -44,14 +44,14 @@ body{min-height:100svh;overflow:hidden}
   align-items:center!important;
   justify-content:center!important;
   gap:14px!important;
-  background:radial-gradient(circle at 50% 45%,rgba(242,92,154,.10),transparent 42%),#000!important;
+  background:radial-gradient(circle at 50% 45%,rgba(28,131,244,.10),transparent 42%),#f5f9ff!important;
   transition:opacity .65s ease,height .65s cubic-bezier(.2,.7,.2,1)!important;
   overflow:hidden!important;
 }
 .feed-startup.done{opacity:0!important;height:0!important;pointer-events:none!important}
-.feed-startup-title{color:#ffe7f1!important;font:800 13px/1 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;letter-spacing:.7px!important;text-shadow:0 0 18px rgba(242,92,154,.42)!important}
-.feed-startup-bar{width:min(62vw,240px)!important;height:4px!important;border-radius:999px!important;overflow:hidden!important;background:#241019!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)!important}
-.feed-startup .feed-startup-progress{display:block!important;width:42%!important;height:100%!important;border-radius:inherit!important;background:linear-gradient(90deg,#b82d69,#ff79ad,#ffd3e4)!important;box-shadow:0 0 14px rgba(255,89,154,.72)!important;animation:bluiasStartupBar 1.15s cubic-bezier(.4,0,.2,1) infinite!important}
+.feed-startup-title{color:#155ea9!important;font:800 13px/1 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;letter-spacing:.7px!important;text-shadow:0 0 18px rgba(23,113,228,.25)!important}
+.feed-startup-bar{width:min(62vw,240px)!important;height:4px!important;border-radius:999px!important;overflow:hidden!important;background:#d9eafc!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)!important}
+.feed-startup .feed-startup-progress{display:block!important;width:42%!important;height:100%!important;border-radius:inherit!important;background:linear-gradient(90deg,#0862d0,#399cf4,#cbebff)!important;box-shadow:0 0 14px rgba(43,131,238,.5)!important;animation:bluiasStartupBar 1.15s cubic-bezier(.4,0,.2,1) infinite!important}
 @keyframes bluiasStartupBar{0%{transform:translateX(-115%)}60%,100%{transform:translateX(250%)}}
 @media(prefers-reduced-motion:reduce){.feed-startup .feed-startup-progress{animation:none!important;transform:none!important;width:100%!important}}
 </style>`;
@@ -67,7 +67,7 @@ body{min-height:100svh;overflow:hidden}
     document.write(html);
     document.close();
   }catch(error){
-    document.body.innerHTML='<div style="min-height:100svh;display:grid;place-items:center;padding:30px;text-align:center;color:#fff;font:12px Inter,Arial,sans-serif">Bluias Pro could not load. Please refresh the page.</div>';
+    document.body.innerHTML='<div style="min-height:100svh;display:grid;place-items:center;padding:30px;text-align:center;color:#164b82;font:12px Inter,Arial,sans-serif">Bluias Pro could not load. Please refresh the page.</div>';
   }
 })();
 </script>
