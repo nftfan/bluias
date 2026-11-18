@@ -32,11 +32,12 @@ a{color:inherit}
 .cover img{display:block;width:auto;max-width:100%;height:auto;max-height:78svh;object-fit:contain}
 .feed{width:min(680px,100%);margin:0 auto;padding:18px 0 0}
 .update{margin:0 0 22px;padding:0 0 22px;border-bottom:1px solid #ededf1}
-.update-image{width:100%;background:#f4f4f5}
-.update-image img{display:block;width:100%;height:auto;object-fit:contain}
-.update-details{padding:17px clamp(14px,4vw,21px) 0}
-.bubble{position:relative;width:fit-content;max-width:95%;padding:13px 17px;border:1px solid #f6d5db;border-radius:17px 17px 17px 5px;background:#fff1f3;box-shadow:0 3px 12px #9c123110}
-.bubble p{margin:0;color:#363036;font-size:clamp(13px,2.7vw,15px);line-height:1.65}
+.update-image{width:calc(100% - 24px);margin:0 auto;overflow:hidden;border-radius:18px;background:#f4f4f5}
+.update-image img{display:block;width:100%;height:auto;object-fit:contain;border-radius:18px}
+.update-details{padding:10px clamp(14px,4vw,21px) 0}
+.update-bubble{padding:17px clamp(14px,4vw,21px) 14px}
+.bubble{position:relative;width:fit-content;max-width:95%;padding:13px 17px;border:1px solid #b9dcff;border-radius:17px 17px 17px 5px;background:#e7f3ff;box-shadow:0 3px 12px #1469ba12}
+.bubble p{margin:0;color:#174b7e;font-size:clamp(13px,2.7vw,15px);line-height:1.65}
 .post-date{margin:11px 0 0 4px;color:#89909b;font-size:11px;line-height:1.4;font-weight:500;letter-spacing:.01em}
 .subscribe{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;margin:0 auto;padding:43px 20px 61px;text-align:center;background:#fff}
 .subscribe .accent{width:42px;height:3px;border-radius:99px;background:var(--coral)}
@@ -50,33 +51,71 @@ a{color:inherit}
 a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
 @media(min-width:800px){.feed{padding-top:26px}.update{border:1px solid var(--line);border-radius:13px;overflow:hidden;margin-bottom:26px;padding-bottom:18px;box-shadow:0 6px 24px #10101808}.update-details{padding-top:19px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.page-title{position:relative;padding-inline:56px}
+.notifications{position:absolute;z-index:40;right:max(11px,env(safe-area-inset-right));top:50%;transform:translateY(-50%)}
+.notification-bell{position:relative;display:grid;place-items:center;width:42px;height:42px;padding:8px;border:1px solid #e8e8ec;border-radius:50%;background:#fff;color:#242734;cursor:pointer}
+.notification-bell:hover{background:#edf7ff;border-color:#c0def9}
+.notification-bell svg{width:23px;height:23px}
+.notification-count{position:absolute;top:-6px;right:-5px;display:flex;justify-content:center;align-items:center;min-width:21px;height:21px;padding:0 5px;border:2px solid #fff;border-radius:999px;background:#e32947;color:#fff;font-size:11px;font-weight:850;line-height:1}
+.notification-count[hidden],.notification-panel[hidden]{display:none!important}
+.notification-panel{position:absolute;top:calc(100% + 12px);right:0;width:min(335px,calc(100vw - 26px));overflow:hidden;border:1px solid #e3e7ed;border-radius:14px;background:#fff;color:#202938;box-shadow:0 16px 40px #2434492e;text-align:left}
+.notification-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 16px;border-bottom:1px solid #e8edf3}
+.notification-heading strong{font-size:14px}.notification-heading span{color:#d7354e;font-size:11px;font-weight:800}
+.notification-items{display:grid}
+.notification-item{display:flex;align-items:flex-start;gap:11px;width:100%;padding:13px 16px;border:0;border-bottom:1px solid #eaf0f5;background:#fff;color:#27334a;text-align:left;cursor:pointer}
+.notification-item:last-child{border-bottom:0}.notification-item:hover{background:#f0f8ff}
+.notification-dot{flex:none;width:8px;height:8px;margin-top:6px;border-radius:50%;background:#e32947}
+.notification-item.is-read .notification-dot{background:#c7d6e3}
+.notification-item strong{display:block;font-size:13px;line-height:1.3}
+.notification-item small{display:block;margin-top:5px;color:#778597;font-size:11px;line-height:1.4}
+.notification-item:focus-visible,.notification-bell:focus-visible{outline:3px solid #207ac7;outline-offset:2px}
+.new-update{scroll-margin-top:20px}
+@media(max-width:420px){.page-title{padding-inline:51px}.notification-bell{width:39px;height:39px}.notification-bell svg{width:21px;height:21px}}
 </style>
 </head>
 <body>
-<header class="page-title"><h1>Bluia Sisters <span class="spicy">Spicy 🌶️ Updates</span></h1></header>
+<header class="page-title">
+  <h1>Bluia Sisters <span class="spicy">Spicy 🌶️ Updates</span></h1>
+  <div class="notifications">
+    <button type="button" id="notification-bell" class="notification-bell" aria-label="Notifications, 2 unread" aria-expanded="false" aria-controls="notification-panel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg>
+      <span id="notification-count" class="notification-count">2</span>
+    </button>
+    <div id="notification-panel" class="notification-panel" role="region" aria-label="Latest updates" hidden>
+      <div class="notification-heading"><strong>Notifications</strong><span id="notification-status">2 new</span></div>
+      <div id="notification-items" class="notification-items"></div>
+    </div>
+  </div>
+</header>
 <div class="cover"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true" alt="Bluia Sisters cover photo" fetchpriority="high" decoding="async"></div>
 <main>
   <div class="feed" aria-label="Photo updates">
-    <article class="update" aria-label="Bluia Sisters update 1">
+    <article class="update new-update" id="bluia-update-new-2" data-posted="2026-11-18" data-order="5" data-notification="true" data-summary="A little spicy photo moment 🌶️" aria-label="Bluia Sisters latest update 1">
+      <div class="update-bubble"><div class="bubble"><p>A little spicy photo moment 🌶️ I felt like sharing another favorite from my gallery with you. What do you think?</p></div></div>
+      <div class="update-image"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_9667.png?download=true" alt="Bluia Sisters latest photo 1" loading="eager" decoding="async"></div>
+      <div class="update-details"><p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p></div>
+    </article>
+    <article class="update new-update" id="bluia-update-new-1" data-posted="2026-11-18" data-order="4" data-notification="true" data-summary="Another favorite from my gallery 💌" aria-label="Bluia Sisters latest update 2">
+      <div class="update-bubble"><div class="bubble"><p>Here's another little update from my world 💌 One of those photos I wanted to share beyond a quick story.</p></div></div>
+      <div class="update-image"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/156F4FF5-5B53-4DDA-BCEC-5EA625D51269.png" alt="Bluia Sisters latest photo 2" loading="lazy" decoding="async"></div>
+      <div class="update-details"><p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p></div>
+    </article>
+
+    <article class="update" data-posted="2026-11-18" data-order="3" aria-label="Bluia Sisters update 1">
+      <div class="update-bubble"><div class="bubble"><p>A little photo moment for today 🌶️ I love sharing fresh pictures and little pieces of my world with you. What do you think?</p></div></div>
       <div class="update-image"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9820.png?download=true" alt="Bluia Sisters photo update 1" loading="eager" decoding="async"></div>
-      <div class="update-details">
-        <div class="bubble"><p>A little photo moment for today 🌶️ I love sharing fresh pictures and little pieces of my world with you. What do you think?</p></div>
-        <p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p>
-      </div>
+      <div class="update-details"><p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p></div>
     </article>
-    <article class="update" aria-label="Bluia Sisters update 2">
+    <article class="update" data-posted="2026-11-18" data-order="2" aria-label="Bluia Sisters update 2">
+      <div class="update-bubble"><div class="bubble"><p>Another favorite from my gallery 💌 Sometimes I just want to share a new look and the mood behind it.</p></div></div>
       <div class="update-image"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9818.png?download=true" alt="Bluia Sisters photo update 2" loading="lazy" decoding="async"></div>
-      <div class="update-details">
-        <div class="bubble"><p>Another favorite from my gallery 💌 Sometimes I just want to share a new look and the mood behind it.</p></div>
-        <p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p>
-      </div>
+      <div class="update-details"><p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p></div>
     </article>
-    <article class="update" aria-label="Bluia Sisters update 3">
+    <article class="update" data-posted="2026-11-18" data-order="1" aria-label="Bluia Sisters update 3">
+      <div class="update-bubble"><div class="bubble"><p>One more photo, just for you ❤️ This is only a little peek at the updates I'd love to share.</p></div></div>
       <div class="update-image"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9816.png?download=true" alt="Bluia Sisters photo update 3" loading="lazy" decoding="async"></div>
-      <div class="update-details">
-        <div class="bubble"><p>One more photo, just for you ❤️ This is only a little peek at the updates I'd love to share.</p></div>
-        <p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p>
-      </div>
+      <div class="update-details"><p class="post-date">Posted on: <time datetime="2026-11-18">18 November 2026</time></p></div>
     </article>
   </div>
   <section class="subscribe" aria-labelledby="subscribe-title">
@@ -87,5 +126,60 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
     <p class="fineprint">After paying, email <a href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Updates%20Membership">vbluia@outlook.com</a> from the <strong>same email address used for payment</strong> to request your member access details.</p>
   </section>
 </main>
+
+<script>
+(function(){
+ "use strict";
+ const feed=document.querySelector(".feed");
+ const posts=Array.from(feed.querySelectorAll(".update"));
+ // Always show the latest updates first, even when several have the same date.
+ posts.sort((a,b)=>(b.dataset.posted||"").localeCompare(a.dataset.posted||"")||
+ Number(b.dataset.order||0)-Number(a.dataset.order||0));
+ posts.forEach(post=>feed.appendChild(post));
+ const bell=document.getElementById("notification-bell");
+ const panel=document.getElementById("notification-panel");
+ const countBadge=document.getElementById("notification-count");
+ const status=document.getElementById("notification-status");
+ const items=document.getElementById("notification-items");
+ const storageKey="bluias-spicy-updates-read-v1";
+ let read=new Set();
+ try{const stored=JSON.parse(localStorage.getItem(storageKey)||"[]");if(Array.isArray(stored))read=new Set(stored.filter(x=>typeof x==="string"));}catch(error){}
+ const notified=posts.filter(post=>post.dataset.notification==="true");
+ function render(){
+  const unread=notified.filter(post=>!read.has(post.id)).length;
+  countBadge.textContent=String(unread);
+  countBadge.hidden=unread===0;
+  bell.setAttribute("aria-label","Notifications, "+unread+" unread");
+  status.textContent=unread?unread+" new":"All caught up";
+  items.querySelectorAll(".notification-item").forEach(item=>{
+   item.classList.toggle("is-read",read.has(item.dataset.target));
+  });
+ }
+ notified.forEach(post=>{
+  const item=document.createElement("button");
+  item.type="button";item.className="notification-item";item.dataset.target=post.id;
+  const dot=document.createElement("span");dot.className="notification-dot";dot.setAttribute("aria-hidden","true");
+  const details=document.createElement("span");
+  const title=document.createElement("strong");title.textContent="New photo update";
+  const summary=document.createElement("small");summary.textContent=post.dataset.summary||"See the latest photo";
+  details.append(title,summary);item.append(dot,details);
+  item.addEventListener("click",()=>{
+    read.add(post.id);
+    try{localStorage.setItem(storageKey,JSON.stringify(Array.from(read)));}catch(error){}
+    render();panel.hidden=true;bell.setAttribute("aria-expanded","false");
+    post.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+  items.append(item);
+ });
+ render();
+ bell.addEventListener("click",()=>{panel.hidden=!panel.hidden;bell.setAttribute("aria-expanded",String(!panel.hidden));});
+ document.addEventListener("click",event=>{
+  if(!panel.hidden&&!event.target.closest(".notifications")){panel.hidden=true;bell.setAttribute("aria-expanded","false");}
+ });
+ document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&!panel.hidden){panel.hidden=true;bell.setAttribute("aria-expanded","false");bell.focus();}
+ });
+})();
+</script>
 </body>
 </html>
