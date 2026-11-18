@@ -45,20 +45,39 @@
     .subscription-fab:hover{transform:translateY(-3px);box-shadow:0 10px 30px #000c,0 0 25px #e90e39b3}
     .subscription-fab svg{width:22px;height:22px;flex:none}
     .subscription-fab:focus-visible,.subscribe-close:focus-visible,.payment-button:focus-visible{outline:3px solid #fff;outline-offset:3px}
-    .subscription-modal{box-sizing:border-box;width:min(440px,calc(100vw - 28px));max-width:none;margin:auto;padding:0;border:1px solid #9d1b31;border-radius:20px;background:linear-gradient(145deg,#1c0a0e,#080708 74%);color:#fff;box-shadow:0 20px 85px #000d,0 0 35px #be092b38}
-    .subscription-modal::backdrop{background:#000c;backdrop-filter:blur(6px)}
-    .subscribe-inner{position:relative;padding:clamp(24px,6vw,35px);text-align:center}
-    .subscribe-close{position:absolute;right:12px;top:12px;display:grid;place-items:center;width:39px;height:39px;border:1px solid #65202d;border-radius:50%;background:#2a1219;color:#fff;font-size:27px;line-height:1;cursor:pointer}
-    .subscribe-mark{display:grid;place-items:center;width:64px;height:64px;margin:4px auto 18px;border:1px solid #ff4359;border-radius:18px;background:#6d0b20;color:#fff;box-shadow:0 0 27px #e6133d55}
-    .subscribe-mark svg{width:35px;height:35px}
-    .subscription-modal h2{margin:0 0 9px;font-size:clamp(23px,6vw,30px);letter-spacing:-.02em}
-    .subscribe-price{margin:0 0 15px;color:#fff}
-    .subscribe-price strong{font-size:41px;font-weight:950}
-    .subscribe-price span{font-size:15px;color:#dcb0b8}
-    .subscribe-description{max-width:335px;margin:0 auto 18px;color:#f0dce1;font-size:14px;line-height:1.65}
-    .subscribe-note{margin:15px 0 0;color:#bca0a7;font-size:12px;line-height:1.6}
-    .payment-button{display:flex;justify-content:center;align-items:center;min-height:52px;width:100%;padding:14px;border:1px solid #ff425b;border-radius:10px;background:#ce0d2c;color:#fff;text-align:center;text-decoration:none;font-size:15px;font-weight:850}
-    .payment-button:hover{background:#f11b3c}
+    /* Conversion-focused Pro membership popup */
+    .subscription-modal{box-sizing:border-box;width:min(480px,calc(100vw - 20px));max-width:none;max-height:min(92dvh,840px);margin:auto;padding:0;border:1px solid #a62438;border-radius:20px;background:#0d080a;color:#fff;box-shadow:0 25px 100px #000f,0 0 45px #df17392a;overflow-y:auto;overscroll-behavior:contain}
+    .subscription-modal::backdrop{background:#000d;backdrop-filter:blur(7px)}
+    .subscribe-inner{position:relative;padding:0;text-align:left}
+    .subscribe-hero{position:relative;padding:29px 25px 23px;text-align:center;background:radial-gradient(circle at 50% 2%,#891529 0%,#340a13 38%,#14080b 86%);border-bottom:1px solid #4d1d28}
+    .subscribe-close{position:absolute;z-index:2;right:12px;top:12px;display:grid;place-items:center;width:37px;height:37px;border:1px solid #ab4758;border-radius:50%;background:#260c14;color:#fff;font-size:26px;line-height:1;cursor:pointer}
+    .subscribe-close:hover{background:#5e1422}
+    .subscribe-mark{display:grid;place-items:center;width:61px;height:61px;margin:5px auto 13px;border:1px solid #ff5970;border-radius:17px;background:#8a112c;color:#fff;box-shadow:0 0 30px #f11b4566}
+    .subscribe-mark svg{width:33px;height:33px}
+    .subscribe-eyebrow{margin:0 0 6px;color:#ffb6c2;font-size:10px;font-weight:850;letter-spacing:.18em}
+    .subscription-modal h2{margin:0 0 6px;font-size:clamp(24px,5.8vw,30px);line-height:1.18;letter-spacing:-.025em}
+    .subscribe-lead{margin:0 auto 15px;max-width:310px;color:#f5cfd6;font-size:13px;line-height:1.5}
+    .subscribe-price{margin:0;display:flex;justify-content:center;align-items:baseline;gap:7px;color:#fff}
+    .subscribe-price strong{font-size:clamp(39px,10vw,49px);line-height:1;font-weight:950}
+    .subscribe-price span{font-size:14px;color:#e9bbc4;font-weight:650}
+    .subscribe-content{padding:20px 24px 12px}
+    .subscribe-section-title{margin:0 0 11px;color:#fff;font-size:13px;letter-spacing:.025em}
+    .subscribe-benefits{display:grid;grid-template-columns:1fr;gap:8px;margin:0 0 20px;padding:0;list-style:none}
+    .subscribe-benefits li{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid #49202c;border-radius:10px;background:#1b1015;color:#fcecf0;font-size:13px;font-weight:650}
+    .subscribe-benefits svg{width:18px;height:18px;flex:none;color:#ff516c}
+    .subscribe-steps{margin:0 0 12px;padding:0;list-style:none;counter-reset:prostep}
+    .subscribe-steps li{counter-increment:prostep;display:grid;grid-template-columns:27px 1fr;gap:10px;margin-bottom:12px;color:#dfcbd1;font-size:12.5px;line-height:1.5}
+    .subscribe-steps li::before{content:counter(prostep);display:grid;place-items:center;width:27px;height:27px;border:1px solid #873344;border-radius:50%;background:#3d1521;color:#fff;font-weight:850;font-size:12px}
+    .subscribe-steps strong{color:#fff}
+    .subscribe-help{padding:11px 13px;border:1px solid #503039;border-radius:9px;background:#1a1115;color:#cbb6bd;font-size:11.5px;line-height:1.6}
+    .subscribe-help a{color:#ff8396;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+    .subscribe-checkout{position:sticky;bottom:0;z-index:1;padding:14px 24px max(18px,env(safe-area-inset-bottom));border-top:1px solid #51202b;background:#12090df5;backdrop-filter:blur(12px)}
+    .payment-button{display:flex;justify-content:center;align-items:center;gap:8px;min-height:53px;width:100%;padding:13px;border:1px solid #ff4964;border-radius:11px;background:linear-gradient(105deg,#f12b49,#bf0929);color:#fff;text-align:center;text-decoration:none;font-size:15px;font-weight:900;box-shadow:0 7px 21px #df193635;transition:background .18s ease,transform .18s ease}
+    .payment-button:hover{background:linear-gradient(105deg,#ff4662,#d40f33);transform:translateY(-1px)}
+    .payment-button svg{width:17px;height:17px}
+    .subscribe-note{margin:9px 0 0;color:#b79aa3;text-align:center;font-size:10.5px;line-height:1.5}
+    .subscription-fab:focus-visible,.subscribe-close:focus-visible,.payment-button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    @media(max-width:420px){.subscribe-hero{padding:25px 19px 20px}.subscribe-content{padding:18px 17px 7px}.subscribe-checkout{padding:12px 17px max(15px,env(safe-area-inset-bottom))}.subscription-modal{max-height:94dvh}}
     @media(max-width:420px){.site-heading{min-height:79px;padding:17px 8px}.subscription-fab{padding:11px 15px;min-height:50px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.site-heading h1,.photo-tile::after{animation:none}.subscription-fab,.photo-tile img{transition:none}}
   </style>
@@ -78,17 +97,41 @@
     <span>Subscribe</span>
   </button>
 
-  <dialog id="subscription-modal" class="subscription-modal" aria-labelledby="subscribe-title">
+  <dialog id="subscription-modal" class="subscription-modal" aria-labelledby="subscribe-title" aria-describedby="subscribe-lead">
     <div class="subscribe-inner">
-      <button id="subscribe-close" type="button" class="subscribe-close" aria-label="Close subscription details">&times;</button>
-      <div class="subscribe-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.2 7 12l5-7 5 7 4.5-3.8-2 11.3h-15L2.5 8.2Z"/><path d="M6.5 22h11"/></svg>
+      <div class="subscribe-hero">
+        <button id="subscribe-close" type="button" class="subscribe-close" aria-label="Close subscription details">&times;</button>
+        <div class="subscribe-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.2 7 12l5-7 5 7 4.5-3.8-2 11.3h-15L2.5 8.2Z"/><path d="M6.5 22h11"/></svg>
+        </div>
+        <p class="subscribe-eyebrow">EXCLUSIVE MEMBERSHIP</p>
+        <h2 id="subscribe-title">Unlock Bluia Sisters Pro</h2>
+        <p class="subscribe-lead" id="subscribe-lead">Love the previews? Discover more with Pro.</p>
+        <p class="subscribe-price"><strong>$10</strong><span>/ month</span></p>
       </div>
-      <h2 id="subscribe-title">Bluia Sisters Pro</h2>
-      <p class="subscribe-price"><strong>$10</strong> <span>/ month</span></p>
-      <p class="subscribe-description">Subscribe for exclusive Bluia Sisters photos and videos. Explore more content with Pro membership.</p>
-      <a class="payment-button" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Subscribe &amp; Pay $10/month</a>
-      <p class="subscribe-note">Secure checkout via Stripe. Follow the access instructions provided after your payment.</p>
+      <div class="subscribe-content">
+        <h3 class="subscribe-section-title">What's included</h3>
+        <ul class="subscribe-benefits">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Access to the Pro photo gallery</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Exclusive videos and member content</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Your Pro access URL</li>
+        </ul>
+        <h3 class="subscribe-section-title">How to get your Pro URL</h3>
+        <ol class="subscribe-steps">
+          <li><span>Tap <strong>Subscribe &amp; Pay</strong> and complete the secure Stripe checkout.</span></li>
+          <li><span>Use the <strong>email address where you want to receive your Pro URL</strong>.</span></li>
+          <li><span>After paying, check that inbox for your <strong>Pro access link</strong>. Also check Spam or Junk.</span></li>
+          <li><span>Open your Pro URL to access the members' gallery. <strong>Keep the link handy.</strong></span></li>
+        </ol>
+        <div class="subscribe-help">Can't find your Pro URL after payment? Email <a href="mailto:vbluia@outlook.com?subject=Pro%20Access%20Link%20Help">vbluia@outlook.com</a> from your checkout email address so your payment can be checked. Never send card details.</div>
+      </div>
+      <div class="subscribe-checkout">
+        <a class="payment-button" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">
+          Subscribe &amp; Pay $10/month
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+        <p class="subscribe-note">Secure Stripe checkout · $10 billed monthly · No Stars or tokens</p>
+      </div>
     </div>
   </dialog>
 
