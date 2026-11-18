@@ -30,17 +30,15 @@
     @keyframes headline-glow{from{text-shadow:0 0 4px #ff0b2e,0 0 13px #be0024,0 0 20px #6a0015;filter:brightness(.87)}to{text-shadow:0 0 9px #ff4d65,0 0 27px #e3002a,0 0 47px #cf002c;filter:brightness(1.12)}}
     .top-cover{width:100%;margin:0;background:#0a0708}
     .top-cover img{display:block;width:100%;height:auto;max-height:82svh;object-fit:contain;object-position:center}
-    .photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;width:100%;margin:0;padding:0;background:#0a0a0a}
-    .photo-tile{position:relative;aspect-ratio:2/3;min-width:0;margin:0;overflow:hidden;background:linear-gradient(115deg,#1c0b0e,#310b13,#180608)}
+    .photo-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;width:100%;margin:0;padding:0;background:#0a0a0a}
+    .photo-tile{position:relative;aspect-ratio:auto;min-width:0;margin:0;overflow:hidden;background:linear-gradient(115deg,#1c0b0e,#310b13,#180608)}
     .photo-tile::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,#ffffff0d 50%,transparent 65%);transform:translateX(-110%);animation:skeleton-shimmer 1.9s linear infinite}
     .photo-tile.loaded::after,.photo-tile.failed::after{display:none}
     @keyframes skeleton-shimmer{to{transform:translateX(110%)}}
-    .photo-tile img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .28s ease}
+    .photo-tile img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;opacity:0;transition:opacity .28s ease}
     .photo-tile.loaded img{opacity:1}
     .photo-tile.failed{display:grid;place-items:center;color:#a88a90;font-size:12px}
     .gallery-sentinel{height:1px}
-    @media(min-width:680px){.photo-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-    @media(min-width:1150px){.photo-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
     .subscription-fab{position:fixed;z-index:30;right:max(16px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:54px;padding:12px 19px;border:1px solid #ff3852;border-radius:999px;background:linear-gradient(125deg,#d20b2b,#96051a);color:#fff;font:850 14px/1.2 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;box-shadow:0 7px 25px #000b,0 0 18px #e90e3980;cursor:pointer;transition:transform .18s,box-shadow .18s}
     .subscription-fab:hover{transform:translateY(-3px);box-shadow:0 10px 30px #000c,0 0 25px #e90e39b3}
     .subscription-fab svg{width:22px;height:22px;flex:none}
