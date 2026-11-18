@@ -1,171 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#080607">
-  <meta name="description" content="Meet Vee Bluia, a friendly personal assistant from the Bluia Sisters family. Book help with chats, creative requests and small online tasks for $10/month.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.bluias.com/">
-  <meta property="og:site_name" content="Bluias">
-  <meta property="og:title" content="Vee Bluia | Your Friendly Personal Assistant">
-  <meta property="og:description" content="Meet Vee from Bluia Sisters. Personal help, friendly conversations and creative requests from $10/month.">
-  <meta property="og:image" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
-  <meta property="og:image:secure_url" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="Bluia Sisters cover">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Vee Bluia | Personal Assistant">
-  <meta name="twitter:description" content="Book Vee for friendly conversations, creative requests and online assistance.">
-  <meta name="twitter:image" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
-  <link rel="canonical" href="https://www.bluias.com/">
-  <title>Vee Bluia | Personal Assistant</title>
-  <style>
-    :root{color-scheme:dark;--bg:#080608;--panel:#140c10;--panel2:#211015;--line:#49202b;--red:#fa3856;--redDark:#b20c2c;--text:#fff7f9;--muted:#d2aeb8;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-    *{box-sizing:border-box}
-    html{background:var(--bg);scroll-behavior:smooth}
-    body{margin:0;min-width:280px;min-height:100svh;background:radial-gradient(ellipse at 50% 0%,#230b11 0%,#090609 550px,transparent 850px),#080608;color:var(--text);overflow-x:hidden}
-    button,a{touch-action:manipulation}
-    button{font:inherit}
-    .site-heading{display:flex;justify-content:center;align-items:center;min-height:85px;padding:22px 16px;background:#080507;border-bottom:1px solid #3b1520;text-align:center}
-    .site-heading h1{position:relative;margin:0;padding-bottom:14px;color:#ff4963;font-size:clamp(23px,5.4vw,43px);font-weight:900;letter-spacing:clamp(.07em,1vw,.16em);text-shadow:0 0 14px #e418455b;animation:glow 3.8s ease-in-out infinite alternate}
-    .site-heading h1::after{content:"";position:absolute;bottom:0;left:50%;width:min(128px,40%);height:2px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#ff3e58,transparent);box-shadow:0 0 13px #fa335b}
-    @keyframes glow{from{text-shadow:0 0 6px #ce123f4c}to{text-shadow:0 0 16px #ff3f608a,0 0 30px #f30c3f5a}}
-    .cover{display:flex;justify-content:center;align-items:center;width:100%;background:#090608}
-    .cover img{display:block;width:auto;max-width:100%;max-height:min(74svh,850px);height:auto;object-fit:contain}
-    .content{max-width:1040px;margin:0 auto;padding:0 22px}
-    .intro{padding:clamp(42px,8vw,76px) 0 27px;text-align:center}
-    .eyebrow{margin:0 0 12px;color:#ff6279;font-weight:800;font-size:11px;letter-spacing:.17em;text-transform:uppercase}
-    .intro h2{margin:0 0 17px;font-size:clamp(30px,6vw,51px);line-height:1.07;letter-spacing:-.04em}
-    .intro h2 span{color:#ff4d68}
-    .intro p{max-width:660px;margin:0 auto 13px;color:#e8cfd7;font-size:clamp(14px,2.4vw,17px);line-height:1.78}
-    .intro p strong{color:#fff}
-    .intro .highlight{margin-top:20px;color:#ffa1b1;font-weight:650}
-    .section-title{text-align:center;margin:18px 0 24px;font-size:clamp(23px,4vw,33px);letter-spacing:-.025em}
-    .services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 0 42px}
-    .service-card{display:flex;align-items:flex-start;gap:13px;padding:19px 16px;border:1px solid #48212b;border-radius:14px;background:linear-gradient(155deg,#211015,#110b0e);box-shadow:0 6px 20px #0004}
-    .service-icon{display:grid;place-items:center;flex:none;width:40px;height:40px;border:1px solid #823042;border-radius:12px;background:#43131e;color:#ff7084}
-    .service-icon svg{width:21px;height:21px}
-    .service-card h3{margin:2px 0 7px;font-size:15px;line-height:1.35;color:#fff}
-    .service-card p{margin:0;color:#d2afb9;font-size:13px;line-height:1.62}
-    .offer{position:relative;overflow:hidden;margin:0 auto 60px;padding:clamp(24px,6vw,43px);border:1px solid #ba334d;border-radius:23px;background:radial-gradient(circle at 50% 0%,#682031,#240b13 38%,#12080b 84%);text-align:center;box-shadow:0 14px 42px #0006,0 0 31px #a4072e21}
-    .offer h2{margin:0 0 7px;font-size:clamp(24px,5vw,36px)}
-    .offer .price{margin:6px 0 10px;font-weight:900;font-size:clamp(42px,8vw,57px);line-height:1}
-    .offer .price small{font-size:16px;font-weight:600;color:#e6bfc8}
-    .offer p{max-width:545px;margin:0 auto 20px;font-size:14px;line-height:1.65;color:#ecd0d7}
-    .offer .note{max-width:600px;margin-top:14px;font-size:12px;color:#d4aab5}
-    .primary{display:inline-flex;justify-content:center;align-items:center;gap:10px;min-height:54px;width:min(100%,370px);padding:13px 20px;border:1px solid #ff687e;border-radius:12px;background:linear-gradient(115deg,#f33052,#b20b2c);color:#fff;font-size:15px;font-weight:850;text-decoration:none;box-shadow:0 8px 22px #0008,0 0 22px #d41a4030;cursor:pointer}
-    .primary:hover{background:linear-gradient(115deg,#ff4565,#c30d33)}
-    .primary svg{width:19px;height:19px}
-    .footer{padding:25px 12px 90px;border-top:1px solid #32151d;text-align:center;color:#bb8f9b;font-size:12px}
-    .floating-book{position:fixed;z-index:20;right:max(15px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));display:inline-flex;justify-content:center;align-items:center;gap:9px;min-height:50px;padding:11px 18px;border:1px solid #ff5c72;border-radius:999px;background:linear-gradient(115deg,#ea2347,#a9092c);color:#fff;font-weight:850;font-size:13px;box-shadow:0 9px 28px #000b,0 0 22px #de113841;cursor:pointer}
-    .floating-book svg{width:20px;height:20px}
-    .book-modal{box-sizing:border-box;width:min(510px,calc(100vw - 24px));max-width:none;max-height:92dvh;margin:auto;padding:0;border:1px solid #a83b53;border-radius:19px;background:#10080c;color:#fff;box-shadow:0 24px 100px #000e;overflow-y:auto;overscroll-behavior:contain}
-    .book-modal::backdrop{background:#000d;backdrop-filter:blur(6px)}
-    .modal-inner{position:relative}
-    .close{position:absolute;right:12px;top:12px;z-index:3;display:grid;place-items:center;width:39px;height:39px;border:1px solid #923749;border-radius:50%;background:#310f1b;color:#fff;font-size:28px;cursor:pointer}
-    .modal-head{padding:32px 25px 22px;text-align:center;background:radial-gradient(circle at 50% 0%,#7e2135,#35101b 51%,#170a0e 100%);border-bottom:1px solid #54222d}
-    .modal-head .eyebrow{color:#ffc3cb}
-    .modal-head h2{margin:0 0 9px;font-size:clamp(26px,6vw,35px)}
-    .modal-head .price{margin:0;font-weight:900;font-size:44px;line-height:1.2}
-    .modal-head .price small{font-size:16px;font-weight:600;color:#e9bfc8}
-    .modal-head p:last-child{margin:9px auto 0;max-width:390px;font-size:13px;color:#f1d6de;line-height:1.55}
-    .modal-body{padding:22px 24px 8px}
-    .modal-body h3{margin:0 0 13px;font-size:16px}
-    .steps{margin:0;padding:0;list-style:none;counter-reset:step}
-    .steps li{counter-increment:step;display:grid;grid-template-columns:30px 1fr;gap:12px;margin:0 0 15px;font-size:13px;line-height:1.58;color:#eddae0}
-    .steps li::before{content:counter(step);display:grid;place-items:center;width:29px;height:29px;border-radius:50%;border:1px solid #b04760;background:#441522;color:#fff;font-weight:900}
-    .steps li strong{color:#fff}
-    .payment-address{display:block;margin:4px 0;color:#ff7c91;font-weight:800;overflow-wrap:anywhere}
-    .rule{margin:10px 0 12px;padding:12px 14px;border:1px solid #a64358;border-radius:11px;background:#3b1520;color:#fff;font-size:13px;line-height:1.6}
-    .terms{padding:13px 0 15px;color:#c8a8b1;font-size:12px;line-height:1.65}
-    .modal-actions{position:sticky;bottom:0;z-index:2;padding:14px 24px max(18px,env(safe-area-inset-bottom));background:#13090df5;border-top:1px solid #54222d;backdrop-filter:blur(10px);text-align:center}
-    .modal-actions .primary{width:100%}
-    .modal-actions small{display:block;margin-top:10px;color:#ad8a95;font-size:11px}
-    .secondary-link{display:inline-block;margin-top:12px;color:#ff9cad;text-underline-offset:3px;font-size:12px;overflow-wrap:anywhere}
-    button:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:3px}
-    @media(max-width:630px){.services{grid-template-columns:1fr;gap:10px}.content{padding:0 16px}.service-card{padding:15px}.intro{padding-top:40px}.offer{margin-bottom:36px}.book-modal{max-height:94dvh}.modal-head{padding:28px 19px 19px}.modal-body{padding:18px 17px 6px}.modal-actions{padding:12px 17px max(15px,env(safe-area-inset-bottom))}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0709">
+<meta name="description" content="Bluia's Diary — my little world of daily life, photos, personal thoughts and members-only stories.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bluias.com/">
+<meta property="og:title" content="Bluia's Diary | Blog & Members">
+<meta property="og:description" content="My personal diary, photoshoot stories, and members-only moments.">
+<meta property="og:site_name" content="Bluias">
+<meta property="og:image" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
+<meta property="og:image:secure_url" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bluia's Diary">
+<meta name="twitter:description" content="My personal diary, photo stories and private member posts.">
+<meta name="twitter:image" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
+<link rel="canonical" href="https://www.bluias.com/">
+<title>Bluia's Diary — Blog & Members</title>
+<style>
+:root{color-scheme:dark;--bg:#0a0709;--card:#180d12;--line:#51232f;--pink:#ff5873;--ink:#fff8fa;--muted:#d5b4be;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink)}button{font:inherit;cursor:pointer}a{color:inherit}
+header{padding:22px 16px 25px;text-align:center;background:radial-gradient(ellipse at top,#491627,#0a0709 75%)}
+header .kicker{font-size:10px;font-weight:850;letter-spacing:.2em;color:#ff8ea3}
+header h1{margin:8px 0 6px;font:italic 700 clamp(34px,7vw,56px)/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.04em;text-shadow:0 0 20px #da16485c}
+header h1 em{color:var(--pink)}header p{margin:0;color:#dfbbc6;font-size:13px}
+.cover{display:flex;justify-content:center;background:#0e080b}.cover img{display:block;max-width:100%;width:auto;height:auto;max-height:68svh;object-fit:contain}
+.nav-wrap{position:sticky;top:0;z-index:10;padding:10px 14px;background:#0e090deb;backdrop-filter:blur(15px);border-block:1px solid #4a2230}
+.tabs{width:min(720px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tab{padding:13px 12px;min-height:48px;border:1px solid #662a3a;border-radius:10px;background:#24121a;color:#d9b5c0;font-weight:800}
+.tab[aria-selected=true]{background:linear-gradient(110deg,#a80e31,#e52c50);border-color:#ff5775;color:#fff;box-shadow:0 4px 16px #bd0d3b45}
+[role=tabpanel][hidden]{display:none!important}
+.container{width:min(830px,calc(100% - 32px));margin:0 auto;padding:34px 0 65px}
+.center{text-align:center}.eyebrow{margin:0 0 10px;color:#ff7892;font-size:11px;font-weight:850;letter-spacing:.16em}
+h2{margin:0 0 12px;font:700 clamp(27px,5vw,40px)/1.17 Georgia,serif}
+.intro{margin:0 auto 26px;max-width:570px;color:#d5b4be;font-size:14px;line-height:1.7}
+.article{overflow:hidden;background:linear-gradient(145deg,#211018,#130b10);border:1px solid var(--line);border-radius:17px}
+.article-body{padding:clamp(22px,5vw,35px)}
+.article h3{margin:0 0 17px;font:700 clamp(24px,5vw,34px)/1.2 Georgia,serif}
+.article p{color:#edd5dd;line-height:1.8;font-size:15px;margin:0 0 14px}
+.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:#6a1a31}
+.photos figure{margin:0;aspect-ratio:3/4;overflow:hidden}.photos img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.article-meta{padding:15px 22px;border-top:1px solid #50212f;color:#b8949f;font-size:12px}
+.teaser{margin-top:25px;padding:clamp(27px,6vw,46px) 20px;text-align:center;background:radial-gradient(ellipse at top,#50172b,#150910 70%);border:1px solid #a5354e;border-radius:17px}
+.lock{display:grid;place-items:center;width:50px;height:50px;margin:0 auto 17px;border-radius:14px;background:#74162f;font-size:23px}
+.teaser p{max-width:520px;margin:0 auto 22px;color:#e6c8d0;font-size:14px;line-height:1.7}
+.cta{display:inline-flex;justify-content:center;align-items:center;min-height:52px;width:min(100%,360px);padding:13px 18px;border:1px solid #ff667e;border-radius:11px;background:linear-gradient(120deg,#ee2d4f,#a90729);color:#fff;text-decoration:none;font-size:15px;font-weight:850;box-shadow:0 8px 22px #0007}
+.cta:hover{background:linear-gradient(120deg,#ff4865,#c50a34)}
+.price-box{padding:32px 22px;text-align:center;border:1px solid #ac3550;border-radius:19px;background:radial-gradient(ellipse at top,#692138,#230e18 60%,#10090c)}
+.price-box .cost{font-size:50px;font-weight:900;margin:5px 0 10px}.price-box .cost small{font-size:16px;font-weight:550;color:#e9bdca}
+.price-box p{max-width:570px;margin:0 auto 22px;color:#efd5df;font-size:14px;line-height:1.7}
+.benefits-title{text-align:center;margin:36px 0 21px}
+.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.benefit{display:flex;align-items:flex-start;gap:12px;padding:17px 15px;background:#201018;border:1px solid #542535;border-radius:13px}
+.check{display:grid;place-items:center;flex:none;width:36px;height:36px;background:#4c1829;color:#ff7f98;border-radius:10px}
+.check svg{width:20px;height:20px}.benefit h3{font-size:15px;margin:0 0 6px}.benefit p{margin:0;color:#d2adba;font-size:13px;line-height:1.6}
+.info{margin-top:26px;padding:25px;background:#1a1015;border:1px solid #5b2d3c;border-radius:15px}
+.info h3{font-size:20px;margin:0 0 14px}.info ol{padding-left:23px;margin:0;color:#dec4cc;line-height:1.75;font-size:14px}.info li{margin-bottom:11px}
+.info strong{color:white}.info a{color:#ff91a5;font-weight:750;overflow-wrap:anywhere}
+.notice{margin-top:18px;padding:12px 14px;background:#411727;border:1px solid #a4425b;border-radius:9px;font-size:13px;line-height:1.65}
+.bottom-join{text-align:center;margin:26px auto 0}.bottom-join p{max-width:570px;margin:12px auto;color:#c4a1ad;font-size:12px;line-height:1.6}
+footer{text-align:center;padding:24px;border-top:1px solid #391a26;color:#b38b99;font-size:12px}
+:focus-visible{outline:3px solid white;outline-offset:3px}
+@media(max-width:610px){.benefits{grid-template-columns:1fr}.container{padding-top:24px}.article-body{padding:22px 18px}.info{padding:19px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-  <main>
-    <header class="site-heading"><h1>BLUIA SISTERS</h1></header>
-    <div class="cover"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true" alt="Bluia Sisters cover" fetchpriority="high" decoding="async"></div>
-    <div class="content">
-      <section class="intro" aria-labelledby="about-title">
-        <p class="eyebrow">ABOUT ME</p>
-        <h2 id="about-title">Hi, I'm <span>Vee Bluia</span> ♡</h2>
-        <p>I'm Vee Bluia, from the <strong>Bluia Sisters family</strong>. I'm a friendly personal assistant who loves creating, chatting, and helping people with everyday digital tasks.</p>
-        <p>Have an idea, a request, or just want a friendly chat? Book me for a month and tell me what you'd like help with.</p>
-        <p class="highlight">Friendly conversations · Creative requests · Everyday online help</p>
-      </section>
-      <h2 class="section-title" id="services-title">What can I do for you?</h2>
-      <section class="services" aria-labelledby="services-title">
-        <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6 9.5 4h5L16 6"/></svg></span><div><h3>Request a Photoshoot</h3><p>Share a theme or idea and request a personalized photoshoot.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-7A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8 11h9M8 14h6"/></svg></span><div><h3>Instagram & Facebook Chat</h3><p>Chat with me on Instagram or Facebook after booking arrangements are confirmed.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3V9Z"/></svg></span><div><h3>Request a TikTok</h3><p>Suggest a short video idea or TikTok post for me to consider.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 16-5.5-5.5L4 21"/></svg></span><div><h3>Create a Photo With Me</h3><p>Request a creative digital photo featuring you and me.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg></span><div><h3>Help With Your Emails</h3><p>I'll help draft or polish replies to personal or work emails.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M2 20h20l-2-4H4l-2 4Z"/></svg></span><div><h3>Small Online Tasks</h3><p>Ask me for help with suitable digital jobs and simple online work.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 5 6 6M3 21l5-.8L20.5 7.7a2.3 2.3 0 0 0-3.2-3.2L4.8 17 3 21Z"/></svg></span><div><h3>Write Messages & Captions</h3><p>Get help with personal messages, bios, captions and posts.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></svg></span><div><h3>Find Things Online</h3><p>Research products, services, ideas, or information for you.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="18" height="11" rx="1"/><path d="M2 10V7h20v3M12 7v14M12 7C7 7 6 5 8 3s4 1 4 4Zm0 0c5 0 6-2 4-4s-4 1-4 4Z"/></svg></span><div><h3>Birthday Greetings</h3><p>Ask for a personalized digital birthday greeting or surprise.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 11h18m-13 4h3"/></svg></span><div><h3>Planning & Organization</h3><p>Get help planning your week, to-do lists and simple routines.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2Zm7 15 .8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8L19 17Z"/></svg></span><div><h3>Creative Ideas</h3><p>Brainstorm concepts, content ideas and special projects.</p></div></article>
-<article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.7 5.3a5 5 0 0 0-7.1 0L12 6.9l-1.6-1.6a5 5 0 0 0-7.1 7 7 0 0 0 0 9.2L12 22l8.7-7.5a7 7 0 0 0 0-9.2Z"/></svg></span><div><h3>Friendly Conversation</h3><p>A friendly chat about your day, ideas and everyday life.</p></div></article>
-      </section>
-      <section class="offer" aria-labelledby="offer-title">
-        <p class="eyebrow">PERSONAL ASSISTANT MEMBERSHIP</p>
-        <h2 id="offer-title">Book Vee for a month</h2>
-        <div class="price">$10 <small>/ month</small></div>
-        <p>Includes <strong>3 small personal requests per month</strong>. Choose the help you need, and I'll discuss your request with you.</p>
-        <button type="button" class="primary" id="open-booking" aria-haspopup="dialog" aria-controls="book-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.7 5.3a5 5 0 0 0-7.1 0L12 6.9l-1.6-1.6a5 5 0 0 0-7.1 7 7 0 0 0 0 9.2L12 22l8.7-7.5a7 7 0 0 0 0-9.2Z"/></svg> Book Vee Bluia</button>
-        <p class="note">Larger projects, personalized photoshoots, complex online work and custom videos may need a separate quote. Membership renews monthly.</p>
-      </section>
-    </div>
-  </main>
-  <footer class="footer">© 2026 Bluias</footer>
-  <button type="button" id="floating-book" class="floating-book" aria-haspopup="dialog" aria-controls="book-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.7 5.3a5 5 0 0 0-7.1 0L12 6.9l-1.6-1.6a5 5 0 0 0-7.1 7 7 0 0 0 0 9.2L12 22l8.7-7.5a7 7 0 0 0 0-9.2Z"/></svg> Book Vee · $10/mo</button>
-  <dialog id="book-modal" class="book-modal" aria-labelledby="book-title" aria-describedby="booking-summary">
-    <div class="modal-inner">
-      <button type="button" id="close-booking" class="close" aria-label="Close booking details">&times;</button>
-      <div class="modal-head">
-        <p class="eyebrow">HOW IT WORKS</p>
-        <h2 id="book-title">Book Vee Bluia</h2>
-        <p class="price">$10 <small>/ month</small></p>
-        <p id="booking-summary">3 small personal requests per month. Choose from chats, simple online help and creative ideas.</p>
-      </div>
-      <div class="modal-body">
-        <h3>Getting started is easy</h3>
-        <ol class="steps">
-          <li><span><strong>Subscribe for $10/month</strong> with the Stripe payment button below. Use an email address you can access.</span></li>
-          <li><span><strong>After payment, send me an email from that EXACT same payment email address.</strong> Tell me what you want help with.<a class="payment-address" href="mailto:vbluia@outlook.com?subject=Vee%20Bluia%20-%20My%20Membership%20Request">vbluia@outlook.com</a></span></li>
-          <li><span>Include your request and useful details or links. I'll reply to confirm what I can help with, timing and any Pro access instructions that apply.</span></li>
-          <li><span>We can arrange chats or approved requests through the appropriate channel. Ask before sending private information or access credentials.</span></li>
-        </ol>
-        <div class="rule"><strong>Important:</strong> Always email me <strong>from the same email address you used to pay</strong> so I can match your request to your membership. Do not email from a different account.</div>
-        <p class="terms">Your membership includes up to 3 small requests each month, not unlimited work or instant replies. Photoshoots, TikToks, complicated tasks and other time-intensive requests are subject to availability and may cost extra. No card numbers or passwords are needed by email.</p>
-      </div>
-      <div class="modal-actions">
-        <a class="primary" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.7 5.3a5 5 0 0 0-7.1 0L12 6.9l-1.6-1.6a5 5 0 0 0-7.1 7 7 0 0 0 0 9.2L12 22l8.7-7.5a7 7 0 0 0 0-9.2Z"/></svg> Subscribe &amp; Pay $10/month</a>
-        <a class="secondary-link" href="mailto:vbluia@outlook.com?subject=Vee%20Bluia%20-%20My%20Membership%20Request">Already paid? Email from your payment email address</a>
-        <small>Stripe checkout · $10 billed monthly</small>
-      </div>
-    </div>
-  </dialog>
-  <script>
-    (function(){
-      "use strict";
-      const dialog=document.getElementById("book-modal");
-      const openers=[document.getElementById("open-booking"),document.getElementById("floating-book")];
-      const close=document.getElementById("close-booking");
-      let opener=null;
-      openers.forEach(button=>button.addEventListener("click",function(){opener=button;dialog.showModal();}));
-      close.addEventListener("click",()=>dialog.close());
-      dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
-      dialog.addEventListener("close",()=>{if(opener)opener.focus();});
-    })();
-  </script>
-</body>
-</html>
+<header><div class="kicker">BLUIA SISTERS PRESENTS</div><h1>Bluia<em>'s</em> Diary</h1><p>A little closer to my world ♡</p></header>
+<div class="cover"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true" alt="Bluia Sisters cover" fetchpriority="high" decoding="async"></div>
+<nav class="nav-wrap" aria-label="Diary sections"><div class="tabs" role="tablist" aria-label="Blog and members">
+<button id="tab-blog" class="tab" type="button" role="tab" aria-controls="panel-blog" aria-selected="true">Blog</button>
+<button id="tab-members" class="tab" type="button" role="tab" aria-controls="panel-members" aria-selected="false" tabindex="-1">Members</button>
+</div></nav>
+<main>
+<section id="panel-blog" role="tabpanel" aria-labelledby="tab-blog" class="container">
+<div class="center"><p class="eyebrow">FROM MY DIARY</p><h2>Welcome to My Little World</h2><p class="intro">A place for my photos, thoughts, and moments worth sharing.</p></div>
+<article class="article">
+<div class="article-body"><p class="eyebrow">DIARY ENTRY 01 · FREE PREVIEW</p><h3>The Little Things I Love Sharing ♡</h3>
+<p>Hi, I'm Bluia! I wanted a space to write a little more than a caption and share the moments behind my photos. Sometimes it's an outfit I love, a photoshoot idea, or simply something that made me smile during the day.</p>
+<p>In my diary, I want to share more of those little moments — the creative side, the quiet side, and the stories that don't always make it into a social post. Here are two photos from my gallery, just for a little preview.</p></div>
+<div class="photos" aria-label="Photos from my diary">
+<figure><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9820.png?download=true" loading="lazy" decoding="async" alt="Bluia diary photo one"></figure>
+<figure><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9818.png?download=true" loading="lazy" decoding="async" alt="Bluia diary photo two"></figure>
+</div><div class="article-meta">A little preview from my diary ♡</div></article>
+<section class="teaser" aria-labelledby="teaser-title"><div class="lock" aria-hidden="true">♡</div><p class="eyebrow">THERE'S MORE TO MY STORY</p><h2 id="teaser-title">Want to read about my daily life?</h2>
+<p>Become a member to read my personal stories, exclusive photoshoot diaries, behind-the-scenes posts, private thoughts and everyday updates.</p>
+<button id="join-from-blog" class="cta" type="button">Become a Member · $10/month</button></section>
+</section>
+<section id="panel-members" role="tabpanel" aria-labelledby="tab-members" class="container" hidden>
+<div class="price-box"><p class="eyebrow">BLUIA'S PRIVATE DIARY</p><h2>Come a Little Closer ♡</h2><div class="cost">$10 <small>/ month</small></div>
+<p>Follow my daily life beyond public posts. Explore personal stories, photoshoot diaries, behind-the-scenes moments and exclusive photos.</p>
+<a class="cta" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Join My Private Diary</a></div>
+<h2 class="benefits-title">What's Inside My Private Diary</h2>
+<div class="benefits"><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>My Daily Life</h3><p>Personal moments, everyday stories and regular diary updates.</p></div></article><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>Photoshoot Diaries</h3><p>Exclusive photo collections and stories behind the pictures.</p></div></article><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>My Private Thoughts</h3><p>Longer reflections and personal updates.</p></div></article><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>Behind the Scenes</h3><p>How my outfits, photos and creative ideas come together.</p></div></article><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>Ask Vee</h3><p>Send questions for my members-only Q&A posts.</p></div></article><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>Personal Stories</h3><p>Fashion, friendships, travel and lifestyle.</p></div></article><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>Members-Only Photos</h3><p>More photos alongside my private articles.</p></div></article><article class="benefit"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><h3>Vote on My Next Post</h3><p>Choose topics and ideas for future diary entries.</p></div></article></div>
+<section class="info" aria-labelledby="how-heading"><h3 id="how-heading">How membership works</h3>
+<ol>
+<li>Subscribe for <strong>$10/month</strong> through secure Stripe checkout using an email address you can access.</li>
+<li>After payment, <strong>email me from the exact same address you used to pay</strong> at <a href="mailto:vbluia@outlook.com?subject=Bluia%27s%20Diary%20Member%20Access">vbluia@outlook.com</a>.</li>
+<li>Write <strong>“Bluia's Diary membership”</strong> in the subject so I can match your payment and reply with access instructions.</li>
+<li>Once your membership has been confirmed, follow the instructions you receive for the members-only content.</li>
+</ol>
+<div class="notice"><strong>Important:</strong> Always contact me using your <strong>payment email address</strong>. Membership access is verified manually; paying does not automatically unlock articles on this public page.</div>
+</section>
+<section class="info"><h3>What to expect each month</h3><p style="color:#dec4cc;line-height:1.8;margin:0;font-size:14px">My goal is to share <strong>four exclusive diary posts per month</strong>, about one each week, including personal stories, extra photos, photoshoot details and occasional member Q&amp;A or votes. Publishing may vary with my schedule.</p></section>
+<div class="bottom-join"><a class="cta" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Subscribe · $10/month</a>
+<p>Already subscribed? <a href="mailto:vbluia@outlook.com?subject=Bluia%27s%20Diary%20Member%20Access">Email me</a> from the address used for your payment.</p></div>
+</section>
+</main><footer>© 2026 Bluias</footer>
+<script>
+(function(){
+ const tabs=[{btn:document.getElementById("tab-blog"),panel:document.getElementById("panel-blog")},{btn:document.getElementById("tab-members"),panel:document.getElementById("panel-members")}];
+ function activate(n,focus){tabs.forEach((t,i)=>{const active=i===n;t.btn.setAttribute("aria-selected",String(active));t.btn.tabIndex=active?0:-1;t.panel.hidden=!active});if(focus)tabs[n].btn.focus()}
+ tabs.forEach((t,i)=>{t.btn.addEventListener("click",()=>activate(i,false));t.btn.addEventListener("keydown",e=>{if(!["ArrowLeft","ArrowRight","Home","End"].includes(e.key))return;e.preventDefault();const n=e.key==="Home"?0:e.key==="End"?tabs.length-1:(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length;activate(n,true)})});
+ document.getElementById("join-from-blog").addEventListener("click",()=>{activate(1,false);document.querySelector(".nav-wrap").scrollIntoView({behavior:"smooth",block:"start"})});
+ activate(0,false);
+})();
+</script>
+</body></html>
