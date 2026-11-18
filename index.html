@@ -25,8 +25,9 @@
 html{background:#fff;scroll-behavior:smooth}
 body{margin:0;min-width:280px;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.page-title{padding:24px 16px 21px;text-align:center;background:#fff}
-.page-title h1{margin:0;color:#252328;font-size:clamp(23px,5.2vw,38px);line-height:1.2;font-weight:850;letter-spacing:-.035em}
+body{padding-top:calc(58px + env(safe-area-inset-top,0px))}
+.page-title{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:6px;align-items:center;height:calc(58px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) max(12px,env(safe-area-inset-right,0px)) 0 max(12px,env(safe-area-inset-left,0px));text-align:center;background:#fff;border-bottom:1px solid #ececf0;box-shadow:0 2px 12px #1010180b}
+.page-title h1{min-width:0;margin:0;color:#252328;font-size:clamp(11px,3.3vw,20px);line-height:1.1;font-weight:850;letter-spacing:-.04em;white-space:nowrap;text-align:center}
 .page-title .spicy{color:var(--coral)}
 .cover{display:flex;justify-content:center;align-items:center;width:100%;background:#fff}
 .cover img{display:block;width:auto;max-width:100%;height:auto;max-height:78svh;object-fit:contain}
@@ -36,7 +37,7 @@ a{color:inherit}
 .update-image img{display:block;width:100%;height:auto;object-fit:contain;border-radius:18px}
 .update-details{padding:10px clamp(14px,4vw,21px) 0}
 .update-heading{margin:0 clamp(12px,4vw,22px) 14px;padding:18px 5px 17px;border-top:1px solid #e5e9ed;border-bottom:1px solid #e5e9ed;text-align:center}
-.update-heading h2{margin:0;font-size:clamp(22px,4.8vw,34px);font-weight:900;line-height:1.2;letter-spacing:-.035em;color:#25262d}
+.update-heading h2{margin:0;font-size:clamp(10px,2.7vw,16px);font-weight:900;line-height:1.3;letter-spacing:-.015em;color:#25262d}
 .post-date{margin:11px 0 0 4px;color:#89909b;font-size:11px;line-height:1.4;font-weight:500;letter-spacing:.01em}
 .subscribe{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;margin:0 auto;padding:43px 20px 61px;text-align:center;background:#fff}
 .subscribe .accent{width:42px;height:3px;border-radius:99px;background:var(--coral)}
@@ -51,9 +52,9 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
 @media(min-width:800px){.feed{padding-top:26px}.update{border:1px solid var(--line);border-radius:13px;overflow:hidden;margin-bottom:26px;padding-bottom:18px;box-shadow:0 6px 24px #10101808}.update-details{padding-top:19px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.page-title{position:relative;padding-inline:56px}
-.notifications{position:absolute;z-index:40;right:max(11px,env(safe-area-inset-right));top:50%;transform:translateY(-50%)}
-.notification-bell{position:relative;display:grid;place-items:center;width:42px;height:42px;padding:8px;border:1px solid #e8e8ec;border-radius:50%;background:#fff;color:#242734;cursor:pointer}
+.page-title{position:fixed}
+.notifications{position:relative;z-index:101;top:auto;right:auto;transform:none;justify-self:end}
+.notification-bell{position:relative;display:grid;place-items:center;width:40px;height:40px;padding:8px;border:1px solid #e8e8ec;border-radius:50%;background:#fff;color:#242734;cursor:pointer}
 .notification-bell:hover{background:#edf7ff;border-color:#c0def9}
 .notification-bell svg{width:23px;height:23px}
 .notification-count{position:absolute;top:-6px;right:-5px;display:flex;justify-content:center;align-items:center;min-width:21px;height:21px;padding:0 5px;border:2px solid #fff;border-radius:999px;background:#e32947;color:#fff;font-size:11px;font-weight:850;line-height:1}
@@ -69,8 +70,8 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
 .notification-item strong{display:block;font-size:13px;line-height:1.3}
 .notification-item small{display:block;margin-top:5px;color:#778597;font-size:11px;line-height:1.4}
 .notification-item:focus-visible,.notification-bell:focus-visible{outline:3px solid #207ac7;outline-offset:2px}
-.new-update{scroll-margin-top:20px}
-@media(max-width:420px){.page-title{padding-inline:51px}.notification-bell{width:39px;height:39px}.notification-bell svg{width:21px;height:21px}}
+.update{scroll-margin-top:calc(72px + env(safe-area-inset-top,0px))}
+@media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 38px;gap:3px;padding-left:10px;padding-right:10px}.notification-bell{width:37px;height:37px}.notification-bell svg{width:20px;height:20px}}
 </style>
 </head>
 <body>
