@@ -25,12 +25,13 @@
     *{box-sizing:border-box}
     html{margin:0;background:#070707;scroll-behavior:smooth}
     body{margin:0;min-width:280px;min-height:100svh;background:#070707;color:#fff;overflow-x:hidden}
-    .site-heading{display:grid;place-items:center;min-height:96px;padding:22px 12px;background:#050505;text-align:center;border-bottom:1px solid #33070b}
-    .site-heading h1{margin:0;color:#ff2945;font-size:clamp(24px,6vw,49px);font-weight:950;line-height:1.1;letter-spacing:clamp(.06em,.8vw,.17em);text-shadow:0 0 6px #ff0b2e,0 0 18px #cf0024,0 0 32px #9e001c;animation:headline-glow 3s ease-in-out infinite alternate}
-    @keyframes headline-glow{from{text-shadow:0 0 4px #ff0b2e,0 0 13px #be0024,0 0 20px #6a0015;filter:brightness(.87)}to{text-shadow:0 0 9px #ff4d65,0 0 27px #e3002a,0 0 47px #cf002c;filter:brightness(1.12)}}
+    .site-heading{position:relative;display:flex;align-items:center;justify-content:center;min-height:110px;padding:27px 16px 25px;background:radial-gradient(ellipse at 50% 0%,#2a0b12 0%,#090708 64%,#050505 100%);text-align:center;border-bottom:1px solid #47101b;overflow:hidden}
+    .site-heading h1{position:relative;max-width:100%;margin:0;padding:0 0 18px;color:#ff3852;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:clamp(24px,5.4vw,47px);font-weight:900;line-height:1.08;letter-spacing:clamp(.06em,1vw,.16em);text-transform:uppercase;text-shadow:0 0 11px #c70d3170,0 0 24px #a5002645;animation:headline-glow 3.8s ease-in-out infinite alternate}
+    .site-heading h1::after{content:"";position:absolute;bottom:0;left:50%;width:min(155px,42%);height:2px;border-radius:99px;background:linear-gradient(90deg,transparent,#ff3b56 30%,#ff7183 50%,#ff3b56 70%,transparent);transform:translateX(-50%);box-shadow:0 0 13px #ff1747a8}
+    @keyframes headline-glow{from{text-shadow:0 0 8px #c70d315c,0 0 18px #93001c30;filter:brightness(.96)}to{text-shadow:0 0 11px #ff405d88,0 0 27px #d10b3966;filter:brightness(1.08)}}
     .top-cover{width:100%;margin:0;background:#0a0708}
     .top-cover img{display:block;width:100%;height:auto;max-height:82svh;object-fit:contain;object-position:center}
-    .photo-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;width:100%;margin:0;padding:0;background:#0a0a0a}
+    .photo-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;width:100%;margin:0;padding:0;background:#ef2546}
     .photo-tile{position:relative;aspect-ratio:auto;min-width:0;margin:0;overflow:hidden;background:linear-gradient(115deg,#1c0b0e,#310b13,#180608)}
     .photo-tile::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,#ffffff0d 50%,transparent 65%);transform:translateX(-110%);animation:skeleton-shimmer 1.9s linear infinite}
     .photo-tile.loaded::after,.photo-tile.failed::after{display:none}
@@ -39,6 +40,17 @@
     .photo-tile.loaded img{opacity:1}
     .photo-tile.failed{display:grid;place-items:center;color:#a88a90;font-size:12px}
     .gallery-sentinel{height:1px}
+
+    .feed-end-cta{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;width:100%;padding:clamp(38px,7vw,72px) 20px clamp(52px,10vw,90px);background:radial-gradient(ellipse at center top,#340c17 0%,#100609 50%,#050505 100%);border-top:2px solid #ed1e40;text-align:center}
+    .feed-end-cta::before{content:"";width:46px;height:3px;border-radius:99px;background:#fa405d;box-shadow:0 0 16px #e9284a8a}
+    .feed-end-cta h2{max-width:650px;margin:8px 0 0;color:#fff;font-size:clamp(23px,5.5vw,39px);font-weight:850;letter-spacing:-.03em;line-height:1.23}
+    .feed-end-cta h2 span{color:#ff4965}
+    .feed-end-cta p{margin:0 0 7px;max-width:520px;color:#d5afb8;font-size:clamp(13px,2.7vw,16px);line-height:1.65}
+    .feed-end-cta button{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:min(100%,355px);min-height:56px;padding:14px 20px;border:1px solid #ff5b70;border-radius:11px;background:linear-gradient(120deg,#f02a4a,#ad0827);color:#fff;font-size:15px;font-weight:900;box-shadow:0 12px 28px #0009,0 0 22px #fa244735;cursor:pointer;transition:transform .18s ease,background .18s ease}
+    .feed-end-cta button:hover{transform:translateY(-2px);background:linear-gradient(120deg,#ff3856,#c50c2f)}
+    .feed-end-cta button:focus-visible{outline:3px solid white;outline-offset:3px}
+    .feed-end-cta button svg{flex:none;width:20px;height:20px}
+
     .subscription-fab{position:fixed;z-index:30;right:max(16px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:54px;padding:12px 19px;border:1px solid #ff3852;border-radius:999px;background:linear-gradient(125deg,#d20b2b,#96051a);color:#fff;font:850 14px/1.2 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;box-shadow:0 7px 25px #000b,0 0 18px #e90e3980;cursor:pointer;transition:transform .18s,box-shadow .18s}
     .subscription-fab:hover{transform:translateY(-3px);box-shadow:0 10px 30px #000c,0 0 25px #e90e39b3}
     .subscription-fab svg{width:22px;height:22px;flex:none}
@@ -88,6 +100,14 @@
     </section>
     <section class="photo-grid" id="photo-grid" aria-label="Bluia Sisters photo gallery"></section>
     <div id="gallery-sentinel" class="gallery-sentinel" aria-hidden="true"></div>
+    <section class="feed-end-cta" aria-labelledby="feed-end-title">
+      <h2 id="feed-end-title">Want to keep scrolling the beautiful <span>Bluia Sisters</span> feed?</h2>
+      <p>There's more to explore with Pro Membership.</p>
+      <button id="feed-subscribe" type="button" aria-haspopup="dialog" aria-controls="subscription-modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8.2 7 12l5-7 5 7 4.5-3.8-2 11.3h-15L2.5 8.2Z"/><path d="M6.5 22h11"/></svg>
+        Buy Pro Membership · $10/month
+      </button>
+    </section>
   </main>
 
   <button id="subscription-fab" type="button" class="subscription-fab" aria-haspopup="dialog" aria-controls="subscription-modal" aria-label="Open Pro membership subscription">
@@ -176,6 +196,7 @@
       const open=document.getElementById("subscription-fab");
       const close=document.getElementById("subscribe-close");
       open.addEventListener("click",()=>dialog.showModal());
+      document.getElementById("feed-subscribe").addEventListener("click",()=>dialog.showModal());
       close.addEventListener("click",()=>dialog.close());
       dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
     })();
