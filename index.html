@@ -25,9 +25,9 @@
 html{background:#fff;scroll-behavior:smooth}
 body{margin:0;min-width:280px;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-body{padding-top:calc(58px + env(safe-area-inset-top,0px))}
-.page-title{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:6px;align-items:center;height:calc(58px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) max(12px,env(safe-area-inset-right,0px)) 0 max(12px,env(safe-area-inset-left,0px));text-align:center;background:#fff;border-bottom:1px solid #ececf0;box-shadow:0 2px 12px #1010180b}
-.page-title h1{min-width:0;margin:0;color:#252328;font-size:clamp(11px,3.3vw,20px);line-height:1.1;font-weight:850;letter-spacing:-.04em;white-space:nowrap;text-align:center}
+body{padding-top:calc(68px + env(safe-area-inset-top,0px))}
+.page-title{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:minmax(0,1fr) 141px;gap:8px;align-items:center;height:calc(68px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) max(12px,env(safe-area-inset-right,0px)) 0 max(12px,env(safe-area-inset-left,0px));text-align:left;background:#fff;border-bottom:1px solid #ececf0;box-shadow:0 2px 12px #1010180b}
+.page-title h1{min-width:0;margin:0;color:#252328;font-size:clamp(16px,2.6vw,25px);line-height:1.05;font-weight:950;letter-spacing:-.04em;white-space:normal;text-align:left;text-wrap:balance}
 .page-title .spicy{color:var(--coral)}
 .cover{display:flex;justify-content:center;align-items:center;width:100%;background:#fff}
 .cover img{display:block;width:auto;max-width:100%;height:auto;max-height:78svh;object-fit:contain}
@@ -70,22 +70,24 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
 .notification-item strong{display:block;font-size:13px;line-height:1.3}
 .notification-item small{display:block;margin-top:5px;color:#778597;font-size:11px;line-height:1.4}
 .notification-item:focus-visible,.notification-bell:focus-visible{outline:3px solid #207ac7;outline-offset:2px}
-.update{scroll-margin-top:calc(72px + env(safe-area-inset-top,0px))}
+.update{scroll-margin-top:calc(84px + env(safe-area-inset-top,0px))}
 @media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 38px;gap:3px;padding-left:10px;padding-right:10px}.notification-bell{width:37px;height:37px}.notification-bell svg{width:20px;height:20px}}
 
 /* Fixed compact header with a lively colorful Pro crown before notifications */
-.page-title{grid-template-columns:minmax(0,1fr) 88px;gap:5px}
-.page-title h1{font-size:clamp(10px,3vw,19px)}
-.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:5px}
-.crown-button{isolation:isolate;position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;padding:5px;border:1px solid #f9c2e1;border-radius:50%;color:#b72c92;background:conic-gradient(from 5deg,#fbe0ff,#fff2b1,#d0fcff,#e6d4ff,#fbe0ff);box-shadow:0 2px 8px #d947ab24,0 0 0 2px #ff64b112;cursor:pointer;animation:crown-glow 3.5s ease-in-out infinite}
-.crown-button svg{position:relative;z-index:1;width:29px;height:29px;overflow:visible;filter:drop-shadow(0 1px 2px #b85f8177);animation:crown-dance 3.6s ease-in-out infinite}
+.page-title{grid-template-columns:minmax(0,1fr) 141px;gap:8px}
+.page-title h1{font-size:clamp(16px,2.6vw,25px);font-weight:950;text-align:left}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;white-space:nowrap}
+.crown-button{isolation:isolate;position:relative;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;width:87px;height:45px;padding:3px 5px;border:1px solid #f9c2e1;border-radius:14px;color:#b72c92;background:conic-gradient(from 5deg,#fbe0ff,#fff2b1,#d0fcff,#e6d4ff,#fbe0ff);box-shadow:0 2px 8px #d947ab24,0 0 0 2px #ff64b112;cursor:pointer;animation:crown-glow 3.5s ease-in-out infinite}
+.crown-button svg{position:relative;z-index:1;flex:none;width:24px;height:24px;overflow:visible;filter:drop-shadow(0 1px 2px #b85f8177);animation:crown-dance 3.6s ease-in-out infinite}
 .crown-button::after{content:"✦";position:absolute;z-index:2;top:-6px;right:-4px;font-size:13px;line-height:1;color:#ee459c;text-shadow:0 0 4px #fff;animation:crown-sparkle 2.4s ease-in-out infinite}
 .crown-button:hover{border-color:#ef82c1;box-shadow:0 3px 16px #e548b14d,0 0 0 3px #ef74c034}
 .crown-button:focus-visible{outline:3px solid #8d47d9;outline-offset:2px}
 @keyframes crown-glow{0%,100%{box-shadow:0 2px 8px #d947ab24,0 0 0 2px #ff64b112;filter:hue-rotate(0deg)}50%{box-shadow:0 2px 18px #d947ab50,0 0 0 3px #ffd24c32;filter:hue-rotate(45deg)}}
 @keyframes crown-dance{0%,100%{transform:rotate(-5deg) scale(1)}25%{transform:rotate(6deg) scale(1.06)}55%{transform:rotate(-2deg) scale(1.09)}75%{transform:rotate(5deg) scale(1.02)}}
 @keyframes crown-sparkle{0%,100%{opacity:.55;transform:scale(.75) rotate(0deg)}50%{opacity:1;transform:scale(1.3) rotate(75deg)}}
-@media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 77px;gap:3px;padding-left:8px;padding-right:8px}.page-title h1{font-size:clamp(9px,2.85vw,12px)}.header-actions{gap:3px}.crown-button{width:37px;height:37px}.crown-button svg{width:27px;height:27px}}
+@media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 123px;gap:7px;padding-left:9px;padding-right:9px}.page-title h1{font-size:clamp(15px,4.1vw,18px);line-height:1.06}.page-title h1 .spicy{display:block;margin-top:2px}.header-actions{gap:9px}.crown-button{width:75px;height:43px}.crown-button svg{width:23px;height:23px}.crown-label{font-size:9px}.notification-bell{width:38px;height:38px}.notification-bell svg{width:21px;height:21px}}
+.crown-label{position:relative;z-index:1;display:block;line-height:1.15;font-size:10px;font-weight:950;letter-spacing:.035em;color:#763070;text-shadow:0 1px 0 #ffffffb8}
+@media(max-width:350px){.page-title h1{font-size:14px;letter-spacing:-.045em}.page-title{grid-template-columns:minmax(0,1fr) 119px;gap:4px;padding-inline:7px}.header-actions{gap:7px}.crown-button{width:74px}}
 @media(prefers-reduced-motion:reduce){.crown-button,.crown-button svg,.crown-button::after{animation:none!important;filter:none!important}}
 /* Pro subscription dialog */
 .pro-modal{box-sizing:border-box;width:min(470px,calc(100vw - 26px));max-width:none;max-height:90dvh;margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f0c1d2;border-radius:20px;background:#fff;color:#24232a;box-shadow:0 24px 90px #2210226b}
@@ -126,6 +128,7 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
         <circle cx="4.5" cy="10.5" r="2" fill="#ffd14d"/><circle cx="16" cy="6" r="2" fill="#ff6bae"/><circle cx="27.5" cy="10.5" r="2" fill="#40cfed"/>
         <path d="M15 17h2m-1-1v2" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/>
       </svg>
+      <span class="crown-label">SUBSCRIBE</span>
     </button>
     <div class="notifications">
     <button type="button" id="notification-bell" class="notification-bell" aria-label="Notifications, 3 unread" aria-expanded="false" aria-controls="notification-panel">
