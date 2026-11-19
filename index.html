@@ -73,22 +73,18 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
 .update{scroll-margin-top:calc(84px + env(safe-area-inset-top,0px))}
 @media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 38px;gap:3px;padding-left:10px;padding-right:10px}.notification-bell{width:37px;height:37px}.notification-bell svg{width:20px;height:20px}}
 
-/* Fixed compact header with a lively colorful Pro crown before notifications */
+/* Fixed header: understated professional red Subscribe button */
 .page-title{grid-template-columns:minmax(0,1fr) 151px;gap:8px}
 .page-title h1{font-size:clamp(16px,2.6vw,25px);font-weight:950;text-align:left}
 .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;white-space:nowrap}
-.crown-button{isolation:isolate;position:relative;flex:none;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:5px;width:99px;height:45px;padding:5px 7px;border:1px solid #ff5164;border-radius:12px;color:#fff;background:linear-gradient(125deg,#fc344d,#d70725);box-shadow:0 2px 9px #d7284338,0 0 0 2px #ff2e4b12;cursor:pointer;animation:crown-glow 3.5s ease-in-out infinite}
-.crown-button svg{position:relative;z-index:1;flex:none;width:23px;height:23px;overflow:visible;filter:drop-shadow(0 1px 2px #b85f8177);animation:crown-dance 3.6s ease-in-out infinite}
-.crown-button::after{content:"✦";position:absolute;z-index:2;top:-6px;right:-4px;font-size:13px;line-height:1;color:#ffce4e;text-shadow:0 0 4px #fff;animation:crown-sparkle 2.4s ease-in-out infinite}
-.crown-button:hover{border-color:#ff8293;background:linear-gradient(125deg,#ff4961,#e01030);box-shadow:0 3px 17px #e628455c,0 0 0 3px #ff456a2b}
-.crown-button:focus-visible{outline:3px solid #8d47d9;outline-offset:2px}
-@keyframes crown-glow{0%,100%{box-shadow:0 2px 8px #f12a4338,0 0 0 2px #ff385020}50%{box-shadow:0 3px 19px #e9294873,0 0 0 3px #ff546b35}}
-@keyframes crown-dance{0%,100%{transform:rotate(-5deg) scale(1)}25%{transform:rotate(6deg) scale(1.06)}55%{transform:rotate(-2deg) scale(1.09)}75%{transform:rotate(5deg) scale(1.02)}}
-@keyframes crown-sparkle{0%,100%{opacity:.55;transform:scale(.75) rotate(0deg)}50%{opacity:1;transform:scale(1.3) rotate(75deg)}}
-@media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 143px;gap:7px;padding-left:9px;padding-right:9px}.page-title h1{font-size:clamp(15px,4.1vw,18px);line-height:1.06}.page-title h1 .spicy{display:block;margin-top:2px}.header-actions{gap:8px}.crown-button{width:97px;height:43px;gap:4px;padding:4px 5px}.crown-button svg{width:22px;height:22px}.crown-label{font-size:9px}.notification-bell{width:38px;height:38px}.notification-bell svg{width:21px;height:21px}}
-.crown-label{position:relative;z-index:1;display:block;line-height:1.1;font-size:10px;font-weight:950;letter-spacing:.02em;color:#fff;text-shadow:0 1px 2px #8a001c75}
+.crown-button{position:relative;flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;width:99px;height:43px;padding:7px 9px;border:1px solid #bb2039;border-radius:9px;background:#cf2642;color:#fff;box-shadow:none;cursor:pointer}
+.crown-button:hover{background:#b71e37;border-color:#a41831}
+.crown-button:active{background:#9b192e}
+.crown-button:focus-visible{outline:3px solid #245db3;outline-offset:3px}
+.crown-button svg{display:block;flex:none;width:19px;height:19px;color:#fff;filter:none;transform:none;animation:none}
+.crown-label{display:block;color:#fff;font-size:10px;font-weight:850;letter-spacing:.015em;line-height:1;white-space:nowrap;text-shadow:none}
+@media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 143px;gap:7px;padding-left:9px;padding-right:9px}.page-title h1{font-size:clamp(15px,4.1vw,18px);line-height:1.06}.page-title h1 .spicy{display:block;margin-top:2px}.header-actions{gap:8px}.crown-button{width:97px;height:43px;padding:6px 7px;gap:5px}.crown-button svg{width:18px;height:18px}.crown-label{font-size:9px}.notification-bell{width:38px;height:38px}.notification-bell svg{width:21px;height:21px}}
 @media(max-width:350px){.page-title h1{font-size:14px;letter-spacing:-.045em}.page-title{grid-template-columns:minmax(0,1fr) 139px;gap:4px;padding-inline:7px}.header-actions{gap:6px}.crown-button{width:95px}}
-@media(prefers-reduced-motion:reduce){.crown-button,.crown-button svg,.crown-button::after{animation:none!important;filter:none!important}}
 /* Pro subscription dialog */
 .pro-modal{box-sizing:border-box;width:min(470px,calc(100vw - 26px));max-width:none;max-height:90dvh;margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f0c1d2;border-radius:20px;background:#fff;color:#24232a;box-shadow:0 24px 90px #2210226b}
 .pro-modal::backdrop{background:#140a13bb;backdrop-filter:blur(5px)}
@@ -121,12 +117,9 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
   <h1>Bluia Sisters <span class="spicy">Spicy 🌶️ Updates</span></h1>
   <div class="header-actions">
     <button id="pro-crown" type="button" class="crown-button" aria-label="Open Bluia Sisters Pro membership" aria-haspopup="dialog" aria-controls="pro-modal" title="Unlock Pro">
-      <svg viewBox="0 0 32 32" role="img" aria-label="Colorful Pro crown">
-        <defs><linearGradient id="pro-crown-gradient" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ff4e8a"/><stop offset="29%" stop-color="#f6a322"/><stop offset="55%" stop-color="#ffe266"/><stop offset="80%" stop-color="#8e5df5"/><stop offset="100%" stop-color="#20c8df"/></linearGradient></defs>
-        <path d="M4.5 10.5 10.2 16 16 6l5.8 10 5.7-5.5-2.7 15H7.2L4.5 10.5Z" fill="url(#pro-crown-gradient)" stroke="#a44f77" stroke-width="1.4" stroke-linejoin="round"/>
-        <rect x="7" y="26" width="18" height="2.6" rx="1.3" fill="#ac55ea"/>
-        <circle cx="4.5" cy="10.5" r="2" fill="#ffd14d"/><circle cx="16" cy="6" r="2" fill="#ff6bae"/><circle cx="27.5" cy="10.5" r="2" fill="#40cfed"/>
-        <path d="M15 17h2m-1-1v2" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <path d="M2.5 7.5 7.1 11.5 12 4.5 16.9 11.5 21.5 7.5 19.7 18H4.3L2.5 7.5Z"/>
+        <path d="M5 21h14"/>
       </svg>
       <span class="crown-label">SUBSCRIBE</span>
     </button>
