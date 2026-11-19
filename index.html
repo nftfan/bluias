@@ -80,6 +80,34 @@ button{font:inherit;cursor:pointer}
 .pro-feature-note a{color:#b32b43;overflow-wrap:anywhere}
 .site-footer{padding:22px 16px 27px;border-top:1px solid #ececf0;background:#fff;color:#777982;text-align:center;font-size:12px}
 @media(max-width:670px){.pro-feature-card{grid-template-columns:1fr;gap:23px;padding:18px}.pro-feature-visual{width:min(100%,330px)}.pro-feature-details{text-align:center}.pro-feature{margin-bottom:36px}.pro-feature .product-divider{margin-bottom:25px}}
+
+/* Coordinated pastel product cards: book / Pro / private chat */
+.product-section,.pro-feature,.zangi-feature{position:relative}
+.product-section .product-card{border:1px solid #f3cad5;background:linear-gradient(145deg,#fff2f5 0%,#fff9ee 100%);box-shadow:0 10px 32px #a43f5d14}
+.pro-feature .pro-feature-card{border:1px solid #d9c9f1;background:linear-gradient(145deg,#f3eeff 0%,#f7faff 100%);box-shadow:0 10px 32px #5943ac14}
+.product-section .product-cover{background:#fffaf9;border-color:#f4dce3}
+.pro-feature .pro-feature-visual{background:#f6f0ff;border:1px solid #e1d5f4}
+.product-section .product-eyebrow{color:#be3b62}
+.pro-feature .product-eyebrow{color:#7552b1}
+.pro-feature .product-label{color:#7050a6}
+.pro-feature .pro-feature-subscribe{border-color:#7154ba;background:#7959bf}
+.pro-feature .pro-feature-subscribe:hover{background:#6545a8}
+.zangi-feature{width:min(100%,880px);margin:0 auto 66px;padding:0 18px}
+.zangi-feature .product-divider{margin-bottom:32px}
+.zangi-feature .product-eyebrow{color:#23768a}
+.zangi-feature-card{display:grid;grid-template-columns:minmax(0,310px) minmax(0,1fr);align-items:center;gap:30px;padding:22px;border:1px solid #b9dfec;border-radius:20px;background:linear-gradient(145deg,#eafaff 0%,#f1faff 55%,#f0f5ff 100%);box-shadow:0 10px 32px #227a9d15}
+.zangi-feature-visual{width:100%;max-width:310px;margin:auto;overflow:hidden;border:1px solid #d2eaf4;border-radius:13px;background:#f3faff}
+.zangi-feature-visual img{display:block;width:100%;height:auto;object-fit:contain}
+.zangi-feature-details{min-width:0}
+.zangi-feature-details .product-label{display:inline-block;margin-bottom:12px;color:#1d7897;font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
+.zangi-feature-details h2{margin:0 0 11px;color:#193348;font-size:clamp(17px,2.3vw,22px);font-weight:800;line-height:1.3;letter-spacing:-.02em}
+.zangi-feature-price{margin:0 0 18px;color:#172b3b;font-size:32px;font-weight:900;letter-spacing:-.04em}
+.zangi-feature-price span{font-size:15px;font-weight:650;color:#61798a}
+.zangi-feature-description{margin:0 0 20px;color:#476476;font-size:14px;line-height:1.7}
+.zangi-feature-subscribe{display:flex;justify-content:center;align-items:center;min-height:49px;padding:11px 14px;border:1px solid #197f9e;border-radius:10px;background:#2089a6;color:#fff;font-size:14px;font-weight:850;text-decoration:none;text-align:center}
+.zangi-feature-subscribe:hover{background:#146e88}
+.zangi-feature-note{margin:15px 0 0;color:#546c7a;font-size:12px;line-height:1.7}
+@media(max-width:670px){.zangi-feature-card{grid-template-columns:1fr;gap:23px;padding:18px}.zangi-feature-visual{width:min(100%,330px)}.zangi-feature-details{text-align:center}.zangi-feature{margin-bottom:42px}.zangi-feature .product-divider{margin-bottom:25px}}
 :focus-visible{outline:3px solid #2563eb;outline-offset:3px}
 .pro-modal{box-sizing:border-box;width:min(470px,calc(100vw - 26px));max-width:none;max-height:90dvh;margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f0c1d2;border-radius:20px;background:#fff;color:#24232a;box-shadow:0 24px 90px #2210226b}
 .pro-modal::backdrop{background:#140a13bb;backdrop-filter:blur(5px)}
@@ -154,6 +182,23 @@ button{font:inherit;cursor:pointer}
         <p>Enjoy exclusive Bluia Sisters Pro photos and content with your monthly membership.</p>
         <a class="pro-feature-subscribe" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">SUBSCRIBE · $10/month</a>
         <p class="pro-feature-note">After payment, email <a href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">vbluia@outlook.com</a> from the same email address you used at checkout to request your Pro URL. Your access details are sent after payment verification.</p>
+      </div>
+    </article>
+  </section>
+  <section class="zangi-feature" aria-labelledby="zangi-feature-title">
+    <div class="product-divider" aria-hidden="true"></div>
+    <p class="product-eyebrow">Private Photo Chat</p>
+    <article class="zangi-feature-card">
+      <div class="zangi-feature-visual">
+        <img src="https://huggingface.co/buckets/Bluia/albums/resolve/A61D3879-E9EE-4D4B-8929-03246BE6F753.png?download=true" alt="Bluia Sisters private photo chat on Zangi preview" loading="lazy" decoding="async">
+      </div>
+      <div class="zangi-feature-details">
+        <span class="product-label">Private Chat on Zangi</span>
+        <h2 id="zangi-feature-title">Private Photo Chat on Zangi</h2>
+        <p class="zangi-feature-price">$10 <span>/ month</span></p>
+        <p class="zangi-feature-description">Connect privately on Zangi for personal photo chats with Bluia Sisters.</p>
+        <a class="zangi-feature-subscribe" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">SUBSCRIBE · $10/month</a>
+        <p class="zangi-feature-note">After payment verification, your private Zangi number will be sent to the email address you used during payment. Please check your inbox and spam folder.</p>
       </div>
     </article>
   </section>
