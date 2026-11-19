@@ -72,12 +72,62 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
 .notification-item:focus-visible,.notification-bell:focus-visible{outline:3px solid #207ac7;outline-offset:2px}
 .update{scroll-margin-top:calc(72px + env(safe-area-inset-top,0px))}
 @media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 38px;gap:3px;padding-left:10px;padding-right:10px}.notification-bell{width:37px;height:37px}.notification-bell svg{width:20px;height:20px}}
+
+/* Fixed compact header with a lively colorful Pro crown before notifications */
+.page-title{grid-template-columns:minmax(0,1fr) 88px;gap:5px}
+.page-title h1{font-size:clamp(10px,3vw,19px)}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:5px}
+.crown-button{isolation:isolate;position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;padding:5px;border:1px solid #f9c2e1;border-radius:50%;color:#b72c92;background:conic-gradient(from 5deg,#fbe0ff,#fff2b1,#d0fcff,#e6d4ff,#fbe0ff);box-shadow:0 2px 8px #d947ab24,0 0 0 2px #ff64b112;cursor:pointer;animation:crown-glow 3.5s ease-in-out infinite}
+.crown-button svg{position:relative;z-index:1;width:29px;height:29px;overflow:visible;filter:drop-shadow(0 1px 2px #b85f8177);animation:crown-dance 3.6s ease-in-out infinite}
+.crown-button::after{content:"✦";position:absolute;z-index:2;top:-6px;right:-4px;font-size:13px;line-height:1;color:#ee459c;text-shadow:0 0 4px #fff;animation:crown-sparkle 2.4s ease-in-out infinite}
+.crown-button:hover{border-color:#ef82c1;box-shadow:0 3px 16px #e548b14d,0 0 0 3px #ef74c034}
+.crown-button:focus-visible{outline:3px solid #8d47d9;outline-offset:2px}
+@keyframes crown-glow{0%,100%{box-shadow:0 2px 8px #d947ab24,0 0 0 2px #ff64b112;filter:hue-rotate(0deg)}50%{box-shadow:0 2px 18px #d947ab50,0 0 0 3px #ffd24c32;filter:hue-rotate(45deg)}}
+@keyframes crown-dance{0%,100%{transform:rotate(-5deg) scale(1)}25%{transform:rotate(6deg) scale(1.06)}55%{transform:rotate(-2deg) scale(1.09)}75%{transform:rotate(5deg) scale(1.02)}}
+@keyframes crown-sparkle{0%,100%{opacity:.55;transform:scale(.75) rotate(0deg)}50%{opacity:1;transform:scale(1.3) rotate(75deg)}}
+@media(max-width:420px){.page-title{grid-template-columns:minmax(0,1fr) 77px;gap:3px;padding-left:8px;padding-right:8px}.page-title h1{font-size:clamp(9px,2.85vw,12px)}.header-actions{gap:3px}.crown-button{width:37px;height:37px}.crown-button svg{width:27px;height:27px}}
+@media(prefers-reduced-motion:reduce){.crown-button,.crown-button svg,.crown-button::after{animation:none!important;filter:none!important}}
+/* Pro subscription dialog */
+.pro-modal{box-sizing:border-box;width:min(470px,calc(100vw - 26px));max-width:none;max-height:90dvh;margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f0c1d2;border-radius:20px;background:#fff;color:#24232a;box-shadow:0 24px 90px #2210226b}
+.pro-modal::backdrop{background:#140a13bb;backdrop-filter:blur(5px)}
+.pro-modal-inner{position:relative}
+.pro-modal-head{padding:28px 25px 21px;text-align:center;background:radial-gradient(ellipse at 50% 0,#ffe3f3,#fff5fc 60%,#fff)}
+.pro-modal-head .pro-kicker{margin:0 0 8px;color:#b32377;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:850}
+.pro-modal-head h2{margin:0 0 9px;font-size:clamp(25px,6vw,33px);font-weight:900;letter-spacing:-.035em;line-height:1.2}
+.pro-modal-head .pro-cost{margin:0 0 7px;font-size:39px;font-weight:900}
+.pro-modal-head .pro-cost span{font-size:15px;font-weight:650;color:#8e7181}
+.pro-modal-head .pro-subtitle{margin:0;color:#695363;font-size:13px;line-height:1.6}
+.pro-close{position:absolute;right:11px;top:11px;width:35px;height:35px;border:1px solid #ebc6d5;border-radius:50%;background:#fff9fc;color:#723351;font-size:25px;line-height:1;cursor:pointer}
+.pro-modal-body{padding:20px 25px 8px}
+.pro-modal-body h3{margin:0 0 13px;font-size:17px}
+.pro-steps{margin:0;padding:0;list-style:none;counter-reset:step}
+.pro-steps li{display:grid;grid-template-columns:27px 1fr;gap:11px;margin:0 0 15px;color:#4d4950;font-size:13px;line-height:1.65;counter-increment:step}
+.pro-steps li::before{content:counter(step);display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#ffe8f1;color:#b41c69;font-weight:850}
+.pro-steps strong{color:#292329}
+.pro-email{color:#ae2663;font-weight:800;overflow-wrap:anywhere}
+.pro-reminder{padding:12px 14px;margin:3px 0 12px;border:1px solid #f1c0d8;border-radius:10px;background:#fff0f7;color:#71294b;font-size:12px;line-height:1.65}
+.pro-modal-actions{position:sticky;bottom:0;z-index:2;padding:15px 25px max(17px,env(safe-area-inset-bottom));border-top:1px solid #f4dde6;background:#fffdfef5;text-align:center;backdrop-filter:blur(10px)}
+.pro-pay{display:flex;align-items:center;justify-content:center;width:100%;min-height:49px;padding:12px 16px;border-radius:11px;background:linear-gradient(110deg,#db2e73,#9d39ce);color:#fff!important;text-decoration:none;font-size:15px;font-weight:850;box-shadow:0 6px 18px #b437a62a}
+.pro-pay:hover{background:linear-gradient(110deg,#c21f61,#8924bb)}
+.pro-modal-actions p{margin:11px 0 0;color:#857480;font-size:11px;line-height:1.5}
+.pro-modal-actions .pro-email{font-size:12px}
+@media(max-width:420px){.pro-modal-head{padding:25px 20px 18px}.pro-modal-body{padding:18px 17px 6px}.pro-modal-actions{padding:13px 17px max(14px,env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
 <header class="page-title">
   <h1>Bluia Sisters <span class="spicy">Spicy 🌶️ Updates</span></h1>
-  <div class="notifications">
+  <div class="header-actions">
+    <button id="pro-crown" type="button" class="crown-button" aria-label="Open Bluia Sisters Pro membership" aria-haspopup="dialog" aria-controls="pro-modal" title="Unlock Pro">
+      <svg viewBox="0 0 32 32" role="img" aria-label="Colorful Pro crown">
+        <defs><linearGradient id="pro-crown-gradient" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ff4e8a"/><stop offset="29%" stop-color="#f6a322"/><stop offset="55%" stop-color="#ffe266"/><stop offset="80%" stop-color="#8e5df5"/><stop offset="100%" stop-color="#20c8df"/></linearGradient></defs>
+        <path d="M4.5 10.5 10.2 16 16 6l5.8 10 5.7-5.5-2.7 15H7.2L4.5 10.5Z" fill="url(#pro-crown-gradient)" stroke="#a44f77" stroke-width="1.4" stroke-linejoin="round"/>
+        <rect x="7" y="26" width="18" height="2.6" rx="1.3" fill="#ac55ea"/>
+        <circle cx="4.5" cy="10.5" r="2" fill="#ffd14d"/><circle cx="16" cy="6" r="2" fill="#ff6bae"/><circle cx="27.5" cy="10.5" r="2" fill="#40cfed"/>
+        <path d="M15 17h2m-1-1v2" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="notifications">
     <button type="button" id="notification-bell" class="notification-bell" aria-label="Notifications, 3 unread" aria-expanded="false" aria-controls="notification-panel">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg>
       <span id="notification-count" class="notification-count">3</span>
@@ -85,6 +135,7 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
     <div id="notification-panel" class="notification-panel" role="region" aria-label="Latest updates" hidden>
       <div class="notification-heading"><strong>Notifications</strong><span id="notification-status">3 new</span></div>
       <div id="notification-items" class="notification-items"></div>
+    </div>
     </div>
   </div>
 </header>
@@ -132,6 +183,32 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
   </section>
 </main>
 
+<dialog id="pro-modal" class="pro-modal" aria-labelledby="pro-title" aria-describedby="pro-summary">
+  <div class="pro-modal-inner">
+    <button class="pro-close" id="pro-close" type="button" aria-label="Close Pro membership details">&times;</button>
+    <div class="pro-modal-head">
+      <p class="pro-kicker">👑 Bluia Sisters Pro</p>
+      <h2 id="pro-title">Unlock Pro Access</h2>
+      <p class="pro-cost">$10 <span>/ month</span></p>
+      <p class="pro-subtitle" id="pro-summary">Get your private Pro URL and explore exclusive Bluia Sisters photos and content.</p>
+    </div>
+    <div class="pro-modal-body">
+      <h3>How do I receive my Pro URL?</h3>
+      <ol class="pro-steps">
+        <li><span><strong>Subscribe for $10/month</strong> using the secure Stripe checkout button below.</span></li>
+        <li><span><strong>Pay using an email address you can access.</strong> This is the email used to verify your membership.</span></li>
+        <li><span><strong>After paying, email <a class="pro-email" href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">vbluia@outlook.com</a> from the exact same email address used for payment.</strong> Request your Pro URL in the email.</span></li>
+        <li><span><strong>Check your inbox and spam/junk.</strong> Once your payment is verified, you'll receive a reply with the Pro URL and access instructions.</span></li>
+      </ol>
+      <div class="pro-reminder"><strong>Important:</strong> Your Pro URL is provided by email after payment verification. It is not unlocked automatically on this page. Always contact us from your payment email address.</div>
+    </div>
+    <div class="pro-modal-actions">
+      <a class="pro-pay" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">👑 Subscribe &amp; Pay $10/month</a>
+      <p>Already paid? <a class="pro-email" href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">Request your Pro URL</a> from the email used at checkout.</p>
+    </div>
+  </div>
+</dialog>
+
 <script>
 (function(){
  "use strict";
@@ -142,6 +219,18 @@ a:focus-visible{outline:3px solid #ac273a;outline-offset:3px}
  Number(b.dataset.order||0)-Number(a.dataset.order||0));
  posts.forEach(post=>feed.appendChild(post));
  const bell=document.getElementById("notification-bell");
+ const crown=document.getElementById("pro-crown");
+ const proModal=document.getElementById("pro-modal");
+ const closePro=document.getElementById("pro-close");
+ crown.addEventListener("click",()=>{
+   panel.hidden=true;
+   bell.setAttribute("aria-expanded","false");
+   proModal.showModal();
+ });
+ closePro.addEventListener("click",()=>proModal.close());
+ proModal.addEventListener("click",event=>{if(event.target===proModal)proModal.close()});
+ proModal.addEventListener("close",()=>crown.focus());
+
  const panel=document.getElementById("notification-panel");
  const countBadge=document.getElementById("notification-count");
  const status=document.getElementById("notification-status");
