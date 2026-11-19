@@ -32,6 +32,27 @@ button{font:inherit;cursor:pointer}
 .subscribe-button:hover{background:#b51e37}
 .subscribe-button:active{background:#971b30}
 .subscribe-button svg{flex:none;width:21px;height:21px;stroke:currentColor}
+
+/* First digital product — white, centered storefront card */
+.product-section{width:min(100%,880px);margin:4px auto 70px;padding:0 18px}
+.product-divider{height:1px;width:100%;background:#eeeeef;margin:0 auto 32px}
+.product-eyebrow{margin:0 0 15px;text-align:center;font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:#a43347}
+.product-card{display:grid;grid-template-columns:minmax(0,310px) minmax(0,1fr);align-items:center;gap:30px;padding:22px;border:1px solid #ebebee;border-radius:20px;background:#fff;box-shadow:0 10px 34px #10101809}
+.product-cover{overflow:hidden;min-width:0;border:1px solid #eeeeef;border-radius:13px;background:#f7f7f8}
+.product-cover img{display:block;width:100%;height:auto;max-height:540px;object-fit:contain}
+.product-details{min-width:0}
+.product-details .product-label{display:inline-block;margin-bottom:12px;color:#b32b43;font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
+.product-details h2{margin:0 0 12px;color:#1f2229;font-size:clamp(25px,3.8vw,35px);font-weight:900;line-height:1.13;letter-spacing:-.04em}
+.product-price{margin:0 0 19px;color:#17191d;font-size:32px;font-weight:900;letter-spacing:-.04em}
+.product-description{margin:0 0 20px;color:#60656c;font-size:14px;line-height:1.7}
+.product-actions{display:flex;flex-direction:column;gap:10px}
+.product-action{display:inline-flex;justify-content:center;align-items:center;min-height:49px;padding:11px 14px;border:1px solid transparent;border-radius:10px;text-align:center;font-size:14px;font-weight:850;line-height:1.2;text-decoration:none}
+.product-action.buy{background:#cf2642;border-color:#bc203a;color:#fff}
+.product-action.buy:hover{background:#b51e37}
+.product-action.preview{border-color:#d4d5da;background:#fff;color:#343943}
+.product-action.preview:hover{background:#f5f5f7}
+.product-delivery{margin:15px 0 0;color:#626872;font-size:12px;line-height:1.65}
+@media(max-width:670px){.product-card{grid-template-columns:1fr;gap:23px;padding:18px}.product-cover{width:min(100%,390px);margin:0 auto}.product-details{text-align:center}.product-description{margin-bottom:17px}.product-section{margin-bottom:45px}.product-divider{margin-bottom:25px}}
 :focus-visible{outline:3px solid #2563eb;outline-offset:3px}
 .pro-modal{box-sizing:border-box;width:min(470px,calc(100vw - 26px));max-width:none;max-height:90dvh;margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f0c1d2;border-radius:20px;background:#fff;color:#24232a;box-shadow:0 24px 90px #2210226b}
 .pro-modal::backdrop{background:#140a13bb;backdrop-filter:blur(5px)}
@@ -70,6 +91,27 @@ button{font:inherit;cursor:pointer}
       SUBSCRIBE
     </button>
   </div>
+
+  <section class="product-section" aria-labelledby="product-title">
+    <div class="product-divider" aria-hidden="true"></div>
+    <p class="product-eyebrow">Our First Product</p>
+    <article class="product-card">
+      <div class="product-cover">
+        <img src="https://huggingface.co/buckets/veebluia/drama/resolve/PBB.JPG?download=true" alt="Bluia Sisters Photo Book Vol. 1 cover" loading="lazy" decoding="async">
+      </div>
+      <div class="product-details">
+        <span class="product-label">Digital Photo Book · PDF</span>
+        <h2 id="product-title">Bluia Sisters Photo Book Vol. 1</h2>
+        <p class="product-price">$5</p>
+        <p class="product-description">Discover our first photo book. Download the free PDF preview to take a look inside before purchasing the full edition.</p>
+        <div class="product-actions">
+          <a class="product-action buy" href="https://buy.stripe.com/fZufZ98nS0jc6SZb7xbAs05" target="_blank" rel="noopener noreferrer">Buy Photo Book · $5</a>
+          <a class="product-action preview" href="https://huggingface.co/buckets/veebluia/drama/resolve/Bluia%20Sisters.pdf?download=true" target="_blank" rel="noopener noreferrer">Download Free PDF Preview</a>
+        </div>
+        <p class="product-delivery">After purchase, your PDF download link will be sent to the email address you use during payment. Please enter an email address you can access and check your spam folder too.</p>
+      </div>
+    </article>
+  </section>
 </main>
 <dialog id="pro-modal" class="pro-modal" aria-labelledby="pro-title" aria-describedby="pro-summary">
   <div class="pro-modal-inner">
