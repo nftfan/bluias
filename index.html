@@ -108,6 +108,24 @@ button{font:inherit;cursor:pointer}
 .zangi-feature-subscribe:hover{background:#146e88}
 .zangi-feature-note{margin:15px 0 0;color:#546c7a;font-size:12px;line-height:1.7}
 @media(max-width:670px){.zangi-feature-card{grid-template-columns:1fr;gap:23px;padding:18px}.zangi-feature-visual{width:min(100%,330px)}.zangi-feature-details{text-align:center}.zangi-feature{margin-bottom:42px}.zangi-feature .product-divider{margin-bottom:25px}}
+
+/* Exclusive photoshoot collections — included with the existing Pro membership */
+.shoots-feature{position:relative;width:min(100%,880px);margin:0 auto 68px;padding:0 18px}
+.shoots-feature .product-divider{margin-bottom:32px}
+.shoots-feature .product-eyebrow{color:#a9682c}
+.shoots-feature-card{display:grid;grid-template-columns:minmax(0,310px) minmax(0,1fr);align-items:center;gap:30px;padding:22px;border:1px solid #f0d8ab;border-radius:20px;background:linear-gradient(145deg,#fff5e3 0%,#fffbf1 58%,#fff1e8 100%);box-shadow:0 10px 32px #bc85321a}
+.shoots-feature-visual{width:100%;max-width:310px;margin:auto;overflow:hidden;border:1px solid #f1ddb8;border-radius:13px;background:#fffaf1}
+.shoots-feature-visual img{display:block;width:100%;height:auto;object-fit:contain}
+.shoots-feature-details{min-width:0}
+.shoots-feature-details .product-label{display:inline-block;margin-bottom:12px;color:#a2662f;font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
+.shoots-feature-details h2{margin:0 0 11px;color:#30271d;font-size:clamp(17px,2.3vw,22px);font-weight:800;line-height:1.3;letter-spacing:-.02em}
+.shoots-feature-price{margin:0 0 17px;color:#30271d;font-size:32px;font-weight:900;letter-spacing:-.04em}
+.shoots-feature-price span{font-size:15px;font-weight:650;color:#806c52}
+.shoots-feature-description{margin:0 0 20px;color:#65523e;font-size:14px;line-height:1.7}
+.shoots-feature-subscribe{display:flex;justify-content:center;align-items:center;min-height:49px;padding:11px 14px;border:1px solid #a9672d;border-radius:10px;background:#ac6a31;color:#fff;font-size:14px;font-weight:850;text-decoration:none;text-align:center}
+.shoots-feature-subscribe:hover{background:#945522}
+.shoots-feature-note{margin:15px 0 0;color:#806c52;font-size:12px;line-height:1.65}
+@media(max-width:670px){.shoots-feature-card{grid-template-columns:1fr;gap:23px;padding:18px}.shoots-feature-visual{width:min(100%,330px)}.shoots-feature-details{text-align:center}.shoots-feature{margin-bottom:42px}.shoots-feature .product-divider{margin-bottom:25px}}
 :focus-visible{outline:3px solid #2563eb;outline-offset:3px}
 .pro-modal{box-sizing:border-box;width:min(470px,calc(100vw - 26px));max-width:none;max-height:90dvh;margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f0c1d2;border-radius:20px;background:#fff;color:#24232a;box-shadow:0 24px 90px #2210226b}
 .pro-modal::backdrop{background:#140a13bb;backdrop-filter:blur(5px)}
@@ -199,6 +217,23 @@ button{font:inherit;cursor:pointer}
         <p class="zangi-feature-description">Connect privately on Zangi for personal photo chats with Bluia Sisters.</p>
         <a class="zangi-feature-subscribe" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">SUBSCRIBE · $10/month</a>
         <p class="zangi-feature-note">After payment verification, your private Zangi number will be sent to the email address you used during payment. Please check your inbox and spam folder.</p>
+      </div>
+    </article>
+  </section>
+  <section class="shoots-feature" aria-labelledby="shoots-feature-title">
+    <div class="product-divider" aria-hidden="true"></div>
+    <p class="product-eyebrow">Included with Pro</p>
+    <article class="shoots-feature-card">
+      <div class="shoots-feature-visual">
+        <img src="https://huggingface.co/buckets/Bluia/albums/resolve/D442DB02-937F-4FCA-BA15-4D7152030790.png?download=true" alt="Bluia Sisters exclusive photoshoot preview" loading="lazy" decoding="async">
+      </div>
+      <div class="shoots-feature-details">
+        <span class="product-label">Pro Photo Collections</span>
+        <h2 id="shoots-feature-title">Exclusive Photoshoots</h2>
+        <p class="shoots-feature-price">$10 <span>/ month · Pro membership</span></p>
+        <p class="shoots-feature-description">Explore exclusive Bluia Sisters photoshoot collections as part of your Pro subscription.</p>
+        <a class="shoots-feature-subscribe" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">SUBSCRIBE TO PRO · $10/month</a>
+        <p class="shoots-feature-note">Already subscribed to Pro? No second subscription is needed. Access photoshoot collections through your existing Pro membership. After a new payment, email from your checkout email address to request your private Pro URL.</p>
       </div>
     </article>
   </section>
