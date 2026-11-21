@@ -2,297 +2,187 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
-<meta name="description" content="Bluia Sisters — subscribe for exclusive Pro photos and content.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.bluias.com/">
-<meta property="og:site_name" content="Bluia Sisters">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080607">
+<meta name="description" content="Bluia Sisters — preview our photos and videos, and join Pro for $10 per month.">
 <meta property="og:title" content="Bluia Sisters">
-<meta property="og:description" content="Subscribe to Bluia Sisters Pro.">
+<meta property="og:description" content="Join Bluia Sisters Pro — $10/month">
 <meta property="og:image" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
-<meta property="og:image:secure_url" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bluia Sisters">
-<meta name="twitter:image" content="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true">
 <link rel="canonical" href="https://www.bluias.com/">
-<title>Bluia Sisters</title>
+<title>Bluia Sisters | Pro previews</title>
 <style>
-:root{color-scheme:light;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+:root{color-scheme:dark;--bg:#080607;--surface:#140e11;--line:#38232b;--gold:#e9b949;--red:#f32743;--ink:#fff;--muted:#c7b8bd}
 *{box-sizing:border-box}
-html,body{margin:0;min-width:280px;min-height:100%;background:#fff;color:#25262a}
-body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
+html,body{margin:0;max-width:100%;overflow-x:hidden;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{min-width:0}
 button,a{touch-action:manipulation}
 button{font:inherit;cursor:pointer}
-.site-header{position:fixed;z-index:1000;top:0;left:0;right:0;display:flex;align-items:center;justify-content:center;height:calc(52px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 12px 0;background:#fff;border-bottom:1px solid #ededf0;box-shadow:0 1px 8px #1010180a;text-align:center}
-.site-header h1{margin:0;max-width:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:clamp(17px,2.2vw,21px);font-weight:750;letter-spacing:.09em;line-height:1.2;white-space:nowrap;color:#cc1f6e;text-shadow:0 0 2px #ff63a177,0 0 8px #ff299744;animation:neon-text-colors 12s ease-in-out infinite}
-@keyframes neon-text-colors{
-  0%,100%{color:#c91c68;text-shadow:0 0 2px #ec278b88,0 0 9px #f94c9b57}
-  25%{color:#365ed2;text-shadow:0 0 2px #3566dc88,0 0 9px #447cff55}
-  50%{color:#187a70;text-shadow:0 0 2px #15988d88,0 0 9px #21c9b957}
-  75%{color:#8735b8;text-shadow:0 0 2px #933bbd88,0 0 9px #a369e357}
-}
-@media(prefers-reduced-motion:reduce){.site-header h1{animation:none!important}}
-.cover{display:flex;align-items:center;justify-content:center;width:100%;background:#fff}
-.cover img{display:block;width:auto;max-width:100%;height:auto;object-fit:contain}
-.subscribe-area{display:flex;align-items:center;justify-content:center;padding:24px 16px 34px;background:#fff}
-.subscribe-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:min(100%,350px);min-height:54px;padding:13px 20px;border:1px solid #bc203a;border-radius:10px;background:#cf2642;color:#fff;font-weight:850;font-size:16px;letter-spacing:.015em;box-shadow:none}
-.subscribe-button:hover{background:#b51e37}
-.subscribe-button:active{background:#971b30}
-.subscribe-button svg{flex:none;width:21px;height:21px;stroke:currentColor}
-
-/* First digital product — white, centered storefront card */
-.product-section{width:min(100%,880px);margin:4px auto 70px;padding:0 18px}
-.product-divider{height:1px;width:100%;background:#eeeeef;margin:0 auto 32px}
-.product-eyebrow{margin:0 0 15px;text-align:center;font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:#a43347}
-.product-card{display:grid;grid-template-columns:minmax(0,310px) minmax(0,1fr);align-items:center;gap:30px;padding:22px;border:1px solid #ebebee;border-radius:20px;background:#fff;box-shadow:0 10px 34px #10101809}
-.product-cover{overflow:hidden;min-width:0;border:1px solid #eeeeef;border-radius:13px;background:#f7f7f8}
-.product-cover img{display:block;width:100%;height:auto;max-height:540px;object-fit:contain}
-.product-details{min-width:0}
-.product-details .product-label{display:inline-block;margin-bottom:12px;color:#b32b43;font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
-.product-details h2{margin:0 0 11px;color:#1f2229;font-size:clamp(17px,2.3vw,22px);font-weight:800;line-height:1.3;letter-spacing:-.02em}
-.product-price{margin:0 0 19px;color:#17191d;font-size:32px;font-weight:900;letter-spacing:-.04em}
-.product-description{margin:0 0 20px;color:#60656c;font-size:14px;line-height:1.7}
-.product-actions{display:flex;flex-direction:column;gap:10px}
-.product-action{display:inline-flex;justify-content:center;align-items:center;min-height:49px;padding:11px 14px;border:1px solid transparent;border-radius:10px;text-align:center;font-size:14px;font-weight:850;line-height:1.2;text-decoration:none}
-.product-action.buy{background:#cf2642;border-color:#bc203a;color:#fff}
-.product-action.buy:hover{background:#b51e37}
-.product-action.preview{border-color:#d4d5da;background:#fff;color:#343943}
-.product-action.preview:hover{background:#f5f5f7}
-.product-delivery{margin:15px 0 0;color:#626872;font-size:12px;line-height:1.65}
-@media(max-width:670px){.product-card{grid-template-columns:1fr;gap:23px;padding:18px}.product-cover{width:min(100%,390px);margin:0 auto}.product-details{text-align:center}.product-description{margin-bottom:17px}.product-section{margin-bottom:45px}.product-divider{margin-bottom:25px}}
-
-/* Second product: full portrait 9:16 image and a clear Pro subscription CTA */
-.pro-feature{width:min(100%,880px);margin:0 auto 58px;padding:0 18px}
-.pro-feature .product-divider{margin-bottom:32px}
-.pro-feature-card{display:grid;grid-template-columns:minmax(0,310px) minmax(0,1fr);align-items:center;gap:30px;padding:22px;border:1px solid #ebebee;border-radius:20px;background:#fff;box-shadow:0 10px 34px #10101809}
-.pro-feature-visual{width:100%;max-width:310px;margin:auto;overflow:hidden;border-radius:13px;background:#f6f6f8;aspect-ratio:9/16}
-.pro-feature-visual img{display:block;width:100%;height:100%;object-fit:contain}
-.pro-feature-details{min-width:0}
-.pro-feature-details .product-label{display:inline-block;margin-bottom:12px;color:#b32b43;font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
-.pro-feature-details h2{margin:0 0 11px;color:#1f2229;font-size:clamp(17px,2.3vw,22px);font-weight:800;line-height:1.3;letter-spacing:-.02em}
-.pro-feature-price{margin:0 0 16px;color:#17191d;font-size:32px;font-weight:900;letter-spacing:-.04em}
-.pro-feature-price span{font-size:15px;font-weight:650;color:#77777f}
-.pro-feature-details>p:not(.pro-feature-price):not(.pro-feature-note){margin:0 0 22px;color:#60656c;font-size:14px;line-height:1.7}
-.pro-feature-subscribe{display:flex;justify-content:center;align-items:center;min-height:49px;padding:11px 14px;border:1px solid #bc203a;border-radius:10px;background:#cf2642;color:#fff;font-size:14px;font-weight:850;text-decoration:none;text-align:center}
-.pro-feature-subscribe:hover{background:#b51e37}
-.pro-feature-note{margin:16px 0 0;color:#626872;font-size:12px;line-height:1.65}
-.pro-feature-note a{color:#b32b43;overflow-wrap:anywhere}
-.site-footer{padding:22px 16px 27px;border-top:1px solid #ececf0;background:#fff;color:#777982;text-align:center;font-size:12px}
-@media(max-width:670px){.pro-feature-card{grid-template-columns:1fr;gap:23px;padding:18px}.pro-feature-visual{width:min(100%,330px)}.pro-feature-details{text-align:center}.pro-feature{margin-bottom:36px}.pro-feature .product-divider{margin-bottom:25px}}
-
-/* Coordinated pastel product cards: book / Pro / private chat */
-.product-section,.pro-feature,.zangi-feature{position:relative}
-.product-section .product-card{border:1px solid #f3cad5;background:linear-gradient(145deg,#fff2f5 0%,#fff9ee 100%);box-shadow:0 10px 32px #a43f5d14}
-.pro-feature .pro-feature-card{border:1px solid #d9c9f1;background:linear-gradient(145deg,#f3eeff 0%,#f7faff 100%);box-shadow:0 10px 32px #5943ac14}
-.product-section .product-cover{background:#fffaf9;border-color:#f4dce3}
-.pro-feature .pro-feature-visual{background:#f6f0ff;border:1px solid #e1d5f4}
-.product-section .product-eyebrow{color:#be3b62}
-.pro-feature .product-eyebrow{color:#7552b1}
-.pro-feature .product-label{color:#7050a6}
-.pro-feature .pro-feature-subscribe{border-color:#7154ba;background:#7959bf}
-.pro-feature .pro-feature-subscribe:hover{background:#6545a8}
-.zangi-feature{width:min(100%,880px);margin:0 auto 66px;padding:0 18px}
-.zangi-feature .product-divider{margin-bottom:32px}
-.zangi-feature .product-eyebrow{color:#23768a}
-.zangi-feature-card{display:grid;grid-template-columns:minmax(0,310px) minmax(0,1fr);align-items:center;gap:30px;padding:22px;border:1px solid #b9dfec;border-radius:20px;background:linear-gradient(145deg,#eafaff 0%,#f1faff 55%,#f0f5ff 100%);box-shadow:0 10px 32px #227a9d15}
-.zangi-feature-visual{width:100%;max-width:310px;margin:auto;overflow:hidden;border:1px solid #d2eaf4;border-radius:13px;background:#f3faff}
-.zangi-feature-visual img{display:block;width:100%;height:auto;object-fit:contain}
-.zangi-feature-details{min-width:0}
-.zangi-feature-details .product-label{display:inline-block;margin-bottom:12px;color:#1d7897;font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
-.zangi-feature-details h2{margin:0 0 11px;color:#193348;font-size:clamp(17px,2.3vw,22px);font-weight:800;line-height:1.3;letter-spacing:-.02em}
-.zangi-feature-price{margin:0 0 18px;color:#172b3b;font-size:32px;font-weight:900;letter-spacing:-.04em}
-.zangi-feature-price span{font-size:15px;font-weight:650;color:#61798a}
-.zangi-feature-description{margin:0 0 20px;color:#476476;font-size:14px;line-height:1.7}
-.zangi-feature-subscribe{display:flex;justify-content:center;align-items:center;min-height:49px;padding:11px 14px;border:1px solid #197f9e;border-radius:10px;background:#2089a6;color:#fff;font-size:14px;font-weight:850;text-decoration:none;text-align:center}
-.zangi-feature-subscribe:hover{background:#146e88}
-.zangi-feature-note{margin:15px 0 0;color:#546c7a;font-size:12px;line-height:1.7}
-@media(max-width:670px){.zangi-feature-card{grid-template-columns:1fr;gap:23px;padding:18px}.zangi-feature-visual{width:min(100%,330px)}.zangi-feature-details{text-align:center}.zangi-feature{margin-bottom:42px}.zangi-feature .product-divider{margin-bottom:25px}}
-
-/* Exclusive photoshoot collections — included with the existing Pro membership */
-.shoots-feature{position:relative;width:min(100%,880px);margin:0 auto 68px;padding:0 18px}
-.shoots-feature .product-divider{margin-bottom:32px}
-.shoots-feature .product-eyebrow{color:#a9682c}
-.shoots-feature-card{display:grid;grid-template-columns:minmax(0,310px) minmax(0,1fr);align-items:center;gap:30px;padding:22px;border:1px solid #f0d8ab;border-radius:20px;background:linear-gradient(145deg,#fff5e3 0%,#fffbf1 58%,#fff1e8 100%);box-shadow:0 10px 32px #bc85321a}
-.shoots-feature-visual{width:100%;max-width:310px;margin:auto;overflow:hidden;border:1px solid #f1ddb8;border-radius:13px;background:#fffaf1}
-.shoots-feature-visual img{display:block;width:100%;height:auto;object-fit:contain}
-.shoots-feature-details{min-width:0}
-.shoots-feature-details .product-label{display:inline-block;margin-bottom:12px;color:#a2662f;font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
-.shoots-feature-details h2{margin:0 0 11px;color:#30271d;font-size:clamp(17px,2.3vw,22px);font-weight:800;line-height:1.3;letter-spacing:-.02em}
-.shoots-feature-price{margin:0 0 17px;color:#30271d;font-size:32px;font-weight:900;letter-spacing:-.04em}
-.shoots-feature-price span{font-size:15px;font-weight:650;color:#806c52}
-.shoots-feature-description{margin:0 0 20px;color:#65523e;font-size:14px;line-height:1.7}
-.shoots-feature-subscribe{display:flex;justify-content:center;align-items:center;min-height:49px;padding:11px 14px;border:1px solid #a9672d;border-radius:10px;background:#ac6a31;color:#fff;font-size:14px;font-weight:850;text-decoration:none;text-align:center}
-.shoots-feature-subscribe:hover{background:#945522}
-.shoots-feature-note{margin:15px 0 0;color:#806c52;font-size:12px;line-height:1.65}
-@media(max-width:670px){.shoots-feature-card{grid-template-columns:1fr;gap:23px;padding:18px}.shoots-feature-visual{width:min(100%,330px)}.shoots-feature-details{text-align:center}.shoots-feature{margin-bottom:42px}.shoots-feature .product-divider{margin-bottom:25px}}
-:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
-.pro-modal{box-sizing:border-box;width:min(470px,calc(100vw - 26px));max-width:none;max-height:90dvh;margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f0c1d2;border-radius:20px;background:#fff;color:#24232a;box-shadow:0 24px 90px #2210226b}
-.pro-modal::backdrop{background:#140a13bb;backdrop-filter:blur(5px)}
-.pro-modal-inner{position:relative}
-.pro-modal-head{padding:28px 25px 21px;text-align:center;background:radial-gradient(ellipse at 50% 0,#ffe3f3,#fff5fc 60%,#fff)}
-.pro-modal-head .pro-kicker{margin:0 0 8px;color:#b32377;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:850}
-.pro-modal-head h2{margin:0 0 9px;font-size:clamp(25px,6vw,33px);font-weight:900;letter-spacing:-.035em;line-height:1.2}
-.pro-modal-head .pro-cost{margin:0 0 7px;font-size:39px;font-weight:900}
-.pro-modal-head .pro-cost span{font-size:15px;font-weight:650;color:#8e7181}
-.pro-modal-head .pro-subtitle{margin:0;color:#695363;font-size:13px;line-height:1.6}
-.pro-close{position:absolute;right:11px;top:11px;width:35px;height:35px;border:1px solid #ebc6d5;border-radius:50%;background:#fff9fc;color:#723351;font-size:25px;line-height:1;cursor:pointer}
-.pro-modal-body{padding:20px 25px 8px}
-.pro-modal-body h3{margin:0 0 13px;font-size:17px}
-.pro-steps{margin:0;padding:0;list-style:none;counter-reset:step}
-.pro-steps li{display:grid;grid-template-columns:27px 1fr;gap:11px;margin:0 0 15px;color:#4d4950;font-size:13px;line-height:1.65;counter-increment:step}
-.pro-steps li::before{content:counter(step);display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#ffe8f1;color:#b41c69;font-weight:850}
-.pro-steps strong{color:#292329}
-.pro-email{color:#ae2663;font-weight:800;overflow-wrap:anywhere}
-.pro-reminder{padding:12px 14px;margin:3px 0 12px;border:1px solid #f1c0d8;border-radius:10px;background:#fff0f7;color:#71294b;font-size:12px;line-height:1.65}
-.pro-modal-actions{position:sticky;bottom:0;z-index:2;padding:15px 25px max(17px,env(safe-area-inset-bottom));border-top:1px solid #f4dde6;background:#fffdfef5;text-align:center;backdrop-filter:blur(10px)}
-.pro-pay{display:flex;align-items:center;justify-content:center;width:100%;min-height:49px;padding:12px 16px;border-radius:11px;background:#cf2642;color:#fff!important;text-decoration:none;font-size:15px;font-weight:850}
-.pro-pay:hover{background:#b51e37}
-.pro-modal-actions p{margin:11px 0 0;color:#857480;font-size:11px;line-height:1.5}
-.pro-modal-actions .pro-email{font-size:12px}
-@media(max-width:420px){.site-header{padding-left:10px;padding-right:10px}.site-header h1{font-size:17px;letter-spacing:.075em}.subscribe-area{padding:20px 16px 28px}.pro-modal-head{padding:25px 20px 18px}.pro-modal-body{padding:18px 17px 6px}.pro-modal-actions{padding:13px 17px max(14px,env(safe-area-inset-bottom))}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+main{width:100%;max-width:100%;overflow-x:clip}
+.profile{display:flex;gap:clamp(14px,4vw,28px);align-items:center;width:min(900px,100%);margin:auto;padding:22px clamp(12px,4vw,26px)}
+.story-ring{flex:0 0 auto;position:relative;isolation:isolate;width:clamp(102px,26vw,145px);height:clamp(102px,26vw,145px);padding:5px;border:0;border-radius:50%;background:transparent}
+.story-ring:before{content:"";position:absolute;inset:0;z-index:-1;border-radius:50%;background:conic-gradient(#ff1537,#c70029,#ff526c,#ff1537);box-shadow:0 0 14px #f32743a0,0 0 28px #e8003e70;animation:spin 5s linear infinite,pulse 2.8s ease-in-out infinite}
+.story-ring:after{content:"";position:absolute;inset:4px;z-index:-1;border-radius:50%;background:var(--bg)}
+.story-ring img{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;clip-path:circle(50%)}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{box-shadow:0 0 22px #ff294c,0 0 38px #ee003f9a}}
+.profile-info{min-width:0;flex:1}
+.profile h1{margin:0 0 8px;font-size:clamp(19px,4.5vw,30px);line-height:1.2;letter-spacing:-.04em}
+.age{display:inline-block;vertical-align:middle;border-radius:5px;background:var(--red);padding:3px 6px;font-size:10px;letter-spacing:0}
+.stats{display:flex;flex-wrap:wrap;gap:4px 16px;color:#ddcfd4;font-size:12px}
+.stats strong{font-size:14px;color:white}
+.hero-action{display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;min-height:45px;margin-top:15px;padding:10px 17px;border:1px solid var(--red);border-radius:9px;background:#d91432;color:white;text-decoration:none;text-align:center;font-size:12px;font-weight:850;box-shadow:0 5px 25px #e900393b}
+.hero-action:hover{background:#f32743}
+.gallery{width:min(900px,100%);margin:0 auto}
+.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.tab{display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;padding:10px;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--gold);font-weight:800}
+.tab svg{width:24px;height:24px;flex:none}
+.tab[aria-selected=true]{border-bottom-color:var(--gold)}
+.tab small{font-size:10px;font-weight:800}
+[hidden]{display:none!important}
+.media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;width:100%}
+.tile{position:relative;min-width:0;aspect-ratio:2/3;overflow:hidden;background:#25151b}
+#video-grid .tile{aspect-ratio:9/16}
+.tile img,.tile video{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.tile button{position:absolute;inset:0;width:100%;border:0;background:transparent;color:white;cursor:pointer}
+.tile button:focus-visible,.tab:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:-3px}
+.tile .play{position:absolute;top:7px;right:7px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#0009;pointer-events:none}
+.tile .locked{filter:blur(13px) brightness(.7);transform:scale(1.06)}
+.tile .lock{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:27px;text-shadow:0 2px 15px #000;pointer-events:none}
+.buy-info{width:min(900px,calc(100% - 24px));margin:24px auto 44px;padding:22px;border:1px solid #553039;border-radius:16px;background:linear-gradient(130deg,#250c16,#10090c);text-align:center}
+.buy-info h2{margin:0 0 5px;font-size:clamp(22px,5vw,29px)}
+.price{margin:0 0 10px;color:var(--gold);font-size:28px;font-weight:850}
+.price span{font-size:13px;color:#e3cdd5}
+.buy-info p{max-width:550px;margin:8px auto;color:var(--muted)}
+.buy-info .hero-action{margin:16px auto}
+.instructions{max-width:540px;margin:15px auto 0;text-align:left}
+.instructions h3{margin:0 0 6px;font-size:15px}
+.instructions ol{margin:0;padding-left:22px;color:#e2d3d8;line-height:1.75}
+.instructions li{margin-bottom:7px}
+.instructions li::marker{color:var(--gold);font-weight:850}
+.instructions a{color:#ffd878}
+footer{padding:10px 16px 26px;text-align:center;font-size:11px;color:#96868c}
+.viewer{width:min(750px,calc(100vw - 16px));max-width:750px;max-height:calc(100dvh - 20px);padding:0;border:1px solid #4b2029;border-radius:12px;background:#100b0d;color:white;overflow:hidden}
+.viewer::backdrop{background:#000d;animation:fade .25s ease-out}
+.viewer[open]{animation:enter .33s cubic-bezier(.16,1,.3,1)}
+@keyframes fade{from{background:#0000}to{background:#000d}}@keyframes enter{from{opacity:0;transform:translateY(15px) scale(.97)}to{opacity:1;transform:none}}
+.viewer-shell{display:flex;flex-direction:column;max-height:calc(100dvh - 20px);overflow:auto;overscroll-behavior:contain}
+.viewer-bar{display:flex;align-items:center;gap:9px;padding:11px 55px 11px 14px;font-weight:750}
+.viewer-bar img{width:34px;height:34px;object-fit:cover;border-radius:50%}
+.viewer-close{position:absolute;right:10px;top:8px;z-index:3;width:38px;height:38px;border:0;border-radius:50%;background:#39232b;color:white;font-size:26px}
+.viewer-media{display:flex;justify-content:center}
+.viewer-media img,.viewer-media video{display:block;max-width:100%;max-height:calc(100dvh - 98px);object-fit:contain}
+.viewer-lock{padding:16px;text-align:center}
+.viewer-lock a{color:white;background:#d91432;text-decoration:none;border-radius:8px;padding:11px 20px;display:inline-block;font-weight:800}
+body.modal-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+@media(max-width:560px){.profile{padding:17px 12px;gap:12px}.story-ring{width:clamp(94px,27vw,120px);height:clamp(94px,27vw,120px)}.profile h1{font-size:20px}.stats{font-size:11px;gap:3px 10px}.stats strong{font-size:12px}.hero-action{padding:10px 12px;font-size:11px}.media-grid{gap:2px}.buy-info{margin-top:16px;padding:20px 14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<header class="site-header"><h1>Bluia Sisters</h1></header>
 <main>
-  <div class="cover"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true" alt="Bluia Sisters cover photo" fetchpriority="high" decoding="async"></div>
-  <div class="subscribe-area">
-    <button id="open-pro" class="subscribe-button" type="button" aria-haspopup="dialog" aria-controls="pro-modal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M2.5 7.5 7.1 11.5 12 4.5 16.9 11.5 21.5 7.5 19.7 18H4.3L2.5 7.5Z"/><path d="M5 21h14"/></svg>
-      SUBSCRIBE
-    </button>
-  </div>
-
-  <section class="product-section" aria-labelledby="product-title">
-    <div class="product-divider" aria-hidden="true"></div>
-    <p class="product-eyebrow">Our First Product</p>
-    <article class="product-card">
-      <div class="product-cover">
-        <img src="https://huggingface.co/buckets/veebluia/drama/resolve/PBB.JPG?download=true" alt="Bluia Sisters Photo Book Vol. 1 cover" loading="lazy" decoding="async">
-      </div>
-      <div class="product-details">
-        <span class="product-label">Digital Photo Book · PDF</span>
-        <h2 id="product-title">Bluia Sisters Photo Book Vol. 1</h2>
-        <p class="product-price">$5</p>
-        <p class="product-description">Discover our first photo book. Download the free PDF preview to take a look inside before purchasing the full edition.</p>
-        <div class="product-actions">
-          <a class="product-action buy" href="https://buy.stripe.com/fZufZ98nS0jc6SZb7xbAs05" target="_blank" rel="noopener noreferrer">Buy Photo Book · $5</a>
-          <a class="product-action preview" href="https://huggingface.co/buckets/veebluia/drama/resolve/Bluia%20Sisters.pdf?download=true" target="_blank" rel="noopener noreferrer">Download Free PDF Preview</a>
-        </div>
-        <p class="product-delivery">After purchase, your PDF download link will be sent to the email address you use during payment. Please enter an email address you can access and check your spam folder too.</p>
-      </div>
-    </article>
+  <header class="profile">
+    <button class="story-ring" type="button" id="story-trigger" aria-label="View profile story"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt="Bluia Sisters profile photo"></button>
+    <div class="profile-info">
+      <h1>Bluia Sisters <span class="age">18+</span></h1>
+      <div class="stats"><span><strong>9</strong> preview posts</span><span><strong>125</strong> Pro Followers</span></div>
+      <a class="hero-action" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">✦ SUBSCRIBE · $10/month</a>
+    </div>
+  </header>
+  <section class="gallery" aria-label="Preview media">
+    <div class="tabs" role="tablist" aria-label="Preview tabs">
+      <button class="tab" id="tab-photo" role="tab" type="button" aria-label="Photos" aria-selected="true" aria-controls="panel-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><small>Photos</small></button>
+      <button class="tab" id="tab-video" role="tab" type="button" aria-label="Videos" aria-selected="false" aria-controls="panel-video" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4V8Z"/></svg><small>Videos</small></button>
+    </div>
+    <section id="panel-photo" role="tabpanel" aria-labelledby="tab-photo"><div class="media-grid" id="photo-grid"></div></section>
+    <section id="panel-video" role="tabpanel" aria-labelledby="tab-video" hidden><div class="media-grid" id="video-grid"></div></section>
   </section>
-
-  <section class="product-section album-2027-section" aria-labelledby="album-2027-title">
-    <div class="product-divider" aria-hidden="true"></div>
-    <p class="product-eyebrow">Digital Photo Album</p>
-    <article class="product-card">
-      <div class="product-cover">
-        <img src="https://huggingface.co/buckets/Bluia/albums/resolve/A2A33852-D6FE-4562-8309-698488B0CAE9.png?download=true" alt="Bluia Sisters Album 2027 cover" loading="lazy" decoding="async">
-      </div>
-      <div class="product-details">
-        <span class="product-label">Exclusive Photo Album · Code 2027</span>
-        <h2 id="album-2027-title">Bluia Photo Album</h2>
-        <p class="product-price">$5</p>
-        <p class="product-description">Get the full Bluia Sisters Photo Album 2027 for $5.</p>
-        <div class="product-actions">
-          <a class="product-action buy" href="https://buy.stripe.com/fZufZ98nS0jc6SZb7xbAs05" target="_blank" rel="noopener noreferrer">Buy Album 2027 · $5</a>
-        </div>
-        <p class="product-delivery"><strong>How to receive your album:</strong> After payment, email <a href="mailto:vbluia@outlook.com?subject=Album%202027&amp;body=Hello%2C%20I%20purchased%20Album%202027%20using%20this%20email%20address.%20Please%20send%20the%20full%20album%20URL.">vbluia@outlook.com</a> with album code <strong>2027</strong> from the same email address you used at checkout. You will receive the full album URL after payment verification.</p>
-      </div>
-    </article>
-  </section>
-
-  <section class="pro-feature" aria-labelledby="pro-feature-title">
-    <div class="product-divider" aria-hidden="true"></div>
-    <p class="product-eyebrow">Bluia Sisters Pro</p>
-    <article class="pro-feature-card">
-      <div class="pro-feature-visual">
-        <img src="https://huggingface.co/buckets/Bluia/albums/resolve/2164CEBD-4FDA-4AC6-B065-7D1668B8CA75.png?download=true" alt="Bluia Sisters exclusive Pro content preview" loading="lazy" decoding="async">
-      </div>
-      <div class="pro-feature-details">
-        <span class="product-label">Exclusive Pro Content</span>
-        <h2 id="pro-feature-title">Watch My Exclusive Pro Content</h2>
-        <p class="pro-feature-price">$10 <span>/ month</span></p>
-        <p>Enjoy exclusive Bluia Sisters Pro photos and content with your monthly membership.</p>
-        <a class="pro-feature-subscribe" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">SUBSCRIBE · $10/month</a>
-        <p class="pro-feature-note">After payment, email <a href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">vbluia@outlook.com</a> from the same email address you used at checkout to request your Pro URL. Your access details are sent after payment verification.</p>
-      </div>
-    </article>
-  </section>
-  <section class="zangi-feature" aria-labelledby="zangi-feature-title">
-    <div class="product-divider" aria-hidden="true"></div>
-    <p class="product-eyebrow">Private Photo Chat</p>
-    <article class="zangi-feature-card">
-      <div class="zangi-feature-visual">
-        <img src="https://huggingface.co/buckets/Bluia/albums/resolve/A61D3879-E9EE-4D4B-8929-03246BE6F753.png?download=true" alt="Bluia Sisters private photo chat on Zangi preview" loading="lazy" decoding="async">
-      </div>
-      <div class="zangi-feature-details">
-        <span class="product-label">Private Chat on Zangi</span>
-        <h2 id="zangi-feature-title">Private Photo Chat on Zangi</h2>
-        <p class="zangi-feature-price">$10 <span>/ month</span></p>
-        <p class="zangi-feature-description">Connect privately on Zangi for personal photo chats with Bluia Sisters.</p>
-        <a class="zangi-feature-subscribe" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">SUBSCRIBE · $10/month</a>
-        <p class="zangi-feature-note">After payment verification, your private Zangi number will be sent to the email address you used during payment. Please check your inbox and spam folder.</p>
-      </div>
-    </article>
-  </section>
-  <section class="shoots-feature" aria-labelledby="shoots-feature-title">
-    <div class="product-divider" aria-hidden="true"></div>
-    <p class="product-eyebrow">Included with Pro</p>
-    <article class="shoots-feature-card">
-      <div class="shoots-feature-visual">
-        <img src="https://huggingface.co/buckets/Bluia/albums/resolve/D442DB02-937F-4FCA-BA15-4D7152030790.png?download=true" alt="Bluia Sisters exclusive photoshoot preview" loading="lazy" decoding="async">
-      </div>
-      <div class="shoots-feature-details">
-        <span class="product-label">Pro Photo Collections</span>
-        <h2 id="shoots-feature-title">Exclusive Photoshoots</h2>
-        <p class="shoots-feature-price">$10 <span>/ month · Pro membership</span></p>
-        <p class="shoots-feature-description">Explore exclusive Bluia Sisters photoshoot collections as part of your Pro subscription.</p>
-        <a class="shoots-feature-subscribe" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">SUBSCRIBE TO PRO · $10/month</a>
-        <p class="shoots-feature-note">Already subscribed to Pro? No second subscription is needed. Access photoshoot collections through your existing Pro membership. After a new payment, email from your checkout email address to request your private Pro URL.</p>
-      </div>
-    </article>
+  <section class="buy-info" id="subscribe" aria-labelledby="join-title">
+    <h2 id="join-title">Unlock Bluia Sisters Pro</h2>
+    <p class="price">$10 <span>/ month</span></p>
+    <p>Explore exclusive Bluia Sisters photos and videos with your Pro membership.</p>
+    <a class="hero-action" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Subscribe &amp; Pay $10/month</a>
+    <div class="instructions">
+      <h3>How to get access</h3>
+      <ol>
+        <li>Subscribe using the secure Stripe checkout button above.</li>
+        <li>Pay with an email address you can access.</li>
+        <li>After payment, email <a href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">vbluia@outlook.com</a> from that same email address to request your Pro URL.</li>
+        <li>Once payment is verified, check your inbox and spam folder for the Pro access link.</li>
+      </ol>
+    </div>
   </section>
 </main>
-<footer class="site-footer">© 2026 Bluia Sisters. All rights reserved.</footer>
-<dialog id="pro-modal" class="pro-modal" aria-labelledby="pro-title" aria-describedby="pro-summary">
-  <div class="pro-modal-inner">
-    <button class="pro-close" id="pro-close" type="button" aria-label="Close Pro membership details">&times;</button>
-    <div class="pro-modal-head">
-      <p class="pro-kicker">Bluia Sisters Pro</p>
-      <h2 id="pro-title">Unlock Pro Access</h2>
-      <p class="pro-cost">$10 <span>/ month</span></p>
-      <p class="pro-subtitle" id="pro-summary">Get your private Pro URL and explore exclusive Bluia Sisters photos and content.</p>
-    </div>
-    <div class="pro-modal-body">
-      <h3>How do I receive my Pro URL?</h3>
-      <ol class="pro-steps">
-        <li><span><strong>Subscribe for $10/month</strong> using the secure Stripe checkout button below.</span></li>
-        <li><span><strong>Pay using an email address you can access.</strong> This is the email used to verify your membership.</span></li>
-        <li><span><strong>After paying, email <a class="pro-email" href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">vbluia@outlook.com</a> from the exact same email address used for payment.</strong> Request your Pro URL in the email.</span></li>
-        <li><span><strong>Check your inbox and spam/junk.</strong> Once your payment is verified, you'll receive a reply with the Pro URL and access instructions.</span></li>
-      </ol>
-      <div class="pro-reminder"><strong>Important:</strong> Your Pro URL is provided by email after payment verification. It is not unlocked automatically on this page. Always contact us from your payment email address.</div>
-    </div>
-    <div class="pro-modal-actions">
-      <a class="pro-pay" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Subscribe &amp; Pay $10/month</a>
-      <p>Already paid? <a class="pro-email" href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">Request your Pro URL</a> from the email used at checkout.</p>
-    </div>
+<footer>© 2026 Bluia Sisters</footer>
+<dialog id="viewer" class="viewer" aria-label="Media preview">
+  <div class="viewer-shell">
+    <div class="viewer-bar"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/BE8C61B6-3E7A-4AB7-B856-161202EF9A97.png?download=true" alt=""><span>Bluia Sisters <span class="age">18+</span></span></div>
+    <button id="viewer-close" class="viewer-close" type="button" aria-label="Close preview">×</button>
+    <div class="viewer-media" id="viewer-media"></div>
+    <div class="viewer-lock" id="viewer-lock" hidden><p>Unlock exclusive photos and videos.</p><a href="#subscribe" id="viewer-unlock">Unlock Pro · $10/month</a></div>
   </div>
 </dialog>
 <script>
 (function(){
-  "use strict";
-  const trigger=document.getElementById("open-pro");
-  const dialog=document.getElementById("pro-modal");
-  document.getElementById("pro-close").addEventListener("click",()=>dialog.close());
-  trigger.addEventListener("click",()=>dialog.showModal());
-  dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close()});
-  dialog.addEventListener("close",()=>trigger.focus());
+const photos=["https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true","https://huggingface.co/buckets/Bluia/albums/resolve/516FD390-989D-4654-A664-BC22E40C24B0.png?download=true","https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8088.jpeg?download=true","https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8089.jpeg?download=true","https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_8091.jpeg?download=true","https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9572.png"];
+const videos=["https://huggingface.co/buckets/veebluia/drama/resolve/grok-video-a4f971c6-547e-4f13-8642-a3dd06da3ee2.mp4?download=true","https://huggingface.co/buckets/veebluia/drama/resolve/cgrok-video-ded4afea-ee3c-4c53-b246-290070da4d42.mp4?download=true","https://huggingface.co/buckets/veebluia/drama/resolve/grok-video-10dd7878-96b4-4946-926b-33e22bc8cb9e.mp4?download=true"];
+const gridPhotos=document.getElementById("photo-grid"),gridVideos=document.getElementById("video-grid");
+const dialog=document.getElementById("viewer"),mediaHolder=document.getElementById("viewer-media"),lockNotice=document.getElementById("viewer-lock");
+let scrollY=0;
+const photoItems=photos.map((src,i)=>({src,type:"photo",locked:i%3!==2}));
+const videoItems=videos.map((src,i)=>({src,type:"video",locked:i%3!==2}));
+function openPreview(item){
+  if(dialog.open)return;
+  mediaHolder.replaceChildren();
+  const media=document.createElement(item.type==="photo"?"img":"video");
+  media.src=item.src;
+  if(item.type==="video"){media.controls=!item.locked;media.playsInline=true;media.preload="metadata";}
+  else media.alt="Bluia Sisters photo preview";
+  if(item.locked){media.style.filter="blur(20px) brightness(.6)";media.style.pointerEvents="none";}
+  mediaHolder.append(media);
+  lockNotice.hidden=!item.locked;
+  scrollY=window.scrollY||0;
+  document.body.style.top="-"+scrollY+"px";document.body.classList.add("modal-lock");
+  dialog.showModal();
+}
+function closePreview(){if(dialog.open)dialog.close();}
+document.getElementById("viewer-close").addEventListener("click",closePreview);
+dialog.addEventListener("click",e=>{if(e.target===dialog)closePreview();});
+dialog.addEventListener("close",()=>{
+  mediaHolder.querySelectorAll("video").forEach(v=>v.pause());
+  mediaHolder.replaceChildren();
+  document.body.classList.remove("modal-lock");document.body.style.top="";
+  window.scrollTo(0,scrollY);
+});
+document.getElementById("viewer-unlock").addEventListener("click",()=>{
+  closePreview();
+  document.getElementById("subscribe").scrollIntoView({behavior:"smooth",block:"start"});
+});
+function addCard(item,grid){
+  const card=document.createElement("article");card.className="tile";
+  const media=document.createElement(item.type==="photo"?"img":"video");
+  if(item.type==="photo"){media.src=item.src;media.alt="Bluia Sisters photo preview";media.loading="lazy";}
+  else {media.muted=true;media.playsInline=true;media.preload="metadata";media.src=item.src;media.addEventListener("loadedmetadata",()=>{try{media.currentTime=.1;}catch(e){}});media.addEventListener("seeked",()=>media.pause());}
+  if(item.locked){media.classList.add("locked");}
+  card.append(media);
+  const trigger=document.createElement("button");trigger.type="button";trigger.setAttribute("aria-label",item.locked?"Unlock preview":"Open preview");trigger.addEventListener("click",()=>openPreview(item));card.append(trigger);
+  if(item.type==="video"){const badge=document.createElement("span");badge.className="play";badge.textContent="▶";card.append(badge);}
+  if(item.locked){const lock=document.createElement("span");lock.className="lock";lock.textContent="🔒";card.append(lock);}
+  grid.append(card);
+}
+photoItems.forEach(item=>addCard(item,gridPhotos));
+videoItems.forEach(item=>addCard(item,gridVideos));
+const tabs=[document.getElementById("tab-photo"),document.getElementById("tab-video")];
+tabs.forEach((tab,i)=>{
+  tab.addEventListener("click",()=>selectTab(i));
+  tab.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();selectTab(1-i);tabs[1-i].focus();}});
+});
+function selectTab(i){
+  tabs.forEach((t,j)=>{t.setAttribute("aria-selected",String(i===j));t.tabIndex=i===j?0:-1;});
+  document.getElementById("panel-photo").hidden=i!==0;
+  document.getElementById("panel-video").hidden=i!==1;
+  document.querySelectorAll("#video-grid video").forEach(v=>v.pause());
+}
+const story=photoItems[Math.floor(Math.random()*photoItems.length)];
+document.getElementById("story-trigger").addEventListener("click",()=>openPreview({...story,locked:false}));
 })();
 </script>
 </body>
