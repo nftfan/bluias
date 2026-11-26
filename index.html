@@ -66,6 +66,24 @@ dialog[open]{animation:dialog-in .3s cubic-bezier(.2,.8,.2,1) both}
 .buy:hover{background:#095eaf}
 .modal-foot{margin:12px 0 0;color:#7890a4;font-size:11px}
 a:focus-visible,button:focus-visible{outline:3px solid #72b8ff;outline-offset:3px}
+.updates{margin:23px 0 0}
+.updates-heading{display:flex;align-items:end;justify-content:space-between;gap:10px;padding:0 1px 13px}
+.updates-heading h2{margin:2px 0 0;color:#153e70;font-size:clamp(19px,3.7vw,25px);line-height:1.22;letter-spacing:-.035em}
+.updates-kicker{margin:0;color:#3085d6;font-size:9px;font-weight:850;letter-spacing:.11em}
+.updates-count{flex:none;color:#7893a9;font-size:11px}
+.updates-feed{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.update-card{min-width:0;overflow:hidden;border:1px solid #dceaf6;border-radius:14px;background:#fff;box-shadow:0 5px 17px #205d9d0c}
+.update-card>img{display:block;width:100%;aspect-ratio:4/4.1;object-fit:cover;object-position:center top;background:#e9f2f9}
+.update-card-body{padding:11px 12px 13px}
+.update-meta{display:flex;justify-content:space-between;gap:8px;color:#8098aa;font-size:10px}
+.update-meta span{color:#2684d8}
+.update-card h3{margin:5px 0 10px;color:#153e70;font-size:14px;line-height:1.32;font-weight:780}
+.update-subscribe{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:7px 11px;min-height:32px;border:1px solid #cfe3fa;border-radius:8px;background:#eff7ff;color:#126ac3;font-size:11px;font-weight:800;cursor:pointer}
+.update-subscribe svg{width:15px;height:15px}
+.update-subscribe:hover{background:#dceeff}
+.updates-bottom{margin:17px 0 2px;color:#67849c;text-align:center;font-size:12px}
+.updates-bottom-btn{border:0;background:none;color:#126ac3;font-size:12px;font-weight:850;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(max-width:520px){.updates-feed{gap:9px}.update-card-body{padding:9px 8px 11px}.update-meta{font-size:9px;flex-wrap:wrap;gap:2px}.update-card h3{font-size:12px;margin-bottom:9px}.updates-heading h2{font-size:19px}.update-subscribe{font-size:10px}}
 @media(max-width:520px){.page{padding:21px 11px 15px}.header{margin-bottom:17px}.profiles{gap:9px}.profile{border-radius:14px}.photo{aspect-ratio:4/5}.profile-info{padding:11px 7px 12px;gap:8px}.profile h2{font-size:15px}.join{padding:8px 5px;gap:4px;min-height:44px;font-size:10px}.join svg{width:15px;height:15px}.community{margin-top:15px;gap:11px}.pro-box{padding:14px 13px;gap:9px}.pro-text h2{font-size:15px}.pro-text p{font-size:11px}.pro-cta{font-size:11px;padding:9px 12px}.price{font-size:14px}}
 @media(max-width:360px){.pro-box{flex-wrap:wrap}.pro-cta{width:100%}.join{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -102,6 +120,20 @@ a:focus-visible,button:focus-visible{outline:3px solid #72b8ff;outline-offset:3p
       <button id="open-pro" class="pro-cta" type="button" aria-haspopup="dialog" aria-controls="pro-modal">$10 / month</button>
     </div>
   </section>
+  <section class="updates" id="pro-updates" aria-labelledby="updates-heading">
+    <header class="updates-heading"><div><p class="updates-kicker">FROM OUR MEMBERSHIP</p><h2 id="updates-heading">Latest updates from Bluia Sisters Pro</h2></div><span class="updates-count">10 posts</span></header>
+    <div class="updates-feed"><article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/517F833D-B5AE-4E89-8EAF-BBC4FA2685A6.png?download=true" alt="Bluia Sisters new cover photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>New from Bluia Sisters</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/516FD390-989D-4654-A664-BC22E40C24B0.png?download=true" alt="Bluia Sisters Podcast latest episode artwork" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>A Fresh Look</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9820.png?download=true" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>Latest Pro Photo</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9818.png?download=true" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>An Exclusive Moment</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/IMG_9816.png?download=true" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>Just Added to Pro</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/naughty/resolve/IMG_9667.png?download=true" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>Behind the Scenes</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/156F4FF5-5B53-4DDA-BCEC-5EA625D51269.png" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>Our Photo Collection</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/419010DC-D3C8-4DCB-8E55-E3476DCBD8C0.png" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>A Little Preview</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/6BC3F2CF-CCCE-4AB0-8692-90B649C225F8.png" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>From Our Latest Album</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article>
+<article class="update-card"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/7EE2EF45-E9FB-48CB-825E-E9C4081E0DFE.png" alt="Bluia Sisters Pro photo" loading="lazy" decoding="async"><div class="update-card-body"><div class="update-meta"><time datetime="2026-11-26">Nov 26, 2026</time><span>Pro preview</span></div><h3>Another Pro Highlight</h3><button class="update-subscribe" type="button" data-pro-open aria-haspopup="dialog" aria-controls="pro-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5 4 5-7 5 7 5-4-2 11H4L2 8Z"/><path d="M5 21h14"/></svg> Subscribe</button></div></article></div>
+    <p class="updates-bottom">See the full collection <button class="updates-bottom-btn" type="button" data-pro-open>♛ Unlock Pro · $10/month</button></p>
+  </section>
   <footer>© 2026 Bluia Sisters. All rights reserved.</footer>
 </main>
 <dialog id="pro-modal" aria-labelledby="modal-title">
@@ -110,8 +142,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #72b8ff;outline-offset:3p
     <div class="modal-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 3 6v6c0 4.7 3 7.7 9 10 6-2.3 9-5.3 9-10V6l-9-3.5Z"/><path d="m8.5 12 2.2 2.3 4.8-5"/></svg></div>
     <h2 id="modal-title">Bluia Sisters Pro</h2>
     <p class="modal-price">$10 <small>/ month</small></p>
-    <p class="modal-copy">Want to chat with us on WhatsApp? After you purchase a Pro subscription, we will email you our WhatsApp number.</p>
-    <div class="modal-notice">Use an email address you can access at checkout. We'll send the WhatsApp contact information to that email after purchase.</div>
+    <p class="modal-copy">Subscribe to view the full Pro photo gallery. Want to chat with us on WhatsApp too? We will email our WhatsApp number after you purchase a subscription.</p>
+    <div class="modal-notice"><strong>How to receive your Pro URL:</strong><br>1. Subscribe using the $10/month Stripe checkout button below.<br>2. Email <a href="mailto:vbluia@outlook.com?subject=Bluia%20Sisters%20Pro%20URL">vbluia@outlook.com</a> from the same email address used at checkout and request your Pro URL.<br>3. Once payment is verified, we will email your private Pro URL and WhatsApp number. Check your inbox and spam folder.</div>
     <a class="buy" href="https://buy.stripe.com/8x23cnbA49TM1yFgrRbAs06" target="_blank" rel="noopener noreferrer">Subscribe for $10/month</a>
     <p class="modal-foot">Secure checkout via Stripe</p>
   </div>
@@ -122,6 +154,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #72b8ff;outline-offset:3p
   const modal=document.getElementById("pro-modal");
   const closeButton=document.getElementById("close-pro");
   openButton.addEventListener("click",()=>modal.showModal());
+  document.querySelectorAll("[data-pro-open]").forEach(button=>button.addEventListener("click",()=>modal.showModal()));
   closeButton.addEventListener("click",()=>modal.close());
   modal.addEventListener("click",event=>{if(event.target===modal)modal.close();});
   modal.addEventListener("close",()=>openButton.focus());
