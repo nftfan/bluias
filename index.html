@@ -15,29 +15,29 @@
 :root{color-scheme:light;--blue:#1774d2;--deep:#133e77;--ink:#15324d;--muted:#637e95;--border:#dceaf6;--white:#fff;--sky:#f5faff;--green:#20ba64}
 *{box-sizing:border-box}
 html{min-width:0;max-width:100%;overflow-x:hidden}
-body{min-width:0;max-width:100%;margin:0;background:radial-gradient(ellipse at 48% 0%,#e8f5ff 0%,#f8fbff 42%,#fff 100%);color:var(--ink);font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+body{min-width:0;max-width:100%;margin:0;background:radial-gradient(ellipse at 48% 0%,#e8f5ff 0%,#f8fbff 42%,#fff 100%);color:var(--ink);font:13px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
 button,a{touch-action:manipulation}
 button{font:inherit;cursor:pointer}
 a{color:inherit}
-.page{width:min(740px,100%);margin:0 auto;padding:27px 17px 18px}
+.page{width:min(740px,100%);margin:0 auto;padding:22px 14px 15px}
 .header{text-align:center;margin:0 auto 22px}
 .header h1{margin:0;color:var(--deep);font-size:clamp(29px,6vw,39px);font-weight:850;letter-spacing:-.055em;line-height:1.12}
 .header h1 span{color:var(--blue)}
 .header p{margin:7px 0 0;color:var(--muted);font-size:12px}
-.profiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.profile{min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:19px;background:#fff;box-shadow:0 10px 28px #205d9d11;transition:transform .2s ease,box-shadow .2s ease}
+.profiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.profile{min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:14px;background:#fff;box-shadow:0 10px 28px #205d9d11;transition:transform .2s ease,box-shadow .2s ease}
 .profile:hover{transform:translateY(-3px);box-shadow:0 14px 34px #205d9d1b}
-.photo{position:relative;aspect-ratio:4/4.5;overflow:hidden;background:#dcecf7}
+.photo{position:relative;aspect-ratio:4/4.7;overflow:hidden;background:#dcecf7}
 .photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
-.status{display:inline-flex;align-items:center;gap:6px;justify-content:center;width:100%;color:#277a50;font-size:11px;font-weight:750}
-.status-dot{width:9px;height:9px;flex:none;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #20ba6420,0 0 10px #20ba6460}
-.profile-info{display:grid;justify-items:center;gap:10px;padding:13px 12px 16px;text-align:center}
-.profile h2{margin:0;color:#163d70;font-size:clamp(15px,2.7vw,20px);line-height:1.2;font-weight:800;letter-spacing:-.025em}
-.join{display:flex;justify-content:center;align-items:center;gap:7px;width:100%;min-height:43px;border:1px solid #1475d8;border-radius:11px;padding:10px 9px;background:linear-gradient(135deg,#2389eb,#1265ca);color:#fff;text-decoration:none;text-align:center;font-size:clamp(10px,1.9vw,12px);line-height:1.22;font-weight:800;box-shadow:0 5px 13px #196fd023}
-.join svg{width:17px;height:17px;flex:none}
+.status{display:inline-flex;align-items:center;gap:5px;justify-content:center;width:100%;color:#277a50;font-size:10px;font-weight:750}
+.status-dot{width:7px;height:7px;flex:none;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #20ba6420,0 0 10px #20ba6460}
+.profile-info{display:grid;justify-items:center;gap:7px;padding:10px 8px 12px;text-align:center}
+.profile h2{margin:0;color:#163d70;font-size:clamp(12px,2vw,16px);line-height:1.2;font-weight:800;letter-spacing:-.025em}
+.join{display:flex;justify-content:center;align-items:center;gap:5px;width:100%;min-height:37px;border:1px solid #1475d8;border-radius:9px;padding:7px 5px;background:linear-gradient(135deg,#2389eb,#1265ca);color:#fff;text-decoration:none;text-align:center;font-size:clamp(9px,1.35vw,11px);line-height:1.18;font-weight:800;box-shadow:0 5px 13px #196fd023}
+.join svg{width:14px;height:14px;flex:none}
 .join:hover{background:#0e61b9}
-.community{display:grid;gap:13px;margin-top:20px}
-.free-link{display:flex;justify-content:center;align-items:center;gap:10px;min-height:49px;padding:12px 14px;border:1px solid #bedcf8;border-radius:13px;background:#ebf5ff;color:#1162b4;text-align:center;text-decoration:none;font-weight:800;font-size:13px}
+.community{display:grid;gap:11px;margin-top:15px}
+.free-link{display:flex;justify-content:center;align-items:center;gap:10px;min-height:43px;padding:9px 12px;border:1px solid #bedcf8;border-radius:13px;background:#ebf5ff;color:#1162b4;text-align:center;text-decoration:none;font-weight:800;font-size:13px}
 .free-link svg{width:20px;height:20px;flex:none}
 .free-link:hover{background:#dcefff}
 .pro-box{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 18px;border:1px solid #d3e6f9;border-radius:16px;background:#fff;box-shadow:0 8px 25px #1b63a211}
@@ -66,7 +66,7 @@ dialog[open]{animation:dialog-in .3s cubic-bezier(.2,.8,.2,1) both}
 .buy:hover{background:#095eaf}
 .modal-foot{margin:12px 0 0;color:#7890a4;font-size:11px}
 a:focus-visible,button:focus-visible{outline:3px solid #72b8ff;outline-offset:3px}
-.updates{margin:23px 0 0}
+.updates{margin:19px 0 0}
 .updates-heading{display:flex;align-items:end;justify-content:space-between;gap:10px;padding:0 1px 13px}
 .updates-heading h2{margin:2px 0 0;color:#153e70;font-size:clamp(19px,3.7vw,25px);line-height:1.22;letter-spacing:-.035em}
 .updates-kicker{margin:0;color:#3085d6;font-size:9px;font-weight:850;letter-spacing:.11em}
@@ -86,7 +86,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #72b8ff;outline-offset:3p
 .updates-bottom{margin:17px 0 2px;color:#67849c;text-align:center;font-size:12px}
 .updates-bottom-btn{border:0;background:none;color:#126ac3;font-size:12px;font-weight:850;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 @media(max-width:520px){.updates-feed{gap:9px}.update-card-body{padding:9px 8px 11px}.update-meta{font-size:9px;flex-wrap:wrap;gap:2px}.update-card h3{font-size:12px;margin-bottom:9px}.updates-heading h2{font-size:19px}.update-subscribe{font-size:10px}}
-@media(max-width:520px){.page{padding:21px 11px 15px}.header{margin-bottom:17px}.profiles{gap:9px}.profile{border-radius:14px}.photo{aspect-ratio:4/5}.profile-info{padding:11px 7px 12px;gap:8px}.profile h2{font-size:15px}.join{padding:8px 5px;gap:4px;min-height:44px;font-size:10px}.join svg{width:15px;height:15px}.community{margin-top:15px;gap:11px}.pro-box{padding:14px 13px;gap:9px}.pro-text h2{font-size:15px}.pro-text p{font-size:11px}.pro-cta{font-size:11px;padding:9px 12px}.price{font-size:14px}}
+@media(max-width:520px){.page{padding:16px 8px 13px}.header{margin-bottom:13px}.header h1{font-size:27px}.header p{font-size:10px}.profiles{gap:6px}.profile{border-radius:10px}.photo{aspect-ratio:4/5}.profile-info{padding:8px 4px 9px;gap:5px}.profile h2{font-size:clamp(10px,2.9vw,13px);letter-spacing:-.045em}.status{font-size:9px}.status-dot{width:6px;height:6px}.join{padding:6px 3px;gap:3px;min-height:38px;font-size:clamp(8px,2vw,10px);border-radius:7px}.join svg{width:11px;height:11px}.community{margin-top:15px;gap:11px}.pro-box{padding:14px 13px;gap:9px}.pro-text h2{font-size:15px}.pro-text p{font-size:11px}.pro-cta{font-size:11px;padding:9px 12px}.price{font-size:14px}}
 @media(max-width:360px){.pro-box{flex-wrap:wrap}.pro-cta{width:100%}.join{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -112,6 +112,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #72b8ff;outline-offset:3p
         <h2>Vee Bluia</h2>
         <span class="status"><span class="status-dot" aria-hidden="true"></span>Online</span>
         <a class="join" href="https://t.me/+16X6DX5gDtMwOTM0" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.3 2.8 10.6c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.7c.3.9.2 1.2 1.1 1.2.7 0 1-.4 1.4-.8l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.9l3.1-15.2c.4-1.5-.6-2.2-2.1-1.7ZM8.4 13.4 19.6 6.3c.5-.3 1-.1.6.3l-9.3 8.4-.4 4-2.1-5.6Z"/></svg><span>Join my OnlyFans Telegram</span></a>
+      </div>
+    </article>
+      <article class="profile">
+      <div class="photo"><img src="https://huggingface.co/buckets/Bluia/albums/resolve/642FC0CB-9CCA-42B6-9B70-BC32D82962B4.png?download=true" alt="Bluia's Stepmom" fetchpriority="high" decoding="async"></div>
+      <div class="profile-info">
+        <h2>Bluia's Stepmom</h2>
+        <span class="status"><span class="status-dot" aria-hidden="true"></span>Online</span>
+        <a class="join" href="https://t.me/+ca-SS6FaxDswM2I0" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.3 2.8 10.6c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.7c.3.9.2 1.2 1.1 1.2.7 0 1-.4 1.4-.8l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.9l3.1-15.2c.4-1.5-.6-2.2-2.1-1.7ZM8.4 13.4 19.6 6.3c.5-.3 1-.1.6.3l-9.3 8.4-.4 4-2.1-5.6Z"/></svg><span>Join my OnlyFans Telegram</span></a>
       </div>
     </article>
   </section>
